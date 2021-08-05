@@ -4,9 +4,92 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600&family=Lato:wght@100;300;400&display=swap" rel="stylesheet">
+  <title>Traveler.pe</title>
 </head>
 <body>
+  <!--CREAMOS LA VISTA DE LOGIN-->
+  <section id="login" class="login">
+  <form action="" id="login-form">
+    <input type="email" placeholder="email" class="login-input" id="login-email" required>
+    <input type="password" placeholder="password" class="login-input" id="login-password" required>
+    <button type="submit" id="submit-button" class="submit-button">LOGIN</button>
+  </form>
+  <p>OR</p>
+  <button type="button" id="google-login" class="google-login">
+    <img src="./imagen/google.png" class="imgGoogle"/>
+    Log in with  google
+  </button>
+  <p>Dont have an account?<a href="#">Sing up</a></p> 
+  <a href="#">Forgot my password</a>
+  </section>
+  
+  <section id="signup" class="signup">
+    <p>Travel with me</p>
+    <form action="" id="signup-form">
+      <input type="text" placeholder="Fullname" class="login-input" required>
+      <input type="text" placeholder="Username" class="login-input" required>
+      <input type="password" placeholder="Password" class="login-input"  id="signup-password" required>
+      <input type="password" placeholder="Confirm password" class="login-input" required>
+      <input type="email" placeholder="Email" class="login-input" id="signup-email" required>
+      <div class="terminos">
+        <input type="checkbox" class="accept" id="accept">
+        <label for="accept">He Leido y acepto los terminos y condiciones</label>
+      </div>
+      <button type="submit" id="submit-button" class="submit-button">Sign Up</button>
+    </form>
+    <button class="cancel-button">Cancel</button>
+    </section>
+
+    <section id="muro" class="muro">
+      <p>LOGRASTE INGRESAR: BIENVENIDO A TRAVELER.PE</p>
+      <p>Estos son los traveleros:</p>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <ul class="list-group" id="userslist">
+              
+            </ul>
+
+          </div>
+        </div>
+      </div>
+      <button class="logout-button" id="logout-button">LOGOUT</button>
+    </section>
+
+    
+  <!--FIREBASE CONFIGURACION-->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyAyGQEpYaCLstvnMVyXhRbjcWa55lxOJVg",
+      authDomain: "traveler-c61bb.firebaseapp.com",
+      projectId: "traveler-c61bb",
+      storageBucket: "traveler-c61bb.appspot.com",
+      messagingSenderId: "705019484824",
+      appId: "1:705019484824:web:b7699ce662aea2f1e1ceed",
+      measurementId: "G-G0ECPD95F6"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const fs = firebase.firestore();
+    firebase.analytics();
+  </script>
+
+  <!--NUESTROS SCRIPTS-->
   <script type="module" src="main.js"></script>
 </body>
 </html>
