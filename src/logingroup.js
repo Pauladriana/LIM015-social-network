@@ -1,10 +1,6 @@
 
 const secciones = document.querySelector('#secciones');
 
-/*const loginSection = document.querySelector("#login");
-const signupSection = document.querySelector("#signup");
-const muroSection = document.querySelector("#muro");*/
-
 // creando dinamicamente la vista login 
 export const createLogin = `
 <form action="" id="login-form">
@@ -37,7 +33,6 @@ export const createSignup = `
     <a href="#login"><button type="button" id="submit-button" class="submit-button">SIGN UP</button></a>
   </form>
   <a href="#login" id="cancelar"><button class="cancel-button" id="cancel-button">Cancel</button></a>`;
-  //secciones.innerHTML = createSignup;
 
 // creando dinamicamente la vista muro 
 export const createMuro = `
@@ -54,5 +49,5 @@ export const createMuro = `
       </div>
     </div>
     <a href="#login"><button class="logout-button" type="button" id="logout-button">LOGOUT</button></a>`;
-    //secciones.innerHTML = createMuro;
+
   
