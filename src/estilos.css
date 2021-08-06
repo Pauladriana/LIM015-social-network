@@ -11,7 +11,7 @@
     display: none;
 }
 .muro{
-    display: none
+    display: none;
 }
 
 section{
@@ -62,7 +62,19 @@ input{
 }
 
 
-.submit-button{
+.submit-button {
+    width: 100px;
+    background-color: #CAD95B;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    border-radius: 20px;
+    border: none;
+    padding: 5px;
+    color: #ffff;
+}
+
+.logout-button{
     width: 100px;
     background-color: #CAD95B;
     display: flex;

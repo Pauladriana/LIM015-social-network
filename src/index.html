@@ -12,54 +12,10 @@
 </head>
 <body>
   <!--CREAMOS LA VISTA DE LOGIN-->
-  <section id="login" class="login">
-  <form action="" id="login-form">
-    <input type="email" placeholder="email" class="login-input" id="login-email" required>
-    <input type="password" placeholder="password" class="login-input" id="login-password" required>
-    <button type="submit" id="submit-button" class="submit-button">LOGIN</button>
-  </form>
-  <p>OR</p>
-  <button type="button" id="google-login" class="google-login">
-    <img src="./imagen/google.png" class="imgGoogle"/>
-    Log in with  google
-  </button>
-  <p>Dont have an account?<a href="#">Sing up</a></p> 
-  <a href="#">Forgot my password</a>
+
+  <section id="secciones" class="login">
+
   </section>
-  
-  <section id="signup" class="signup">
-    <p>Travel with me</p>
-    <form action="" id="signup-form">
-      <input type="text" placeholder="Fullname" class="login-input" required>
-      <input type="text" placeholder="Username" class="login-input" required>
-      <input type="password" placeholder="Password" class="login-input"  id="signup-password" required>
-      <input type="password" placeholder="Confirm password" class="login-input" required>
-      <input type="email" placeholder="Email" class="login-input" id="signup-email" required>
-      <div class="terminos">
-        <input type="checkbox" class="accept" id="accept">
-        <label for="accept">He Leido y acepto los terminos y condiciones</label>
-      </div>
-      <button type="submit" id="submit-button" class="submit-button">Sign Up</button>
-    </form>
-    <button class="cancel-button">Cancel</button>
-    </section>
-
-    <section id="muro" class="muro">
-      <p>LOGRASTE INGRESAR: BIENVENIDO A TRAVELER.PE</p>
-      <p>Estos son los traveleros:</p>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 offset-md-3">
-            <ul class="list-group" id="userslist">
-              
-            </ul>
-
-          </div>
-        </div>
-      </div>
-      <button class="logout-button" id="logout-button">LOGOUT</button>
-    </section>
-
     
   <!--FIREBASE CONFIGURACION-->
   <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -86,10 +42,13 @@
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const fs = firebase.firestore();
+    //const db = firebase.db();
     firebase.analytics();
   </script>
 
   <!--NUESTROS SCRIPTS-->
+  <script type="module" src="logingroup.js"></script>
   <script type="module" src="main.js"></script>
+  
 </body>
 </html>
