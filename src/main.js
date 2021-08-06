@@ -154,7 +154,7 @@ loginButon.addEventListener("click", (e) => {
     });
 });
 
-// login with google - logearse con google
+// login with google - logearse con google hola
 const googleButton = document.querySelector("#google-login");
 googleButton.addEventListener("click", (e) => {
   const provider = new firebase.auth.GoogleAuthProvider();
