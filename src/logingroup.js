@@ -1,53 +1,98 @@
-
 const secciones = document.querySelector('#secciones');
 
-// creando dinamicamente la vista login 
+// CREANDO DINAMICAMENTE EL VISTA LOGIN
+
 export const createLogin = `
-<form action="" id="login-form">
-  <input type="email" placeholder="email" class="login-input" id="login-email" required>
-  <input type="password" placeholder="password" class="login-input" id="login-password" required>
-  <a href="#muro"><button type="button" id="login-button" class="submit-button">LOGIN</button></a>
+<form action='' id='login-form'>
+  <input type='email' placeholder='email' class='login-input' id='login-email' required>
+  <input type='password' placeholder='password' class='login-input' id='login-password' required>
+  <a href='#muro'><button type='button' id='login-button' class='submit-button'>LOGIN</button></a>
 </form>
 <p>OR</p>
-<button type="button" id="google-login" class="google-login">
-  <img src="./imagen/google.png" class="imgGoogle"/>
+<button type='button' id='google-login' class='google-login'>
+  <img src='./imagen/google.png' class='imgGoogle'/>
   Log in with  google
 </button>
-<p>Dont have an account?<a href="#signup" id="signingup">Sign up</a></p> 
-<a href="#">Forgot my password</a>`;
+<p>Dont have an account?<a href='#signup' id='signingup'>Sign up</a></p> 
+<a href='#'>Forgot my password</a>`;
 secciones.innerHTML = createLogin;
 
-// creando dinamicamente la vista registro 
+// CREANDO DINAMICAMENTE LA VISTA REGISTRO
 export const createSignup = `
   <p>Travel with me</p>
-  <form action="" id="signup-form">
-    <input type="text" placeholder="Fullname" class="login-input" id="fullname" required>
-    <input type="text" placeholder="Username" class="login-input" id="username" required>
-    <input type="password" placeholder="Password" class="login-input"  id="signup-password" required>
-    <input type="password" placeholder="Confirm password" class="login-input" required>
-    <input type="email" placeholder="Email" class="login-input" id="signup-email" required>
-    <div class="terminos">
-      <input type="checkbox" class="accept" id="accept">
-      <label for="accept">He Leido y acepto los terminos y condiciones</label>
+  <form action='' id='signup-form'>
+    <input type='text' placeholder='Fullname' class='login-input' id='fullname' required>
+    <input type='text' placeholder='Username' class='login-input' id='username' required>
+    <input type='password' placeholder='Password' class='login-input'  id='signup-password' required>
+    <input type='password' placeholder='Confirm password' class='login-input' required>
+    <input type='email' placeholder='Email' class='login-input' id='signup-email' required>
+    <div class='terminos'>
+      <input type='checkbox' class='accept' id='accept'>
+      <label for='accept'>He Leido y acepto los terminos y condiciones</label>
     </div>
-    <a href="#login"><button type="button" id="submit-button" class="submit-button">SIGN UP</button></a>
+    <a href='#login'><button type='button' id='submit-button' class='submit-button'>SIGN UP</button></a>
   </form>
-  <a href="#login" id="cancelar"><button class="cancel-button" id="cancel-button">Cancel</button></a>`;
+  <a href='#login' id='cancelar'><button class='cancel-button' id='cancel-button'>Cancel</button></a>`;
 
-// creando dinamicamente la vista muro 
+// CREANDO DINAMICAMENTE LA VISTA MURO
 export const createMuro = `
     <p>LOGRASTE INGRESAR: BIENVENIDO A TRAVELER.PE</p>
     <p>Estos son los traveleros:</p>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <ul class="list-group" id="userslist">
-            
+    <div class='container'>
+      <div class='row'>
+        <div class='col-md-6 offset-md-3'>
+          <ul class='list-group' id='userslist'>
           </ul>
 
         </div>
       </div>
     </div>
-    <a href="#login"><button class="logout-button" type="button" id="logout-button">LOGOUT</button></a>`;
+    <a href='#login'><button class='logout-button' type='button' id='logout-button'>LOGOUT</button></a>`;
 
-  
+export const usuariosMuro = () => {
+  const allUsers = document.querySelector('#userslist');
+
+  const setupUsers = (data) => {
+    if (data.length) {
+      let html = '';
+      data.forEach((doc) => {
+        const user = doc.data();
+        console.log(user);
+        const li = `
+                    <li class='list-group-item list-group-item-action'>
+                        <h5>${user.username}</h5>
+                        <p>${user.fullname}</p>
+                    </li>`;
+        html += li;
+      });
+      allUsers.innerHTML = html;
+    } else {
+      allUsers.innerHTML = `<p>Login to meet the travelers</p>`;
+    }
+  };
+
+  // EVENTOS
+  // LISTAR LOS DATOS PARA URUARIOS AUTENTICOS 
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      fs.collection('users')
+        .get()
+        .then((snapshot) => {
+          setupUsers(snapshot.docs);
+        });
+    } else {
+      setupUsers([]);
+    }
+  });
+  /* logout - cerrar sesion */
+  const logout = document.querySelector('#logout-button');
+  logout.addEventListener('click', (e) => {
+    e.preventDefault();
+    auth.signOut().then(() => {
+      console.log('cerraste sesion');
+    });
+  })
+    .catch((err) => {
+      console.log(err);
+    });
+};
