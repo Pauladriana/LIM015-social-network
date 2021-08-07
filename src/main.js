@@ -1,6 +1,6 @@
 import {createLogin, createSignup, createMuro} from './logingroup.js';
 
-//ENROUTAMIENTO
+//ENROUTAMIENTO codigo bonito
 const secciones = document.querySelector('#secciones');
 
 //EVITANDO 404
