@@ -75,9 +75,26 @@ window.addEventListener('hashchange', () => {
     if (window.location.hash === '#signup') {
     console.log('mostrar registro');
     secciones.innerHTML = createSignup;
+
     changeRoute(window.location.hash)
+
+    // limitar contraseña
+    const contraseña = document.querySelector("#signup-password");
+    const mensajePassword = document.querySelector("#shortPassword");
+    contraseña.addEventListener( "change" , () => {
+      if (contraseña.value.length < 6) {
+        mensajePassword.innerHTML = "Tu contraseña debe tener al menos 6 caracteres";
+       mensajePassword.style.color = "red";
+     } else {
+      mensajePassword.style.display = "none";
+     }
+    })
+    //fin
+
     const signupForm = document.querySelector("#signup-form");
     const botonForm = document.querySelector("#submit-button");
+
+    
 
     botonForm.addEventListener("click", (e) => {
     e.preventDefault();
@@ -88,7 +105,6 @@ window.addEventListener('hashchange', () => {
     const fullnameInput = document.querySelector("#fullname").value;
     const passwordInput = document.querySelector('#signup-password').value;
     const emailInput = document.querySelector('#signup-email').value;
-
 
     auth
     .createUserWithEmailAndPassword(signupEmail, signupPassword)
