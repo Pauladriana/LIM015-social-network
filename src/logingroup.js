@@ -6,8 +6,3 @@ const secciones = document.querySelector('#secciones');
 
 // CREANDO DINAMICAMENTE EL VISTA LOGIN
 secciones.innerHTML = createLogin;
-
-
-  /* logout - cerrar sesion */
-  
-};
