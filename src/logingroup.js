@@ -1,12 +1,12 @@
 
 const secciones = document.querySelector('#secciones');
 
-// creando dinamicamente la vista login 
+// creando dinamicamente la vista login (href = muro)
 export const createLogin = `
 <form action="" id="login-form">
   <input type="email" placeholder="email" class="login-input" id="login-email" required>
   <input type="password" placeholder="password" class="login-input" id="login-password" required>
-  <a href="#muro"><button type="button" id="login-button" class="submit-button">LOGIN</button></a>
+  <button type="button" id="login-button" class="submit-button">LOGIN</button>
 </form>
 <p>OR</p>
 <button type="button" id="google-login" class="google-login">
@@ -17,7 +17,7 @@ export const createLogin = `
 <a href="#">Forgot my password</a>`;
 secciones.innerHTML = createLogin;
 
-// creando dinamicamente la vista registro 
+// creando dinamicamente la vista registro (href = login)
 export const createSignup = `
   <p>Travel with me</p>
   <form action="" id="signup-form">
@@ -30,11 +30,11 @@ export const createSignup = `
       <input type="checkbox" class="accept" id="accept">
       <label for="accept">He Leido y acepto los terminos y condiciones</label>
     </div>
-    <a href="#login"><button type="button" id="submit-button" class="submit-button">SIGN UP</button></a>
+    <button type="button" id="submit-button" class="submit-button">SIGN UP</button>
   </form>
-  <a href="#login" id="cancelar"><button class="cancel-button" id="cancel-button">Cancel</button></a>`;
+  <button class="cancel-button" id="cancel-button">Cancel</button>`;
 
-// creando dinamicamente la vista muro 
+// creando dinamicamente la vista muro (href = login)
 export const createMuro = `
     <p>LOGRASTE INGRESAR: BIENVENIDO A TRAVELER.PE</p>
     <p>Estos son los traveleros:</p>
@@ -48,6 +48,6 @@ export const createMuro = `
         </div>
       </div>
     </div>
-    <a href="#login"><button class="logout-button" type="button" id="logout-button">LOGOUT</button></a>`;
+    <button class="logout-button" type="button" id="logout-button">LOGOUT</button>`;
 
   
