@@ -1,4 +1,6 @@
-import {createLogin, createSignup, createMuro} from './logingroup.js';
+import {
+  createLogin, createSignup, createMuro
+} from './logingroup.js';
 
 //ENROUTAMIENTO codigo bonito
 const secciones = document.querySelector('#secciones');
@@ -57,7 +59,6 @@ if(window.location.pathname === '/login'){
         });
       });
 
-  
 }
 
 //RUTA SIN #
@@ -78,22 +79,8 @@ window.addEventListener('hashchange', () => {
 
     changeRoute(window.location.hash)
 
-    // limitar user name
-    const contraseñaa = document.querySelector("#username");
-    const mensajePasswordd = document.querySelector("#shortUsername");
-    contraseñaa.addEventListener( "change" , () => {
-      if (contraseñaa.value.length < 4) {
-        mensajePasswordd.innerHTML = "Tu usuario debe tener al menos 4 caracteres";
-       mensajePasswordd.style.color = "blue";
-     } else {
-      mensajePasswordd.style.display = "none";
-     }
-    })
-   //fin
- 
-
     // limitar contraseña
-    const contraseña = document.querySelector("#signup-password");
+    /*const contraseña = document.querySelector("#signup-password");
     const mensajePassword = document.querySelector("#shortPassword");
     contraseña.addEventListener( "change" , () => {
       if (contraseña.value.length < 6) {
@@ -102,11 +89,186 @@ window.addEventListener('hashchange', () => {
      } else {
       mensajePassword.style.display = "none";
      }
-    })
+    })*/
     //fin
 
+/* -----------  validar <formulario  de registro> vacios y condiciones  --------------- */
+    const formularioRegistro = document.getElementById('signup-form'); //formulario
+    const inputsRegistro = document.querySelectorAll('#signup-form input'); //todos los imputs del formulario
+
+    const mensajeFullname = document.querySelector('#campoFullname'); // mensaje fullname <p>
+    const mensajeUsername = document.querySelector('#campoUsername'); // mensaje username <p>
+    const mensajeContraseña1 = document.querySelector('#campoContraseñaPrimero'); // mensaje contraseña 1 <p>
+    const mensajeContraseña2 = document.querySelector('#campoContraseñaSegundo'); // mensaje contraseña 2 <p>
+    const mensajeCorreo = document.querySelector('#campoCorreo'); // mensaje correo <p>
+    const mensajeChecket = document.querySelector('#campoChecket'); // mensaje Checket <p>
+    const camposVacios = document.querySelector('#camposVacios'); // mensaje de campops vacios <p>
+    const textoTerminos = document.querySelector('#textoTerminos'); // texto de terminos <label>
+
+    // expresiones regulares
+    const expresiones = {
+      nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+      usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
+      password: /^.{6,12}$/, // 4 a 12 digitos.
+      correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+    }
+
+    const campos = {
+      fullname: false,
+      username: false,
+      password: false,
+      email: false
+    }
+
+    const validarFormulario = (e) => {
+      switch (e.target.name){
+        case "fullname":
+          /*
+          if(expresiones.nombre.test(e.target.value)){
+            mensajeFullname.innerHTML = "Es válido";
+            mensajeFullname.style.color = "green";
+            campos['fullname'] = true;
+          } else {
+            mensajeFullname.innerHTML = "Solo debe tener Letras";
+            mensajeFullname.style.color = "red";
+            campos['fullname'] = false;
+          }*/
+          if (e.target.value.length == 0) {
+            mensajeFullname.innerHTML = "Este campo esta vacio";
+            mensajeFullname.style.color = "red";
+            campos['fullname'] = false;
+          } else if (expresiones.nombre.test(e.target.value)) {
+            mensajeFullname.innerHTML = "Es válido";
+            mensajeFullname.style.color = "green";
+            campos['fullname'] = true;
+          } else {
+            mensajeFullname.innerHTML = "Solo debe tener Letras";
+            mensajeFullname.style.color = "red";
+            campos['fullname'] = false;
+          }
+        break;
+        case "username":
+          if (e.target.value.length == 0) {
+            mensajeUsername.innerHTML = "Este campo esta vacio";
+            mensajeUsername.style.color = "red";
+            campos['username'] = false;
+          } else if (expresiones.usuario.test(e.target.value)){
+            mensajeUsername.innerHTML = "Es válido";
+            mensajeUsername.style.color = "green";
+            campos['username'] = true;
+          } else {
+            mensajeUsername.innerHTML = "Maximo 16 caracteres";
+            mensajeUsername.style.color = "red";
+            campos['username'] = false;
+          }
+        break;
+        case "signup-password":
+          if (e.target.value.length == 0) {
+            mensajeContraseña1.innerHTML = "Este campo esta vacio";
+            mensajeContraseña1.style.color = "red";
+          } else if(expresiones.password.test(e.target.value)){
+            mensajeContraseña1.innerHTML = "Es válido";
+            mensajeContraseña1.style.color = "green";
+          } else {
+            mensajeContraseña1.innerHTML = "La contraseña tiene que ser de 6 a 12 digitos";
+            mensajeContraseña1.style.color = "red";
+          }
+          validarContraseña2();
+        break;
+        case "confirm-password":
+          validarContraseña2();
+        break;
+        case "signup-email":
+          if (e.target.value.length == 0) {
+            mensajeCorreo.innerHTML = "Este campo esta vacio";
+            mensajeCorreo.style.color = "red";
+            //campos['email'] = false;
+          } else if(expresiones.correo.test(e.target.value)){
+            mensajeCorreo.innerHTML = "Es válido";
+            mensajeCorreo.style.color = "green";
+            campos['email'] = true;
+          } else {
+            mensajeCorreo.innerHTML = "El correo solo puede contener letras, numeros, puntos y guion bajo";
+            mensajeCorreo.style.color = "red";
+            campos['email'] = false;
+          }
+        break;
+      }
+    }
+
+    // validar contraseña repetida
+    const validarContraseña2 = () => {
+      const contraseña1 = document.querySelector('#signup-password'); // signup-password
+      const contraseña2 = document.querySelector('#confirm-password'); // confirm-password
+
+      if (contraseña1.value !== contraseña2.value) {
+        mensajeContraseña2.innerHTML = "La contraseña no es la misma";
+        mensajeContraseña2.style.color = "red";
+        campos['password'] = false;
+      } else {
+        mensajeContraseña2.innerHTML = "Es válido";
+        mensajeContraseña2.style.color = "green";
+        campos['password'] = true;
+      }
+    }
+    // fin - validar contraseña repetida
+
+    // validar ckecket
     
-   
+    const terminos = document.querySelector('#accept');
+    terminos.addEventListener("change", validaCheckbox, false);
+    function validaCheckbox(){
+      if(terminos.checked){
+        mensajeChecket.style.display = "none";
+      } else {
+        mensajeChecket.style.display = "block";
+        mensajeChecket.style.color = "red";
+        mensajeChecket.innerHTML = "Acepta los terminos y condiciones";
+      }
+    }
+
+    // fin - validar ckecket
+
+    inputsRegistro.forEach( (input) => {
+      input.addEventListener( 'keyup', validarFormulario);
+      input.addEventListener( 'blur', validarFormulario);
+    });
+
+    const botonSignup = document.querySelector('#submit-button');
+
+    botonSignup.addEventListener( 'click' , (e) => {
+      //e.preventDefault(); // no lleva a otra pagina y no cambia url
+      const terminos = document.querySelector('#accept'); // check
+      if(campos.fullname && campos.username && campos.password && campos.email && terminos.checked) {
+        formularioRegistro.reset(); // se resetea el formulairio
+        // mensaje de enviado correctamente
+        const mensajeExito = document.querySelector('#campoEnviado');
+        mensajeExito.innerHTML = "Se ha enviado correctamente";
+        mensajeExito.style.color = "green";
+        // mensaje de exito en 2 segundos desaparece
+        setTimeout( () => {
+          mensajeExito.style.display = "none";
+        }, 2000);
+        // los mensajEs válidos desaparecen
+        mensajeFullname.style.display = "none";
+        mensajeUsername.style.display = "none";
+        mensajeContraseña1.style.display = "none";
+        mensajeContraseña2.style.display = "none";
+        mensajeCorreo.style.display = "none";
+      } else {
+        // mensaje de error al encontrar campos sin rellenar
+        const mensajeError = document.querySelector('#campoError');
+        mensajeError.innerHTML = "Error: Por favor rellena el formulario correctamente";
+        mensajeError.style.color = "red";
+        // mensaje de error en 1 segundo desaparece
+        setTimeout( () => {
+          mensajeError.style.display = "none";
+        }, 2000);
+      }
+    })
+
+/* ---------------------------------- fin ------------------------------- */
+
     const signupForm = document.querySelector("#signup-form");
     const botonForm = document.querySelector("#submit-button");
 
@@ -141,6 +303,13 @@ window.addEventListener('hashchange', () => {
       signupForm.reset();
       window.history.pushState( {} , 'signup', '/login' );
       secciones.innerHTML = createLogin;// no deberia se asi, casi nos morimos f
+    })
+    .catch((err) => {
+      const wrongSignupEmail = document.querySelector('#wrongSUemail');
+      if (err.message == 'The email address is already in use by another account.'){
+        wrongSignupEmail.innerHTML = 'Este correo ya esta en uso, intenta con otro';
+        wrongSignupEmail.style.color = 'red'
+      }
     })
 
   })
@@ -231,7 +400,19 @@ loginButon.addEventListener("click", (e) => {
         });
       });
   
-    });
+    })
+    .catch((err) => {
+      const wrongLoginPassword = document.querySelector('#wrongpassword');
+      const wrongLoginEmail = document.querySelector('#wrongemail');
+      if (err.message == 'The password is invalid or the user does not have a password.'){
+        wrongLoginPassword.innerHTML = 'La contraseña es incorrecta';
+        wrongLoginPassword.style.color = 'red'
+      }
+      if (err.message == 'There is no user record corresponding to this identifier. The user may have been deleted.'){
+        wrongLoginEmail.innerHTML = 'Este correo no es valido, por favor corrigelo';
+        wrongLoginEmail.style.color = 'red'
+      }
+    })
 });
 
 // login with google - logearse con google hola
@@ -298,13 +479,3 @@ googleButton.addEventListener("click", (e) => {
       console.log(err);
     });
 });
-
-
-
-
-
-
-
-
-
-
