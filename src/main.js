@@ -1,4 +1,6 @@
 import {createLogin, createSignup, createMuro} from './logingroup.js';
+import {crearUsuarioFb} from './firebase.js';
+
 
 //ENROUTAMIENTO codigo bonito
 const secciones = document.querySelector('#secciones');
@@ -72,26 +74,13 @@ const changeRoute = (hash) => {
 };
 
 window.addEventListener('hashchange', () => {
-    if (window.location.hash === '#signup') {
+  if (window.location.hash === '#signup') {
     console.log('mostrar registro');
     secciones.innerHTML = createSignup;
 
     changeRoute(window.location.hash)
 
-    // limitar contraseña
-    /*const contraseña = document.querySelector("#signup-password");
-    const mensajePassword = document.querySelector("#shortPassword");
-    contraseña.addEventListener( "change" , () => {
-      if (contraseña.value.length < 6) {
-        mensajePassword.innerHTML = "Tu contraseña debe tener al menos 6 caracteres";
-       mensajePassword.style.color = "red";
-     } else {
-      mensajePassword.style.display = "none";
-     }
-    })*/
-    //fin
-
-/* -----------  validar <formulario  de registro> vacios y condiciones  --------------- */
+    /* -----------  validar <formulario  de registro> vacios y condiciones  --------------- */
     const formularioRegistro = document.getElementById('signup-form'); //formulario
     const inputsRegistro = document.querySelectorAll('#signup-form input'); //todos los imputs del formulario
 
@@ -228,100 +217,74 @@ window.addEventListener('hashchange', () => {
 
     // fin - validar ckecket
 
-    inputsRegistro.forEach( (input) => {
+    /*inputsRegistro.forEach( (input) => {
       input.addEventListener( 'keyup', validarFormulario);
       input.addEventListener( 'blur', validarFormulario);
-    });
+    });*/
 
     const botonSignup = document.querySelector('#submit-button');
 
     botonSignup.addEventListener( 'click' , (e) => {
+      console.log("click");
       //e.preventDefault(); // no lleva a otra pagina y no cambia url
       const terminos = document.querySelector('#accept'); // check
-      if(campos.fullname && campos.username && campos.password && campos.email && terminos.checked) {
-        formularioRegistro.reset(); // se resetea el formulairio
-        // mensaje de enviado correctamente
-        const mensajeExito = document.querySelector('#campoEnviado');
-        mensajeExito.innerHTML = "Se ha enviado correctamente";
-        mensajeExito.style.color = "green";
-        // mensaje de exito en 2 segundos desaparece
-        setTimeout( () => {
-          mensajeExito.style.display = "none";
-        }, 2000);
-        // los mensajEs válidos desaparecen
-        mensajeFullname.style.display = "none";
-        mensajeUsername.style.display = "none";
-        mensajeContraseña1.style.display = "none";
-        mensajeContraseña2.style.display = "none";
-        mensajeCorreo.style.display = "none";
-      } else {
-        // mensaje de error al encontrar campos sin rellenar
-        const mensajeError = document.querySelector('#campoError');
-        mensajeError.innerHTML = "Error: Por favor rellena el formulario correctamente";
-        mensajeError.style.color = "red";
-        // mensaje de error en 1 segundo desaparece
-        setTimeout( () => {
-          mensajeError.style.display = "none";
-        }, 2000);
-      }
-    })
+        if (campos.fullname && campos.username && campos.password && campos.email && terminos.checked) {
+          formularioRegistro.reset(); // se resetea el formulairio
+          // mensaje de enviado correctamente
+          const mensajeExito = document.querySelector('#campoEnviado');
+          mensajeExito.innerHTML = "Se ha enviado correctamente";
+          mensajeExito.style.color = "green";
+          // mensaje de exito en 2 segundos desaparece
+          setTimeout( () => {
+            mensajeExito.style.display = "none";
+          }, 2000);
+          // los mensajEs válidos desaparecen
+          mensajeFullname.style.display = "none";
+          mensajeUsername.style.display = "none";
+          mensajeContraseña1.style.display = "none";
+          mensajeContraseña2.style.display = "none";
+          mensajeCorreo.style.display = "none";
+        } else {
+          // mensaje de error al encontrar campos sin rellenar
+          const mensajeError = document.querySelector('#campoError');
+          mensajeError.innerHTML = "Error: Por favor rellena el formulario correctamente";
+          mensajeError.style.color = "red";
+          // mensaje de error en 1 segundo desaparece
+          setTimeout( () => {
+            mensajeError.style.display = "none";
+          }, 2000);
+        }
+    });//Termina boton signup
+  }
+}); // termina el evento hashchange eso eso  xdddd jajajaj
 
 /* ---------------------------------- fin ------------------------------- */
 
-    const signupForm = document.querySelector("#signup-form");
-    const botonForm = document.querySelector("#submit-button");
+//PROCESO DE REGISTRO:
+const signupForm = document.querySelector("#signup-form");
+const botonForm = document.querySelector("#submit-button");
 
+botonForm.addEventListener("click", (e) => {
+  e.preventDefault();
+  console.log("registrandote");
+  const signupEmail = document.querySelector("#signup-email").value;
+  const signupPassword = document.querySelector("#signup-password").value;
+  const usernameInput = document.querySelector("#username").value;
+  const fullnameInput = document.querySelector("#fullname").value;
+  const passwordInput = document.querySelector('#signup-password').value;
+  const emailInput = document.querySelector('#signup-email').value;
+
+  crearUsuarioFb(signupEmail, signupPassword, usernameInput, fullnameInput, passwordInput, emailInput);
     
-
-    botonForm.addEventListener("click", (e) => {
-    e.preventDefault();
-    console.log("registrandote");
-    const signupEmail = document.querySelector("#signup-email").value;
-    const signupPassword = document.querySelector("#signup-password").value;
-    const usernameInput = document.querySelector("#username").value;
-    const fullnameInput = document.querySelector("#fullname").value;
-    const passwordInput = document.querySelector('#signup-password').value;
-    const emailInput = document.querySelector('#signup-email').value;
-
-    auth
-    .createUserWithEmailAndPassword(signupEmail, signupPassword)
-    .then((userCredential) => {
-      console.log("registrado");
-      fs.collection("users").add({
-        username: usernameInput,
-        fullname: fullnameInput,
-        password: passwordInput,
-        email: emailInput
-      })
-      .then((docRef) => {
-        console.log("Este es el nuevo usuario: " + docRef.id);
-      })
-      .catch((error) => {
-        console.log("Tienes el siguiente error: " + error);
-      })
-      signupForm.reset();
-      window.history.pushState( {} , 'signup', '/login' );
-      secciones.innerHTML = createLogin;// no deberia se asi, casi nos morimos f
-    })
-    .catch((err) => {
-      const wrongSignupEmail = document.querySelector('#wrongSUemail');
-      if (err.message == 'The email address is already in use by another account.'){
-        wrongSignupEmail.innerHTML = 'Este correo ya esta en uso, intenta con otro';
-        wrongSignupEmail.style.color = 'red'
-      }
-    })
-
-  })
-} else if (window.location.hash === '#login') {
-  console.log('mostrar login');
-  secciones.innerHTML = createLogin;
-  changeRoute(window.location.hash)
-} else if (window.location.hash === '#muro'){
-  changeRoute(window.location.hash);
-  secciones.innerHTML = createMuro;
-}
-
-});
+  if (window.location.hash === '#login') {
+    console.log('mostrar login');
+    secciones.innerHTML = createLogin;
+    changeRoute(window.location.hash)
+  } else if (window.location.hash === '#muro'){
+    changeRoute(window.location.hash);
+    secciones.innerHTML = createMuro;
+  }
+}); //TERMINA REGISTRO
 
 //FLECHAS DE ATRAS Y ADELANTE ---------> NO FUNCIONA!
 /*window.onpopstate( () => {
@@ -334,7 +297,9 @@ window.addEventListener('hashchange', () => {
   }  
 }); */
 
-// login - logearse
+//PROCESO DE LOGIN
+
+//Login con email y contraseña:
 const loginForm = document.querySelector("#login-form");
 const loginButon = document.querySelector('#login-button');
 
@@ -412,13 +377,15 @@ loginButon.addEventListener("click", (e) => {
         wrongLoginEmail.style.color = 'red'
       }
     })
+  //Termina login con firebase
 });
 
-// login with google - logearse con google hola
+//Logearse con google
 const googleButton = document.querySelector("#google-login");
 googleButton.addEventListener("click", (e) => {
   e.preventDefault();
   const provider = new firebase.auth.GoogleAuthProvider();
+  
   auth
     .signInWithPopup(provider)
     .then((result) => {
@@ -476,16 +443,6 @@ googleButton.addEventListener("click", (e) => {
     })
     .catch((err) => {
       console.log(err);
-    });
+    })
+  //Termina login google con firebase
 });
-
-
-
-
-
-
-
-
-
-
-
