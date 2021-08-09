@@ -303,6 +303,13 @@ window.addEventListener('hashchange', () => {
       window.history.pushState( {} , 'signup', '/login' );
       secciones.innerHTML = createLogin;// no deberia se asi, casi nos morimos f
     })
+    .catch((err) => {
+      const wrongSignupEmail = document.querySelector('#wrongSUemail');
+      if (err.message == 'The email address is already in use by another account.'){
+        wrongSignupEmail.innerHTML = 'Este correo ya esta en uso, intenta con otro';
+        wrongSignupEmail.style.color = 'red'
+      }
+    })
 
   })
 } else if (window.location.hash === '#login') {
@@ -395,11 +402,17 @@ loginButon.addEventListener("click", (e) => {
     })
     .catch((err) => {
       const wrongLoginPassword = document.querySelector('#wrongpassword');
+      const wrongLoginEmail = document.querySelector('#wrongemail');
       if (err.message == 'The password is invalid or the user does not have a password.'){
         wrongLoginPassword.innerHTML = 'La contraseña es incorrecta';
         wrongLoginPassword.style.color = 'red'
       }
-    } )
+    } ) 
+      if (err.message == 'There is no user record corresponding to this identifier. The user may have been deleted.'){
+        wrongLoginEmail.innerHTML = 'Este correo no es valido, por favor corrigelo';
+        wrongLoginEmail.style.color = 'red'
+      }
+    })
 });
 
 // login with google - logearse con google hola
