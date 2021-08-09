@@ -256,7 +256,7 @@ window.addEventListener('hashchange', () => {
         }
     });//Termina boton signup
   }
-}); // termina el evento hashchange eso eso  xdddd jajajaj
+}); // termina el evento hashchange 
 
 /* ---------------------------------- fin ------------------------------- */
 
