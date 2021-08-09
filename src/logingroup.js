@@ -5,6 +5,7 @@ const secciones = document.querySelector('#secciones');
 export const createLogin = `
 <form action="" id="login-form">
   <input type="email" placeholder="email" class="login-input" id="login-email" required>
+  <p id="wrongemail"></p>
   <input type="password" placeholder="password" class="login-input" id="login-password" required>
   <div class="mostrar">
       <input type="checkbox" class="show-password" id="show-password">
@@ -31,6 +32,7 @@ export const createSignup = `
     <p id="shortPassword"></p>
     <input type="password" placeholder="Confirm password" class="login-input" required>
     <input type="email" placeholder="Email" class="login-input" id="signup-email" required>
+    <p id="wrongSUemail"></p>
     <div class="terminos">
       <input type="checkbox" class="accept" id="accept">
       <label for="accept">He Leido y acepto los terminos y condiciones</label>
