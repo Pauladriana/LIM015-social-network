@@ -407,7 +407,6 @@ loginButon.addEventListener("click", (e) => {
         wrongLoginPassword.innerHTML = 'La contraseña es incorrecta';
         wrongLoginPassword.style.color = 'red'
       }
-    } ) 
       if (err.message == 'There is no user record corresponding to this identifier. The user may have been deleted.'){
         wrongLoginEmail.innerHTML = 'Este correo no es valido, por favor corrigelo';
         wrongLoginEmail.style.color = 'red'
