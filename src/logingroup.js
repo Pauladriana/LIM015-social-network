@@ -6,6 +6,7 @@ export const createLogin = `
 <form action="" id="login-form">
   <input type="email" placeholder="email" class="login-input" id="login-email" required>
   <input type="password" placeholder="password" class="login-input" id="login-password" required>
+  <p id="wrongpassword"></p>
   <div class="mostrar">
       <input type="checkbox" class="show-password" id="show-password">
       <label for="accept" >Mostrar contraseña</label>
@@ -25,19 +26,30 @@ secciones.innerHTML = createLogin;
 export const createSignup = `
   <p>Travel with me</p>
   <form action="" id="signup-form">
-    <input type="text" placeholder="Fullname" class="login-input" id="fullname" required>
-    <input type="text" placeholder="Username" class="login-input" id="username" required>
-    <input type="password" placeholder="Password" class="login-input"  id="signup-password" required minlength="6" maxlength="12">
+    <input type="text" placeholder="Fullname" class="login-input" name="fullname" id="fullname" required>
+    <p id="campoFullname"></p>
+    <input type="text" placeholder="Username" class="login-input" name="username" id="username" required>
+    <p id="campoUsername"></p>
+    <input type="password" placeholder="Password" class="login-input" name="signup-password" id="signup-password" required maxlength="15">
+    <p id="campoContraseñaPrimero"></p>
     <p id="shortPassword"></p>
-    <input type="password" placeholder="Confirm password" class="login-input" required>
-    <input type="email" placeholder="Email" class="login-input" id="signup-email" required>
+    <input type="password" placeholder="Confirm password" class="login-input" name="confirm-password" id="confirm-password" required>
+    <p id="campoContraseñaSegundo"></p>
+    <input type="email" placeholder="Email" class="login-input" name="signup-email" id="signup-email" required>
+    <p id="campoCorreo"></p>
     <div class="terminos">
-      <input type="checkbox" class="accept" id="accept">
-      <label for="accept">He Leido y acepto los terminos y condiciones</label>
+      <input type="checkbox" class="accept" name="accept" id="accept">
+      <label for="accept" id="textoTerminos">He Leido y acepto los terminos y condiciones</label>
+    </div>
+    <div>
+      <p id="campoChecket"></p>
     </div>
     <button type="button" id="submit-button" class="submit-button">SIGN UP</button>
   </form>
-  <button class="cancel-button" id="cancel-button">Cancel</button>`;
+  <button class="cancel-button" id="cancel-button">Cancel</button>
+  <p id="campoEnviado"></p>
+  <p id="camposVacios"></p>
+  <p id="campoError"></p>`;
 
 // creando dinamicamente la vista muro (href = login)
 export const createMuro = `
