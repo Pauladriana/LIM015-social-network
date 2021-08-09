@@ -1,6 +1,6 @@
 import {createLogin, createSignup, createMuro} from './logingroup.js';
 
-//ENROUTAMIENTO
+//ENROUTAMIENTO codigo bonito
 const secciones = document.querySelector('#secciones');
 
 //EVITANDO 404
@@ -11,6 +11,52 @@ if(window.location.pathname === '/login'){
   secciones.innerHTML = createSignup;
 } else if (window.location.pathname === '/muro'){
   secciones.innerHTML = createMuro;
+  const allUsers = document.querySelector("#userslist");
+
+      const setupUsers = (data) => {
+        if (data.length) {
+          let html = "";
+          data.forEach((doc) => {
+            const user = doc.data();
+            console.log(user);
+            const li = `
+                      <li class='list-group-item list-group-item-action'>
+                          <h5>${user.username}</h5>
+                          <p>${user.fullname}</p>
+                      </li>`;
+            html += li;
+          });
+          allUsers.innerHTML = html;
+        } else {
+          allUsers.innerHTML = `<p>Login to meet the travelers</p>`;
+        }
+      };
+
+    // Eventos
+    // Listar los datos para usuarios autenticados
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          fs.collection("users")
+            .get()
+            .then((snapshot) => {
+              setupUsers(snapshot.docs);
+            });
+        } else {
+          setupUsers([]);
+        }
+      });
+      /* logout - cerrar sesion */
+      const logout = document.querySelector("#logout-button");
+      logout.addEventListener("click", (e) => {
+        e.preventDefault();
+        auth.signOut().then(() => {
+          console.log("cerraste sesion");
+          window.history.pushState( {} , 'muro', '/login' );
+          secciones.innerHTML = createLogin;
+
+        });
+      });
+
   
 }
 
@@ -29,9 +75,26 @@ window.addEventListener('hashchange', () => {
     if (window.location.hash === '#signup') {
     console.log('mostrar registro');
     secciones.innerHTML = createSignup;
+
     changeRoute(window.location.hash)
+
+    // limitar contraseña
+    const contraseña = document.querySelector("#signup-password");
+    const mensajePassword = document.querySelector("#shortPassword");
+    contraseña.addEventListener( "change" , () => {
+      if (contraseña.value.length < 6) {
+        mensajePassword.innerHTML = "Tu contraseña debe tener al menos 6 caracteres";
+       mensajePassword.style.color = "red";
+     } else {
+      mensajePassword.style.display = "none";
+     }
+    })
+    //fin
+
     const signupForm = document.querySelector("#signup-form");
     const botonForm = document.querySelector("#submit-button");
+
+    
 
     botonForm.addEventListener("click", (e) => {
     e.preventDefault();
@@ -42,7 +105,6 @@ window.addEventListener('hashchange', () => {
     const fullnameInput = document.querySelector("#fullname").value;
     const passwordInput = document.querySelector('#signup-password').value;
     const emailInput = document.querySelector('#signup-email').value;
-
 
     auth
     .createUserWithEmailAndPassword(signupEmail, signupPassword)
@@ -106,112 +168,124 @@ loginButon.addEventListener("click", (e) => {
       loginForm.reset();
       window.history.pushState( {} , 'login', '/muro' );
       secciones.innerHTML = createMuro;
-    
-    /* usuarios - lista en el muro */
-    const allUsers = document.querySelector("#userslist");
+      /* usuarios - lista en el muro */
+      const allUsers = document.querySelector("#userslist");
 
-    const setupUsers = (data) => {
-      if (data.length) {
-        let html = "";
-        data.forEach((doc) => {
-          const user = doc.data();
-          console.log(user);
-          const li = `
-                    <li class='list-group-item list-group-item-action'>
-                        <h5>${user.username}</h5>
-                        <p>${user.fullname}</p>
-                    </li>`;
-          html += li;
-        });
-        allUsers.innerHTML = html;
-      } else {
-        allUsers.innerHTML = `<p>Login to meet the travelers</p>`;
-      }
-    };
-
-    // Eventos
-    // Listar los datos para usuarios autenticados
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        fs.collection("users")
-          .get()
-          .then((snapshot) => {
-            setupUsers(snapshot.docs);
+      const setupUsers = (data) => {
+        if (data.length) {
+          let html = "";
+          data.forEach((doc) => {
+            const user = doc.data();
+            console.log(user);
+            const li = `
+                      <li class='list-group-item list-group-item-action'>
+                          <h5>${user.username}</h5>
+                          <p>${user.fullname}</p>
+                      </li>`;
+            html += li;
           });
-      } else {
-        setupUsers([]);
-      }
-    });
-    // logout - cerrar sesion
-    const logout = document.querySelector("#logout-button");
-    logout.addEventListener("click", (e) => {
-      e.preventDefault();
-      auth.signOut().then(() => {
-        console.log("cerraste sesion");
+          allUsers.innerHTML = html;
+        } else {
+          allUsers.innerHTML = `<p>Login to meet the travelers</p>`;
+        }
+      };
+
+      // Eventos
+      // Listar los datos para usuarios autenticados
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          fs.collection("users")
+            .get()
+            .then((snapshot) => {
+              setupUsers(snapshot.docs);
+            });
+        } else {
+          setupUsers([]);
+        }
       });
-    });
-      console.log("sing in");
+      /* logout - cerrar sesion */
+      const logout = document.querySelector("#logout-button");
+      logout.addEventListener("click", (e) => {
+        e.preventDefault();
+        auth.signOut().then(() => {
+          console.log("cerraste sesion");
+          window.history.pushState( {} , 'muro', '/login' );
+          secciones.innerHTML = createLogin;
+
+        });
+      });
+  
     });
 });
 
 // login with google - logearse con google hola
 const googleButton = document.querySelector("#google-login");
 googleButton.addEventListener("click", (e) => {
+  e.preventDefault();
   const provider = new firebase.auth.GoogleAuthProvider();
   auth
     .signInWithPopup(provider)
     .then((result) => {
       console.log("te logueaste con google");
       loginForm.reset();
+      window.history.pushState( {} , 'login', '/muro' );
       secciones.innerHTML = createMuro;
       /* usuarios - lista en el muro */
-    const allUsers = document.querySelector("#userslist");
+      const allUsers = document.querySelector("#userslist");
 
-    const setupUsers = (data) => {
-      if (data.length) {
-        let html = "";
-        data.forEach((doc) => {
-          const user = doc.data();
-          console.log(user);
-          const li = `
-                    <li class='list-group-item list-group-item-action'>
-                        <h5>${user.username}</h5>
-                        <p>${user.fullname}</p>
-                    </li>`;
-          html += li;
-        });
-        allUsers.innerHTML = html;
-      } else {
-        allUsers.innerHTML = `<p>Login to meet the travelers</p>`;
-      }
-    };
+      const setupUsers = (data) => {
+        if (data.length) {
+          let html = "";
+          data.forEach((doc) => {
+            const user = doc.data();
+            console.log(user);
+            const li = `
+                      <li class='list-group-item list-group-item-action'>
+                          <h5>${user.username}</h5>
+                          <p>${user.fullname}</p>
+                      </li>`;
+            html += li;
+          });
+          allUsers.innerHTML = html;
+        } else {
+          allUsers.innerHTML = `<p>Login to meet the travelers</p>`;
+        }
+      };
 
     // Eventos
     // Listar los datos para usuarios autenticados
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        fs.collection("users")
-          .get()
-          .then((snapshot) => {
-            setupUsers(snapshot.docs);
-          });
-      } else {
-        setupUsers([]);
-      }
-    });
-    /* logout - cerrar sesion */
-    const logout = document.querySelector("#logout-button");
-    logout.addEventListener("click", (e) => {
-      e.preventDefault();
-      auth.signOut().then(() => {
-        console.log("cerraste sesion");
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          fs.collection("users")
+            .get()
+            .then((snapshot) => {
+              setupUsers(snapshot.docs);
+            });
+        } else {
+          setupUsers([]);
+        }
       });
-    });
+      /* logout - cerrar sesion */
+      const logout = document.querySelector("#logout-button");
+      logout.addEventListener("click", (e) => {
+        e.preventDefault();
+        auth.signOut().then(() => {
+          console.log("cerraste sesion");
+          window.history.pushState( {} , 'muro', '/login' );
+          secciones.innerHTML = createLogin;
+
+        });
+      });
+
     })
     .catch((err) => {
       console.log(err);
     });
 });
+
+
+
+
 
 
 
