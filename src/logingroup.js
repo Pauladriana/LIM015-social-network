@@ -25,7 +25,8 @@ export const createSignup = `
   <p>Travel with me</p>
   <form action="" id="signup-form">
     <input type="text" placeholder="Fullname" class="login-input" id="fullname" required>
-    <input type="text" placeholder="Username" class="login-input" id="username" required>
+    <input type="text" placeholder="Usernamee" class="login-input" id="username" required minlength="4" maxlength="12" >
+    <p id="shortUsername"></p>
     <input type="password" placeholder="Password" class="login-input"  id="signup-password" required minlength="6" maxlength="12">
     <p id="shortPassword"></p>
     <input type="password" placeholder="Confirm password" class="login-input" required>

@@ -78,6 +78,20 @@ window.addEventListener('hashchange', () => {
 
     changeRoute(window.location.hash)
 
+    // limitar user name
+    const contraseñaa = document.querySelector("#username");
+    const mensajePasswordd = document.querySelector("#shortUsername");
+    contraseñaa.addEventListener( "change" , () => {
+      if (contraseñaa.value.length < 4) {
+        mensajePasswordd.innerHTML = "Tu usuario debe tener al menos 4 caracteres";
+       mensajePasswordd.style.color = "blue";
+     } else {
+      mensajePasswordd.style.display = "none";
+     }
+    })
+   //fin
+ 
+
     // limitar contraseña
     const contraseña = document.querySelector("#signup-password");
     const mensajePassword = document.querySelector("#shortPassword");
@@ -91,6 +105,8 @@ window.addEventListener('hashchange', () => {
     })
     //fin
 
+    
+   
     const signupForm = document.querySelector("#signup-form");
     const botonForm = document.querySelector("#submit-button");
 
