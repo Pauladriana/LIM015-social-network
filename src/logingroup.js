@@ -1,4 +1,3 @@
-
 const secciones = document.querySelector('#secciones');
 
 // creando dinamicamente la vista login (href = muro)
@@ -80,4 +79,3 @@ export const createMuro = `
               password1.type = "text"
           }
       });
-
