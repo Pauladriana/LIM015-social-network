@@ -146,7 +146,7 @@ window.addEventListener('hashchange', () => {
 
 });
 
-//FLECHAS DE ATRAS Y ADELANTE ------> NO FUNCIONA!
+//FLECHAS DE ATRAS Y ADELANTE ---------> NO FUNCIONA!
 /*window.onpopstate( () => {
   if(window.location.pathname === '/login'){
     secciones.innerHTML = createLogin;
