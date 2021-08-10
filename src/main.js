@@ -1,17 +1,17 @@
-import {createLogin, createSignup, createMuro} from './logingroup.js';
-import {crearUsuarioFb} from './firebase.js';
-
+import {
+  createLogin, createSignup, createMuro
+} from './logingroup.js';
 
 //ENROUTAMIENTO codigo bonito
 const secciones = document.querySelector('#secciones');
 
-//EVITANDO 404
+// EVITANDO 404
 console.log(window.location.pathname);
-if(window.location.pathname === '/login'){
+if (window.location.pathname === '/login') {
   secciones.innerHTML = createLogin;
-} else if (window.location.pathname === '/signup'){
+} else if (window.location.pathname === '/signup') {
   secciones.innerHTML = createSignup;
-} else if (window.location.pathname === '/muro'){
+} else if (window.location.pathname === '/muro') {
   secciones.innerHTML = createMuro;
   const allUsers = document.querySelector("#userslist");
 
@@ -59,17 +59,16 @@ if(window.location.pathname === '/login'){
         });
       });
 
-  
 }
 
-//RUTA SIN #
+// RUTA SIN #
 const changeRoute = (hash) => {
-  if (hash === '#login'){
-    window.history.replaceState({}, 'login', '/login')
-  } else if (hash === '#signup'){
-    window.history.replaceState({}, 'signup', '/signup')
-  } else if (hash === '#muro'){
-    window.history.replaceState({}, 'muro', '/muro')
+  if (hash === '#login') {
+    window.history.replaceState({}, 'login', '/login');
+  } else if (hash === '#signup') {
+    window.history.replaceState({}, 'signup', '/signup');
+  } else if (hash === '#muro') {
+    window.history.replaceState({}, 'muro', '/muro');
   }
 };
 
@@ -286,36 +285,34 @@ botonForm.addEventListener("click", (e) => {
   }
 }); //TERMINA REGISTRO
 
-//FLECHAS DE ATRAS Y ADELANTE ---------> NO FUNCIONA!
-/*window.onpopstate( () => {
+// FLECHAS DE ATRAS Y ADELANTE ------> NO FUNCIONA!
+/* window.onpopstate( () => {
   if(window.location.pathname === '/login'){
     secciones.innerHTML = createLogin;
     console.log(' LOGIN')
   } else if (window.location.pathname === '/signup'){
     secciones.innerHTML = createSignup;
     console.log(' REGISTRO')
-  }  
+  }
 }); */
 
-//PROCESO DE LOGIN
-
-//Login con email y contraseña:
-const loginForm = document.querySelector("#login-form");
+// LOGIN- LOGEARSE
+const loginForm = document.querySelector('#login-form');
 const loginButon = document.querySelector('#login-button');
 
-loginButon.addEventListener("click", (e) => {
+loginButon.addEventListener('click', (e) => {
   e.preventDefault();
-  console.log("logueandote");
-  const loginEmail = document.querySelector("#login-email").value;
-  const loginPassword = document.querySelector("#login-password").value;
+  console.log('logueandote');
+  const loginEmail = document.querySelector('#login-email').value;
+  const loginPassword = document.querySelector('#login-password').value;
   console.log(loginEmail, loginPassword);
 
   auth
     .signInWithEmailAndPassword(loginEmail, loginPassword)
     .then((userCredential) => {
-      console.log("logueado");
+      console.log('logueado');
       loginForm.reset();
-      window.history.pushState( {} , 'login', '/muro' );
+      window.history.pushState({}, 'login', '/muro');
       secciones.innerHTML = createMuro;
       /* usuarios - lista en el muro */
       const allUsers = document.querySelector("#userslist");
@@ -443,6 +440,5 @@ googleButton.addEventListener("click", (e) => {
     })
     .catch((err) => {
       console.log(err);
-    })
-  //Termina login google con firebase
+    });
 });
