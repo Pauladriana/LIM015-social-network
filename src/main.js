@@ -8,7 +8,6 @@ import {validarRegistro, camposLlenos} from './validaciones.js';
 //ENROUTAMIENTO codigo bonito
 const secciones = document.querySelector('#secciones');
 
-
 //EVITANDO 404 - funcion cambioRuta
 const cambioRuta = () => {
     console.log(window.location.pathname);
@@ -26,14 +25,14 @@ const cambioRuta = () => {
     }
 }
 
-// RUTA SIN #
+//RUTA SIN #
 const changeRoute = (hash) => {
-  if (hash === '#login') {
-    window.history.replaceState({}, 'login', '/login');
-  } else if (hash === '#signup') {
-    window.history.replaceState({}, 'signup', '/signup');
-  } else if (hash === '#muro') {
-    window.history.replaceState({}, 'muro', '/muro');
+  if (hash === '#login'){
+    window.history.replaceState({}, 'login', '/login')
+  } else if (hash === '#signup'){
+    window.history.replaceState({}, 'signup', '/signup')
+  } else if (hash === '#muro'){
+    window.history.replaceState({}, 'muro', '/muro')
   }
   
 };
@@ -50,7 +49,7 @@ firebase.auth().onAuthStateChanged((user) => {
 });
 
 window.addEventListener('hashchange', () => {
-  if (window.location.hash === '#signup') {
+    if (window.location.hash === '#signup') {
     console.log('mostrar registro');
     changeRoute(window.location.hash);
     cambioRuta();
@@ -88,34 +87,34 @@ window.addEventListener('hashchange', () => {
 
 
 
-// FLECHAS DE ATRAS Y ADELANTE ------> NO FUNCIONA!
-/* window.onpopstate( () => {
+//FLECHAS DE ATRAS Y ADELANTE ------> NO FUNCIONA!
+/*window.onpopstate( () => {
   if(window.location.pathname === '/login'){
     secciones.innerHTML = createLogin;
     console.log(' LOGIN')
   } else if (window.location.pathname === '/signup'){
     secciones.innerHTML = createSignup;
     console.log(' REGISTRO')
-  }
+  }  
 }); */
 
-//PROCESO DE LOGIN
 
 //Login con email y contraseña:
+
 const loginForm = document.querySelector("#login-form");
 const loginButon = document.querySelector('#login-button');
 
-loginButon.addEventListener('click', (e) => {
+loginButon.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log('logueandote');
-  const loginEmail = document.querySelector('#login-email').value;
-  const loginPassword = document.querySelector('#login-password').value;
+  console.log("logueandote");
+  const loginEmail = document.querySelector("#login-email").value;
+  const loginPassword = document.querySelector("#login-password").value;
   console.log(loginEmail, loginPassword);
 
   auth
     .signInWithEmailAndPassword(loginEmail, loginPassword)
     .then((userCredential) => {
-      console.log('logueado');
+      console.log("logueado");
       loginForm.reset();
       window.history.pushState( {} , 'login', '/muro' );
       cambioRuta();
@@ -153,4 +152,5 @@ googleButton.addEventListener("click", (e) => {
       console.log(err);
     })
   //Termina login google con firebase
+
 });
