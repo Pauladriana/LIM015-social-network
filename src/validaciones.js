@@ -156,20 +156,7 @@ export const camposLlenos = () => {
 	const terminos = document.querySelector('#accept'); // check
 		if (campos.fullname && campos.username && campos.password && campos.email && terminos.checked) {
 			formularioRegistro.reset(); // se resetea el formulairio
-			// mensaje de enviado correctamente
-			const mensajeExito = document.querySelector('#campoEnviado');
-			mensajeExito.innerHTML = "Se ha enviado correctamente";
-			mensajeExito.style.color = "green";
-			// mensaje de exito en 2 segundos desaparece
-			setTimeout( () => {
-					mensajeExito.style.display = "none";
-				}, 2000);
-					// los mensajEs válidos desaparecen
-				mensajeFullname.style.display = "none";
-				mensajeUsername.style.display = "none";
-				mensajeContraseña1.style.display = "none";
-				mensajeContraseña2.style.display = "none";
-				mensajeCorreo.style.display = "none";
+			return true
 			} else {
 					// mensaje de error al encontrar campos sin rellenar
 				const mensajeError = document.querySelector('#campoError');

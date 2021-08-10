@@ -74,9 +74,13 @@ window.addEventListener('hashchange', () => {
       
       console.log('cambiar pantalla');
       camposLlenos();
-      window.history.pushState( {} , 'signup', '/login' );
-      changeRoute();
-      cambioRuta();
+      if (camposLlenos()) {
+        window.history.pushState( {} , 'signup', '/login' );
+        changeRoute();
+        cambioRuta();
+      }; //okis sigamos en latarde, a que hora puedes? a las 5pm esta bien? Si, quedaaaa genial!!!
+      
+      
     });
   } // termina el if
     
