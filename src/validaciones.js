@@ -1,5 +1,12 @@
-        
-export const validarRegistro = () => {
+
+  export let campos = {
+    fullname: false,
+    username: false,
+    password: false,
+    email: false
+  }
+
+export const validarRegistro = (campos) => {
 	/* -----------  validar <formulario  de registro> vacios y condiciones  --------------- */
   const formularioRegistro = document.getElementById('signup-form'); //formulario
   const inputsRegistro = document.querySelectorAll('#signup-form input'); //todos los imputs del formulario
@@ -21,12 +28,7 @@ export const validarRegistro = () => {
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
   }
 
-  const campos = {
-    fullname: false,
-    username: false,
-    password: false,
-    email: false
-  }
+
 
   const validarFormulario = (e) => {
     switch (e.target.name){
@@ -81,10 +83,10 @@ export const validarRegistro = () => {
           mensajeContraseña1.innerHTML = "La contraseña tiene que ser de 6 a 12 digitos";
           mensajeContraseña1.style.color = "red";
         }
-        validarContraseña2();
+        validarContraseña2(campos);
         break;
         case "confirm-password":
-        validarContraseña2();
+        validarContraseña2(campos);
         break;
         case "signup-email":
           if (e.target.value.length == 0) {
@@ -105,7 +107,7 @@ export const validarRegistro = () => {
   }
 
     // validar contraseña repetida
-  const validarContraseña2 = () => {
+  const validarContraseña2 = (campos) => {
   	const contraseña1 = document.querySelector('#signup-password'); // signup-password
     const contraseña2 = document.querySelector('#confirm-password'); // confirm-password
 
@@ -144,20 +146,18 @@ export const validarRegistro = () => {
 
 } // fin funcion validarRegistro        
 
-export const camposLlenos = () => {
-	const campos = {
-    fullname: false,
-    username: false,
-    password: false,
-    email: false
-  }
+export const camposLlenos = (campos) => {
+  let respuesta = false;
+
 	console.log("click");
 	//e.preventDefault(); // no lleva a otra pagina y no cambia url
 	const terminos = document.querySelector('#accept'); // check
 		if (campos.fullname && campos.username && campos.password && campos.email && terminos.checked) {
-			formularioRegistro.reset(); // se resetea el formulairio
-			return true
-			} else {
+      console.log('ENTRA ??', campos.fullname, campos.username, campos.password, campos.email, terminos.checked);
+      respuesta = true;
+      return respuesta;
+    } else {
+      console.log('ENTRA 3 ??', campos.fullname, campos.username, campos.password, campos.email, terminos.checked);
 					// mensaje de error al encontrar campos sin rellenar
 				const mensajeError = document.querySelector('#campoError');
 				mensajeError.innerHTML = "Error: Por favor rellena el formulario correctamente";
@@ -166,7 +166,7 @@ export const camposLlenos = () => {
 				setTimeout( () => {
 						mensajeError.style.display = "none";
 				}, 2000);
-			}
+		}
 };// fin de funcion camposLlenos
   
       

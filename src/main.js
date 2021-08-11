@@ -2,8 +2,7 @@ import {createLogin, createSignup, createMuro} from './logingroup.js';
 import {crearUsuarioFb} from './firebase.js';
 import {showAuthUsers} from './authuser.js';
 import {cerrarSesion} from './logout.js';
-import {validarRegistro, camposLlenos} from './validaciones.js';
-
+import {validarRegistro, camposLlenos, campos} from './validaciones.js';
 
 //ENROUTAMIENTO codigo bonito
 const secciones = document.querySelector('#secciones');
@@ -56,7 +55,7 @@ window.addEventListener('hashchange', () => {
     //PROCESO DE REGISTRO:
     const signupForm = document.querySelector("#signup-form");
     const botonForm = document.querySelector("#submit-button");
-    validarRegistro();
+    validarRegistro(campos);
 
     botonForm.addEventListener("click", (e) => {
       e.preventDefault();
@@ -72,8 +71,8 @@ window.addEventListener('hashchange', () => {
       crearUsuarioFb(signupEmail, signupPassword, usernameInput, fullnameInput, passwordInput, emailInput);
       
       console.log('cambiar pantalla');
-      camposLlenos();
-      if (camposLlenos()) {
+      camposLlenos(campos);
+      if (camposLlenos(campos)) {
         window.history.pushState( {} , 'signup', '/login' );
         changeRoute();
         cambioRuta();
