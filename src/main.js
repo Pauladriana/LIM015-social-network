@@ -93,6 +93,7 @@ window.addEventListener('popstate', (event) => {
   if(window.location.pathname === '/'){
     secciones.innerHTML = createLogin;
     console.log(' LOGIN')
+    logearseMain();
   } else if (window.location.pathname === '/signup'){
     secciones.innerHTML = createSignup;
     console.log(' REGISTRO')
@@ -101,6 +102,7 @@ window.addEventListener('popstate', (event) => {
 
 
 //Login con email y contraseña:
+const logearseMain = () => {
   const loginForm = document.querySelector("#login-form");
   const loginButon = document.querySelector('#login-button');
 
@@ -134,6 +136,8 @@ window.addEventListener('popstate', (event) => {
   //Termina login con firebase
  });
 
+}
+  
 
 //Logearse con google
 const googleButton = document.querySelector("#google-login");
