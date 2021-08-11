@@ -87,15 +87,18 @@ window.addEventListener('hashchange', () => {
 
 
 //FLECHAS DE ATRAS Y ADELANTE ------> NO FUNCIONA!
-/*window.onpopstate( () => {
-  if(window.location.pathname === '/login'){
+window.addEventListener('popstate', (event) => {
+  console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+  
+  console.log('POPOPOPOPOP');
+  if(window.location.pathname === '/'){
     secciones.innerHTML = createLogin;
     console.log(' LOGIN')
   } else if (window.location.pathname === '/signup'){
     secciones.innerHTML = createSignup;
     console.log(' REGISTRO')
   }  
-}); */
+});
 
 
 //Login con email y contraseña:
