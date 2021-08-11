@@ -67,7 +67,7 @@ export const validarRegistro = (campos) => {
           mensajeUsername.style.color = "green";
           campos['username'] = true;
         } else {
-          mensajeUsername.innerHTML = "Maximo 16 caracteres";
+          mensajeUsername.innerHTML = "Puede contener letras, numeros, máximo 16 carácteres, sin espacios";
           mensajeUsername.style.color = "red";
           campos['username'] = false;
         }

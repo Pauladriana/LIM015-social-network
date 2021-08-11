@@ -27,16 +27,10 @@ const cambioRuta = () => {
 //RUTA SIN #
 const changeRoute = (hash) => {
   if (hash === '#login'){
-    window.history.replaceState({}, 'login', '/login')
-  } else if (hash === '#signup'){
-    window.history.replaceState({}, 'signup', '/signup')
-  } else if (hash === '#muro'){
-    window.history.replaceState({}, 'muro', '/muro')
-  }
-  
+    window.history.replaceState({}, 'login', '/login');
 };
 
-firebase.auth().onAuthStateChanged((user) => {
+/*firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     changeRoute(window.location.hash);
     cambioRuta();
@@ -45,7 +39,7 @@ firebase.auth().onAuthStateChanged((user) => {
     changeRoute(window.location.hash);
     cambioRuta();
   }
-});
+});*/
 
 window.addEventListener('hashchange', () => {
     if (window.location.hash === '#signup') {
@@ -53,7 +47,6 @@ window.addEventListener('hashchange', () => {
     changeRoute(window.location.hash);
     cambioRuta();
     //PROCESO DE REGISTRO:
-    const signupForm = document.querySelector("#signup-form");
     const botonForm = document.querySelector("#submit-button");
     validarRegistro(campos);
 
@@ -102,16 +95,21 @@ window.addEventListener('popstate', (event) => {
 
 
 //Login con email y contraseña:
+window.addEventListener('hashchange', () => {
+  if (window.location.hash === '#login') {
+    console.log('mostrar login');
+    changeRoute(window.location.hash);
+    cambioRuta();
 
-const loginForm = document.querySelector("#login-form");
-const loginButon = document.querySelector('#login-button');
+  const loginForm = document.querySelector("#login-form");
+  const loginButon = document.querySelector('#login-button');
 
-loginButon.addEventListener("click", (e) => {
-  e.preventDefault();
-  console.log("logueandote");
-  const loginEmail = document.querySelector("#login-email").value;
-  const loginPassword = document.querySelector("#login-password").value;
-  console.log(loginEmail, loginPassword);
+  loginButon.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log("logueandote");
+    const loginEmail = document.querySelector("#login-email").value;
+    const loginPassword = document.querySelector("#login-password").value;
+    console.log(loginEmail, loginPassword);
 
   auth
     .signInWithEmailAndPassword(loginEmail, loginPassword)
@@ -134,7 +132,9 @@ loginButon.addEventListener("click", (e) => {
       }
     })
   //Termina login con firebase
-});
+ });
+ }
+})
 
 //Logearse con google
 const googleButton = document.querySelector("#google-login");
