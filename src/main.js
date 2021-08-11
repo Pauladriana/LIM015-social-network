@@ -27,10 +27,16 @@ const cambioRuta = () => {
 //RUTA SIN #
 const changeRoute = (hash) => {
   if (hash === '#login'){
-    window.history.replaceState({}, 'login', '/login');
+    window.history.replaceState({}, 'login', '/login')
+  } else if (hash === '#signup'){
+    window.history.replaceState({}, 'signup', '/signup')
+  } else if (hash === '#muro'){
+    window.history.replaceState({}, 'muro', '/muro')
+  }
+  
 };
 
-/*firebase.auth().onAuthStateChanged((user) => {
+firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     changeRoute(window.location.hash);
     cambioRuta();
@@ -39,7 +45,7 @@ const changeRoute = (hash) => {
     changeRoute(window.location.hash);
     cambioRuta();
   }
-});*/
+});
 
 window.addEventListener('hashchange', () => {
     if (window.location.hash === '#signup') {
@@ -95,12 +101,6 @@ window.addEventListener('popstate', (event) => {
 
 
 //Login con email y contraseña:
-window.addEventListener('hashchange', () => {
-  if (window.location.hash === '#login') {
-    console.log('mostrar login');
-    changeRoute(window.location.hash);
-    cambioRuta();
-
   const loginForm = document.querySelector("#login-form");
   const loginButon = document.querySelector('#login-button');
 
@@ -133,8 +133,7 @@ window.addEventListener('hashchange', () => {
     })
   //Termina login con firebase
  });
- }
-})
+
 
 //Logearse con google
 const googleButton = document.querySelector("#google-login");
