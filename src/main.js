@@ -10,11 +10,11 @@ import {validarRegistro, camposLlenos, campos} from './validaciones.js';
 //RUTA SIN #
 /*const changeRoute = (hash) => {
   if (hash === '#login'){
-    window.history.replaceState({}, 'login', '/login')
+    window.location.hash = '/login';
   } else if (hash === '#signup'){
-    window.history.replaceState({}, 'signup', '/signup')
+    window.location.hash = 'signup';
   } else if (hash === '#muro'){
-    window.history.replaceState({}, 'muro', '/muro')
+    window.location.hash = 'muro';
   }
 };*/
 
@@ -24,11 +24,11 @@ const showSeccion = (ruta) => {
   const secciones = document.querySelector('#secciones');
   secciones.innerHTML = '';
   switch (ruta) {
-    case '#login': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(), console.log("hola estoy en login");}
+    case '#login': { return secciones.innerHTML = createLogin,mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en login");}
     case '#signup': { return secciones.innerHTML = createSignup, funcionesRegitro(), botonCancelarRegistro(), validarRegistro(), console.log("hola estoy en regsitro"); }
     case '#muro': { return secciones.innerHTML = createMuro, showAuthUsers(), cerrarSesion(), console.log("hola estoy en muro"); }
-    case '': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(); }
-    case '/': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(); }
+    case '': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en muro"); }
+    case '/': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en login"); }
 
   default: {return secciones.innerHTML = `estoy en otro lado 404`}
   }
@@ -83,7 +83,7 @@ const funcionesRegitro = () =>{
     if (camposLlenos(campos)) {*/
       signupForm.reset();
       console.log("me resetea el formulario")
-      window.location.hash = '#login';
+      window.location.hash = 'login';
       showSeccion();
       console.log("me regresa al login")
    /* };*/
@@ -95,7 +95,7 @@ const funcionesRegitro = () =>{
 const botonCancelarRegistro = () => {
   const cancelButton = document.querySelector('#cancelButton');
   cancelButton.addEventListener('click', () => {
-  window.location.hash = '#login';
+  window.location.hash = 'login';
     //showSeccion();
   });
 }
@@ -117,7 +117,7 @@ const botonLogin = () => {
           console.log("logueado");
           loginForm.reset();
           console.log("resea el formulario")
-          window.location.hash = '#muro';
+          window.location.hash = 'muro';
           showSeccion();
           console.log("ruta del muro")
         }) // fin then
@@ -136,19 +136,39 @@ const botonLogin = () => {
     }); // fin del evento
 }
 
-//FLECHAS DE ATRAS Y ADELANTE ------> NO FUNCIONA!
-/*window.addEventListener('popstate', (event) => {
+// Logearse con google
+const gogleaRegistro = () => {
+  const googleButton = document.querySelector("#google-login");
+  googleButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth
+      .signInWithPopup(provider)
+      .then((result) => {
+        console.log("te logueaste con google");
+        window.location.hash = 'muro';
+        showSeccion();
+        console.log(" logeado con google me direcciona al muro")
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    //Termina login google con firebase
+  });
+  }
+
+//FLECHAS DE ATRAS Y ADELANTE ------> SI FUNCIONA!
+window.addEventListener('popstate', (event) => {
   console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
-  
   console.log('POPOPOPOPOP');
-  if(window.location.pathname === '/login'){
+  if(window.location.pathname === 'login'){
     secciones.innerHTML = createLogin;
     console.log(' LOGIN')
-  } else if (window.location.pathname === '/signup'){
+  } else if (window.location.pathname === 'signup'){
     secciones.innerHTML = createSignup;
     console.log(' REGISTRO')
   }  
-});*/
+});
 
 
 

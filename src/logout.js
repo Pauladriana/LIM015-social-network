@@ -6,7 +6,7 @@ export const cerrarSesion = () => {
     e.preventDefault();
     auth.signOut().then(() => {
       console.log("cerraste sesion");
-      window.location.hash = '#login';
+      window.location.hash = 'login';
       showSeccion();
       console.log("regreso al login")
       //secciones.innerHTML = createLogin;
