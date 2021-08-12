@@ -1,6 +1,8 @@
 // funcion de mostrar usuarios
 export const showAuthUsers = () => {
   const allUsers = document.querySelector("#userslist");
+  const logoutOption = document.querySelector("#logout-button")
+
     
   const setupUsers = (data) => {
     if (data.length) {
@@ -17,8 +19,9 @@ export const showAuthUsers = () => {
       });
       allUsers.innerHTML = html;
     } else {
-      window.location.hash = 'login'; 
-      allUsers.innerHTML = `<p>Inicia sesión para conocer a los viajeros</p>`;
+      logoutOption.style.display = "none";
+      allUsers.innerHTML = `<p>Inicia sesión para conocer a los viajeros</p>
+                            <a href="#login">INICIAR SESION</a>`;
     }
   };
 
