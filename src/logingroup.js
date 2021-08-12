@@ -79,3 +79,4 @@ export const createMuro = `
               password1.type = "text"
           }
       });
+      
