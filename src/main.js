@@ -25,7 +25,7 @@ const showSeccion = (ruta) => {
   secciones.innerHTML = '';
   switch (ruta) {
     case '#login': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(), console.log("hola estoy en login");}
-    case '#signup': { return secciones.innerHTML = createSignup, funcionesRegitro(), botonCancelarRegistro(), console.log("hola estoy en regsitro"); }
+    case '#signup': { return secciones.innerHTML = createSignup, funcionesRegitro(), botonCancelarRegistro(), validarRegistro(), console.log("hola estoy en regsitro"); }
     case '#muro': { return secciones.innerHTML = createMuro, showAuthUsers(), cerrarSesion(), console.log("hola estoy en muro"); }
     case '': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(); }
     case '/': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(); }
