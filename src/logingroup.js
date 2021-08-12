@@ -39,7 +39,7 @@ export const createSignup = `
     <p id="campoCorreo"></p>
     <p id="wrongSUemail"></p>
     <div class="terminos">
-      <input type="checkbox" class="accept" name="accept" id="accept">
+      <input type="checkbox" class="accept" name="accept" id="acceptTo">
       <label for="accept" id="textoTerminos">He Leido y acepto los terminos y condiciones</label>
     </div>
     <div>
@@ -47,10 +47,11 @@ export const createSignup = `
     </div>
     <button type="button" id="submit-button" class="submit-button">SIGN UP</button>
   </form>
-  <button class="cancel-button" id="cancel-button">Cancel</button>
+  <button type="button" id="cancelButton" class="cancel-button">CANCEL</button>
   <p id="campoEnviado"></p>
   <p id="camposVacios"></p>
   <p id="campoError"></p>`;
+  
 
 // creando dinamicamente la vista muro (href = login)
 export const createMuro = `
@@ -67,15 +68,3 @@ export const createMuro = `
       </div>
     </div>
     <button class="logout-button" type="button" id="logout-button">LOGOUT</button>`;
-
-
-      // icono para mostrar contraseña
-      const showPassword = document.querySelector('#show-password');
-      showPassword.addEventListener('change', () => {
-        const password1 = document.querySelector('#login-password');
-          if ( password1.type === "text" ) {
-              password1.type = "password"
-          } else {
-              password1.type = "text"
-          }
-      });
