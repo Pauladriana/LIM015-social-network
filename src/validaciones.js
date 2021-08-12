@@ -1,12 +1,6 @@
+import {crearUsuarioFb} from './firebase.js';
 
-  export let campos = {
-    fullname: false,
-    username: false,
-    password: false,
-    email: false
-  }
-
-export const validarRegistro = (campos) => {
+export const validarRegistro = () => {
 	/* -----------  validar <formulario  de registro> vacios y condiciones  --------------- */
   const formularioRegistro = document.getElementById('signup-form'); //formulario
   const inputsRegistro = document.querySelectorAll('#signup-form input'); //todos los imputs del formulario
@@ -27,22 +21,17 @@ export const validarRegistro = (campos) => {
     password: /^.{6,12}$/, // 4 a 12 digitos.
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
   }
-
-
-
+  
+  const campos = {
+      fullname: false,
+      username: false,
+      password: false,
+      email: false
+  }
+  
   const validarFormulario = (e) => {
     switch (e.target.name){
       case "fullname":
-          
-        if(expresiones.nombre.test(e.target.value)){
-          mensajeFullname.innerHTML = "Es válido";
-          mensajeFullname.style.color = "green";
-          campos['fullname'] = true;
-        } else {
-          mensajeFullname.innerHTML = "Solo debe tener Letras";
-          mensajeFullname.style.color = "red";
-          campos['fullname'] = false;
-        }
         if (e.target.value.length == 0) {
           mensajeFullname.innerHTML = "Este campo esta vacio";
           mensajeFullname.style.color = "red";
@@ -83,10 +72,10 @@ export const validarRegistro = (campos) => {
           mensajeContraseña1.innerHTML = "La contraseña tiene que ser de 6 a 12 digitos";
           mensajeContraseña1.style.color = "red";
         }
-        validarContraseña2(campos);
+        validarContraseña2();
         break;
         case "confirm-password":
-        validarContraseña2(campos);
+        validarContraseña2();
         break;
         case "signup-email":
           if (e.target.value.length == 0) {
@@ -106,8 +95,8 @@ export const validarRegistro = (campos) => {
       }
   }
 
-    // validar contraseña repetida
-  const validarContraseña2 = (campos) => {
+  // validar contraseña repetida
+  const validarContraseña2 = () => {
   	const contraseña1 = document.querySelector('#signup-password'); // signup-password
     const contraseña2 = document.querySelector('#confirm-password'); // confirm-password
 
@@ -120,8 +109,7 @@ export const validarRegistro = (campos) => {
       mensajeContraseña2.style.color = "green";
       campos['password'] = true;
     }
-  }
-    // fin - validar contraseña repetida
+  } // ------------ 
 
   // validar ckecket
   const terminos = document.querySelector('#acceptTo');
@@ -134,8 +122,7 @@ export const validarRegistro = (campos) => {
       mensajeChecket.style.color = "red";
       mensajeChecket.innerHTML = "Acepta los terminos y condiciones";
     }
-  }
-  // fin - validar ckecket
+  } // --------------
 
   // evento keyup (cuando presionamos cualquier tecla del teclado) 
   // evenbto blur (cuando un elemento ha perdido su foco)
@@ -144,29 +131,48 @@ export const validarRegistro = (campos) => {
     input.addEventListener( 'blur', validarFormulario);
   });
 
+
+  // registro
+  const signupForm = document.querySelector("#signup-form"); // todo el formulario
+  const botonForm = document.querySelector("#submit-button"); // boton "sign up"
+  botonForm.addEventListener("click", (e) => {
+    console.log("hizo click"); // si funciona al hacer click
+      // SI LOS CAMPOS ESTAN LLENOS CORRECTAMENTE
+      const terminos = document.querySelector('#acceptTo'); // checkbox
+      if (campos.fullname && campos.username && campos.password && campos.email && terminos.checked) {
+        console.log('ENTRA', campos.fullname, campos.username, campos.password, campos.email, terminos.checked);
+        const signupEmail = document.querySelector("#signup-email").value;
+        const signupPassword = document.querySelector("#signup-password").value;
+        const usernameInput = document.querySelector("#username").value;
+        const fullnameInput = document.querySelector("#fullname").value;
+        const passwordInput = document.querySelector('#signup-password').value;
+        const emailInput = document.querySelector('#signup-email').value;
+        crearUsuarioFb(signupEmail, signupPassword, usernameInput, fullnameInput, passwordInput, emailInput); // funcion de crear usuarios
+        signupForm.reset(); // resetea el formulario
+        console.log("me resetea el formulario")
+        window.location.hash = 'login'; // lleva a la ruta de login
+        console.log("me regresa al login")
+        // SI LOS CAMPOS NO ESTA LLENOS CORRECTAMENTE
+      } else {
+        console.log('NO ENTRA', campos.fullname, campos.username, campos.password, campos.email, terminos.checked);
+        mensajeCamposVacios();
+      }
+  });
+
+  // funcion - mensaje cuando los campos estan vacios
+  const mensajeCamposVacios = () => {
+    const mensajeError = document.querySelector('#campoError');
+    mensajeError.innerHTML = "Error: Por favor rellena el formulario correctamente";
+    mensajeError.style.color = "red";
+    // mensaje de error en 1 segundo desaparece
+    /*setTimeout( () => {
+        mensajeError.style.display = "none";
+    }, 2000);*/
+  }// ----------------
+
 } // fin funcion validarRegistro        
 
-export const camposLlenos = (campos) => {
-  let respuesta = false;
 
-	console.log("click");
-	//e.preventDefault(); // no lleva a otra pagina y no cambia url
-	const terminos = document.querySelector('#accept'); // check
-		if (campos.fullname && campos.username && campos.password && campos.email && terminos.checked) {
-      console.log('ENTRA ??', campos.fullname, campos.username, campos.password, campos.email, terminos.checked);
-      respuesta = true;
-      return respuesta;
-    } else {
-      console.log('ENTRA 3 ??', campos.fullname, campos.username, campos.password, campos.email, terminos.checked);
-					// mensaje de error al encontrar campos sin rellenar
-				const mensajeError = document.querySelector('#campoError');
-				mensajeError.innerHTML = "Error: Por favor rellena el formulario correctamente";
-				mensajeError.style.color = "red";
-				// mensaje de error en 1 segundo desaparece
-				setTimeout( () => {
-						mensajeError.style.display = "none";
-				}, 2000);
-		}
-};// fin de funcion camposLlenos
+
   
       

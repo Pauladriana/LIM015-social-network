@@ -1,11 +1,7 @@
 import {createLogin, createSignup, createMuro} from './logingroup.js';
-import {crearUsuarioFb} from './firebase.js';
 import {showAuthUsers} from './authuser.js';
 import {cerrarSesion} from './logout.js';
-import {validarRegistro, camposLlenos, campos} from './validaciones.js';
-
-//ENROUTAMIENTO codigo bonito
-
+import {validarRegistro} from './validaciones.js';
 
 //RUTA SIN #
 /*const changeRoute = (hash) => {
@@ -18,14 +14,13 @@ import {validarRegistro, camposLlenos, campos} from './validaciones.js';
   }
 };*/
 
-
-// crear la funcion mostrar seccion - esto si funciona
+// crear la funcion mostrar seccion
 const showSeccion = (ruta) => {
   const secciones = document.querySelector('#secciones');
   secciones.innerHTML = '';
   switch (ruta) {
     case '#login': { return secciones.innerHTML = createLogin,mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en login");}
-    case '#signup': { return secciones.innerHTML = createSignup, funcionesRegitro(), botonCancelarRegistro(), validarRegistro(), console.log("hola estoy en regsitro"); }
+    case '#signup': { return secciones.innerHTML = createSignup, botonCancelarRegistro(),  validarRegistro(), /*funcionesRegitro(),*/ console.log("hola estoy en regsitro"); }
     case '#muro': { return secciones.innerHTML = createMuro, showAuthUsers(), cerrarSesion(), console.log("hola estoy en muro"); }
     case '': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en muro"); }
     case '/': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en login"); }
@@ -33,7 +28,7 @@ const showSeccion = (ruta) => {
   default: {return secciones.innerHTML = `estoy en otro lado 404`}
   }
 };
-/// fin
+//--------------
 
 // si el usuario esta logeado 
 const userLoggedIn = () => {
@@ -41,15 +36,14 @@ const userLoggedIn = () => {
     if (user) {
       showSeccion(window.location.hash);
     } else {
-      window.location.hash = 'login';    
+      window.location.hash = '#login';    
     }
   });
   window.addEventListener('hashchange', () => showSeccion(window.location.hash));
 };
 // función que muestra la vista al momento de recargar
 window.addEventListener('load', userLoggedIn);
-// fin
-
+//-------------
 
 // funcion mostrar contraseña
 const mostrarContraseña = () => {
@@ -63,33 +57,9 @@ const mostrarContraseña = () => {
       }
   });
 }
+// ---------------
 
-// otra funcion?
-const funcionesRegitro = () =>{
-  const signupForm = document.querySelector("#signup-form"); // todo el formulario
-  const botonForm = document.querySelector("#submit-button"); // boton "sign up"
-  botonForm.addEventListener("click", (e) => {
-    e.preventDefault();
-    console.log("registrandote"); // si funciona al hacer click
-    const signupEmail = document.querySelector("#signup-email").value;
-    const signupPassword = document.querySelector("#signup-password").value;
-    const usernameInput = document.querySelector("#username").value;
-    const fullnameInput = document.querySelector("#fullname").value;
-    const passwordInput = document.querySelector('#signup-password').value;
-    const emailInput = document.querySelector('#signup-email').value;
-    crearUsuarioFb(signupEmail, signupPassword, usernameInput, fullnameInput, passwordInput, emailInput); // funcion de crear usuarios
-    
-    /*camposLlenos(campos); // funcion si los campos estan llenos
-    if (camposLlenos(campos)) {*/
-      signupForm.reset();
-      console.log("me resetea el formulario")
-      window.location.hash = 'login';
-      showSeccion();
-      console.log("me regresa al login")
-   /* };*/
-    console.log('cambiar pantalla');
-  });
-}
+
 
 // boton "cancel"
 const botonCancelarRegistro = () => {
@@ -98,9 +68,9 @@ const botonCancelarRegistro = () => {
   window.location.hash = 'login';
     //showSeccion();
   });
-}
+} // ---------------
 
-// evento al hacer click al boton "login"
+// evento click - logearse con correo y contraseña
 const botonLogin = () => {
   const loginButon = document.querySelector('#login-button');
   const loginForm = document.querySelector('#login-form')
@@ -118,7 +88,7 @@ const botonLogin = () => {
           loginForm.reset();
           console.log("resea el formulario")
           window.location.hash = 'muro';
-          showSeccion();
+          //showSeccion();
           console.log("ruta del muro")
         }) // fin then
         .catch((err) => {
@@ -134,7 +104,7 @@ const botonLogin = () => {
           }
         }) //Termina login con firebase
     }); // fin del evento
-}
+} // --------------
 
 // Logearse con google
 const gogleaRegistro = () => {
@@ -147,7 +117,7 @@ const gogleaRegistro = () => {
       .then((result) => {
         console.log("te logueaste con google");
         window.location.hash = 'muro';
-        showSeccion();
+        //showSeccion();
         console.log(" logeado con google me direcciona al muro")
       })
       .catch((err) => {
@@ -155,9 +125,9 @@ const gogleaRegistro = () => {
       })
     //Termina login google con firebase
   });
-  }
+  } // ----------
 
-//FLECHAS DE ATRAS Y ADELANTE ------> SI FUNCIONA!
+//FLECHAS DE ATRAS Y ADELANTE
 window.addEventListener('popstate', (event) => {
   console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
   console.log('POPOPOPOPOP');
@@ -168,7 +138,7 @@ window.addEventListener('popstate', (event) => {
     secciones.innerHTML = createSignup;
     console.log(' REGISTRO')
   }  
-});
+}); // -----------
 
 
 

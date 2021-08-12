@@ -1,4 +1,4 @@
-
+// funcion de crear usuarios
 export const crearUsuarioFb = (signupEmail, signupPassword, usernameInput, fullnameInput, passwordInput, emailInput) => {
   auth.createUserWithEmailAndPassword(signupEmail, signupPassword)
     .then((userCredential) => {

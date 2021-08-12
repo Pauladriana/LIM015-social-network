@@ -1,3 +1,4 @@
+// funcion de mostrar usuarios
 export const showAuthUsers = () => {
   const allUsers = document.querySelector("#userslist");
     
@@ -16,12 +17,10 @@ export const showAuthUsers = () => {
       });
       allUsers.innerHTML = html;
     } else {
+      window.location.hash = 'login'; 
       allUsers.innerHTML = `<p>Inicia sesión para conocer a los viajeros</p>`;
     }
   };
-
-  // Eventos
-  // Listar los datos para usuarios autenticados
 
   const auth = firebase.auth();
   auth.onAuthStateChanged((user) => {
