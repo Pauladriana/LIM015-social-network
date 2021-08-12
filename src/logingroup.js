@@ -2,10 +2,20 @@ const secciones = document.querySelector('#secciones');
 
 // creando dinamicamente la vista login (href = muro)
 export const createLogin = `
-<form action="" id="login-form">
-  <input type="email" placeholder="email" class="login-input" id="login-email" required>
+<img src="./imagen/banner.png" alt="port" class="borde-baner">
+<div class="cntLogo">
+  <img src="./imagen/logo.svg" alt="logo" class="logo">
+</div>
+<form action="" id="login-form" class="formLogin">
+  <div class="cntPasswordInput">
+  <input type="email" placeholder="correo" class="login-input-log" id="login-email" required>
+    <img src="./imagen/icons/ico-carta.svg" alt="port">
+  </div>
   <p id="wrongemail"></p>
-  <input type="password" placeholder="password" class="login-input" id="login-password" required>
+  <div class="cntPasswordInput">
+    <input type="password" placeholder="contraseña" class="login-input-log" id="login-password" required>
+    <img src="./imagen/icons/ico-candado.svg" alt="port">
+  </div>
   <p id="wrongpassword"></p>
   <div class="mostrar">
       <input type="checkbox" class="show-password" id="show-password">
@@ -13,29 +23,33 @@ export const createLogin = `
   </div>
   <button type="button" id="login-button" class="submit-button">LOGIN</button>
 </form>
-<p>OR</p>
+<p>O</p>
 <button type="button" id="google-login" class="google-login">
   <img src="./imagen/google.png" class="imgGoogle"/>
-  Log in with  google
+  Iniciar sesión con google
 </button>
-<p>Dont have an account?<a href="#signup" id="signingup">Sign up</a></p> 
-<a href="#">Forgot my password</a>`;
+<p>¿No tienes una cuenta? <a href="#signup" id="signingup">Regístrate</a></p> 
+<a href="#">Olvidé mi contraseña</a>`;
 secciones.innerHTML = createLogin;
 
 // creando dinamicamente la vista registro (href = login)
 export const createSignup = `
-  <p>Travel with me</p>
+<div class="contenedor-registro">
+  <h1 class="titulo" >Viaja conmigo</h1>
+  <div class="cntLogo">
+  <img src="./imagen/logo.svg" alt="logo" class="logo2">
+  </div>
   <form action="" id="signup-form">
-    <input type="text" placeholder="Fullname" class="login-input" name="fullname" id="fullname" required>
+    <input type="text" placeholder="Nombre completo" class="login-input" name="fullname" id="fullname" required>
     <p id="campoFullname"></p>
-    <input type="text" placeholder="Username" class="login-input" name="username" id="username" required>
+    <input type="text" placeholder="Nombre de usuario" class="login-input" name="username" id="username" required>
     <p id="campoUsername"></p>
-    <input type="password" placeholder="Password" class="login-input" name="signup-password" id="signup-password" required maxlength="15">
+    <input type="password" placeholder="Contraseña" class="login-input" name="signup-password" id="signup-password" required maxlength="15">
     <p id="campoContraseñaPrimero"></p>
     <p id="shortPassword"></p>
-    <input type="password" placeholder="Confirm password" class="login-input" name="confirm-password" id="confirm-password" required>
+    <input type="password" placeholder="Confirmar contraseña" class="login-input" name="confirm-password" id="confirm-password" required>
     <p id="campoContraseñaSegundo"></p>
-    <input type="email" placeholder="Email" class="login-input" name="signup-email" id="signup-email" required>
+    <input type="email" placeholder="Correo" class="login-input" name="signup-email" id="signup-email" required>
     <p id="campoCorreo"></p>
     <p id="wrongSUemail"></p>
     <div class="terminos">
@@ -45,13 +59,13 @@ export const createSignup = `
     <div>
       <p id="campoChecket"></p>
     </div>
-    <button type="button" id="submit-button" class="submit-button">SIGN UP</button>
+    <button type="button" id="submit-button" class="submit-button">Regístrate</button>
   </form>
-  <button type="button" id="cancelButton" class="cancel-button">CANCEL</button>
+  <button type="button" class="cancel-button" id="cancelButton">Cancelar</button>
   <p id="campoEnviado"></p>
   <p id="camposVacios"></p>
-  <p id="campoError"></p>`;
-  
+  <p id="campoError"></p>
+</div>`;
 
 // creando dinamicamente la vista muro (href = login)
 export const createMuro = `
