@@ -1,3 +1,4 @@
+
 const secciones = document.querySelector('#secciones');
 
 // creando dinamicamente la vista login (href = muro)
@@ -20,7 +21,8 @@ export const createLogin = `
 </button>
 <p>Dont have an account?<a href="#signup" id="signingup">Sign up</a></p> 
 <a href="#">Forgot my password</a>`;
-secciones.innerHTML = createLogin;
+window.location.hash = 'login'
+
 
 // creando dinamicamente la vista registro (href = login)
 export const createSignup = `
@@ -60,7 +62,6 @@ export const createMuro = `
       <div class="row">
         <div class="col-md-6 offset-md-3">
           <ul class="list-group" id="userslist">
-            
           </ul>
 
         </div>
@@ -70,6 +71,7 @@ export const createMuro = `
 
 
       // icono para mostrar contraseña
+    /*export const mostrarContraseña = () => {
       const showPassword = document.querySelector('#show-password');
       showPassword.addEventListener('change', () => {
         const password1 = document.querySelector('#login-password');
@@ -79,4 +81,4 @@ export const createMuro = `
               password1.type = "text"
           }
       });
-      
+    }*/
