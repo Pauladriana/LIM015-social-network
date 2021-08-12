@@ -41,7 +41,7 @@ const userLoggedIn = () => {
     if (user) {
       showSeccion(window.location.hash);
     } else {
-      window.location.hash = 'login';    
+      window.location.hash = '#login';
     }
   });
   window.addEventListener('hashchange', () => showSeccion(window.location.hash));
@@ -84,7 +84,7 @@ const funcionesRegitro = () =>{
       signupForm.reset();
       console.log("me resetea el formulario")
       window.location.hash = 'login';
-      showSeccion();
+      //showSeccion();
       console.log("me regresa al login")
    /* };*/
     console.log('cambiar pantalla');
@@ -118,7 +118,7 @@ const botonLogin = () => {
           loginForm.reset();
           console.log("resea el formulario")
           window.location.hash = 'muro';
-          showSeccion();
+          //showSeccion();
           console.log("ruta del muro")
         }) // fin then
         .catch((err) => {
@@ -147,7 +147,7 @@ const gogleaRegistro = () => {
       .then((result) => {
         console.log("te logueaste con google");
         window.location.hash = 'muro';
-        showSeccion();
+        //showSeccion();
         console.log(" logeado con google me direcciona al muro")
       })
       .catch((err) => {
