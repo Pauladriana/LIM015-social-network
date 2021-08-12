@@ -61,7 +61,7 @@ export const createSignup = `
     </div>
     <button type="button" id="submit-button" class="submit-button">Regístrate</button>
   </form>
-  <button class="cancel-button" id="cancel-button">Cancelar</button>
+  <button type="button" class="cancel-button" id="cancelButton">Cancelar</button>
   <p id="campoEnviado"></p>
   <p id="camposVacios"></p>
   <p id="campoError"></p>
