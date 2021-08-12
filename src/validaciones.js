@@ -124,7 +124,7 @@ export const validarRegistro = (campos) => {
     // fin - validar contraseña repetida
 
   // validar ckecket
-  const terminos = document.querySelector('#accept');
+  const terminos = document.querySelector('#acceptTo');
   terminos.addEventListener("change", validaCheckbox, false);
   function validaCheckbox(){
     if(terminos.checked){

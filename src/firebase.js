@@ -15,9 +15,7 @@ export const crearUsuarioFb = (signupEmail, signupPassword, usernameInput, fulln
       .catch((error) => {
         console.log("Tienes el siguiente error: " + error);
       })
-      signupForm.reset();
-      window.history.pushState( {} , 'signup', '/login' );
-      secciones.innerHTML = createLogin; 
+      
     })
     .catch((err) => {
       const wrongSsignupEmail = document.querySelector('#wrongSUemail');

@@ -16,7 +16,7 @@ export const showAuthUsers = () => {
       });
       allUsers.innerHTML = html;
     } else {
-      allUsers.innerHTML = `<p>Login to meet the travelers</p>`;
+      allUsers.innerHTML = `<p>Inicia sesión para conocer a los viajeros</p>`;
     }
   };
 

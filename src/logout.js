@@ -6,8 +6,10 @@ export const cerrarSesion = () => {
     e.preventDefault();
     auth.signOut().then(() => {
       console.log("cerraste sesion");
-      window.history.pushState( {} , 'muro', '/login' );
-      secciones.innerHTML = createLogin;
+      window.location.hash = 'login';
+      showSeccion();
+      console.log("regreso al login")
+      //secciones.innerHTML = createLogin;
     });
   });
 }
