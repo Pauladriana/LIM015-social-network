@@ -1,6 +1,7 @@
 import {createLogin, createSignup, createMuro} from './logingroup.js';
 import {showAuthUsers} from './authuser.js';
 import {cerrarSesion} from './logout.js';
+import {googleRegister, loginWithEmail} from './login.js';
 import {validarRegistro} from './validaciones.js';
 
 //RUTA SIN #
@@ -80,16 +81,39 @@ const botonLogin = () => {
       const loginEmail = document.querySelector("#login-email").value;
       const loginPassword = document.querySelector("#login-password").value;
       console.log(loginEmail, loginPassword);
-    
-      auth
-        .signInWithEmailAndPassword(loginEmail, loginPassword)
-        .then((userCredential) => {
+
+      loginWithEmail(loginEmail, loginPassword).then(() => {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            console.log("logueo exitoso");
+            window.location.hash = 'muro';
+          }
+        });
+      })
+      .catch((err) => {
+        const wrongLoginPassword = document.querySelector('#wrongpassword');
+        const wrongLoginEmail = document.querySelector('#wrongemail');
+        if (err.message == 'The password is invalid or the user does not have a password.'){
+          wrongLoginPassword.innerHTML = 'La contraseña es incorrecta';
+          wrongLoginPassword.style.color = 'red'
+        }
+        if (err.message == 'There is no user record corresponding to this identifier. The user may have been deleted.'){
+          wrongLoginEmail.innerHTML = 'Este correo no es valido, por favor corrigelo';
+          wrongLoginEmail.style.color = 'red'
+        }
+      });
+  });
+
+      /*loginWithEmail(loginEmail, loginPassword).then((userCredential) => {
+        const user = userCredential.user.emailVerified;
+        if(user){
           console.log("logueado");
           loginForm.reset();
           console.log("resea el formulario")
           window.location.hash = 'muro';
           //showSeccion();
           console.log("ruta del muro")
+        }
         }) // fin then
         .catch((err) => {
           const wrongLoginPassword = document.querySelector('#wrongpassword');
@@ -102,30 +126,23 @@ const botonLogin = () => {
             wrongLoginEmail.innerHTML = 'Este correo no es valido, por favor corrigelo';
             wrongLoginEmail.style.color = 'red'
           }
-        }) //Termina login con firebase
-    }); // fin del evento
-} // --------------
+        }) //Termina login con firebase*/
+    }
 
 // Logearse con google
 const gogleaRegistro = () => {
   const googleButton = document.querySelector("#google-login");
   googleButton.addEventListener("click", (e) => {
     e.preventDefault();
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth
-      .signInWithPopup(provider)
-      .then((result) => {
+    googleRegister().then(() => {
+      if (firebase.auth().currentUser) {
         console.log("te logueaste con google");
         window.location.hash = 'muro';
-        //showSeccion();
-        console.log(" logeado con google me direcciona al muro")
-      })
-      .catch((err) => {
-        console.log(err);
-      })
+      }
+    });
+});
     //Termina login google con firebase
-  });
-  } // ----------
+}// ----------
 
 //FLECHAS DE ATRAS Y ADELANTE
 window.addEventListener('popstate', (event) => {

@@ -1,6 +1,8 @@
 // funcion de crear usuarios
+import {emailUserRegister} from './login.js';
+
 export const crearUsuarioFb = (signupEmail, signupPassword, usernameInput, fullnameInput, passwordInput, emailInput) => {
-  auth.createUserWithEmailAndPassword(signupEmail, signupPassword)
+  emailUserRegister(signupEmail, signupPassword)
     .then((userCredential) => {
       console.log("registrado");
       fs.collection("users").add({

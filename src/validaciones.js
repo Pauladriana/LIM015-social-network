@@ -170,9 +170,4 @@ export const validarRegistro = () => {
     }, 2000);*/
   }// ----------------
 
-} // fin funcion validarRegistro        
-
-
-
-  
-      
+} // fin funcion validarRegistro
