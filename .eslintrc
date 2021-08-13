@@ -1,5 +1,5 @@
 {
-  "env": {
+  /*"env": {
     "browser": true,
     "es6": true,
     "jest/globals": true
@@ -25,5 +25,5 @@
     // "jest/no-identical-title": "error",
     // "jest/prefer-to-have-length": "warn",
     // "jest/valid-expect": "error"
-  }
+  }*/
 }
