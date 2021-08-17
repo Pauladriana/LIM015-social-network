@@ -42,10 +42,10 @@ export const createNewPost = `
     <button class="publiPost" id="publiPost">Publicar</button>
   </main>
   <footer class="opcionesFoot">
-      <img src="./imagen/home.svg" alt="">
-      <img src="./imagen/buscar.svg" alt="">
-      <img src="./imagen/subir.svg" alt="">
-      <img src="./imagen/notificaciones.svg" alt="">
-      <img src="./imagen/mensajes.svg" alt="">
+    <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
+    <a href="#"><img src="./imagen/buscar.svg" alt="">
+    <a href="#newpost"><img src="./imagen/subir.svg" alt="">
+    <a href="#"><img src="./imagen/notificaciones.svg" alt="">
+    <a href="#"><img src="./imagen/mensajes.svg" alt="">
   </footer>
 </body>`;

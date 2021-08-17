@@ -178,6 +178,7 @@ const crearPost = () => {
   
     console.log(response);
     console.log(titulo, contenido);
+    window.location.hash = 'muro'
   })
 }
 
