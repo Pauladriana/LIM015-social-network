@@ -29,7 +29,7 @@ export const createLogin = `
   Iniciar sesión con google
 </button>
 <p>¿No tienes una cuenta? <a href="#signup" id="signingup">Regístrate</a></p> 
-<a href="#">Olvidé mi contraseña</a>`;
+<a href="#newpost">Olvidé mi contraseña</a>`;
 secciones.innerHTML = createLogin;
 
 // creando dinamicamente la vista registro (href = login)
@@ -70,5 +70,6 @@ export const createSignup = `
 // creando dinamicamente la vista muro (href = login)
 export const createMuro = `
     <p>BIENVENIDO A TRAVELER.PE</p>
+    <div id="allPost"></div>
     <div id="userslist"></div>
     <button class="logout-button" type="button" id="logout-button">CERRAR SESION</button>`;
