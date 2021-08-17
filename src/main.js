@@ -1,5 +1,7 @@
 import {createLogin, createSignup, createMuro} from './logingroup.js';
+import {createNewPost} from './postgroup.js';
 import {showAuthUsers} from './authuser.js';
+import {showFsPost} from './fsPost.js';
 import {cerrarSesion} from './logout.js';
 import {googleRegister, loginWithEmail} from './login.js';
 import {validarRegistro} from './validaciones.js';
@@ -21,8 +23,9 @@ const showSeccion = (ruta) => {
   secciones.innerHTML = '';
   switch (ruta) {
     case '#login': { return secciones.innerHTML = createLogin,mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en login");}
-    case '#signup': { return secciones.innerHTML = createSignup, botonCancelarRegistro(),  validarRegistro(), /*funcionesRegitro(),*/ console.log("hola estoy en regsitro"); }
-    case '#muro': { return secciones.innerHTML = createMuro, showAuthUsers(), cerrarSesion(), console.log("hola estoy en muro"); }
+    case '#signup': { return secciones.innerHTML = createSignup, botonCancelarRegistro(),  validarRegistro(), console.log("hola estoy en regsitro"); }
+    case '#newpost': { return secciones.innerHTML = createNewPost, crearPost(), console.log("hola estoy en crear post"); }
+    case '#muro': { return secciones.innerHTML = createMuro, showFsPost(), showAuthUsers(), cerrarSesion(), console.log("hola estoy en muro"); }
     case '': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en muro"); }
     case '/': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en login"); }
 
@@ -154,8 +157,28 @@ window.addEventListener('popstate', (event) => {
   } else if (window.location.pathname === 'signup'){
     secciones.innerHTML = createSignup;
     console.log(' REGISTRO')
-  }  
+  }
 }); // -----------
 
 
+
+//NUEVA PUBLICACION
+const crearPost = () => {
+  const publiPost = document.querySelector('#publiPost');
+  publiPost.addEventListener('click', async (e) => {
+    e.preventDefault();
+  
+    const titulo = document.querySelector('#tituloPost').value;
+    const contenido = document.querySelector('#contenidoPost').value;
+  
+    const response = await fs.collection('publicaciones').doc().set({
+      titulo,
+      contenido
+    })
+  
+    console.log(response);
+    console.log(titulo, contenido);
+    window.location.hash = 'muro'
+  })
+}
 
