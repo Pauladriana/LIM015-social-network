@@ -338,6 +338,100 @@ button {
     background-color: white;
 }
 
-.muroContent{
-    margin-bottom: 15%
+.muroContent {
+    margin-bottom: 15%;
+}
+
+
+/* media query, min-width ancho igual o superior, max-width ancho igual o menor*/
+/* celular */
+/*menor a Galaxy Fold 280px*/
+@media screen and (max-width: 279px) {
+    .borde-baner {
+        width: 100%;
+    }
+    .logo {
+        top: 18%;
+    }
+}
+/*mayor e igual a Galaxy Fold 280px*/
+@media  screen and (min-width: 280px) and (max-width: 359px){
+    .borde-baner {
+        width: 100%;
+    }
+    .logo {
+        top: 18%;
+    }
+}
+/*mayor e igual a Moto G4 360px*/
+@media  screen and (min-width: 360px) and (max-width: 374px){
+    .borde-baner {
+        width: 100%;
+    }
+    .logo {
+        top: 23%;
+    }
+}
+/* tablet */ 
+/*mayor e igual a iPhone 375px*/
+@media  screen and (min-width: 375px) and (max-width: 410px){
+    .borde-baner {
+        width: 100%;
+    }
+    .logo {
+        top: 19%;
+    }
+}
+/*mayor e igual a Pixel 2 411px*/
+@media  screen and (min-width: 411px) and (max-width: 539px){
+    .borde-baner {
+        width: 100%;
+    }
+    .logo {
+        top: 24%;
+        width: 33%;
+    }
+    .formLogin {
+        margin-top: 18%;
+    }
+}
+/*mayor e igual a Surface 540px*/
+@media  screen and (min-width: 540px) and (max-width: 767px){
+    .borde-baner {
+        width: 100%;
+    }
+    .logo {
+        top: 30%;
+        width: 28%;
+    }
+    .formLogin {
+        margin-top: 11%;
+    }
+}
+/*mayor e igual a iPad 768px*/
+@media  screen and (min-width: 768px) and (max-width: 1279px){
+    .borde-baner {
+        width: 50%;
+    }
+    .logo {
+        width: 21%;
+        top: 17%;
+    }
+    .formLogin {
+        margin-top: 15%;
+    }
+}
+/* laptop */
+/*mayor e igual a laptop 1280px*/
+@media  screen and (min-width: 1280px){
+    .borde-baner {
+        width: 35%;
+    }
+    .logo {
+        width: 13%;
+        top: 19%;
+    }
+    .formLogin {
+        margin-top: 7%;
+    }
 }

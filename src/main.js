@@ -37,7 +37,7 @@ const showSeccion = (ruta) => {
 // si el usuario esta logeado 
 const userLoggedIn = () => {
   firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
+    if (user) { 
       showSeccion(window.location.hash);
     } else {
       window.location.hash = '#login';    
