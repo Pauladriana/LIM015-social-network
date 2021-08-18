@@ -199,7 +199,7 @@ const crearPost = () => {
   })
 }
 
-// boton de eliminar post
+// boton de eliminar post - falta completar
 /*const botonesPost = () => {
   const btnDelete = document.querySelectorAll('.btn-delete');
   console.log(btnDelete);
