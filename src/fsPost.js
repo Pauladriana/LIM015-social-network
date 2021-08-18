@@ -11,8 +11,8 @@ export const showFsPost = () => {
           // console.log(user)
           const div = `
                     <div class='postDiv'>
-                      <h5>${post.titulo}</h5>
-                      <p>${post.contenido}</p>
+                      <h5>${post.tituloPost}</h5>
+                      <p>${post.contenidoPost}</p>
                       <button class="btn-delete" data-id="${post.id}" >Eliminar</button>
                       <button class="btn-edit" data-id="${post.id}">Modificar</button>
                     </div>`;
@@ -32,22 +32,41 @@ export const showFsPost = () => {
         })
         // ---
         // desde firebase se llama get
-        /*const getPost = (id) => fs.collection('publicaciones').doc(id).get();*/
+        const getPost = (id) => {
+          fs.collection('publicaciones').doc(id).get().then((ele)=>{
+            console.log(ele.data());
+            if (ele.data()) {
+              const user = ele.data();
+              const costoInput = document.querySelector('#costoInput');
+              const diasInput = document.querySelector('#diasInput');
+              const nochesInput = document.querySelector('#nochesInput');
+              const ninosInput = document.querySelector('#ninosInput');
+              const personasInput = document.querySelector('#personasInput');
+              const tituloPost = document.querySelector('#tituloPost');
+              const contenidoPost = document.querySelector('#contenidoPost');
+              const locacionInput = document.querySelector('#locacionInput');
+          
+              costoInput.value = user.costoInput;
+              diasInput.value = user.diasInput;
+              nochesInput.value = user.nochesInput;
+              ninosInput.value = user.ninosInput;
+              personasInput.value = user.personasInput;
+              tituloPost.value = user.tituloPost;
+              contenidoPost.value = user.contenidoPost;
+              locacionInput.value = user.locacionInput;
+            }
+          }).catch((err) => {
+            console.log(err);
+          })
+        };
         // boton editar
-        /*const btnEdit = document.querySelectorAll('.btn-edit');
+        const btnEdit = document.querySelectorAll('.btn-edit');
         btnEdit.forEach( btn => {
           btn.addEventListener( 'click', async (e) => {
-            const postId = await getPost(e.target.dataset.id);
-            console.log(postId.data());
-            const task = postId.data();
-            window.location.hash = 'newpost';
-            const algo = document.getElementById('tituloPost').value;
-            console.log(algo);
-            document.getElementById('tituloPost').value = task.titulo;
-            console.log(document.querySelector('#tituloPost'));
-            document.querySelector('#contenidoPost').value = task.contenido;
+            window.location.hash = '#newpost';
+            await getPost(e.target.dataset.id);
           })
-        })*/
+        })
         // ---
       }
     };

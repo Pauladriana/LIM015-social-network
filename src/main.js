@@ -274,6 +274,7 @@ const crearPost = () => {
     const costoInput = document.querySelector('#costoInput');
     const diasInput = document.querySelector('#diasInput');
     const nochesInput = document.querySelector('#nochesInput');
+    const personasInput = document.querySelector('#personasInput');
     const ninosInput = document.querySelector('#ninosInput');
     const tituloPost = document.querySelector('#tituloPost');
     const contenidoPost = document.querySelector('#contenidoPost');
@@ -289,15 +290,27 @@ const crearPost = () => {
       contenidoPost.value !== '' &&
       locacionInput.value !== ''
     ) {
-      const titulo = document.querySelector('#tituloPost').value;
-      const contenido = document.querySelector('#contenidoPost').value;
+      const costoInput = document.querySelector('#costoInput').value;
+      const diasInput = document.querySelector('#diasInput').value;
+      const nochesInput = document.querySelector('#nochesInput').value;
+      const personasInput = document.querySelector('#personasInput').value;
+      const ninosInput = document.querySelector('#ninosInput').value;
+      const tituloPost = document.querySelector('#tituloPost').value;
+      const contenidoPost = document.querySelector('#contenidoPost').value;
+      const locacionInput = document.querySelector('#locacionInput').value;
 
       const response = await fs.collection('publicaciones').doc().set({
-        titulo,
-        contenido,
+        costoInput,
+        diasInput,
+        nochesInput,
+        personasInput,
+        ninosInput,
+        tituloPost,
+        contenidoPost,
+        locacionInput
       });
       console.log(response);
-      console.log(titulo, contenido);
+      console.log(tituloPost, contenidoPost);
       window.location.hash = 'muro';
     } else {
       const mensaje = document.querySelector('#mensajeValidacion');
