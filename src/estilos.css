@@ -342,6 +342,13 @@ button {
     margin-bottom: 15%;
 }
 
+.postDiv {
+    border: 1px solid #CAD95B;
+    padding: 10px 10px 33px;
+    border-radius: 10px;
+    margin: 30px;
+}
+
 
 /* media query, min-width ancho igual o superior, max-width ancho igual o menor*/
 /* celular */

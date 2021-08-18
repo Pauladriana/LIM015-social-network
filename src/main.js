@@ -1,7 +1,7 @@
 import {createLogin, createSignup, createMuro} from './logingroup.js';
-import {createNewPost} from './postgroup.js';
+import {createNewPost, viewPost} from './postgroup.js';
 import {showAuthUsers} from './authuser.js';
-import {showFsPost} from './fsPost.js';
+import {showFsPost, showPostInfo} from './fsPost.js';
 import {cerrarSesion} from './logout.js';
 import {googleRegister, loginWithEmail} from './login.js';
 import {validarRegistro} from './validaciones.js';
@@ -25,6 +25,7 @@ const showSeccion = (ruta) => {
     case '#login': { return secciones.innerHTML = createLogin,mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en login");}
     case '#signup': { return secciones.innerHTML = createSignup, botonCancelarRegistro(),  validarRegistro(), console.log("hola estoy en regsitro"); }
     case '#newpost': { return secciones.innerHTML = createNewPost, crearPost(), console.log("hola estoy en crear post"); }
+    case '#viewpost': { return secciones.innerHTML = viewPost, showPostInfo(), console.log("hola estoy en ver post"); }
     case '#muro': { return secciones.innerHTML = createMuro, showFsPost(), showAuthUsers(), cerrarSesion(), /*botonesPost(),*/ console.log("hola estoy en muro"); }
     case '': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en muro"); }
     case '/': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en login"); }
@@ -199,11 +200,6 @@ const crearPost = () => {
   })
 }
 
-// boton de eliminar post - falta completar
-/*const botonesPost = () => {
-  const btnDelete = document.querySelectorAll('.btn-delete');
-  console.log(btnDelete);
-  console.log(botonesPost);
-}*/
+
 
 

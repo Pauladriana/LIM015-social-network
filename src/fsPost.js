@@ -1,4 +1,4 @@
-export const showFsPost = () => {
+export const showFsPost = () => { 
     const publicaciones = document.querySelector('#allPost');
     //const logoutOption = document.querySelector('#logout-button');
     
@@ -11,10 +11,10 @@ export const showFsPost = () => {
           // console.log(user)
           const div = `
                     <div class='postDiv'>
+                      <h5>USUARIO FULANO</h5>
                       <h5>${post.titulo}</h5>
                       <p>${post.contenido}</p>
-                      <button class="btn-delete" data-id="${post.id}" >Eliminar</button>
-                      <button class="btn-edit" data-id="${post.id}">Modificar</button>
+                      <a href='#newpost'>Ver Mas</a>
                     </div>`;
           html += div;
         });
@@ -25,30 +25,31 @@ export const showFsPost = () => {
         const btnDelete = document.querySelectorAll('.btn-delete');
         btnDelete.forEach( btn => {
           btn.addEventListener( 'click', async (e) => {
-            await deletePost(e.target.dataset.id)
-            //window.location.hash = 'muro';
+            await deletePost(e.target.dataset.id);
             window.location.reload();
-          })
-        })
-        // ---
+          });
+        });
         // desde firebase se llama get
-        /*const getPost = (id) => fs.collection('publicaciones').doc(id).get();*/
+        const getPost = (id) => fs.collection('publicaciones').doc(id).get();
         // boton editar
-        /*const btnEdit = document.querySelectorAll('.btn-edit');
+        const btnEdit = document.querySelectorAll('.btn-edit');
         btnEdit.forEach( btn => {
           btn.addEventListener( 'click', async (e) => {
             const postId = await getPost(e.target.dataset.id);
             console.log(postId.data());
             const task = postId.data();
             window.location.hash = 'newpost';
-            const algo = document.getElementById('tituloPost').value;
+            window.addEventListener('DOMContentLoaded', () => {
+              const algo = document.getElementById('#tituloPost');
+              console.log(algo)
+            })
+            const algo = document.getElementById('#tituloPost').value;
             console.log(algo);
-            document.getElementById('tituloPost').value = task.titulo;
+            document.getElementById('#tituloPost').value = task.titulo;
             console.log(document.querySelector('#tituloPost'));
             document.querySelector('#contenidoPost').value = task.contenido;
           })
-        })*/
-        // ---
+        })
       }
     };
   
@@ -63,7 +64,7 @@ export const showFsPost = () => {
           });
       } else {
         setupPost([]);
-      }
+      };
     });
   };
   
@@ -75,3 +76,45 @@ export const showFsPost = () => {
       description,
     });
   };
+
+
+/*BOTONES DE ELIMINAR Y MODIFICAR
+<button class="btn-delete" data-id="${post.id}" >Eliminar</button>
+<button class="btn-edit" data-id="${post.id}">Modificar</button>
+*/
+
+
+
+//VISTA DEL POST
+export const showPostInfo = () => {
+  const postTitle = document.querySelector('#allPost');
+  
+  const setupPost = (data) => {
+    if (data.length) {
+      let html = '';
+      data.forEach((doc) => {
+        const post = doc.data();
+        post.id = doc.id;
+        // console.log(user)
+        const titulo = `
+                    <h5>${post.titulo}</h5>`;
+        html += titulo;
+      });
+      postTitle.innerHTML = html;
+    }
+  };
+
+  const auth = firebase.auth();
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      const fs = firebase.firestore();
+      fs.collection('publicaciones')
+        .get()
+        .then((snapshot) => {
+          setupPost(snapshot.docs);
+        });
+    } else {
+      setupPost([]);
+    }
+  });
+};
