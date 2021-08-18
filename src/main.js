@@ -1,293 +1,204 @@
 import {createLogin, createSignup, createMuro} from './logingroup.js';
-
-//ENROUTAMIENTO codigo bonito
-const secciones = document.querySelector('#secciones');
-
-//EVITANDO 404
-console.log(window.location.pathname);
-if(window.location.pathname === '/login'){
-  secciones.innerHTML = createLogin;
-} else if (window.location.pathname === '/signup'){
-  secciones.innerHTML = createSignup;
-} else if (window.location.pathname === '/muro'){
-  secciones.innerHTML = createMuro;
-  const allUsers = document.querySelector("#userslist");
-
-      const setupUsers = (data) => {
-        if (data.length) {
-          let html = "";
-          data.forEach((doc) => {
-            const user = doc.data();
-            console.log(user);
-            const li = `
-                      <li class='list-group-item list-group-item-action'>
-                          <h5>${user.username}</h5>
-                          <p>${user.fullname}</p>
-                      </li>`;
-            html += li;
-          });
-          allUsers.innerHTML = html;
-        } else {
-          allUsers.innerHTML = `<p>Login to meet the travelers</p>`;
-        }
-      };
-
-    // Eventos
-    // Listar los datos para usuarios autenticados
-      auth.onAuthStateChanged((user) => {
-        if (user) {
-          fs.collection("users")
-            .get()
-            .then((snapshot) => {
-              setupUsers(snapshot.docs);
-            });
-        } else {
-          setupUsers([]);
-        }
-      });
-      /* logout - cerrar sesion */
-      const logout = document.querySelector("#logout-button");
-      logout.addEventListener("click", (e) => {
-        e.preventDefault();
-        auth.signOut().then(() => {
-          console.log("cerraste sesion");
-          window.history.pushState( {} , 'muro', '/login' );
-          secciones.innerHTML = createLogin;
-
-        });
-      });
-
-  
-}
+import {createNewPost, viewPost} from './postgroup.js';
+import {showAuthUsers} from './authuser.js';
+import {showFsPost, showPostInfo} from './fsPost.js';
+import {cerrarSesion} from './logout.js';
+import {googleRegister, loginWithEmail} from './login.js';
+import {validarRegistro} from './validaciones.js';
 
 //RUTA SIN #
-const changeRoute = (hash) => {
+/*const changeRoute = (hash) => {
   if (hash === '#login'){
-    window.history.replaceState({}, 'login', '/login')
+    window.location.hash = '/login';
   } else if (hash === '#signup'){
-    window.history.replaceState({}, 'signup', '/signup')
+    window.location.hash = 'signup';
   } else if (hash === '#muro'){
-    window.history.replaceState({}, 'muro', '/muro')
+    window.location.hash = 'muro';
+  }
+};*/
+
+// crear la funcion mostrar seccion
+const showSeccion = (ruta) => {
+  const secciones = document.querySelector('#secciones');
+  secciones.innerHTML = '';
+  switch (ruta) {
+    case '#login': { return secciones.innerHTML = createLogin,mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en login");}
+    case '#signup': { return secciones.innerHTML = createSignup, botonCancelarRegistro(),  validarRegistro(), console.log("hola estoy en regsitro"); }
+    case '#newpost': { return secciones.innerHTML = createNewPost, crearPost(), console.log("hola estoy en crear post"); }
+    case '#viewpost': { return secciones.innerHTML = viewPost, showPostInfo(), console.log("hola estoy en ver post"); }
+    case '#muro': { return secciones.innerHTML = createMuro, showFsPost(), showAuthUsers(), cerrarSesion(), /*botonesPost(),*/ console.log("hola estoy en muro"); }
+    case '': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en muro"); }
+    case '/': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en login"); }
+
+  default: {return secciones.innerHTML = `estoy en otro lado 404`}
   }
 };
+//--------------
 
-window.addEventListener('hashchange', () => {
-    if (window.location.hash === '#signup') {
-    console.log('mostrar registro');
-    secciones.innerHTML = createSignup;
+// si el usuario esta logeado 
+const userLoggedIn = () => {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) { 
+      showSeccion(window.location.hash);
+    } else {
+      window.location.hash = '#login';    
+    }
+  });
+  window.addEventListener('hashchange', () => showSeccion(window.location.hash));
+};
+// función que muestra la vista al momento de recargar
+window.addEventListener('load', userLoggedIn);
+//-------------
 
-    changeRoute(window.location.hash)
-
-    // limitar contraseña
-    const contraseña = document.querySelector("#signup-password");
-    const mensajePassword = document.querySelector("#shortPassword");
-    contraseña.addEventListener( "change" , () => {
-      if (contraseña.value.length < 6) {
-        mensajePassword.innerHTML = "Tu contraseña debe tener al menos 6 caracteres";
-       mensajePassword.style.color = "red";
-     } else {
-      mensajePassword.style.display = "none";
-     }
-    })
-    //fin
-
-    const signupForm = document.querySelector("#signup-form");
-    const botonForm = document.querySelector("#submit-button");
-
-    
-
-    botonForm.addEventListener("click", (e) => {
-    e.preventDefault();
-    console.log("registrandote");
-    const signupEmail = document.querySelector("#signup-email").value;
-    const signupPassword = document.querySelector("#signup-password").value;
-    const usernameInput = document.querySelector("#username").value;
-    const fullnameInput = document.querySelector("#fullname").value;
-    const passwordInput = document.querySelector('#signup-password').value;
-    const emailInput = document.querySelector('#signup-email').value;
-
-    auth
-    .createUserWithEmailAndPassword(signupEmail, signupPassword)
-    .then((userCredential) => {
-      console.log("registrado");
-      fs.collection("users").add({
-        username: usernameInput,
-        fullname: fullnameInput,
-        password: passwordInput,
-        email: emailInput
-      })
-      .then((docRef) => {
-        console.log("Este es el nuevo usuario: " + docRef.id);
-      })
-      .catch((error) => {
-        console.log("Tienes el siguiente error: " + error);
-      })
-      signupForm.reset();
-      window.history.pushState( {} , 'signup', '/login' );
-      secciones.innerHTML = createLogin;// no deberia se asi, casi nos morimos f
-    })
-
-  })
-} else if (window.location.hash === '#login') {
-  console.log('mostrar login');
-  secciones.innerHTML = createLogin;
-  changeRoute(window.location.hash)
-} else if (window.location.hash === '#muro'){
-  changeRoute(window.location.hash);
-  secciones.innerHTML = createMuro;
+// funcion mostrar contraseña
+const mostrarContraseña = () => {
+  const showPassword = document.querySelector('#show-password');
+  showPassword.addEventListener('change', () => {
+    const password1 = document.querySelector('#login-password');
+      if ( password1.type === "text" ) {
+          password1.type = "password"
+      } else {
+          password1.type = "text"
+      }
+  });
 }
+// ---------------
 
+
+
+// boton "cancel"
+const botonCancelarRegistro = () => {
+  const cancelButton = document.querySelector('#cancelButton');
+  cancelButton.addEventListener('click', () => {
+  window.location.hash = 'login';
+    //showSeccion();
+  });
+} // ---------------
+
+// evento click - logearse con correo y contraseña
+const botonLogin = () => {
+  const loginButon = document.querySelector('#login-button');
+  const loginForm = document.querySelector('#login-form')
+  loginButon.addEventListener("click", (e) => {
+      e.preventDefault();
+      console.log("logueandote");
+      const loginEmail = document.querySelector("#login-email").value;
+      const loginPassword = document.querySelector("#login-password").value;
+      console.log(loginEmail, loginPassword);
+
+      loginWithEmail(loginEmail, loginPassword).then(() => {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            console.log("logueo exitoso");
+            window.location.hash = 'muro';
+          }
+        });
+      })
+      .catch((err) => {
+        const wrongLoginPassword = document.querySelector('#wrongpassword');
+        const wrongLoginEmail = document.querySelector('#wrongemail');
+        if (err.message == 'The password is invalid or the user does not have a password.'){
+          wrongLoginPassword.innerHTML = 'La contraseña es incorrecta';
+          wrongLoginPassword.style.color = 'red'
+        }
+        if (err.message == 'There is no user record corresponding to this identifier. The user may have been deleted.'){
+          wrongLoginEmail.innerHTML = 'Este correo no es valido, por favor corrigelo';
+          wrongLoginEmail.style.color = 'red'
+        }
+      });
+  });
+
+      /*loginWithEmail(loginEmail, loginPassword).then((userCredential) => {
+        const user = userCredential.user.emailVerified;
+        if(user){
+          console.log("logueado");
+          loginForm.reset();
+          console.log("resea el formulario")
+          window.location.hash = 'muro';
+          //showSeccion();
+          console.log("ruta del muro")
+        }
+        }) // fin then
+        .catch((err) => {
+          const wrongLoginPassword = document.querySelector('#wrongpassword');
+          const wrongLoginEmail = document.querySelector('#wrongemail');
+          if (err.message == 'The password is invalid or the user does not have a password.'){
+            wrongLoginPassword.innerHTML = 'La contraseña es incorrecta';
+            wrongLoginPassword.style.color = 'red'
+          }
+          if (err.message == 'There is no user record corresponding to this identifier. The user may have been deleted.'){
+            wrongLoginEmail.innerHTML = 'Este correo no es valido, por favor corrigelo';
+            wrongLoginEmail.style.color = 'red'
+          }
+        }) //Termina login con firebase*/
+    }
+
+// Logearse con google
+const gogleaRegistro = () => {
+  const googleButton = document.querySelector("#google-login");
+  googleButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    googleRegister().then(() => {
+      if (firebase.auth().currentUser) {
+        console.log("te logueaste con google");
+        window.location.hash = 'muro';
+      }
+    });
 });
+    //Termina login google con firebase
+}// ----------
 
-//FLECHAS DE ATRAS Y ADELANTE ------> NO FUNCIONA!
-/*window.onpopstate( () => {
-  if(window.location.pathname === '/login'){
+//FLECHAS DE ATRAS Y ADELANTE
+window.addEventListener('popstate', (event) => {
+  console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+  console.log('POPOPOPOPOP');
+  if(window.location.pathname === 'login'){
     secciones.innerHTML = createLogin;
     console.log(' LOGIN')
-  } else if (window.location.pathname === '/signup'){
+  } else if (window.location.pathname === 'signup'){
     secciones.innerHTML = createSignup;
     console.log(' REGISTRO')
-  }  
-}); */
+  }
+}); // -----------
 
-// login - logearse
-const loginForm = document.querySelector("#login-form");
-const loginButon = document.querySelector('#login-button');
 
-loginButon.addEventListener("click", (e) => {
-  e.preventDefault();
-  console.log("logueandote");
-  const loginEmail = document.querySelector("#login-email").value;
-  const loginPassword = document.querySelector("#login-password").value;
-  console.log(loginEmail, loginPassword);
 
-  auth
-    .signInWithEmailAndPassword(loginEmail, loginPassword)
-    .then((userCredential) => {
-      console.log("logueado");
-      loginForm.reset();
-      window.history.pushState( {} , 'login', '/muro' );
-      secciones.innerHTML = createMuro;
-      /* usuarios - lista en el muro */
-      const allUsers = document.querySelector("#userslist");
+//NUEVA PUBLICACION
+const crearPost = () => {
+  const publiPost = document.querySelector('#publiPost');
+  publiPost.addEventListener('click', async (e) => {
+    e.preventDefault();
 
-      const setupUsers = (data) => {
-        if (data.length) {
-          let html = "";
-          data.forEach((doc) => {
-            const user = doc.data();
-            console.log(user);
-            const li = `
-                      <li class='list-group-item list-group-item-action'>
-                          <h5>${user.username}</h5>
-                          <p>${user.fullname}</p>
-                      </li>`;
-            html += li;
-          });
-          allUsers.innerHTML = html;
-        } else {
-          allUsers.innerHTML = `<p>Login to meet the travelers</p>`;
-        }
-      };
+    // llamar a los inputs
+    const costoInput = document.querySelector('#costoInput');
+    const diasInput = document.querySelector('#diasInput');
+    const nochesInput = document.querySelector('#nochesInput');
+    const ninosInput = document.querySelector('#ninosInput');
+    const tituloPost = document.querySelector('#tituloPost');
+    const contenidoPost = document.querySelector('#contenidoPost');
+    const locacionInput = document.querySelector('#locacionInput');
 
-      // Eventos
-      // Listar los datos para usuarios autenticados
-      auth.onAuthStateChanged((user) => {
-        if (user) {
-          fs.collection("users")
-            .get()
-            .then((snapshot) => {
-              setupUsers(snapshot.docs);
-            });
-        } else {
-          setupUsers([]);
-        }
-      });
-      /* logout - cerrar sesion */
-      const logout = document.querySelector("#logout-button");
-      logout.addEventListener("click", (e) => {
-        e.preventDefault();
-        auth.signOut().then(() => {
-          console.log("cerraste sesion");
-          window.history.pushState( {} , 'muro', '/login' );
-          secciones.innerHTML = createLogin;
-
-        });
-      });
+    if (costoInput.value !=='' && diasInput.value !=='' && nochesInput.value !=='' && personasInput.value !=='' && ninosInput.value !=='' && tituloPost.value !=='' && contenidoPost.value !=='' && locacionInput.value !=='') {
+    const titulo = document.querySelector('#tituloPost').value;
+    const contenido = document.querySelector('#contenidoPost').value;
   
-    });
-});
-
-// login with google - logearse con google hola
-const googleButton = document.querySelector("#google-login");
-googleButton.addEventListener("click", (e) => {
-  e.preventDefault();
-  const provider = new firebase.auth.GoogleAuthProvider();
-  auth
-    .signInWithPopup(provider)
-    .then((result) => {
-      console.log("te logueaste con google");
-      loginForm.reset();
-      window.history.pushState( {} , 'login', '/muro' );
-      secciones.innerHTML = createMuro;
-      /* usuarios - lista en el muro */
-      const allUsers = document.querySelector("#userslist");
-
-      const setupUsers = (data) => {
-        if (data.length) {
-          let html = "";
-          data.forEach((doc) => {
-            const user = doc.data();
-            console.log(user);
-            const li = `
-                      <li class='list-group-item list-group-item-action'>
-                          <h5>${user.username}</h5>
-                          <p>${user.fullname}</p>
-                      </li>`;
-            html += li;
-          });
-          allUsers.innerHTML = html;
-        } else {
-          allUsers.innerHTML = `<p>Login to meet the travelers</p>`;
-        }
-      };
-
-    // Eventos
-    // Listar los datos para usuarios autenticados
-      auth.onAuthStateChanged((user) => {
-        if (user) {
-          fs.collection("users")
-            .get()
-            .then((snapshot) => {
-              setupUsers(snapshot.docs);
-            });
-        } else {
-          setupUsers([]);
-        }
-      });
-      /* logout - cerrar sesion */
-      const logout = document.querySelector("#logout-button");
-      logout.addEventListener("click", (e) => {
-        e.preventDefault();
-        auth.signOut().then(() => {
-          console.log("cerraste sesion");
-          window.history.pushState( {} , 'muro', '/login' );
-          secciones.innerHTML = createLogin;
-
-        });
-      });
-
+    const response = await fs.collection('publicaciones').doc().set({
+      titulo,
+      contenido
     })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+    console.log(response);
+    console.log(titulo, contenido);
+    window.location.hash = 'muro'
 
-
-
-
-
-
+    } else {
+      const mensaje = document.querySelector('#mensajeValidacion');
+      mensaje.innerHTML = 'Por favor llena todos los campos';
+      mensaje.style.color = 'red'
+    }
+  
+    
+  })
+}
 
 
 
