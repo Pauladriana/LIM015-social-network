@@ -25,7 +25,7 @@ const showSeccion = (ruta) => {
     case '#login': { return secciones.innerHTML = createLogin,mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en login");}
     case '#signup': { return secciones.innerHTML = createSignup, botonCancelarRegistro(),  validarRegistro(), console.log("hola estoy en regsitro"); }
     case '#newpost': { return secciones.innerHTML = createNewPost, crearPost(), console.log("hola estoy en crear post"); }
-    case '#muro': { return secciones.innerHTML = createMuro, showFsPost(), showAuthUsers(), cerrarSesion(), console.log("hola estoy en muro"); }
+    case '#muro': { return secciones.innerHTML = createMuro, showFsPost(), showAuthUsers(), cerrarSesion(), /*botonesPost(),*/ console.log("hola estoy en muro"); }
     case '': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en muro"); }
     case '/': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en login"); }
 
@@ -167,7 +167,17 @@ const crearPost = () => {
   const publiPost = document.querySelector('#publiPost');
   publiPost.addEventListener('click', async (e) => {
     e.preventDefault();
-  
+
+    // llamar a los inputs
+    const costoInput = document.querySelector('#costoInput');
+    const diasInput = document.querySelector('#diasInput');
+    const nochesInput = document.querySelector('#nochesInput');
+    const ninosInput = document.querySelector('#ninosInput');
+    const tituloPost = document.querySelector('#tituloPost');
+    const contenidoPost = document.querySelector('#contenidoPost');
+    const locacionInput = document.querySelector('#locacionInput');
+
+    if (costoInput.value !=='' && diasInput.value !=='' && nochesInput.value !=='' && personasInput.value !=='' && ninosInput.value !=='' && tituloPost.value !=='' && contenidoPost.value !=='' && locacionInput.value !=='') {
     const titulo = document.querySelector('#tituloPost').value;
     const contenido = document.querySelector('#contenidoPost').value;
   
@@ -175,10 +185,25 @@ const crearPost = () => {
       titulo,
       contenido
     })
-  
     console.log(response);
     console.log(titulo, contenido);
     window.location.hash = 'muro'
+
+    } else {
+      const mensaje = document.querySelector('#mensajeValidacion');
+      mensaje.innerHTML = 'Por favor llena todos los campos';
+      mensaje.style.color = 'red'
+    }
+  
+    
   })
 }
+
+// boton de eliminar post - falta completar
+/*const botonesPost = () => {
+  const btnDelete = document.querySelectorAll('.btn-delete');
+  console.log(btnDelete);
+  console.log(botonesPost);
+}*/
+
 
