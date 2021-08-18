@@ -25,7 +25,7 @@ const showSeccion = (ruta) => {
     case '#login': { return secciones.innerHTML = createLogin,mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en login");}
     case '#signup': { return secciones.innerHTML = createSignup, botonCancelarRegistro(),  validarRegistro(), console.log("hola estoy en regsitro"); }
     case '#newpost': { return secciones.innerHTML = createNewPost, crearPost(), console.log("hola estoy en crear post"); }
-    case '#muro': { return secciones.innerHTML = createMuro, showFsPost(), showAuthUsers(), cerrarSesion(), console.log("hola estoy en muro"); }
+    case '#muro': { return secciones.innerHTML = createMuro, showFsPost(), showAuthUsers(), cerrarSesion(), /*botonesPost(),*/ console.log("hola estoy en muro"); }
     case '': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en muro"); }
     case '/': { return secciones.innerHTML = createLogin, mostrarContraseña(), botonLogin(), gogleaRegistro(), console.log("hola estoy en login"); }
 
@@ -181,4 +181,12 @@ const crearPost = () => {
     window.location.hash = 'muro'
   })
 }
+
+// boton de eliminar post
+/*const botonesPost = () => {
+  const btnDelete = document.querySelectorAll('.btn-delete');
+  console.log(btnDelete);
+  console.log(botonesPost);
+}*/
+
 
