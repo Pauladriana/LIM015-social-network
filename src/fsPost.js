@@ -26,12 +26,13 @@ export const showFsPost = () => {
         btnDelete.forEach( btn => {
           btn.addEventListener( 'click', async (e) => {
             await deletePost(e.target.dataset.id)
-            window.location.hash = 'muro';
+            //window.location.hash = 'muro';
+            window.location.reload();
           })
         })
         // ---
         // desde firebase se llama get
-        const getPost = (id) => fs.collection('publicaciones').doc(id).get();
+        /*const getPost = (id) => fs.collection('publicaciones').doc(id).get();*/
         // boton editar
         /*const btnEdit = document.querySelectorAll('.btn-edit');
         btnEdit.forEach( btn => {
