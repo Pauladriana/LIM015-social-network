@@ -48,13 +48,18 @@ const showSeccion = (ruta) => {
     }
     case '#viewpost': {
       return (
-        (secciones.innerHTML = viewPost),
+        (secciones.innerHTML = viewPost),            
+        verDataPost(),
+        funcionModal(),
+        removePost(),
         console.log('hola estoy en ver post')
       );
     }
     case '#editpost': {
       return (
         (secciones.innerHTML = editPost),
+        editadoPost(),
+        buttonGuardar(),
         console.log('hola estoy en crear post')
       );
     }
@@ -338,3 +343,105 @@ const crearPost = () => {
   console.log(btnDelete);
   console.log(botonesPost);
 }*/
+
+export const verDataPost = () => {
+  window.addEventListener('hashchange', function() {
+
+  let imagUsuario = document.querySelector('#pepe');
+  let locacionTravel = document.querySelector('#viewLocation');
+  let tituloTravel = document.querySelector('#viewTitulo');
+  let costoTravel = document.querySelector('#viewCosto');
+  let diasTravel = document.querySelector('#viewDias');
+  let nochesTravel = document.querySelector('#viewNoches');
+  let personasTravel = document.querySelector('#viewPersonas');
+  let ninosTravel = document.querySelector('#viewNinos');
+  let contenidoTravel = document.querySelector('#viewContenido');
+  console.log(tituloTravel,localStorage.getItem('titulo'));
+
+    locacionTravel.innerHTML = localStorage.getItem('locacion');
+    tituloTravel.innerHTML = localStorage.getItem('titulo');
+    costoTravel.innerHTML = localStorage.getItem('costo');
+    diasTravel.innerHTML = localStorage.getItem('dias');
+    nochesTravel.innerHTML = localStorage.getItem('noches');
+    personasTravel.innerHTML = localStorage.getItem('personas');
+    ninosTravel.innerHTML = localStorage.getItem('ninos');
+    contenidoTravel.innerHTML = localStorage.getItem('contenido');
+  
+});
+}
+
+// Modales - editar-eliminar y mensaje de confirmacion
+const funcionModal = () => {
+  const showModal = document.querySelector('#optionPost');
+  const modalEditRemove = document.querySelector('#modalEditRemove');
+  const closeModal = document.querySelector('#closeModalEditRomve'); 
+  
+  // mostrar el modal
+  showModal.addEventListener("click", () => {
+    modalEditRemove.style.display = "flex";
+  });
+  
+  // cerrar el modal
+  closeModal.addEventListener("click", ()=> {
+    modalEditRemove.style.display = "none";
+  })
+  
+  const show = document.querySelector('#ShowModalConfirmation');
+  const modal = document.querySelector('#modalRemove');
+  const close = document.querySelector('#closeModal'); 
+  
+  // mostrar el modal
+  show.addEventListener("click", () => {
+    modal.style.display = "flex";
+    modalEditRemove.style.display = "none";
+  });
+  
+  // cerrar el modal
+  close.addEventListener("click", ()=> {
+    modal.style.display = "none";
+  })
+  // fin de los modales
+  }
+
+  // funcion eliminar Post
+  const removePost = () => {
+    const buttonRemove = document.querySelector('#textRemovePost');
+    const deletePost = id => fs.collection('publicaciones').doc(id).delete();
+
+    buttonRemove.addEventListener("click", () => {
+      deletePost(localStorage.getItem('postId')).then(() => {
+        console.log('eliminaste el post')
+        window.location.hash = 'muro';
+      })
+    })
+  }
+
+  // funcion de editar post
+
+  const editadoPost = () => {
+    let locacionTravel = document.querySelector('#editLocation');
+    let tituloTravel = document.querySelector('#editTitulo');
+    let costoTravel = document.querySelector('#editCosto');
+    let diasTravel = document.querySelector('#editDias');
+    let nochesTravel = document.querySelector('#editNoches');
+    let personasTravel = document.querySelector('#editPersonas');
+    let ninosTravel = document.querySelector('#editNinos');
+    let contenidoTravel = document.querySelector('#editContenido');
+  
+      locacionTravel.value = localStorage.getItem('locacion');
+      tituloTravel.value = localStorage.getItem('titulo');
+      costoTravel.value = localStorage.getItem('costo');
+      diasTravel.value = localStorage.getItem('dias');
+      nochesTravel.value = localStorage.getItem('noches');
+      personasTravel.value = localStorage.getItem('personas');
+      ninosTravel.value = localStorage.getItem('ninos');
+      contenidoTravel.value = localStorage.getItem('contenido');
+    
+  }
+
+  // funcion guardar editado del post 
+
+  /*const buttonGuardar = document.querySelector('#guardarPost');
+  buttonGuardar.addEventListener("click" = () => {
+    //fs.collection('publicaciones').doc().update({})
+ })*/

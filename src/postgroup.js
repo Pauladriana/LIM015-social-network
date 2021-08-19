@@ -61,7 +61,7 @@ export const viewPost = `
     <main>
     <section class="usuarioAndButoon">
     <div class="usuarioAndImagen">
-    <img src="./imagen/user.svg" alt="">
+    <img src="./imagen/user.svg" alt="" id="pepe">
     <div class="usuario">
     <p>Usuario1</p>
     <p>@usuario1</p>
@@ -72,37 +72,53 @@ export const viewPost = `
     </section>
     <div class="locacion">
         <img src="./imagen/locacion.svg" alt="" class="locationIcon">
-        <span type="text" class="locationInput" id="editLocation">Locacion</span>
+        <span type="text" class="locationInput" id="viewLocation"></span>
     </div>
     <div class="contenidoViewPost">
-    <h2 class="tituloPost" id="editTitulo">Titulo</h2>
+    <h2 class="tituloPost" id="viewTitulo"></h2>
     <section class="iconos">
       <div id="costo" class="travelOpt">
         <img src="./imagen/cash.svg" alt="" class="iconPost">
-        <p id="editCosto">Costo</p>
+        <p id="viewCosto">Costo</p>
       </div>
       <div id="dias" class="travelOpt">
         <img src="./imagen/sun.svg" alt="" class="iconPost">
-        <p id="editDias">Dias</p>
+        <p id="viewDias">Dias</p>
       </div>
       <div id="noches" class="travelOpt">
         <img src="./imagen/moon.svg" alt="" class="iconPost">
-        <P id="editNoches">Noches</P>
+        <P id="viewNoches">Noches</P>
       </div>
       <div id="personas" class="travelOpt">
         <img src="./imagen/family.svg" alt="" class="iconPost">
-        <p id="editPersonas">personas</p>
+        <p id="viewPersonas">personas</p>
       </div>
       <div id="niños" class="travelOpt">
         <img src="./imagen/child.svg" alt="" class="iconPost">
-        <p id="editNinos">niños</p>
+        <p id="viewNinos">niños</p>
       </div>
       <div class="travelOpt">
         <img src="./imagen/puntos.svg" alt="" id="optionPost">
       </div>
+      <div class="modalEditRemove" id="modalEditRemove">
+      <div class="boxModalEditRemove">
+        <a class="textSecondary xCerrar" id="closeModalEditRomve">x</a><hr>
+        <a href="#editpost" class="textSecondary textoEditRemove">Editar</a>
+        <p class="textSecondary textoEditRemove" id="ShowModalConfirmation" >Eliminar</p>        
+      </div>
+    </div>
+
+    <div class="modalRemove" id="modalRemove">
+      <div class="boxModal">
+        <h3>¿De verdad quieres eliminar esta publicacion?</h3>
+        <p>Luego ya no podra ser recuperada</p><hr>
+        <p class="textPrimary" id="textRemovePost">Eliminar</p><hr>
+        <p class="textSecondary" id="closeModal">Quiero volver</p>
+      </div>
+    </div>
     </section>
     <section class="historia">
-      <p id="editContenido">Era una mañana soleada del 12 de octubre, cuando viaje rumbo a Apurimac en u viaje de tres dias.
+      <p id="viewContenido">Era una mañana soleada del 12 de octubre, cuando viaje rumbo a Apurimac en u viaje de tres dias.
 
       El primer dia visite el Bosque de Piedras y la casa de los pitufos, el camino es bastante cansado por lo que recomiendo usar ropa comoda y calzado especial. Me hospede en una posada que brindaba desayuno con un costo de S/30 la noche.
       
@@ -144,7 +160,7 @@ export const editPost = `
     </div>
     </div>
     <div class="botonGuardar">
-    <button class="publiPost">Guardar</button>
+    <button class="publiPost" id="guardarPost">Guardar</button>
     </div>
     </section>
     <div class="locacion">

@@ -1,3 +1,5 @@
+import {verDataPost} from "./main.js";
+
 export const showFsPost = () => {
     const publicaciones = document.querySelector('#allPost');
     //const logoutOption = document.querySelector('#logout-button');
@@ -41,6 +43,7 @@ export const showFsPost = () => {
               const titlePost = user.tituloPost;
               const contentPost = user.contenidoPost;
               const locationPost = user.locacionInput;
+              const idPost = id;
 
               localStorage.setItem('costo', costoPost);
               localStorage.setItem('dias', diasPost);
@@ -50,6 +53,7 @@ export const showFsPost = () => {
               localStorage.setItem('titulo', titlePost);
               localStorage.setItem('contenido', contentPost);
               localStorage.setItem('locacion', locationPost);
+              localStorage.setItem('postId', idPost);
             }
           }).catch((err) => {
             console.log(err);
@@ -59,7 +63,7 @@ export const showFsPost = () => {
         btnView.forEach( btn => {
           btn.addEventListener( 'click', async (e) => {
             await getPost(e.target.dataset.id);
-            window.location.hash = 'viewpost';
+            window.location.hash = 'viewpost';            
           })
         })
         /*// boton editar
