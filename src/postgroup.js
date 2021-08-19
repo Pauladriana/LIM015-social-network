@@ -54,43 +54,129 @@ export const createNewPost = `
 
 export const viewPost = `
 <body id="postBody">
+    <header class="mainHeader">
+    <span>Traveler.pe</span>
+    <img src="./imagen/user.svg" alt="">
+    </header>
+    <main>
+    <section class="usuarioAndButoon">
+    <div class="usuarioAndImagen">
+    <img src="./imagen/user.svg" alt="">
+    <div class="usuario">
+    <p>Usuario1</p>
+    <p>@usuario1</p>
+    <p>24seguidores</p>
+    </div>
+    </div>
+    
+    </section>
+    <div class="locacion">
+        <img src="./imagen/locacion.svg" alt="" class="locationIcon">
+        <span type="text" class="locationInput" id="editLocation">Locacion</span>
+    </div>
+    <div class="contenidoViewPost">
+    <h2 class="tituloPost" id="editTitulo">Titulo</h2>
+    <section class="iconos">
+      <div id="costo" class="travelOpt">
+        <img src="./imagen/cash.svg" alt="" class="iconPost">
+        <p id="editCosto">Costo</p>
+      </div>
+      <div id="dias" class="travelOpt">
+        <img src="./imagen/sun.svg" alt="" class="iconPost">
+        <p id="editDias">Dias</p>
+      </div>
+      <div id="noches" class="travelOpt">
+        <img src="./imagen/moon.svg" alt="" class="iconPost">
+        <P id="editNoches">Noches</P>
+      </div>
+      <div id="personas" class="travelOpt">
+        <img src="./imagen/family.svg" alt="" class="iconPost">
+        <p id="editPersonas">personas</p>
+      </div>
+      <div id="niños" class="travelOpt">
+        <img src="./imagen/child.svg" alt="" class="iconPost">
+        <p id="editNinos">niños</p>
+      </div>
+      <div class="travelOpt">
+        <img src="./imagen/puntos.svg" alt="" id="optionPost">
+      </div>
+    </section>
+    <section class="historia">
+      <p id="editContenido">Era una mañana soleada del 12 de octubre, cuando viaje rumbo a Apurimac en u viaje de tres dias.
+
+      El primer dia visite el Bosque de Piedras y la casa de los pitufos, el camino es bastante cansado por lo que recomiendo usar ropa comoda y calzado especial. Me hospede en una posada que brindaba desayuno con un costo de S/30 la noche.
+      
+      Tambien almorce en diferentes restaurantes. El precio promedio del menu es de S/6. 
+      
+      En total gasté S/400 por tres dias, incluyendo el pasaje terrestre.
+      
+      Recomiendo mucho visitar Apurimac!</p>      
+    </section>
+    </div>
+    </main>
+  <footer class="opcionesFoot">
+    <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
+    <a href="#"><img src="./imagen/buscar.svg" alt="">
+    <a href="#newpost"><img src="./imagen/subir.svg" alt="">
+    <a href="#"><img src="./imagen/notificaciones.svg" alt="">
+    <a href="#"><img src="./imagen/mensajes.svg" alt="">
+  </footer>
+</body>`;
+
+export const editPost = `
+<body id="postBody">
   <header class="mainHeader">
     <span>Traveler.pe</span>
     <img src="./imagen/user.svg" alt="">
   </header>
   <main>
     <section class="fotografias">
-      <img src="./imagen/apurimac3.svg" alt="">
+      <img src="./imagen/imagenCuscoEDIT.svg" alt="">
     </section>
+    <section class="usuarioAndButoon">
+    
+    <div class="usuarioAndImagen">
+    <img src="./imagen/user.svg" alt="">
+    <div class="usuario">
+    <p>Usuario1</p>
+    <p>@usuario1</p>
+    <p>24seguidores</p>
+    </div>
+    </div>
+    <div class="botonGuardar">
+    <button class="publiPost">Guardar</button>
+    </div>
+    </section>
+    <div class="locacion">
+        <img src="./imagen/locacion.svg" alt="" class="locationIcon">
+        <input type="text" class="locationInput" id="editLocation" placeholder="Locacion">
+    </div>
+    <input type="text" class="tituloPost" placeholder="Titulo" id="editTitulo">
     <section class="iconos">
       <div id="costo" class="travelOpt">
         <img src="./imagen/cash.svg" alt="" class="iconPost">
-        <input type="number" class="inputPost" id="costoInput">
+        <input type="number" class="inputPost" id="editCosto">
       </div>
       <div id="dias" class="travelOpt">
         <img src="./imagen/sun.svg" alt="" class="iconPost">
-        <input type="number" class="inputPost" id="diasInput">
+        <input type="number" class="inputPost" id="editDias">
       </div>
       <div id="noches" class="travelOpt">
         <img src="./imagen/moon.svg" alt="" class="iconPost">
-        <input type="number" class="inputPost" id="nochesInput">
+        <input type="number" class="inputPost" id="editNoches">
       </div>
       <div id="personas" class="travelOpt">
         <img src="./imagen/family.svg" alt="" class="iconPost">
-        <input type="number" class="inputPost" id="personasInput">
+        <input type="number" class="inputPost" id="editPersonas">
       </div>
       <div id="niños" class="travelOpt">
         <img src="./imagen/child.svg" alt="" class="iconPost">
-        <input type="number" class="inputPost" id="ninosInput">
+        <input type="number" class="inputPost" id="editNinos">
       </div>
     </section>
     <section class="historia">
-      <input type="text" class="tituloPost" id="tituloPost" placeholder="Titula tu experiencia...">
-      <textarea class="contenidoPost" id="contenidoPost" placeholder="Cuentanos sobre tu viaje..."></textarea>
-      <div class="locacion">
-        <img src="./imagen/locacion.svg" alt="" class="locationIcon">
-        <input type="text" class="locationInput" id="locacionInput" placeholder="Ubicacion del viaje">
-      </div>
+      <textarea class="contenidoPost" id="editContenido" placeholder="Cuenta tu historia"></textarea>
+      
     </section>
   </main>
   <footer class="opcionesFoot">

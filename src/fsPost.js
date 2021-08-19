@@ -1,7 +1,6 @@
-export const showFsPost = () => { 
+export const showFsPost = () => {
     const publicaciones = document.querySelector('#allPost');
     //const logoutOption = document.querySelector('#logout-button');
-    
     const setupPost = (data) => {
       if (data.length) {
         let html = '';
@@ -11,15 +10,14 @@ export const showFsPost = () => {
           // console.log(user)
           const div = `
                     <div class='postDiv'>
-                      <h5>USUARIO FULANO</h5>
-                      <h5>${post.titulo}</h5>
-                      <p>${post.contenido}</p>
-                      <a href='#newpost'>Ver Mas</a>
+                      <h5>${post.tituloPost}</h5>
+                      <p>${post.contenidoPost}</p>
+                      <button class="btn-ver" data-id="${post.id}" >Ver</button>
                     </div>`;
           html += div;
         });
         publicaciones.innerHTML = html;
-        // desde firebase elimina
+        /*// desde firebase elimina
         const deletePost = id => fs.collection('publicaciones').doc(id).delete();
         // boton eliminar
         const btnDelete = document.querySelectorAll('.btn-delete');
@@ -28,31 +26,53 @@ export const showFsPost = () => {
             await deletePost(e.target.dataset.id);
             window.location.reload();
           });
-        });
+        });*/
         // desde firebase se llama get
-        const getPost = (id) => fs.collection('publicaciones').doc(id).get();
-        // boton editar
-        const btnEdit = document.querySelectorAll('.btn-edit');
-        btnEdit.forEach( btn => {
+        const getPost = (id) => {
+          fs.collection('publicaciones').doc(id).get().then((ele)=>{
+            console.log(ele.data());
+            if (ele.data()) {
+              const user = ele.data();
+              const costoPost = user.costoInput;
+              const diasPost = user.diasInput;
+              const nochesPost = user.nochesInput;
+              const ninosPost = user.ninosInput;
+              const peoplePost = user.personasInput;
+              const titlePost = user.tituloPost;
+              const contentPost = user.contenidoPost;
+              const locationPost = user.locacionInput;
+
+              localStorage.setItem('costo', costoPost);
+              localStorage.setItem('dias', diasPost);
+              localStorage.setItem('noches', nochesPost);
+              localStorage.setItem('ninos', ninosPost);
+              localStorage.setItem('personas', peoplePost);
+              localStorage.setItem('titulo', titlePost);
+              localStorage.setItem('contenido', contentPost);
+              localStorage.setItem('locacion', locationPost);
+            }
+          }).catch((err) => {
+            console.log(err);
+          })
+        };
+        const btnView = document.querySelectorAll('.btn-ver');
+        btnView.forEach( btn => {
           btn.addEventListener( 'click', async (e) => {
-            const postId = await getPost(e.target.dataset.id);
-            console.log(postId.data());
-            const task = postId.data();
-            window.location.hash = 'newpost';
-            window.addEventListener('DOMContentLoaded', () => {
-              const algo = document.getElementById('#tituloPost');
-              console.log(algo)
-            })
-            const algo = document.getElementById('#tituloPost').value;
-            console.log(algo);
-            document.getElementById('#tituloPost').value = task.titulo;
-            console.log(document.querySelector('#tituloPost'));
-            document.querySelector('#contenidoPost').value = task.contenido;
+            await getPost(e.target.dataset.id);
+            window.location.hash = 'viewpost';
           })
         })
+        /*// boton editar
+        const btnEdit = document.querySelectorAll('btn-edit');
+        btnEdit.forEach( btn => {
+          btn.addEventListener( 'click', async (e) => {
+            window.location.hash = '#newpost';
+            await getPost(e.target.dataset.id);
+          })
+        })*/
+        // ---
       }
     };
-  
     const auth = firebase.auth();
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -67,7 +87,6 @@ export const showFsPost = () => {
       };
     });
   };
-  
   //EDITAR POST
   export const editPost = (idPost, description) => {
     // Obtener acceso a Firestore
@@ -78,43 +97,6 @@ export const showFsPost = () => {
   };
 
 
-/*BOTONES DE ELIMINAR Y MODIFICAR
-<button class="btn-delete" data-id="${post.id}" >Eliminar</button>
-<button class="btn-edit" data-id="${post.id}">Modificar</button>
-*/
 
-
-
-//VISTA DEL POST
-export const showPostInfo = () => {
-  const postTitle = document.querySelector('#allPost');
-  
-  const setupPost = (data) => {
-    if (data.length) {
-      let html = '';
-      data.forEach((doc) => {
-        const post = doc.data();
-        post.id = doc.id;
-        // console.log(user)
-        const titulo = `
-                    <h5>${post.titulo}</h5>`;
-        html += titulo;
-      });
-      postTitle.innerHTML = html;
-    }
-  };
-
-  const auth = firebase.auth();
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      const fs = firebase.firestore();
-      fs.collection('publicaciones')
-        .get()
-        .then((snapshot) => {
-          setupPost(snapshot.docs);
-        });
-    } else {
-      setupPost([]);
-    }
-  });
-};
+/*<button class="btn-delete" data-id="${post.id}" >Eliminar</button>
+<button class="btn-edit" data-id="${post.id}">Modificar</button>*/

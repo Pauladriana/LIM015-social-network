@@ -245,6 +245,7 @@ button {
 
 .travelOpt{
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: space-between;
     margin: 5px;
@@ -266,7 +267,7 @@ button {
 
 .iconPost{
     width: 25px;
-    margin: auto;
+    margin: 5px;
     margin-bottom: 5px;
 }
 
@@ -348,6 +349,69 @@ button {
     border-radius: 10px;
     margin: 30px;
 }
+
+.userImg{
+    width: 50px;
+}
+
+.userData{
+   display: flex;
+   flex-direction: row; 
+   justify-content: flex-start;
+}
+
+.userText{
+    padding: 0;
+    margin: 1px;
+}
+
+.userName, .userId, .userFollowers{
+    margin: 2px;
+}
+
+#optPost{
+    width: 5px;
+}
+
+/* editpost*/
+.usuarioAndButoon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding:10px 20px 10px 20px;
+}
+
+.usuario {
+    line-height: 3px;
+    margin-left: 10px;
+}
+
+.usuario p  {
+    text-align: left;
+}
+
+.usuarioAndImagen {
+    display: flex;
+    width:25px;
+}
+
+#optPost{
+    margin-left: 115px;
+}
+
+/* viewpost */
+#optionPost {
+    margin-left: 86px;
+    margin-top: 9px;
+}
+
+.contenidoViewPost {
+    border: 1px solid #DFDFDF;
+    border-radius: 15px;
+    margin-top: 25px;
+}
+
 
 
 /* media query, min-width ancho igual o superior, max-width ancho igual o menor*/
@@ -442,3 +506,4 @@ button {
         margin-top: 7%;
     }
 }
+
