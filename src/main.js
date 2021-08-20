@@ -153,7 +153,8 @@ const botonLogin = () => {
       .then(() => {
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
-            console.log('logueo exitoso');
+            console.log('logueo exitoso', user);
+            localStorage.setItem('user', JSON.stringify(user.providerData[0]));
             window.location.hash = 'muro';
           }
         });
@@ -214,6 +215,7 @@ const validateEmail = (user) => {
       // Si no encuentra el email que se quiere registrar; el valor de tmp será undefined, por ende agrega el nuevo user en base de datos
       // si encuentra el email en base de datos; el valor de tmp será el user encontrado , por ende solo cambia la vista a muro
       if (tmp != undefined) {
+        localStorage.setItem('user', JSON.stringify(user));
         console.log('usuario existente logueado');
         window.location.hash = 'muro';
       } else {
@@ -225,6 +227,7 @@ const validateEmail = (user) => {
           email: user.email,
         })
         .then((docRef) => {
+          localStorage.setItem('user', JSON.stringify(user));
           console.log('Creado y agregado a database');
           window.location.hash = 'muro';
           // console.log('Este es el nuevo usuario: ' + docRef.id);
@@ -317,6 +320,8 @@ const crearPost = () => {
       const contenidoPost = document.querySelector('#contenidoPost').value;
       const locacionInput = document.querySelector('#locacionInput').value;
 
+      const email = JSON.parse(localStorage.getItem('user')).email;
+      console.log(JSON.parse(localStorage.getItem('user')).email);
       const response = await fs.collection('publicaciones').doc().set({
         costoInput,
         diasInput,
@@ -325,7 +330,8 @@ const crearPost = () => {
         ninosInput,
         tituloPost,
         contenidoPost,
-        locacionInput
+        locacionInput,
+        email
       });
       console.log(response);
       console.log(tituloPost, contenidoPost);

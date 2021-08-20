@@ -10,7 +10,6 @@ export const showFsPost = () => {
           post.id = doc.id;
           // console.log(user)
           const div = `
-
                     <div class='postDiv' data-id="${post.id}">
                       <div class="muroLocation">
                       <img src="./imagen/locacion.svg" alt="" class="locationIcon">
@@ -70,8 +69,7 @@ export const showFsPost = () => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         const fs = firebase.firestore();
-        fs.collection('publicaciones')
-          .get()
+        fs.collection('publicaciones').get()
           .then((snapshot) => {
             setupPost(snapshot.docs);
           });

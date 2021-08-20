@@ -6,6 +6,7 @@ export const cerrarSesion = () => {
   logout.addEventListener("click", (e) => {
     e.preventDefault();
     auth.signOut().then(() => {
+      localStorage.clear();
       console.log("cerraste sesion");
       window.location.hash = 'login';
       console.log("regreso al login")
