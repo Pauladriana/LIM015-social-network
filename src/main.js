@@ -46,6 +46,7 @@ const showSeccion = (ruta) => {
         console.log('hola estoy en crear post')
       );
     }
+
     case '#viewpost': {
       return (
         (secciones.innerHTML = viewPost),
@@ -68,7 +69,6 @@ const showSeccion = (ruta) => {
         (secciones.innerHTML = createMuro),
         showFsPost(),
         showAuthUsers(),
-        //darLike(),
         cerrarSesion(),
         /*botonesPost(),*/ console.log('hola estoy en muro')
       );
@@ -366,8 +366,6 @@ const dataPost = () => {
     ninosTravel.innerHTML = localStorage.getItem('ninos');
     contenidoTravel.innerHTML = localStorage.getItem('contenido');
 }
-  //window.addEventListener('hashchange', function() {
-
 
 // Modales - editar-eliminar y mensaje de confirmacion
 const funcionModal = () => {
@@ -476,3 +474,4 @@ const savePost = () => {
     heart.style.color = "red";
   })
 }*/
+

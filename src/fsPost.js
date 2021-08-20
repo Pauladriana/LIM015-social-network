@@ -10,6 +10,7 @@ export const showFsPost = () => {
           post.id = doc.id;
           // console.log(user)
           const div = `
+
                     <div class='postDiv' data-id="${post.id}">
                       <div class="muroLocation">
                       <img src="./imagen/locacion.svg" alt="" class="locationIcon">
@@ -24,16 +25,6 @@ export const showFsPost = () => {
           html += div;
         });
         publicaciones.innerHTML = html;
-        /*// desde firebase elimina
-        const deletePost = id => fs.collection('publicaciones').doc(id).delete();
-        // boton eliminar
-        const btnDelete = document.querySelectorAll('.btn-delete');
-        btnDelete.forEach( btn => {
-          btn.addEventListener( 'click', async (e) => {
-            await deletePost(e.target.dataset.id);
-            window.location.reload();
-          });
-        });*/
         // desde firebase se llama get
         const getPost = (id) => {
           fs.collection('publicaciones').doc(id).get().then((ele)=>{
@@ -73,15 +64,6 @@ export const showFsPost = () => {
             
           })
         })
-        /*// boton editar
-        const btnEdit = document.querySelectorAll('btn-edit');
-        btnEdit.forEach( btn => {
-          btn.addEventListener( 'click', async (e) => {
-            window.location.hash = '#newpost';
-            await getPost(e.target.dataset.id);
-          })
-        })*/
-        // ---
       }
     };
     const auth = firebase.auth();
@@ -98,16 +80,3 @@ export const showFsPost = () => {
       };
     });
   };
-  //EDITAR POST
-  export const editPost = (idPost, description) => {
-    // Obtener acceso a Firestore
-    const db = firebase.firestore();
-    return db.collection('post').doc(idPost).update({
-      description,
-    });
-  };
-
-
-
-/*<button class="btn-delete" data-id="${post.id}" >Eliminar</button>
-<button class="btn-edit" data-id="${post.id}">Modificar</button>*/
