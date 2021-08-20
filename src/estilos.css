@@ -392,8 +392,8 @@ button {
 
 .postDiv {
     background-image: url("/imagen/machu.png");
+    background-repeat: no-repeat;
     width: 34%;
-    /*border: 1px solid #CAD95B; ya saleeeeeee la imagen c: me voy feliz*/
     padding: 5px 10px 5px;
     border-radius: 10px;
     margin: 15px;
@@ -420,6 +420,7 @@ button {
 
 #optPost{
     width: 5px;
+    margin-left: 115px;
 }
 
 /* editpost*/
@@ -443,10 +444,6 @@ button {
 .usuarioAndImagen {
     display: flex;
     width:25px;
-}
-
-#optPost{
-    margin-left: 115px;
 }
 
 /* viewpost */
