@@ -40,10 +40,10 @@ global.firebase = new MockFirebase(fixtureData);
 
 describe('Add Post', () => {
   it('Debería crearse un post ', () => addPost('300', '6', '5', '3', '1', 'Una semana en Cusco', 'Pudimos visitar Machu Picchu', 'Cusco').then(() => {
-    /*const newpost = getPubli('post2');
-    expect(newPost.tituloPost).toBe('Una semana en Cusco');
-    }))*/
-});
+    //const newpost = getPubli('post2');
+    //expect(newPost.tituloPost).toBe('Una semana en Cusco');
+    }))
+})
 
 describe('Delete Post', () => {
   it('Debería eliminar un post con id: post2', () => deletePost('post2').then(() => {
