@@ -48,8 +48,8 @@ const showSeccion = (ruta) => {
     }
     case '#viewpost': {
       return (
-        (secciones.innerHTML = viewPost),            
-        verDataPost(),
+        (secciones.innerHTML = viewPost),
+        window.addEventListener('hashchange', dataPost()),
         funcionModal(),
         removePost(),
         console.log('hola estoy en ver post')
@@ -59,7 +59,7 @@ const showSeccion = (ruta) => {
       return (
         (secciones.innerHTML = editPost),
         editadoPost(),
-        buttonGuardar(),
+        savePost(),
         console.log('hola estoy en crear post')
       );
     }
@@ -68,6 +68,7 @@ const showSeccion = (ruta) => {
         (secciones.innerHTML = createMuro),
         showFsPost(),
         showAuthUsers(),
+        //darLike(),
         cerrarSesion(),
         /*botonesPost(),*/ console.log('hola estoy en muro')
       );
@@ -344,9 +345,7 @@ const crearPost = () => {
   console.log(botonesPost);
 }*/
 
-export const verDataPost = () => {
-  window.addEventListener('hashchange', function() {
-
+const dataPost = () => {
   let imagUsuario = document.querySelector('#pepe');
   let locacionTravel = document.querySelector('#viewLocation');
   let tituloTravel = document.querySelector('#viewTitulo');
@@ -366,9 +365,9 @@ export const verDataPost = () => {
     personasTravel.innerHTML = localStorage.getItem('personas');
     ninosTravel.innerHTML = localStorage.getItem('ninos');
     contenidoTravel.innerHTML = localStorage.getItem('contenido');
-  
-});
 }
+  //window.addEventListener('hashchange', function() {
+
 
 // Modales - editar-eliminar y mensaje de confirmacion
 const funcionModal = () => {
@@ -440,8 +439,40 @@ const funcionModal = () => {
   }
 
   // funcion guardar editado del post 
+const savePost = () => {
+  const buttonGuardar = document.querySelector('#guardarPost');
 
-  /*const buttonGuardar = document.querySelector('#guardarPost');
-  buttonGuardar.addEventListener("click" = () => {
-    //fs.collection('publicaciones').doc().update({})
- })*/
+  const fsUpdate = id => fs.collection('publicaciones').doc(id)
+  buttonGuardar.addEventListener('click', () => {
+    let locacionTravel = document.querySelector('#editLocation');
+    let tituloTravel = document.querySelector('#editTitulo');
+    let costoTravel = document.querySelector('#editCosto');
+    let diasTravel = document.querySelector('#editDias');
+    let nochesTravel = document.querySelector('#editNoches');
+    let personasTravel = document.querySelector('#editPersonas');
+    let ninosTravel = document.querySelector('#editNinos');
+    let contenidoTravel = document.querySelector('#editContenido');
+
+
+    fsUpdate(localStorage.getItem('postId')).update({
+      locacionInput: locacionTravel.value,
+      tituloPost: tituloTravel.value,
+      costoInput: costoTravel.value,
+      diasInput: diasTravel.value,
+      nochesInput: nochesTravel.value,
+      ninosInput: ninosTravel.value,
+      personasInput: personasTravel.value,
+      contenidoPost: contenidoTravel.value,
+    }).then(() => {
+      console.log('editaste el post')
+      window.location.hash = 'muro';
+    });
+ });
+}
+
+/*const darLike = () => {
+  const heart = document.querySelector("#heartPost");
+  heart.addEventListener('click', () => {
+    heart.style.color = "red";
+  })
+}*/

@@ -339,15 +339,64 @@ button {
     background-color: white;
 }
 
+/* muro */
+.allPost {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.muroLocation {
+    display: flex;
+    background: #ffffff7a;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 0px 10px;
+}
+.muroLocation p {
+    margin-left: 5px;
+}
+
 .muroContent {
     margin-bottom: 15%;
 }
 
+.muroLike {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.muroLike p {
+    color: #000;
+    display: flex;
+    background: #ffffff7a;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 0px 10px;
+}
+
+.muroLike i {
+    color: white;
+}
+
+.contadorLikes {
+    background: #ffffff7a;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 0px 10px;
+}
+
+.contadorLikes span {
+    margin: 5px;
+}
+
 .postDiv {
-    border: 1px solid #CAD95B;
-    padding: 10px 10px 33px;
+    background-image: url("/imagen/machu.png");
+    width: 34%;
+    /*border: 1px solid #CAD95B; ya saleeeeeee la imagen c: me voy feliz*/
+    padding: 5px 10px 5px;
     border-radius: 10px;
-    margin: 30px;
+    margin: 15px;
 }
 
 .userImg{

@@ -1,4 +1,3 @@
-import {verDataPost} from "./main.js";
 
 export const showFsPost = () => {
     const publicaciones = document.querySelector('#allPost');
@@ -11,10 +10,16 @@ export const showFsPost = () => {
           post.id = doc.id;
           // console.log(user)
           const div = `
-                    <div class='postDiv'>
+                    <div class='postDiv' data-id="${post.id}">
+                      <div class="muroLocation">
+                      <img src="./imagen/locacion.svg" alt="" class="locationIcon">
+                      <p>${post.locacionInput}</p>
+                      </div>
                       <h5>${post.tituloPost}</h5>
-                      <p>${post.contenidoPost}</p>
-                      <button class="btn-ver" data-id="${post.id}" >Ver</button>
+                      <div class="muroLike">
+                      <p>Usuario</p>
+                      <div class= "contadorLikes" ><i class="fas fa-heart" id="heartPost"></i><span>7</span></div>
+                      </div>
                     </div>`;
           html += div;
         });
@@ -59,11 +64,13 @@ export const showFsPost = () => {
             console.log(err);
           })
         };
-        const btnView = document.querySelectorAll('.btn-ver');
+        const btnView = document.querySelectorAll('.postDiv');
         btnView.forEach( btn => {
           btn.addEventListener( 'click', async (e) => {
             await getPost(e.target.dataset.id);
-            window.location.hash = 'viewpost';            
+              console.log('estas viendo el post el post')
+              window.location.hash = 'viewpost';
+            
           })
         })
         /*// boton editar
