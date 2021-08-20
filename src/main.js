@@ -1,5 +1,5 @@
 import {createLogin, createSignup, createMuro} from './logingroup.js';
-import {createNewPost} from './postgroup.js';
+import {createNewPost, viewPost, editPost} from './postgroup.js';
 import {showAuthUsers} from './authuser.js';
 import {showFsPost} from './fsPost.js';
 import {cerrarSesion} from './logout.js';
@@ -43,6 +43,24 @@ const showSeccion = (ruta) => {
       return (
         (secciones.innerHTML = createNewPost),
         crearPost(),
+        console.log('hola estoy en crear post')
+      );
+    }
+
+    case '#viewpost': {
+      return (
+        (secciones.innerHTML = viewPost),
+        window.addEventListener('hashchange', dataPost()),
+        funcionModal(),
+        removePost(),
+        console.log('hola estoy en ver post')
+      );
+    }
+    case '#editpost': {
+      return (
+        (secciones.innerHTML = editPost),
+        editadoPost(),
+        savePost(),
         console.log('hola estoy en crear post')
       );
     }
@@ -326,3 +344,134 @@ const crearPost = () => {
   console.log(btnDelete);
   console.log(botonesPost);
 }*/
+
+const dataPost = () => {
+  let imagUsuario = document.querySelector('#pepe');
+  let locacionTravel = document.querySelector('#viewLocation');
+  let tituloTravel = document.querySelector('#viewTitulo');
+  let costoTravel = document.querySelector('#viewCosto');
+  let diasTravel = document.querySelector('#viewDias');
+  let nochesTravel = document.querySelector('#viewNoches');
+  let personasTravel = document.querySelector('#viewPersonas');
+  let ninosTravel = document.querySelector('#viewNinos');
+  let contenidoTravel = document.querySelector('#viewContenido');
+  console.log(tituloTravel,localStorage.getItem('titulo'));
+
+    locacionTravel.innerHTML = localStorage.getItem('locacion');
+    tituloTravel.innerHTML = localStorage.getItem('titulo');
+    costoTravel.innerHTML = localStorage.getItem('costo');
+    diasTravel.innerHTML = localStorage.getItem('dias');
+    nochesTravel.innerHTML = localStorage.getItem('noches');
+    personasTravel.innerHTML = localStorage.getItem('personas');
+    ninosTravel.innerHTML = localStorage.getItem('ninos');
+    contenidoTravel.innerHTML = localStorage.getItem('contenido');
+}
+
+// Modales - editar-eliminar y mensaje de confirmacion
+const funcionModal = () => {
+  const showModal = document.querySelector('#optionPost');
+  const modalEditRemove = document.querySelector('#modalEditRemove');
+  const closeModal = document.querySelector('#closeModalEditRomve'); 
+  
+  // mostrar el modal
+  showModal.addEventListener("click", () => {
+    modalEditRemove.style.display = "flex";
+  });
+  
+  // cerrar el modal
+  closeModal.addEventListener("click", ()=> {
+    modalEditRemove.style.display = "none";
+  })
+  
+  const show = document.querySelector('#ShowModalConfirmation');
+  const modal = document.querySelector('#modalRemove');
+  const close = document.querySelector('#closeModal'); 
+  
+  // mostrar el modal
+  show.addEventListener("click", () => {
+    modal.style.display = "flex";
+    modalEditRemove.style.display = "none";
+  });
+  
+  // cerrar el modal
+  close.addEventListener("click", ()=> {
+    modal.style.display = "none";
+  })
+  // fin de los modales
+  }
+
+  // funcion eliminar Post
+  const removePost = () => {
+    const buttonRemove = document.querySelector('#textRemovePost');
+    const deletePost = id => fs.collection('publicaciones').doc(id).delete();
+
+    buttonRemove.addEventListener("click", () => {
+      deletePost(localStorage.getItem('postId')).then(() => {
+        console.log('eliminaste el post')
+        window.location.hash = 'muro';
+      })
+    })
+  }
+
+  // funcion de editar post
+
+  const editadoPost = () => {
+    let locacionTravel = document.querySelector('#editLocation');
+    let tituloTravel = document.querySelector('#editTitulo');
+    let costoTravel = document.querySelector('#editCosto');
+    let diasTravel = document.querySelector('#editDias');
+    let nochesTravel = document.querySelector('#editNoches');
+    let personasTravel = document.querySelector('#editPersonas');
+    let ninosTravel = document.querySelector('#editNinos');
+    let contenidoTravel = document.querySelector('#editContenido');
+  
+      locacionTravel.value = localStorage.getItem('locacion');
+      tituloTravel.value = localStorage.getItem('titulo');
+      costoTravel.value = localStorage.getItem('costo');
+      diasTravel.value = localStorage.getItem('dias');
+      nochesTravel.value = localStorage.getItem('noches');
+      personasTravel.value = localStorage.getItem('personas');
+      ninosTravel.value = localStorage.getItem('ninos');
+      contenidoTravel.value = localStorage.getItem('contenido');
+    
+  }
+
+  // funcion guardar editado del post 
+const savePost = () => {
+  const buttonGuardar = document.querySelector('#guardarPost');
+
+  const fsUpdate = id => fs.collection('publicaciones').doc(id)
+  buttonGuardar.addEventListener('click', () => {
+    let locacionTravel = document.querySelector('#editLocation');
+    let tituloTravel = document.querySelector('#editTitulo');
+    let costoTravel = document.querySelector('#editCosto');
+    let diasTravel = document.querySelector('#editDias');
+    let nochesTravel = document.querySelector('#editNoches');
+    let personasTravel = document.querySelector('#editPersonas');
+    let ninosTravel = document.querySelector('#editNinos');
+    let contenidoTravel = document.querySelector('#editContenido');
+
+
+    fsUpdate(localStorage.getItem('postId')).update({
+      locacionInput: locacionTravel.value,
+      tituloPost: tituloTravel.value,
+      costoInput: costoTravel.value,
+      diasInput: diasTravel.value,
+      nochesInput: nochesTravel.value,
+      ninosInput: ninosTravel.value,
+      personasInput: personasTravel.value,
+      contenidoPost: contenidoTravel.value,
+    }).then(() => {
+      console.log('editaste el post')
+      window.location.hash = 'muro';
+    });
+ });
+}
+
+/*const darLike = () => {
+  const heart = document.querySelector("#heartPost");
+  heart.addEventListener('click', () => {
+    heart.style.color = "red";
+  })
+}*/
+

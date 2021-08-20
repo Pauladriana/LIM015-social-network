@@ -245,6 +245,7 @@ button {
 
 .travelOpt{
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: space-between;
     margin: 5px;
@@ -266,7 +267,7 @@ button {
 
 .iconPost{
     width: 25px;
-    margin: auto;
+    margin: 5px;
     margin-bottom: 5px;
 }
 
@@ -338,10 +339,195 @@ button {
     background-color: white;
 }
 
+/* muro */
+.allPost {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.muroLocation {
+    display: flex;
+    background: #ffffff7a;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 0px 10px;
+}
+.muroLocation p {
+    margin-left: 5px;
+}
+
 .muroContent {
     margin-bottom: 15%;
 }
 
+.muroLike {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+
+.muroLike p {
+    color: #000;
+    display: flex;
+    background: #ffffff7a;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 0px 10px;
+}
+
+.muroLike i {
+    color: white;
+}
+
+.contadorLikes {
+    background: #ffffff7a;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 0px 10px;
+}
+
+.contadorLikes span {
+    margin: 5px;
+}
+
+.postDiv {
+    background-image: url("/imagen/machu.png");
+    width: 34%;
+    /*border: 1px solid #CAD95B; ya saleeeeeee la imagen c: me voy feliz*/
+    padding: 5px 10px 5px;
+    border-radius: 10px;
+    margin: 15px;
+}
+
+.userImg{
+    width: 50px;
+}
+
+.userData{
+   display: flex;
+   flex-direction: row; 
+   justify-content: flex-start;
+}
+
+.userText{
+    padding: 0;
+    margin: 1px;
+}
+
+.userName, .userId, .userFollowers{
+    margin: 2px;
+}
+
+#optPost{
+    width: 5px;
+}
+
+/* editpost*/
+.usuarioAndButoon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding:10px 20px 10px 20px;
+}
+
+.usuario {
+    line-height: 3px;
+    margin-left: 10px;
+}
+
+.usuario p  {
+    text-align: left;
+}
+
+.usuarioAndImagen {
+    display: flex;
+    width:25px;
+}
+
+#optPost{
+    margin-left: 115px;
+}
+
+/* viewpost */
+#optionPost {
+    margin-left: 86px;
+    margin-top: 9px;
+}
+
+.contenidoViewPost {
+    border: 1px solid #DFDFDF;
+    border-radius: 15px;
+    margin-top: 25px;
+}
+
+/* viewPost */
+hr {
+    border-top: 1px solid #F4F4F4;
+  }
+  
+  .textPrimary {
+    color: #CAD95B;
+    cursor: pointer;
+  }
+
+  .xCerrar {
+    font-size: 23px;
+  }
+
+  .textoEditRemove {
+    font-size: 15px;
+  }
+  .textSecondary {
+    cursor: pointer;
+    color: #000;
+  }
+  
+  /* Modal editar o eliminar*/
+  .modalEditRemove {
+      display: none;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+  }
+  
+  .boxModalEditRemove{
+      padding: 10px;
+      width: 95%;
+      position: absolute;
+      bottom: 0;
+      background: #ffffff;
+      border-radius: 15px 15px 0px 0px;
+      text-align: left;
+      color: #666666;
+  }
+  
+  /*modal eliminar*/
+  .modalRemove {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+  }
+  .boxModal{
+      padding: 15px;
+      width: 65%;
+      height: 28%;
+      margin: auto auto;
+      background: #ffffff;
+      border-radius: 10px;
+      text-align: center;
+      color: #666666;
+  }
 
 /* media query, min-width ancho igual o superior, max-width ancho igual o menor*/
 /* celular */
@@ -435,3 +621,4 @@ button {
         margin-top: 7%;
     }
 }
+
