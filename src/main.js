@@ -5,6 +5,7 @@ import {showFsPost} from './fsPost.js';
 import {cerrarSesion} from './logout.js';
 import {googleRegister, loginWithEmail} from './login.js';
 import {validarRegistro} from './validaciones.js';
+import {showCommentary} from './comentario.js';
 
 //RUTA SIN #
 /*const changeRoute = (hash) => {
@@ -51,6 +52,7 @@ const showSeccion = (ruta) => {
       return (
         (secciones.innerHTML = viewPost),
         window.addEventListener('hashchange', dataPost()),
+        showCommentary(),
         funcionModal(),
         removePost(),
         console.log('hola estoy en ver post')

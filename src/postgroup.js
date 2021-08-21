@@ -129,6 +129,8 @@ export const viewPost = `
       Recomiendo mucho visitar Apurimac!</p>      
     </section>
     </div>
+    <section class="commentary" id="commentary">
+    </section>
     </main>
   <footer class="opcionesFoot">
     <a href="#muro"><img src="./imagen/home.svg" alt=""></a>

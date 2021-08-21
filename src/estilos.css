@@ -53,7 +53,7 @@ input{
     width: 240px;
     height: 30px;
     padding: 5px 10px 5px 10px;
-    color: #C4C4C4;
+    color: #666666;
     margin-left: auto;
     margin-right: auto;
     border: solid 1px;
@@ -63,6 +63,10 @@ input{
     flex-direction: column;
     display: flex;
     outline: none;
+}
+
+input::placeholder {
+    color: #DFDFDF;
 }
 
 .login-input-log{
@@ -356,8 +360,13 @@ button {
     margin-left: 5px;
 }
 
+.postDiv h5 {
+    color: #fff;
+}
+
 .muroContent {
     margin-bottom: 15%;
+    margin-top: 15%;
 }
 
 .muroLike {
@@ -397,6 +406,21 @@ button {
     padding: 5px 10px 5px;
     border-radius: 10px;
     margin: 15px;
+    background-repeat: no-repeat;
+}
+
+.mainHeaderMuro {
+    margin: 0px;
+    background: #CAD95B;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 5px 2px 5px;
+    color: white;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 98vw;
 }
 
 .userImg{
@@ -482,7 +506,59 @@ hr {
     cursor: pointer;
     color: #000;
   }
+
+  /* comentarios */
+  .commentary {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .commentary button {
+    margin-top: 10px;
+    width: 90px;
+    height: 30px;
+    background-color: #CAD95B;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Lato', sans-serif;
+    margin-left: auto;
+    margin-right: inherit;
+  }
+
+  .commentary img {
+    margin-left: 10px;
+    width: 15%;
+  }
+
+  .imagenAndCommentary {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
   
+  .usuarioAndCommentary {
+    min-width: 75%;
+    padding: 5px;
+    border: 1px solid #DFDFDF;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .usuarioAndCommentary h2 {
+    margin: 0px 0px 0px 5px;
+  }
+
+  .usuarioAndCommentary input {
+    border: none;
+    margin: 0px 0px 0px 5px;
+    padding: 0px;
+  }
+
   /* Modal editar o eliminar*/
   .modalEditRemove {
       display: none;

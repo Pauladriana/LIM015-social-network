@@ -1,3 +1,4 @@
+import {getCommentary} from './comentario.js';
 
 export const showFsPost = () => {
     const publicaciones = document.querySelector('#allPost');
@@ -64,6 +65,16 @@ export const showFsPost = () => {
             
           })
         })
+
+        // algo
+        const containerAllComment = document.querySelector('#commentary');
+        getCommentary(localStorage.getItem('postId'), (comment) => {
+          containerAllComment.innerHTML = '';
+          comment.forEach((objComment) => {
+            containerAllComment.appendChild(itemComment(objComment, localStorage.getItem('postId')));
+          });
+        }); // fin de algo
+
       }
     };
     const auth = firebase.auth();
