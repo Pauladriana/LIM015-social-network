@@ -203,3 +203,4 @@ export const editPost = `
     <a href="#"><img src="./imagen/mensajes.svg" alt="">
   </footer>
 </body>`;
+
