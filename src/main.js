@@ -154,6 +154,7 @@ const botonLogin = () => {
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
             console.log('logueo exitoso');
+            localStorage.setItem('usuarioLogueado', user.uid);
             window.location.hash = 'muro';
           }
         });
@@ -227,6 +228,7 @@ const gogleaRegistro = () => {
             const user = firebase.auth().currentUser.providerData[0];
             console.log('te logueaste con google', firebase.auth().currentUser.providerData[0]);
             validateEmail(user);
+            console.log(user);
           }
         });
       });
@@ -236,6 +238,7 @@ const gogleaRegistro = () => {
           const user = firebase.auth().currentUser.providerData[0];
           console.log('te logueaste con google', firebase.auth().currentUser.providerData[0]);
           validateEmail(user);
+          localStorage.setItem('usuarioLogueado', user.uid)
         }
       });
     }

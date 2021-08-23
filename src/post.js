@@ -41,6 +41,6 @@ export const getPubli = (id) => {
 
 export const countLikes = (idPost, likes) => {
   // Obtener acceso a Firestore
-  const db = firebase.firestore();
-  return db.collection('post').doc(idPost).update({ likes });
+  const fs = firebase.firestore();
+  return fs.collection('post').doc(idPost).update({ likes });
 };

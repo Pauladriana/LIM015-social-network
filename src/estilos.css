@@ -525,8 +525,12 @@ hr {
       text-align: center;
       color: #666666;
   }
-.rojoHeart{
+.liked{
     color: red;
+}
+
+.unliked{
+    color : black
 }
 /* media query, min-width ancho igual o superior, max-width ancho igual o menor*/
 /* celular */
