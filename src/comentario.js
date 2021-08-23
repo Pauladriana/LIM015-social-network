@@ -2,56 +2,64 @@
 // const fs = firebase.firestore(); -> se encuentra en el index -> es la base de datos
 
 export const showCommentary = () => {
-    const publicaciones = document.querySelector('#commentary');
-      const boxCommentary = `
-      <div class="imagenAndCommentary">
-        <img src="./imagen/user.svg" alt="" class="usuarioCommentary" id="usuarioCommentary">
-          <div class="usuarioAndCommentary" >
-          <h2>Usuario2</h2>
-          <input class="contenidoCommentary" id="contenidoCommentary" placeholder="Comenta..." autofocus></input>
-          </div>
-      </div>
-      <button id="sendCommentary">Enviar</button>
-                      `; 
-    publicaciones.innerHTML = boxCommentary;
+  const publicaciones = document.querySelector('#commentary');
+    const boxCommentary = `
+    <div class="imagenAndCommentary">
+      <img src="./imagen/user.svg" alt="" class="usuarioCommentary" id="usuarioCommentary">
+        <div class="usuarioAndCommentary" >
+        <h2>Usuario2</h2>
+        <input class="contenidoCommentary" id="contenidoCommentary" placeholder="Comenta..." autofocus></input>
+        </div>
+    </div>
+    <button id="sendCommentary">Enviar</button>
+    <div class="allComments" id="allComments">
+    </div>
+                    `; 
+  publicaciones.innerHTML = boxCommentary;
 
-    // FUNCION DE ENVIAR DATOS A FIREBASE 
-    const sendCommentary = (idPost, comment) => {
-      return fs.collection('publicaciones').doc(idPost).collection('comentarios').add({
-        fecha: new Date().toLocaleString('en-ES'),
-        commentario: comment,
-      });
-    }
-    
-    // Eevento click enviar datos
+    //variables globales 
     const buttonSendCommentary = document.querySelector('#sendCommentary');
-    buttonSendCommentary.addEventListener('click', async (e) => {
-    const commentary = document.querySelector('#contenidoCommentary');
-    let comment = commentary.value;
-    await sendCommentary(localStorage.getItem('postId'),comment).then(() => {
-        comment = "";// limpia el input
-        console.log('se envio el mensaje');
-        getCommentary(localStorage.getItem('postId'));
-        //commentary.focus(); // el cursor vuelve al input comentario
+    const allComments = document.querySelector('#allComments');
+    
+    // funciones
+      /* crear comentario y guardar*/
+    const crearItem = (comentario) => {
+      //fs.collection("comentarios").add({
+      fs.collection("publicaciones").doc(localStorage.getItem('postId')).collection("comentarios").add({
+        usuario: "usuario1",
+        comentario: comentario
+      })
+      .then(function(docRef) {
+        console.log("Se agrego correctamente ID:", docRef.id);
+      })
+      .catch(function(error) {
+        console.log("Error agregando comentario:", error);
+      }); 
+    }
+      /* mostrar comentario */
+      fs.collection("publicaciones").doc(localStorage.getItem('postId')).collection("comentarios").onSnapshot((querySnapshop) => {
+        allComments.innerHTML = "";
+        querySnapshop.forEach((doc) => {
+          console.log(`${doc.id} => ${doc.data().comentario}`);
+          allComments.innerHTML += `
+            <div class="imagenAndCommentary comentUser">
+              <img src="./imagen/user.svg" alt="" class="usuarioCommentary" id="usuarioCommentary">
+              <div class="usuarioAndCommentary">
+                <p>${doc.data().usuario}</p>
+                <p class="contenidoCommentary">${doc.data().comentario}</p>
+              </div>
+            </div>
+          `;
+        });
       });
-      
-    }); // fin del evento click
 
-      // OBTENER COMENTARIO DEL FIREBASE - 23:03 del video
-      
-      
+    // evenListener
+    buttonSendCommentary.addEventListener('click', (e) => {
+      e.preventDefault();
+      const commentary = document.querySelector('#contenidoCommentary').value;
+      console.log(commentary);
+      crearItem(commentary);
+      document.querySelector('#contenidoCommentary').value = "";
+    });
 
-}; // fin de funcion
-
-export const getCommentary = (idPost) => {
-  fs.collection(`publicaciones/${idPost}/commentarios`).orderBy('date', 'desc')
-      .onSnapshot((querySnapshot) => {
-          const comment = [];
-          querySnapshot.forEach((doc) => {
-              console.log(doc.data());
-              //comment.push({ id: doc.id, ...doc.data() });
-          });
-          //callback(comment);
-      });
-
-};
+}; 

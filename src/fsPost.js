@@ -1,4 +1,4 @@
-import {getCommentary} from './comentario.js';
+//import {getCommentary} from './comentario.js';
 
 export const showFsPost = () => {
     const publicaciones = document.querySelector('#allPost');
@@ -62,18 +62,18 @@ export const showFsPost = () => {
             await getPost(e.target.dataset.id);
               console.log('estas viendo el post el post')
               window.location.hash = 'viewpost';
-            
+
           })
         })
 
         // algo
-        const containerAllComment = document.querySelector('#commentary');
+       /* const containerAllComment = document.querySelector('#commentary');
         getCommentary(localStorage.getItem('postId'), (comment) => {
           containerAllComment.innerHTML = '';
           comment.forEach((objComment) => {
             containerAllComment.appendChild(itemComment(objComment, localStorage.getItem('postId')));
           });
-        }); // fin de algo
+        });*/ // fin de algo
 
       }
     };
