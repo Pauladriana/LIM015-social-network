@@ -476,10 +476,3 @@ const savePost = () => {
  });
 }
 
-/*const darLike = () => {
-  const heart = document.querySelector("#heartPost");
-  heart.addEventListener('click', () => {
-    heart.style.color = "red";
-  })
-}*/
-
