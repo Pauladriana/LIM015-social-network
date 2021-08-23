@@ -321,7 +321,7 @@ const crearPost = () => {
       const locacionInput = document.querySelector('#locacionInput').value;
 
       const email = JSON.parse(localStorage.getItem('user')).email;
-      console.log(JSON.parse(localStorage.getItem('user')).email);
+      const username = JSON.parse(localStorage.getItem('user')).displayName;
       const response = await fs.collection('publicaciones').doc().set({
         costoInput,
         diasInput,
@@ -331,7 +331,8 @@ const crearPost = () => {
         tituloPost,
         contenidoPost,
         locacionInput,
-        email
+        email,
+        username
       });
       console.log(response);
       console.log(tituloPost, contenidoPost);
@@ -361,16 +362,17 @@ const dataPost = () => {
   let personasTravel = document.querySelector('#viewPersonas');
   let ninosTravel = document.querySelector('#viewNinos');
   let contenidoTravel = document.querySelector('#viewContenido');
-  console.log(tituloTravel,localStorage.getItem('titulo'));
 
-    locacionTravel.innerHTML = localStorage.getItem('locacion');
-    tituloTravel.innerHTML = localStorage.getItem('titulo');
-    costoTravel.innerHTML = localStorage.getItem('costo');
-    diasTravel.innerHTML = localStorage.getItem('dias');
-    nochesTravel.innerHTML = localStorage.getItem('noches');
-    personasTravel.innerHTML = localStorage.getItem('personas');
-    ninosTravel.innerHTML = localStorage.getItem('ninos');
-    contenidoTravel.innerHTML = localStorage.getItem('contenido');
+  let post = JSON.parse(localStorage.getItem('postSelected'));
+
+    locacionTravel.innerHTML = post.locationPost;
+    tituloTravel.innerHTML = post.titlePost;
+    costoTravel.innerHTML = post.costoPost;
+    diasTravel.innerHTML = post.diasPost;
+    nochesTravel.innerHTML = post.nochesPost;
+    personasTravel.innerHTML = post.peoplePost
+    ninosTravel.innerHTML = post.ninosPost;
+    contenidoTravel.innerHTML = post.contentPost;
 }
 
 // Modales - editar-eliminar y mensaje de confirmacion

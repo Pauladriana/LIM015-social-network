@@ -7,8 +7,10 @@ export const showFsPost = () => {
         let html = '';
         data.forEach((doc) => {
           const post = doc.data();
+          let str = post.username;
+          let leng = 7;
+          let trimmedString = str.substring(0, leng);
           post.id = doc.id;
-          // console.log(user)
           const div = `
                     <div class='postDiv' data-id="${post.id}">
                       <div class="muroLocation">
@@ -17,7 +19,7 @@ export const showFsPost = () => {
                       </div>
                       <h5>${post.tituloPost}</h5>
                       <div class="muroLike">
-                      <p>Usuario</p>
+                      <p>${trimmedString}</p>
                       <div class= "contadorLikes" ><i class="fas fa-heart" id="heartPost"></i><span>7</span></div>
                       </div>
                     </div>`;
@@ -26,10 +28,13 @@ export const showFsPost = () => {
         publicaciones.innerHTML = html;
         // desde firebase se llama get
         const getPost = (id) => {
+          console.log(id);
+
           fs.collection('publicaciones').doc(id).get().then((ele)=>{
             console.log(ele.data());
             if (ele.data()) {
               const user = ele.data();
+              console.log(user);
               const costoPost = user.costoInput;
               const diasPost = user.diasInput;
               const nochesPost = user.nochesInput;
@@ -40,15 +45,20 @@ export const showFsPost = () => {
               const locationPost = user.locacionInput;
               const idPost = id;
 
-              localStorage.setItem('costo', costoPost);
-              localStorage.setItem('dias', diasPost);
-              localStorage.setItem('noches', nochesPost);
-              localStorage.setItem('ninos', ninosPost);
-              localStorage.setItem('personas', peoplePost);
-              localStorage.setItem('titulo', titlePost);
-              localStorage.setItem('contenido', contentPost);
-              localStorage.setItem('locacion', locationPost);
-              localStorage.setItem('postId', idPost);
+              let post = {
+                costoPost: costoPost,
+                diasPost: diasPost,
+                nochesPost: nochesPost,
+                ninosPost: ninosPost,
+                peoplePost: peoplePost,
+                titlePost: titlePost,
+                contentPost: contentPost,
+                locationPost: locationPost,
+                idPost: idPost
+              };
+
+              localStorage.setItem('postSelected', JSON.stringify(post));
+              window.location.hash = 'viewpost';
             }
           }).catch((err) => {
             console.log(err);
@@ -56,11 +66,12 @@ export const showFsPost = () => {
         };
         const btnView = document.querySelectorAll('.postDiv');
         btnView.forEach( btn => {
-          btn.addEventListener( 'click', async (e) => {
-            await getPost(e.target.dataset.id);
-              console.log('estas viendo el post el post')
-              window.location.hash = 'viewpost';
-            
+          btn.addEventListener( 'click', function(e) {
+            console.log(e.target);
+            if (e.target.dataset.id != undefined) {
+              getPost(e.target.dataset.id);
+              console.log('estas viendo el post el post');
+            }
           })
         })
       }
