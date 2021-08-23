@@ -300,7 +300,7 @@ const crearPost = () => {
 
       const email = JSON.parse(localStorage.getItem('user')).email;
       const username = JSON.parse(localStorage.getItem('user')).displayName;
-      const response = await fs.collection('publicaciones').doc().set({
+      const response = fs.collection('publicaciones').doc().set({
         costoInput,
         diasInput,
         nochesInput,

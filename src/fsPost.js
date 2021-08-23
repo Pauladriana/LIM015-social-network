@@ -45,6 +45,48 @@ export const showFsPost = () => {
           }
         })
 
+        const getPost = (id) => {
+          console.log(id);
+
+          fs.collection('publicaciones').doc(id).get().then((ele)=>{
+            console.log(ele.data());
+            if (ele.data()) {
+              const user = ele.data();
+              console.log(user);
+              const costoPost = user.costoInput;
+              const diasPost = user.diasInput;
+              const nochesPost = user.nochesInput;
+              const ninosPost = user.ninosInput;
+              const peoplePost = user.personasInput;
+              const titlePost = user.tituloPost;
+              const contentPost = user.contenidoPost;
+              const locationPost = user.locacionInput;
+              const idPost = id;
+
+              let post = {
+                costoPost: costoPost,
+                diasPost: diasPost,
+                nochesPost: nochesPost,
+                ninosPost: ninosPost,
+                peoplePost: peoplePost,
+                titlePost: titlePost,
+                contentPost: contentPost,
+                locationPost: locationPost,
+                idPost: idPost
+              };
+
+              localStorage.setItem('postSelected', JSON.stringify(post));
+              window.location.hash = 'viewpost';
+            }
+          }).catch((err) => {
+            console.log(err);
+          })
+        };
+      const post = elDiv.querySelector('.postDiv');
+        post.addEventListener( 'click', () => {
+          getPost(docId);
+        })
+
       /*btnView.forEach( btn => {
         btn.addEventListener( 'click', async (e) => {
           await getPost(docId);
