@@ -3,7 +3,7 @@ export const createNewPost = `
 <body id="postBody">
   <header class="mainHeader">
     <span>Traveler.pe</span>
-    <img src="./imagen/user.svg" alt="">
+    <img src="./imagen/user.png" alt="">
   </header>
   <main>
     <section class="fotografias">
@@ -56,12 +56,12 @@ export const viewPost = `
 <body id="postBody">
     <header class="mainHeader">
     <span>Traveler.pe</span>
-    <img src="./imagen/user.svg" alt="">
+    <img src="./imagen/user.png" alt="">
     </header>
     <main>
     <section class="usuarioAndButoon">
     <div class="usuarioAndImagen">
-    <img src="./imagen/user.svg" alt="" id="pepe">
+    <img src="./imagen/user.png" alt="" id="pepe">
     <div class="usuario">
     <p>Usuario1</p>
     <p>@usuario1</p>
@@ -143,7 +143,7 @@ export const editPost = `
 <body id="postBody">
   <header class="mainHeader">
     <span>Traveler.pe</span>
-    <img src="./imagen/user.svg" alt="">
+    <img src="./imagen/user.png" alt="">
   </header>
   <main>
     <section class="fotografias">
@@ -152,7 +152,7 @@ export const editPost = `
     <section class="usuarioAndButoon">
     
     <div class="usuarioAndImagen">
-    <img src="./imagen/user.svg" alt="">
+    <img src="./imagen/user.png" alt="">
     <div class="usuario">
     <p>Usuario1</p>
     <p>@usuario1</p>
