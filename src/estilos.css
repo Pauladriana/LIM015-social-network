@@ -53,7 +53,7 @@ input{
     width: 240px;
     height: 30px;
     padding: 5px 10px 5px 10px;
-    /* color: #C4C4C4; */
+    color: #666666;
     margin-left: auto;
     margin-right: auto;
     border: solid 1px;
@@ -63,6 +63,10 @@ input{
     flex-direction: column;
     display: flex;
     outline: none;
+}
+
+input::placeholder {
+    color: #DFDFDF;
 }
 
 .login-input-log{
@@ -229,18 +233,26 @@ button {
     height: 100vh;
 }
 .mainHeader{
+    margin: 0px;
     background: #CAD95B;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2px 5px 2px 5px;
     color: white;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 98vw;
 }
 
 .iconos{
     display: flex;
     flex-direction: row;
-    padding: 15px;
+    padding: 5px 0px 5px 0px;
+    line-height: 1px;
+    margin-left: 15px;
+    justify-content: flex-start;
 }
 
 .travelOpt{
@@ -273,10 +285,8 @@ button {
 
 .tituloPost{
     border: none;
-    width: 323px;
     font-size: 16px;
     font-family: 'Lato', sans-serif;
-    margin-top: 0;
     outline: none;
 
 }
@@ -298,6 +308,7 @@ button {
     display: flex;
     flex-direction: row;
     padding-left: 20px;
+    align-items: center;
 }
 
 .locationIcon{
@@ -305,6 +316,7 @@ button {
 }
 
 .locationInput{
+    text-align: left;
     border: none;
     width: 285px;
     font-size: 14px;
@@ -356,8 +368,13 @@ button {
     margin-left: 5px;
 }
 
+.postDiv h5 {
+    color: #fff;
+}
+
 .muroContent {
     margin-bottom: 15%;
+    margin-top: 15%;
 }
 
 .muroLike {
@@ -397,6 +414,21 @@ button {
     padding: 5px 10px 5px;
     border-radius: 10px;
     margin: 15px;
+    background-repeat: no-repeat;
+}
+
+.mainHeaderMuro {
+    margin: 0px;
+    background: #CAD95B;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 5px 2px 5px;
+    color: white;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 98vw;
 }
 
 .userImg{
@@ -425,6 +457,7 @@ button {
 
 /* editpost*/
 .usuarioAndButoon {
+    margin-top: 10%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -453,9 +486,10 @@ button {
 }
 
 .contenidoViewPost {
+    padding-top: 10px;
     border: 1px solid #DFDFDF;
     border-radius: 15px;
-    margin-top: 25px;
+    margin-top: 5px;
 }
 
 /* viewPost */
@@ -479,7 +513,85 @@ hr {
     cursor: pointer;
     color: #000;
   }
+
+  .likesDate{
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .contadorCommentary {
+    padding: 0px 10px;
+  }
+
+  .datePost {
+    padding: 0px 10px;
+  }
+
+  .viewContenido {
+    line-height: 18px;
+    text-align: left;
+    padding: 0px 20px 15px 20px;
+    margin-top: 0px;
+  }
+
+  .optionesPost {
+      margin-right: 25px;
+  }
+
+  /* comentarios */
+  .commentary {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 15%;
+  }
+
+  .commentary button {
+    margin-top: 10px;
+    width: 90px;
+    height: 30px;
+    background-color: #CAD95B;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Lato', sans-serif;
+    margin-left: auto;
+    margin-right: inherit;
+  }
+
+  .commentary img {
+    margin-left: 10px;
+    width: 15%;
+  }
+
+  .imagenAndCommentary {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
   
+  .usuarioAndCommentary {
+    min-width: 75%;
+    padding: 5px;
+    border: 1px solid #DFDFDF;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .usuarioAndCommentary h2 {
+    margin: 0px 0px 0px 5px;
+  }
+
+  .usuarioAndCommentary input {
+    border: none;
+    margin: 0px 0px 0px 5px;
+    padding: 0px;
+  }
+
   /* Modal editar o eliminar*/
   .modalEditRemove {
       display: none;

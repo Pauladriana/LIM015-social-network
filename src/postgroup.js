@@ -60,21 +60,26 @@ export const viewPost = `
     </header>
     <main>
     <section class="usuarioAndButoon">
-    <div class="usuarioAndImagen">
-    <img src="./imagen/user.png" alt="" id="pepe">
-    <div class="usuario">
-    <p>Usuario1</p>
-    <p>@usuario1</p>
-    <p>24seguidores</p>
-    </div>
-    </div>
-    
+      <div class="usuarioAndImagen">
+        <img src="./imagen/user.png" alt="" id="pepe">
+          <div class="usuario">
+            <p>Usuario1</p>
+            <p>@usuario1</p>
+            <p>24seguidores</p>
+          </div>
+      </div>
+      <div class="buttonSeguir">
+        <button class="publiPost" >Seguir</button>
+      </div>
     </section>
-    <div class="locacion">
-        <img src="./imagen/locacion.svg" alt="" class="locationIcon">
-        <span type="text" class="locationInput" id="viewLocation"></span>
-    </div>
+    
     <div class="contenidoViewPost">
+      <div class="locacion">
+          <img src="./imagen/locacion.svg" alt="" class="locationIcon">
+          <span type="text" class="locationInput" id="viewLocation">Tarma</span><div class="travelOpt">
+          <img src="./imagen/puntos.svg" alt="" class="optionesPost" id="optionPost">
+      </div>
+    </div>
     <h2 class="tituloPost" id="viewTitulo"></h2>
     <section class="iconos">
       <div id="costo" class="travelOpt">
@@ -97,9 +102,6 @@ export const viewPost = `
         <img src="./imagen/child.svg" alt="" class="iconPost">
         <p id="viewNinos">niños</p>
       </div>
-      <div class="travelOpt">
-        <img src="./imagen/puntos.svg" alt="" id="optionPost">
-      </div>
       <div class="modalEditRemove" id="modalEditRemove">
       <div class="boxModalEditRemove">
         <a class="textSecondary xCerrar" id="closeModalEditRomve">x</a><hr>
@@ -118,17 +120,28 @@ export const viewPost = `
     </div>
     </section>
     <section class="historia">
-      <p id="viewContenido">Era una mañana soleada del 12 de octubre, cuando viaje rumbo a Apurimac en u viaje de tres dias.
-
+      <p id="viewContenido" class="viewContenido">Era una mañana soleada del 12 de octubre, cuando viaje rumbo a Apurimac en u viaje de tres dias.
       El primer dia visite el Bosque de Piedras y la casa de los pitufos, el camino es bastante cansado por lo que recomiendo usar ropa comoda y calzado especial. Me hospede en una posada que brindaba desayuno con un costo de S/30 la noche.
-      
       Tambien almorce en diferentes restaurantes. El precio promedio del menu es de S/6. 
-      
       En total gasté S/400 por tres dias, incluyendo el pasaje terrestre.
-      
       Recomiendo mucho visitar Apurimac!</p>      
     </section>
     </div>
+    <div class="likesDate">
+      <div class="contadorLikes">
+        <i class="fas fa-heart" aria-hidden="true"></i>
+        <span>7</span>
+      </div>
+      <div class="contadorCommentary">
+        <i class="far fa-comment"></i>
+        <span>7</span>
+      </div>
+      <div class="datePost">
+        <span id="fechaPost">23/08/2021</span>
+      </div>
+    </div><hr>
+    <section class="commentary" id="commentary">
+    </section>
     </main>
   <footer class="opcionesFoot">
     <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
