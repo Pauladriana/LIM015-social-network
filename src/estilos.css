@@ -526,11 +526,11 @@ hr {
       color: #666666;
   }
 .liked{
-    color: red;
+    color: #CAD95B;
 }
 
 .unliked{
-    color : black
+    color : #666666;
 }
 /* media query, min-width ancho igual o superior, max-width ancho igual o menor*/
 /* celular */
