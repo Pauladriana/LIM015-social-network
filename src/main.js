@@ -47,6 +47,7 @@ const showSeccion = (ruta) => {
         console.log('hola estoy en crear post')
       );
     }
+
     case '#viewpost': {
       return (
         (secciones.innerHTML = viewPost),
@@ -153,8 +154,8 @@ const botonLogin = () => {
       .then(() => {
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
-            console.log('logueo exitoso');
-            localStorage.setItem('usuarioLogueado', user.uid);
+            console.log('logueo exitoso', user);
+            localStorage.setItem('user', JSON.stringify(user.providerData[0]));
             window.location.hash = 'muro';
           }
         });
@@ -191,6 +192,7 @@ const validateEmail = (user) => {
       // Si no encuentra el email que se quiere registrar; el valor de tmp será undefined, por ende agrega el nuevo user en base de datos
       // si encuentra el email en base de datos; el valor de tmp será el user encontrado , por ende solo cambia la vista a muro
       if (tmp != undefined) {
+        localStorage.setItem('user', JSON.stringify(user));
         console.log('usuario existente logueado');
         window.location.hash = 'muro';
       } else {
@@ -202,6 +204,7 @@ const validateEmail = (user) => {
           email: user.email,
         })
         .then((docRef) => {
+          localStorage.setItem('user', JSON.stringify(user));
           console.log('Creado y agregado a database');
           window.location.hash = 'muro';
           // console.log('Este es el nuevo usuario: ' + docRef.id);
@@ -238,7 +241,6 @@ const gogleaRegistro = () => {
           const user = firebase.auth().currentUser.providerData[0];
           console.log('te logueaste con google', firebase.auth().currentUser.providerData[0]);
           validateEmail(user);
-          localStorage.setItem('usuarioLogueado', user.uid)
         }
       });
     }
@@ -296,7 +298,21 @@ const crearPost = () => {
       const contenidoPost = document.querySelector('#contenidoPost').value;
       const locacionInput = document.querySelector('#locacionInput').value;
 
-      addPost(costoInput, diasInput, nochesInput, personasInput, ninosInput, tituloPost, contenidoPost, locacionInput);
+      const email = JSON.parse(localStorage.getItem('user')).email;
+      const username = JSON.parse(localStorage.getItem('user')).displayName;
+      const response = await fs.collection('publicaciones').doc().set({
+        costoInput,
+        diasInput,
+        nochesInput,
+        personasInput,
+        ninosInput,
+        tituloPost,
+        contenidoPost,
+        locacionInput,
+        email,
+        username
+      });
+      console.log(response);
       console.log(tituloPost, contenidoPost);
       window.location.hash = 'muro';
     } else {
@@ -317,16 +333,26 @@ const dataPost = () => {
   let personasTravel = document.querySelector('#viewPersonas');
   let ninosTravel = document.querySelector('#viewNinos');
   let contenidoTravel = document.querySelector('#viewContenido');
-  console.log(tituloTravel,localStorage.getItem('titulo'));
 
-    locacionTravel.innerHTML = localStorage.getItem('locacion');
+    /*locacionTravel.innerHTML = localStorage.getItem('locacion');
     tituloTravel.innerHTML = localStorage.getItem('titulo');
     costoTravel.innerHTML = localStorage.getItem('costo');
     diasTravel.innerHTML = localStorage.getItem('dias');
     nochesTravel.innerHTML = localStorage.getItem('noches');
     personasTravel.innerHTML = localStorage.getItem('personas');
     ninosTravel.innerHTML = localStorage.getItem('ninos');
-    contenidoTravel.innerHTML = localStorage.getItem('contenido');
+    contenidoTravel.innerHTML = localStorage.getItem('contenido');*/
+
+  let post = JSON.parse(localStorage.getItem('postSelected'));
+
+    locacionTravel.innerHTML = post.locationPost;
+    tituloTravel.innerHTML = post.titlePost;
+    costoTravel.innerHTML = post.costoPost;
+    diasTravel.innerHTML = post.diasPost;
+    nochesTravel.innerHTML = post.nochesPost;
+    personasTravel.innerHTML = post.peoplePost
+    ninosTravel.innerHTML = post.ninosPost;
+    contenidoTravel.innerHTML = post.contentPost;
 }
 
 // Modales - editar-eliminar y mensaje de confirmacion
@@ -417,3 +443,4 @@ const savePost = () => {
     });
  });
 }
+

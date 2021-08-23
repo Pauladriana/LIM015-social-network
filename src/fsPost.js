@@ -1,11 +1,14 @@
 //import {getPubli} from './post.js';
-let userId = localStorage.getItem('usuarioLogueado')
+let userId = JSON.parse(localStorage.getItem('user')).uid;
 export const showFsPost = () => {
   const publicaciones = document.querySelector('#allPost');
   const btnView = document.querySelectorAll('.postDiv');
   const setupPost = (data) => {
     publicaciones.innerHTML = '';
     data.forEach((doc) => {
+      let str = doc.username;
+      let leng = 7;
+      let trimmedString = str.substring(0, leng);
       const docId = doc.id;
       //console.log(docId, doc);
       const elDiv = document.createElement('div');
@@ -18,7 +21,7 @@ export const showFsPost = () => {
                       </div>
                       <h5>${doc.tituloPost}</h5>
                       <div class="muroLike">
-                      <p>Usuario</p>
+                      <p>${trimmedString}</p>
                       </div>
                     </div>
                     <div class= "contadorLikes" id="heartPost"><i class="fas fa-heart  ${
@@ -27,8 +30,6 @@ export const showFsPost = () => {
                 `;
       elDiv.innerHTML = divTemplate;
       
-
-   
     // update likes
       const likes = elDiv.querySelector('.fa-heart');
         likes.addEventListener( 'click', () => {
@@ -66,3 +67,4 @@ export const showFsPost = () => {
     setupPost(post)
   })
 }
+
