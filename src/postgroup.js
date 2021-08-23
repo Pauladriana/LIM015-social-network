@@ -3,7 +3,7 @@ export const createNewPost = `
 <body id="postBody">
   <header class="mainHeader">
     <span>Traveler.pe</span>
-    <img src="./imagen/user.svg" alt="">
+    <img src="./imagen/user.png" alt="">
   </header>
   <main>
     <section class="fotografias">
@@ -11,23 +11,23 @@ export const createNewPost = `
     </section>
     <section class="iconos">
       <div id="costo" class="travelOpt">
-        <img src="./imagen/cash.svg" alt="" class="iconPost">
+        <img src="./imagen/cash.svg" alt="" class="iconPost" title = "Monto en soles">
         <input type="number" class="inputPost" id="costoInput">
       </div>
       <div id="dias" class="travelOpt">
-        <img src="./imagen/sun.svg" alt="" class="iconPost">
+        <img src="./imagen/sun.svg" alt="" class="iconPost" title = "Cuantos Dias">
         <input type="number" class="inputPost" id="diasInput">
       </div>
       <div id="noches" class="travelOpt">
-        <img src="./imagen/moon.svg" alt="" class="iconPost">
+        <img src="./imagen/moon.svg" alt="" class="iconPost" title = "Cuantas Noches">
         <input type="number" class="inputPost" id="nochesInput">
       </div>
       <div id="personas" class="travelOpt">
-        <img src="./imagen/family.svg" alt="" class="iconPost">
+        <img src="./imagen/family.svg" alt="" class="iconPost" title = "Numero de Personas">
         <input type="number" class="inputPost" id="personasInput">
       </div>
       <div id="niños" class="travelOpt">
-        <img src="./imagen/child.svg" alt="" class="iconPost">
+        <img src="./imagen/child.svg" alt="" class="iconPost" title = "Numero de niños">
         <input type="number" class="inputPost" id="ninosInput">
       </div>
     </section>
@@ -56,12 +56,12 @@ export const viewPost = `
 <body id="postBody">
     <header class="mainHeader">
     <span>Traveler.pe</span>
-    <img src="./imagen/user.svg" alt="">
+    <img src="./imagen/user.png" alt="">
     </header>
     <main>
     <section class="usuarioAndButoon">
       <div class="usuarioAndImagen">
-        <img src="./imagen/user.svg" alt="" id="pepe">
+        <img src="./imagen/user.png" alt="" id="pepe">
           <div class="usuario">
             <p>Usuario1</p>
             <p>@usuario1</p>
@@ -156,7 +156,7 @@ export const editPost = `
 <body id="postBody">
   <header class="mainHeader">
     <span>Traveler.pe</span>
-    <img src="./imagen/user.svg" alt="">
+    <img src="./imagen/user.png" alt="">
   </header>
   <main>
     <section class="fotografias">
@@ -165,7 +165,7 @@ export const editPost = `
     <section class="usuarioAndButoon">
     
     <div class="usuarioAndImagen">
-    <img src="./imagen/user.svg" alt="">
+    <img src="./imagen/user.png" alt="">
     <div class="usuario">
     <p>Usuario1</p>
     <p>@usuario1</p>
@@ -216,3 +216,4 @@ export const editPost = `
     <a href="#"><img src="./imagen/mensajes.svg" alt="">
   </footer>
 </body>`;
+
