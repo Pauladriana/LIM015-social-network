@@ -67,4 +67,3 @@ export const showFsPost = () => {
     setupPost(post)
   })
 }
-

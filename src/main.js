@@ -5,6 +5,7 @@ import {showFsPost} from './fsPost.js';
 import {cerrarSesion} from './logout.js';
 import {googleRegister, loginWithEmail} from './login.js';
 import {validarRegistro} from './validaciones.js';
+import {showCommentary} from './comentario.js';
 import {addPost, fsUpdate, deletePost} from './post.js';
 
 //RUTA SIN #
@@ -51,6 +52,8 @@ const showSeccion = (ruta) => {
     case '#viewpost': {
       return (
         (secciones.innerHTML = viewPost),
+        window.addEventListener('hashchange', dataPost()),
+        showCommentary(),
         dataPost(),
         funcionModal(),
         removePost(),
