@@ -5,7 +5,7 @@ import {
   getPubli,
   fsUpdate,
   deletePost,
-} from '../src/login.js';
+} from '../src/post.js';
 
 const fixtureData = {
   __collection__: {
@@ -48,12 +48,12 @@ describe('Add Post', () => {
 describe('Delete Post', () => {
   it('Debería eliminar un post con id: post2', () => deletePost('post2').then(() => {
       const deleted = getPubli('post2');
-      expect(deleted).toBe(undefined);
+      expect(deleted).toBe({});
   }))
 });
 describe('Edit Post', () => {
-  it('Debería poder editar un post con id: post2', () => fsUpdate('post2', 'Ilo', 'Puerto Bonito', '120', '1', '1', '1', '2', 'Vimos lobos marinos').then(() => {
-      const edited = getPubli('post2');
+  it('Debería poder editar un post con id: post1', () => fsUpdate(post2, 'Ilo', 'Puerto Bonito', '120', '1', '1', '1', '2', 'Vimos lobos marinos').then(() => {
+      const edited = getPubli(post2);
       const result = edited.contenidoPost;
       expect(result).toBe('Vimos lobos marinos');
   }))

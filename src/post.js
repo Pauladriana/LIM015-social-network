@@ -1,5 +1,6 @@
 //CREAR PUBLICACION
 export const addPost = (costo, dias, noches, personas, ninos, titulo, contenido, locacion) => {
+  const fs = firebase.firestore();
   return fs.collection('publicaciones').doc().set({
     costoInput: costo,
     diasInput: dias,
@@ -8,11 +9,13 @@ export const addPost = (costo, dias, noches, personas, ninos, titulo, contenido,
     ninosInput: ninos,
     tituloPost: titulo,
     contenidoPost: contenido,
-    locacionInput: locacion
+    locacionInput: locacion,
+    likes: []
   });
 }
 //MODIFICAR PUBLICACION
 export const fsUpdate = (id, newLoc, newTit, newCos, newDia, newNoc, newNin, newPer, newCon) => {
+  const fs = firebase.firestore();
   return fs.collection('publicaciones').doc(id).update({
   locacionInput: newLoc,
   tituloPost: newTit,
@@ -26,10 +29,18 @@ export const fsUpdate = (id, newLoc, newTit, newCos, newDia, newNoc, newNin, new
 }
 //ELIMINAR PUBLICACION
 export const deletePost = (id) => {
+  const fs = firebase.firestore();
   return fs.collection('publicaciones').doc(id).delete();
 }
 
 //TRAER PUBLICACIONES
 export const getPubli = (id) => {
+  const fs = firebase.firestore();
   return fs.collection('publicaciones').doc(id).get()
 }
+
+export const countLikes = (idPost, likes) => {
+  // Obtener acceso a Firestore
+  const db = firebase.firestore();
+  return db.collection('post').doc(idPost).update({ likes });
+};

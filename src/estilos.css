@@ -525,7 +525,9 @@ hr {
       text-align: center;
       color: #666666;
   }
-
+.rojoHeart{
+    color: red;
+}
 /* media query, min-width ancho igual o superior, max-width ancho igual o menor*/
 /* celular */
 /*menor a Galaxy Fold 280px*/
