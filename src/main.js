@@ -300,9 +300,11 @@ const crearPost = () => {
       const tituloPost = document.querySelector('#tituloPost').value;
       const contenidoPost = document.querySelector('#contenidoPost').value;
       const locacionInput = document.querySelector('#locacionInput').value;
+      const likes = [];
 
       const email = JSON.parse(localStorage.getItem('user')).email;
       const username = JSON.parse(localStorage.getItem('user')).displayName;
+      const userId = JSON.parse(localStorage.getItem('user')).uid;
       const response = fs.collection('publicaciones').doc().set({
         costoInput,
         diasInput,
@@ -313,7 +315,9 @@ const crearPost = () => {
         contenidoPost,
         locacionInput,
         email,
-        username
+        username,
+        userId,
+        likes
       });
       console.log(response);
       console.log(tituloPost, contenidoPost);
