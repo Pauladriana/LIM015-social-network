@@ -23,8 +23,13 @@ export const showCommentary = () => {
     let postId = JSON.parse(localStorage.getItem('postSelected')).idPost;
     // funciones
       /* crear comentario y guardar*/
+    /*const crearItem = (comentario) => {
+      console.log(localStorage.getItem('postId'));*/
+    
+    // funciones
+      /* crear comentario y guardar*/
     const crearItem = (comentario) => {
-      console.log(localStorage.getItem('postId'));
+      //fs.collection("comentarios").add({
       fs.collection("publicaciones").doc(postId).collection("comentarios").add({
         usuario: "usuario1",
         comentario: comentario

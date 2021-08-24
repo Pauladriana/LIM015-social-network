@@ -2,6 +2,7 @@
 
 export const showFsPost = () => {
   let userId = JSON.parse(localStorage.getItem('user')).uid;
+  console.log(userId);
   const publicaciones = document.querySelector('#allPost');
   const btnView = document.querySelectorAll('.postDiv');
   const setupPost = (data) => {
