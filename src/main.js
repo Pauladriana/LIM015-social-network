@@ -47,6 +47,7 @@ const showSeccion = (ruta) => {
         console.log('hola estoy en crear post')
       );
     }
+
     case '#viewpost': {
       return (
         (secciones.innerHTML = viewPost),
@@ -191,6 +192,7 @@ const validateEmail = (user) => {
       // Si no encuentra el email que se quiere registrar; el valor de tmp será undefined, por ende agrega el nuevo user en base de datos
       // si encuentra el email en base de datos; el valor de tmp será el user encontrado , por ende solo cambia la vista a muro
       if (tmp != undefined) {
+        localStorage.setItem('user', JSON.stringify(user));
         console.log('usuario existente logueado');
         window.location.hash = 'muro';
       } else {
@@ -202,6 +204,7 @@ const validateEmail = (user) => {
           email: user.email,
         })
         .then((docRef) => {
+          localStorage.setItem('user', JSON.stringify(user));
           console.log('Creado y agregado a database');
           window.location.hash = 'muro';
           // console.log('Este es el nuevo usuario: ' + docRef.id);
@@ -317,7 +320,6 @@ const dataPost = () => {
   let personasTravel = document.querySelector('#viewPersonas');
   let ninosTravel = document.querySelector('#viewNinos');
   let contenidoTravel = document.querySelector('#viewContenido');
-  console.log(tituloTravel,localStorage.getItem('titulo'));
 
     locacionTravel.innerHTML = localStorage.getItem('locacion');
     tituloTravel.innerHTML = localStorage.getItem('titulo');
