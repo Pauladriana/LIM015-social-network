@@ -1,10 +1,10 @@
 
 export const createNewPost = `
 <body id="postBody">
-  <header class="mainHeader">
-    <span>Traveler.pe</span>
-    <img src="./imagen/user.png" alt="">
-  </header>
+    <header class="mainHeaderMuro">
+    <span class="textTraveler">Traveler.pe</span>
+    <i class="fas fa-sign-out-alt iconOut" id="logout-button" aria-hidden="true"></i>
+    </header>
   <main>
     <section class="fotografias">
       <img src="./imagen/apurimac3.svg" alt="">
@@ -44,10 +44,8 @@ export const createNewPost = `
   </main>
   <footer class="opcionesFoot">
     <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
-    <a href="#"><img src="./imagen/buscar.svg" alt="">
-    <a href="#newpost"><img src="./imagen/subir.svg" alt="">
-    <a href="#"><img src="./imagen/notificaciones.svg" alt="">
-    <a href="#"><img src="./imagen/mensajes.svg" alt="">
+    <a href="#newpost"><img src="./imagen/subir.svg" alt=""></a>
+    <a href="#profile"><img src="./imagen/user.svg" alt=""></a>
   </footer>
 </body>`;
 
@@ -55,21 +53,19 @@ export const createNewPost = `
 export const viewPost = `
 <body id="postBody">
     <header class="mainHeader">
-    <span>Traveler.pe</span>
-    <img src="./imagen/user.png" alt="">
+    <span class="textTraveler">Traveler.pe</span>
+    <i class="fas fa-sign-out-alt iconOut" id="logout-button"></i>
     </header>
     <main>
     <section class="usuarioAndButoon">
       <div class="usuarioAndImagen">
         <img src="./imagen/user.png" alt="" id="pepe">
           <div class="usuario">
-            <p>Usuario1</p>
-            <p>@usuario1</p>
-            <p>24seguidores</p>
+            <p id="userEmailPost"></p>
           </div>
       </div>
       <div class="buttonSeguir">
-        <button class="publiPost" >Seguir</button>
+        <button class="publiPost" >Ver perfil</button>
       </div>
     </section>
     
@@ -105,7 +101,7 @@ export const viewPost = `
       <div class="modalEditRemove" id="modalEditRemove">
       <div class="boxModalEditRemove">
         <a class="textSecondary xCerrar" id="closeModalEditRomve">x</a><hr>
-        <a href="#editpost" class="textSecondary textoEditRemove">Editar</a>
+        <p><a href="#editpost" class="textSecondary textoEditRemove editar">Editar</a></p>
         <p class="textSecondary textoEditRemove" id="ShowModalConfirmation" >Eliminar</p>        
       </div>
     </div>
@@ -120,24 +116,20 @@ export const viewPost = `
     </div>
     </section>
     <section class="historia">
-      <p id="viewContenido" class="viewContenido">Era una mañana soleada del 12 de octubre, cuando viaje rumbo a Apurimac en u viaje de tres dias.
-      El primer dia visite el Bosque de Piedras y la casa de los pitufos, el camino es bastante cansado por lo que recomiendo usar ropa comoda y calzado especial. Me hospede en una posada que brindaba desayuno con un costo de S/30 la noche.
-      Tambien almorce en diferentes restaurantes. El precio promedio del menu es de S/6. 
-      En total gasté S/400 por tres dias, incluyendo el pasaje terrestre.
-      Recomiendo mucho visitar Apurimac!</p>      
+      <p id="viewContenido" class="viewContenido"></p>      
     </section>
     </div>
     <div class="likesDate">
       <div class="contadorLikes">
         <i class="fas fa-heart" aria-hidden="true"></i>
-        <span>7</span>
+        <span id="likesPost"></span>
       </div>
       <div class="contadorCommentary">
         <i class="far fa-comment"></i>
-        <span>7</span>
+        <span id="comentsPost"></span>
       </div>
       <div class="datePost">
-        <span id="fechaPost">23/08/2021</span>
+        <span id="fechaPost"></span>
       </div>
     </div><hr>
     <section class="commentary" id="commentary">
@@ -145,18 +137,16 @@ export const viewPost = `
     </main>
   <footer class="opcionesFoot">
     <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
-    <a href="#"><img src="./imagen/buscar.svg" alt="">
-    <a href="#newpost"><img src="./imagen/subir.svg" alt="">
-    <a href="#"><img src="./imagen/notificaciones.svg" alt="">
-    <a href="#"><img src="./imagen/mensajes.svg" alt="">
+    <a href="#newpost"><img src="./imagen/subir.svg" alt=""></a>
+    <a href="#profile"><img src="./imagen/user.svg" alt=""></a>
   </footer>
 </body>`;
 
 export const editPost = `
 <body id="postBody">
   <header class="mainHeader">
-    <span>Traveler.pe</span>
-    <img src="./imagen/user.png" alt="">
+    <span class="textTraveler">Traveler.pe</span>
+    <i class="fas fa-sign-out-alt iconOut" id="logout-button" aria-hidden="true"></i>
   </header>
   <main>
     <section class="fotografias">
@@ -167,9 +157,7 @@ export const editPost = `
     <div class="usuarioAndImagen">
     <img src="./imagen/user.png" alt="">
     <div class="usuario">
-    <p>Usuario1</p>
-    <p>@usuario1</p>
-    <p>24seguidores</p>
+    <p id="idUsername"></p>
     </div>
     </div>
     <div class="botonGuardar">
@@ -210,10 +198,8 @@ export const editPost = `
   </main>
   <footer class="opcionesFoot">
     <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
-    <a href="#"><img src="./imagen/buscar.svg" alt="">
-    <a href="#newpost"><img src="./imagen/subir.svg" alt="">
-    <a href="#"><img src="./imagen/notificaciones.svg" alt="">
-    <a href="#"><img src="./imagen/mensajes.svg" alt="">
+    <a href="#newpost"><img src="./imagen/subir.svg" alt=""></a>
+    <a href="#profile"><img src="./imagen/user.svg" alt=""></a>
   </footer>
 </body>`;
 

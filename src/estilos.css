@@ -225,6 +225,12 @@ button {
     border-top-right-radius: 25px;
 }
 
+.iconoMenu {
+    font-size: 20px;
+    color: #92603F;
+    font-weight: 100;
+}
+
 /*POST GROUPS*/
 
 #postBody{
@@ -244,6 +250,7 @@ button {
     top: 0px;
     left: 0px;
     width: 98vw;
+    height: 42px;
 }
 
 .iconos{
@@ -301,7 +308,7 @@ button {
     padding: 5px;
     font-family: 'Lato', sans-serif;
     outline: none;
-
+    margin-bottom: 15%;
 }
 
 .locacion{
@@ -349,6 +356,11 @@ button {
     justify-content: space-around;
     align-items: center;
     background-color: white;
+}
+
+.textTraveler {
+    font-size: 20px;
+    margin-left: 17px;
 }
 
 /* muro */
@@ -410,10 +422,11 @@ button {
 .postDiv {
     background-image: url("/imagen/machu.png");
     background-repeat: no-repeat;
-    width: 34%;
+    width: 130px;
+    height: 180px;
     padding: 5px 10px 5px;
     border-radius: 10px;
-    margin: 15px;
+    margin: 20px 10px 0px 10px;
     background-repeat: no-repeat;
 }
 
@@ -429,6 +442,7 @@ button {
     top: 0px;
     left: 0px;
     width: 98vw;
+    height: 42px;
 }
 
 .userImg{
@@ -455,9 +469,19 @@ button {
     margin-left: 115px;
 }
 
+.iconOut {
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+/* newpost */
+.fotografias {
+    margin-top: 12%;
+}
+
 /* editpost*/
 .usuarioAndButoon {
-    margin-top: 10%;
+    margin-top: 15%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -472,11 +496,14 @@ button {
 
 .usuario p  {
     text-align: left;
+    width: 100px;
+    line-height: 15px;
 }
 
 .usuarioAndImagen {
     display: flex;
     width:25px;
+    align-items: center;
 }
 
 /* viewpost */
@@ -502,13 +529,14 @@ hr {
     cursor: pointer;
   }
 
-  .xCerrar {
-    font-size: 23px;
-  }
-
   .textoEditRemove {
     font-size: 15px;
   }
+
+  .editar {
+    line-height: 30px;
+  }
+
   .textSecondary {
     cursor: pointer;
     color: #000;
@@ -592,6 +620,24 @@ hr {
     padding: 0px;
   }
 
+  .usuarioAndCommentaryRespt {
+    min-width: 75%;
+    padding: 5px;
+    border: 1px solid #DFDFDF;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .usuarioAndCommentaryRespt p{
+    margin: 0px;
+  }
+
+  .usuarioAndCommentaryRespt h2{
+    margin: 0px;
+  }
+
   /* Modal editar o eliminar*/
   .modalEditRemove {
       display: none;
@@ -608,12 +654,18 @@ hr {
   .boxModalEditRemove{
       padding: 10px;
       width: 95%;
+      height: 15%;
       position: absolute;
       bottom: 0;
       background: #ffffff;
       border-radius: 15px 15px 0px 0px;
       text-align: left;
       color: #666666;
+  }
+
+  .xCerrar {
+    font-size: 23px;
+    text-align: left;
   }
   
   /*modal eliminar*/
@@ -637,6 +689,13 @@ hr {
       text-align: center;
       color: #666666;
   }
+  .boxModal h3 {
+    line-height: 25px;
+  }
+  .boxModal p {
+    line-height: 15px;
+  }
+
 .liked{
     color: #CAD95B;
 }
