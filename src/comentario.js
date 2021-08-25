@@ -3,11 +3,12 @@
 
 export const showCommentary = () => {
   const publicaciones = document.querySelector('#commentary');
+  let userId = JSON.parse(localStorage.getItem('user')).email;
     const boxCommentary = `
     <div class="imagenAndCommentary">
       <img src="./imagen/user.svg" alt="" class="usuarioCommentary" id="usuarioCommentary">
         <div class="usuarioAndCommentary" >
-        <h2>Usuario2</h2>
+        <h2>${userId}</h2>
         <input class="contenidoCommentary" id="contenidoCommentary" placeholder="Comenta..." autofocus></input>
         </div>
     </div>
@@ -21,6 +22,7 @@ export const showCommentary = () => {
     const buttonSendCommentary = document.querySelector('#sendCommentary');
     const allComments = document.querySelector('#allComments');
     let postId = JSON.parse(localStorage.getItem('postSelected')).idPost;
+    
     // funciones
       /* crear comentario y guardar*/
     /*const crearItem = (comentario) => {
@@ -31,7 +33,7 @@ export const showCommentary = () => {
     const crearItem = (comentario) => {
       //fs.collection("comentarios").add({
       fs.collection("publicaciones").doc(postId).collection("comentarios").add({
-        usuario: "usuario1",
+        usuario: userId,
         comentario: comentario
       })
       .then(function(docRef) {
@@ -49,8 +51,8 @@ export const showCommentary = () => {
           allComments.innerHTML += `
             <div class="imagenAndCommentary comentUser">
               <img src="./imagen/user.svg" alt="" class="usuarioCommentary" id="usuarioCommentary">
-              <div class="usuarioAndCommentary">
-                <p>${doc.data().usuario}</p>
+              <div class="usuarioAndCommentaryRespt">
+                <h2>${doc.data().usuario}</h2>
                 <p class="contenidoCommentary">${doc.data().comentario}</p>
               </div>
             </div>
