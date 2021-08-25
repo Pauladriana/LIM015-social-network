@@ -1,11 +1,16 @@
 //import {getPubli} from './post.js';
-let userId = localStorage.getItem('usuarioLogueado')
+
 export const showFsPost = () => {
+  let userId = JSON.parse(localStorage.getItem('user')).uid;
+  console.log(userId);
   const publicaciones = document.querySelector('#allPost');
   const btnView = document.querySelectorAll('.postDiv');
   const setupPost = (data) => {
     publicaciones.innerHTML = '';
     data.forEach((doc) => {
+      let str = doc.username;
+      let leng = 7;
+      let trimmedString = str.substring(0, leng);
       const docId = doc.id;
       //console.log(docId, doc);
       const elDiv = document.createElement('div');
@@ -18,7 +23,7 @@ export const showFsPost = () => {
                       </div>
                       <h5>${doc.tituloPost}</h5>
                       <div class="muroLike">
-                      <p>Usuario</p>
+                      <p>${trimmedString}</p>
                       </div>
                     </div>
                     <div class= "contadorLikes" id="heartPost"><i class="fas fa-heart  ${
@@ -27,8 +32,6 @@ export const showFsPost = () => {
                 `;
       elDiv.innerHTML = divTemplate;
       
-
-   
     // update likes
       const likes = elDiv.querySelector('.fa-heart');
         likes.addEventListener( 'click', () => {
@@ -44,13 +47,48 @@ export const showFsPost = () => {
           }
         })
 
-      /*btnView.forEach( btn => {
-        btn.addEventListener( 'click', async (e) => {
-          await getPost(docId);
-          console.log('estas viendo el post el post')
-          window.location.hash = 'viewpost';
+        const getPost = (id) => {
+          console.log(id);
+
+          fs.collection('publicaciones').doc(id).get().then((ele)=>{
+            console.log(ele.data());
+            if (ele.data()) {
+              const user = ele.data();
+              console.log(user);
+              const costoPost = user.costoInput;
+              const diasPost = user.diasInput;
+              const nochesPost = user.nochesInput;
+              const ninosPost = user.ninosInput;
+              const peoplePost = user.personasInput;
+              const titlePost = user.tituloPost;
+              const contentPost = user.contenidoPost;
+              const locationPost = user.locacionInput;
+              const idPost = id;
+
+              let post = {
+                costoPost: costoPost,
+                diasPost: diasPost,
+                nochesPost: nochesPost,
+                ninosPost: ninosPost,
+                peoplePost: peoplePost,
+                titlePost: titlePost,
+                contentPost: contentPost,
+                locationPost: locationPost,
+                idPost: idPost
+              };
+
+              localStorage.setItem('postSelected', JSON.stringify(post));
+              window.location.hash = 'viewpost';
+            }
+          }).catch((err) => {
+            console.log(err);
+          })
+        };
+      const post = elDiv.querySelector('.postDiv');
+        post.addEventListener( 'click', () => {
+          getPost(docId);
         })
-      })*/
+
       publicaciones.appendChild(elDiv);
     })
   } /*TERMINA setupPost(post)*/

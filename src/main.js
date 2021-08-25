@@ -5,6 +5,7 @@ import {showFsPost} from './fsPost.js';
 import {cerrarSesion} from './logout.js';
 import {googleRegister, loginWithEmail} from './login.js';
 import {validarRegistro} from './validaciones.js';
+import {showCommentary} from './comentario.js';
 import {addPost, fsUpdate, deletePost} from './post.js';
 
 //RUTA SIN #
@@ -51,6 +52,8 @@ const showSeccion = (ruta) => {
     case '#viewpost': {
       return (
         (secciones.innerHTML = viewPost),
+        window.addEventListener('hashchange', dataPost()),
+        showCommentary(),
         dataPost(),
         funcionModal(),
         removePost(),
@@ -154,8 +157,8 @@ const botonLogin = () => {
       .then(() => {
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
-            console.log('logueo exitoso');
-            localStorage.setItem('usuarioLogueado', user.uid);
+            console.log('logueo exitoso', user);
+            localStorage.setItem('user', JSON.stringify(user.providerData[0]));
             window.location.hash = 'muro';
           }
         });
@@ -241,7 +244,6 @@ const gogleaRegistro = () => {
           const user = firebase.auth().currentUser.providerData[0];
           console.log('te logueaste con google', firebase.auth().currentUser.providerData[0]);
           validateEmail(user);
-          localStorage.setItem('usuarioLogueado', user.uid)
         }
       });
     }
@@ -298,8 +300,26 @@ const crearPost = () => {
       const tituloPost = document.querySelector('#tituloPost').value;
       const contenidoPost = document.querySelector('#contenidoPost').value;
       const locacionInput = document.querySelector('#locacionInput').value;
+      const likes = [];
 
-      addPost(costoInput, diasInput, nochesInput, personasInput, ninosInput, tituloPost, contenidoPost, locacionInput);
+      const email = JSON.parse(localStorage.getItem('user')).email;
+      const username = JSON.parse(localStorage.getItem('user')).displayName;
+      const userId = JSON.parse(localStorage.getItem('user')).uid;
+      const response = fs.collection('publicaciones').doc().set({
+        costoInput,
+        diasInput,
+        nochesInput,
+        personasInput,
+        ninosInput,
+        tituloPost,
+        contenidoPost,
+        locacionInput,
+        email,
+        username,
+        userId,
+        likes
+      });
+      console.log(response);
       console.log(tituloPost, contenidoPost);
       window.location.hash = 'muro';
     } else {
@@ -321,18 +341,25 @@ const dataPost = () => {
   let ninosTravel = document.querySelector('#viewNinos');
   let contenidoTravel = document.querySelector('#viewContenido');
 
-    locacionTravel.innerHTML = localStorage.getItem('locacion');
+    /*locacionTravel.innerHTML = localStorage.getItem('locacion');
     tituloTravel.innerHTML = localStorage.getItem('titulo');
     costoTravel.innerHTML = localStorage.getItem('costo');
     diasTravel.innerHTML = localStorage.getItem('dias');
     nochesTravel.innerHTML = localStorage.getItem('noches');
     personasTravel.innerHTML = localStorage.getItem('personas');
     ninosTravel.innerHTML = localStorage.getItem('ninos');
-    contenidoTravel.innerHTML = localStorage.getItem('contenido');
+    contenidoTravel.innerHTML = localStorage.getItem('contenido');*/
+    locacionTravel.innerHTML = post.locationPost;
+    tituloTravel.innerHTML = post.titlePost;
+    costoTravel.innerHTML = post.costoPost;
+    diasTravel.innerHTML = post.diasPost;
+    nochesTravel.innerHTML = post.nochesPost;
+    personasTravel.innerHTML = post.peoplePost
+    ninosTravel.innerHTML = post.ninosPost;
+    contenidoTravel.innerHTML = post.contentPost;
 }
 
 // Modales - editar-eliminar y mensaje de confirmacion
-const funcionModal = () => {
   const showModal = document.querySelector('#optionPost');
   const modalEditRemove = document.querySelector('#modalEditRemove');
   const closeModal = document.querySelector('#closeModalEditRomve'); 
@@ -362,7 +389,6 @@ const funcionModal = () => {
     modal.style.display = "none";
   })
   // fin de los modales
-  }
 
   // funcion eliminar Post
   const removePost = () => {
