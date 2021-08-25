@@ -69,16 +69,16 @@ export const createSignup = `
 
 // creando dinamicamente la vista muro (href = login)
 export const createMuro = `
-     <div class="muroContent">
-    <p>BIENVENIDO A TRAVELER.PE</p>
+    <div class="muroContent">
+    <header class="mainHeaderMuro">
+    <span class="textTraveler">Traveler.pe</span>
+    <i class="fas fa-sign-out-alt iconOut" id="logout-button"></i>
+    </header>
     <div id="allPost" class="allPost"></div>
     <div id="userslist" class="userslist"></div>
-    <button class="logout-button" type="button" id="logout-button">CERRAR SESION</button>
     <footer class="opcionesFoot">
       <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
-      <a href="#"><img src="./imagen/buscar.svg" alt="">
-      <a href="#newpost"><img src="./imagen/subir.svg" alt="">
-      <a href="#"><img src="./imagen/notificaciones.svg" alt="">
-      <a href="#"><img src="./imagen/mensajes.svg" alt="">
-      </div>
+      <a href="#newpost"><img src="./imagen/subir.svg" alt=""></a>
+      <a href="#profile"><img src="./imagen/user.svg" alt=""></a>
+    </div>
   </footer>`;

@@ -1,32 +1,52 @@
+//import {getPubli} from './post.js';
 
 export const showFsPost = () => {
-    const publicaciones = document.querySelector('#allPost');
-    //const logoutOption = document.querySelector('#logout-button');
-    const setupPost = (data) => {
-      if (data.length) {
-        let html = '';
-        data.forEach((doc) => {
-          const post = doc.data();
-          let str = post.username;
-          let leng = 7;
-          let trimmedString = str.substring(0, leng);
-          post.id = doc.id;
-          const div = `
-                    <div class='postDiv' data-id="${post.id}">
+  let userId = JSON.parse(localStorage.getItem('user')).uid;
+  console.log(userId);
+  const publicaciones = document.querySelector('#allPost');
+  const btnView = document.querySelectorAll('.postDiv');
+  const setupPost = (data) => {
+    publicaciones.innerHTML = '';
+    data.forEach((doc) => {
+      let str = doc.username;
+      let leng = 7;
+      let trimmedString = str.substring(0, leng);
+      const docId = doc.id;
+      //console.log(docId, doc);
+      const elDiv = document.createElement('div');
+      elDiv.setAttribute('data-id', docId);
+      const divTemplate = `
+                    <div class='postDiv'>
                       <div class="muroLocation">
                       <img src="./imagen/locacion.svg" alt="" class="locationIcon">
-                      <p>${post.locacionInput}</p>
+                      <p>${doc.locacionInput}</p>
                       </div>
-                      <h5>${post.tituloPost}</h5>
+                      <h5>${doc.tituloPost}</h5>
                       <div class="muroLike">
                       <p>${trimmedString}</p>
-                      <div class= "contadorLikes" ><i class="fas fa-heart" id="heartPost"></i><span>7</span></div>
                       </div>
-                    </div>`;
-          html += div;
-        });
-        publicaciones.innerHTML = html;
-        // desde firebase se llama get
+                    </div>
+                    <div class= "contadorLikes" id="heartPost"><i class="fas fa-heart  ${
+                      doc.likes.includes(userId) ? 'liked' : 'unliked'
+                    }"></i><span class='totalLikes'>${doc.likes.length}</span></div>
+                `;
+      elDiv.innerHTML = divTemplate;
+      
+    // update likes
+      const likes = elDiv.querySelector('.fa-heart');
+        likes.addEventListener( 'click', () => {
+          const result = doc.likes.indexOf(userId);
+          if (result === -1) {
+            let postLikes = doc.likes
+            postLikes.push(userId);
+            fs.collection('publicaciones').doc(docId).update({ likes: postLikes });
+          } else {
+            let postLikes = doc.likes
+            postLikes.splice(result, 1);
+            fs.collection('publicaciones').doc(docId).update({ likes: postLikes });
+          }
+        })
+
         const getPost = (id) => {
           console.log(id);
 
@@ -64,28 +84,30 @@ export const showFsPost = () => {
             console.log(err);
           })
         };
-        const btnView = document.querySelectorAll('.postDiv');
-        btnView.forEach( btn => {
-          btn.addEventListener( 'click', function(e) {
-            console.log(e.target);
-            if (e.target.dataset.id != undefined) {
-              getPost(e.target.dataset.id);
-              console.log('estas viendo el post el post');
-            }
-          })
+      const post = elDiv.querySelector('.postDiv');
+        post.addEventListener( 'click', () => {
+          getPost(docId);
         })
-      }
-    };
-    const auth = firebase.auth();
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        const fs = firebase.firestore();
-        fs.collection('publicaciones').get()
-          .then((snapshot) => {
-            setupPost(snapshot.docs);
-          });
-      } else {
-        setupPost([]);
-      };
-    });
-  };
+
+      /*btnView.forEach( btn => {
+        btn.addEventListener( 'click', async (e) => {
+          await getPost(docId);
+          console.log('estas viendo el post el post')
+          window.location.hash = 'viewpost';
+        })
+      })*/
+      publicaciones.appendChild(elDiv);
+    })
+  } /*TERMINA setupPost(post)*/
+
+  fs.collection('publicaciones').onSnapshot(snapshot => {
+    const post = [];
+    snapshot.forEach((doc) => {
+      post.push({
+        id: doc.id,
+        ...doc.data(),
+      });
+    })
+    setupPost(post)
+  })
+}

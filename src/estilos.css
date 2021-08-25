@@ -53,7 +53,7 @@ input{
     width: 240px;
     height: 30px;
     padding: 5px 10px 5px 10px;
-    /* color: #C4C4C4; */
+    color: #666666;
     margin-left: auto;
     margin-right: auto;
     border: solid 1px;
@@ -63,6 +63,10 @@ input{
     flex-direction: column;
     display: flex;
     outline: none;
+}
+
+input::placeholder {
+    color: #DFDFDF;
 }
 
 .login-input-log{
@@ -221,6 +225,12 @@ button {
     border-top-right-radius: 25px;
 }
 
+.iconoMenu {
+    font-size: 20px;
+    color: #92603F;
+    font-weight: 100;
+}
+
 /*POST GROUPS*/
 
 #postBody{
@@ -229,18 +239,27 @@ button {
     height: 100vh;
 }
 .mainHeader{
+    margin: 0px;
     background: #CAD95B;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 2px 5px 2px 5px;
     color: white;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 98vw;
+    height: 42px;
 }
 
 .iconos{
     display: flex;
     flex-direction: row;
-    padding: 15px;
+    padding: 5px 0px 5px 0px;
+    line-height: 1px;
+    margin-left: 15px;
+    justify-content: flex-start;
 }
 
 .travelOpt{
@@ -273,17 +292,28 @@ button {
 
 .tituloPost{
     border: none;
-    width: 323px;
     font-size: 16px;
     font-family: 'Lato', sans-serif;
-    margin-top: 0;
     outline: none;
 
+}
+.tituloPostEdit{
+    margin-top: 20px;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    outline: none;
+    text-align: center;
+    border-color: #E5E5E5;
+    height: auto;
+    border-radius: 0px;
+    width: 268px;
 }
 
 .contenidoPost{
     width: 323px;
-    height: 195px;
+    height: 155px;
     border-radius: 5px;
     border: 1px solid #C4C4C4;
     text-align: top;
@@ -291,13 +321,15 @@ button {
     padding: 5px;
     font-family: 'Lato', sans-serif;
     outline: none;
-
+    margin-bottom: 15%;
 }
 
 .locacion{
     display: flex;
     flex-direction: row;
     padding-left: 20px;
+    align-items: center;
+    height: 15px;
 }
 
 .locationIcon{
@@ -305,10 +337,24 @@ button {
 }
 
 .locationInput{
+    margin: 0px;
+    text-align: left;
     border: none;
     width: 285px;
     font-size: 14px;
     font-family: 'Lato', sans-serif;
+}
+.locationEdit{
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    outline: none;
+    border-color: #E5E5E5;
+    height: auto;
+    border-radius: 0px;
+    margin: 0px;
+    width: 269px;
 }
 
 .publiPost{
@@ -339,6 +385,11 @@ button {
     background-color: white;
 }
 
+.textTraveler {
+    font-size: 20px;
+    margin-left: 17px;
+}
+
 /* muro */
 .allPost {
     display: flex;
@@ -356,8 +407,13 @@ button {
     margin-left: 5px;
 }
 
+.postDiv h5 {
+    color: #fff;
+}
+
 .muroContent {
     margin-bottom: 15%;
+    margin-top: 15%;
 }
 
 .muroLike {
@@ -369,7 +425,7 @@ button {
 .muroLike p {
     color: #000;
     display: flex;
-    background: #ffffff7a;
+    background: #ffffffb8;
     width: fit-content;
     border-radius: 5px;
     padding: 0px 10px;
@@ -392,11 +448,28 @@ button {
 
 .postDiv {
     background-image: url("/imagen/machu.png");
-    width: 34%;
-    /*border: 1px solid #CAD95B; ya saleeeeeee la imagen c: me voy feliz*/
+    background-repeat: no-repeat;
+    width: 130px;
+    height: 180px;
     padding: 5px 10px 5px;
     border-radius: 10px;
-    margin: 15px;
+    margin: 20px 10px 0px 10px;
+    background-repeat: no-repeat;
+}
+
+.mainHeaderMuro {
+    margin: 0px;
+    background: #CAD95B;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 5px 2px 5px;
+    color: white;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 98vw;
+    height: 42px;
 }
 
 .userImg{
@@ -420,15 +493,51 @@ button {
 
 #optPost{
     width: 5px;
+    margin-left: 115px;
+}
+
+.iconOut {
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+/* newpost */
+.fotografias {
+    margin-top: 12%;
 }
 
 /* editpost*/
+.imagenPostEdit {
+    width: 360px;
+    height: 170px;
+    object-fit: none;
+}
+
+.iconosEdit {
+    display: flex;
+    flex-direction: row;
+    padding: 5px 0px 5px 0px;
+    line-height: 1px;
+    margin-left: 10px;
+    justify-content: flex-start;
+}
+
 .usuarioAndButoon {
+    margin-top: 15%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding:10px 20px 10px 20px;
+}
+
+.usuarioAndButtonEdit {
+    margin-top: 0%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px 10px 20px;
 }
 
 .usuario {
@@ -438,15 +547,14 @@ button {
 
 .usuario p  {
     text-align: left;
+    width: 100px;
+    line-height: 15px;
 }
 
 .usuarioAndImagen {
     display: flex;
     width:25px;
-}
-
-#optPost{
-    margin-left: 115px;
+    align-items: center;
 }
 
 /* viewpost */
@@ -456,9 +564,10 @@ button {
 }
 
 .contenidoViewPost {
+    padding-top: 10px;
     border: 1px solid #DFDFDF;
     border-radius: 15px;
-    margin-top: 25px;
+    margin-top: 5px;
 }
 
 /* viewPost */
@@ -471,18 +580,115 @@ hr {
     cursor: pointer;
   }
 
-  .xCerrar {
-    font-size: 23px;
-  }
-
   .textoEditRemove {
     font-size: 15px;
   }
+
+  .editar {
+    line-height: 30px;
+  }
+
   .textSecondary {
     cursor: pointer;
     color: #000;
   }
+
+  .likesDate{
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .contadorCommentary {
+    padding: 0px 10px;
+  }
+
+  .datePost {
+    padding: 0px 10px;
+  }
+
+  .viewContenido {
+    line-height: 18px;
+    text-align: left;
+    padding: 0px 20px 15px 20px;
+    margin-top: 0px;
+  }
+
+  .optionesPost {
+      margin-right: 25px;
+  }
+
+  /* comentarios */
+  .commentary {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 15%;
+  }
+
+  .commentary button {
+    margin-top: 10px;
+    width: 90px;
+    height: 30px;
+    background-color: #CAD95B;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Lato', sans-serif;
+    margin-left: auto;
+    margin-right: inherit;
+  }
+
+  .commentary img {
+    margin-left: 10px;
+    width: 15%;
+  }
+
+  .imagenAndCommentary {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
   
+  .usuarioAndCommentary {
+    min-width: 75%;
+    padding: 5px;
+    border: 1px solid #DFDFDF;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .usuarioAndCommentary h2 {
+    margin: 0px 0px 0px 5px;
+  }
+
+  .usuarioAndCommentary input {
+    border: none;
+    margin: 0px 0px 0px 5px;
+    padding: 0px;
+  }
+
+  .usuarioAndCommentaryRespt {
+    min-width: 75%;
+    padding: 5px;
+    border: 1px solid #DFDFDF;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .usuarioAndCommentaryRespt p{
+    margin: 0px;
+  }
+
+  .usuarioAndCommentaryRespt h2{
+    margin: 0px;
+  }
+
   /* Modal editar o eliminar*/
   .modalEditRemove {
       display: none;
@@ -499,12 +705,18 @@ hr {
   .boxModalEditRemove{
       padding: 10px;
       width: 95%;
+      height: 15%;
       position: absolute;
       bottom: 0;
       background: #ffffff;
       border-radius: 15px 15px 0px 0px;
       text-align: left;
       color: #666666;
+  }
+
+  .xCerrar {
+    font-size: 23px;
+    text-align: left;
   }
   
   /*modal eliminar*/
@@ -528,6 +740,53 @@ hr {
       text-align: center;
       color: #666666;
   }
+  .boxModal h3 {
+    line-height: 25px;
+  }
+  .boxModal p {
+    line-height: 15px;
+  }
+
+.liked{
+    color: #CAD95B;
+}
+
+.unliked{
+    color : #666666;
+}
+
+/* 404 not found */
+.pagenotfound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 120px;
+}
+.tituloNotFound{
+    font-size: 20px;
+    padding: 0px 10px 0px 10px;
+}
+
+.linkReturnMuro {
+    margin-top: 15px;
+    width: 130px;
+    height: 41px;
+    background-color: #CAD95B;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Lato', sans-serif;
+    text-decoration: none;
+    color: #FFF;
+    line-height: 38px;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+.imagenNotFound {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
 
 /* media query, min-width ancho igual o superior, max-width ancho igual o menor*/
 /* celular */
