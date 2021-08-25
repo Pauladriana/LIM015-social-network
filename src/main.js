@@ -7,6 +7,7 @@ import {googleRegister, loginWithEmail} from './login.js';
 import {validarRegistro} from './validaciones.js';
 import {showCommentary} from './comentario.js';
 import {addPost, fsUpdate, deletePost, getPubli} from './post.js';
+import {pageNotFound} from './notfound.js';
 
 //RUTA SIN #
 /*const changeRoute = (hash) => {
@@ -99,7 +100,9 @@ const showSeccion = (ruta) => {
       );
     }
     default: {
-      return (secciones.innerHTML = `estoy en otro lado 404`);
+      return (
+        (secciones.innerHTML = pageNotFound)
+      );
     }
   }
 };

@@ -150,9 +150,9 @@ export const editPost = `
   </header>
   <main>
     <section class="fotografias">
-      <img src="./imagen/imagenCuscoEDIT.svg" alt="">
+      <img class="imagenPostEdit" src="./imagen/imagenCuscoEDIT.svg" alt="">
     </section>
-    <section class="usuarioAndButoon">
+    <section class="usuarioAndButtonEdit">
     
     <div class="usuarioAndImagen">
     <img src="./imagen/user.png" alt="">
@@ -166,10 +166,10 @@ export const editPost = `
     </section>
     <div class="locacion">
         <img src="./imagen/locacion.svg" alt="" class="locationIcon">
-        <input type="text" class="locationInput" id="editLocation" placeholder="Locacion">
+        <input type="text" class="locationEdit" id="editLocation" placeholder="Locacion">
     </div>
-    <input type="text" class="tituloPost" placeholder="Titulo" id="editTitulo">
-    <section class="iconos">
+    <input type="text" class="tituloPostEdit" placeholder="Titulo" id="editTitulo">
+    <section class="iconosEdit">
       <div id="costo" class="travelOpt">
         <img src="./imagen/cash.svg" alt="" class="iconPost">
         <input type="number" class="inputPost" id="editCosto">

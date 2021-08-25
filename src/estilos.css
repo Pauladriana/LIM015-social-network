@@ -297,10 +297,23 @@ button {
     outline: none;
 
 }
+.tituloPostEdit{
+    margin-top: 20px;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    outline: none;
+    text-align: center;
+    border-color: #E5E5E5;
+    height: auto;
+    border-radius: 0px;
+    width: 268px;
+}
 
 .contenidoPost{
     width: 323px;
-    height: 195px;
+    height: 155px;
     border-radius: 5px;
     border: 1px solid #C4C4C4;
     text-align: top;
@@ -316,6 +329,7 @@ button {
     flex-direction: row;
     padding-left: 20px;
     align-items: center;
+    height: 15px;
 }
 
 .locationIcon{
@@ -323,11 +337,24 @@ button {
 }
 
 .locationInput{
+    margin: 0px;
     text-align: left;
     border: none;
     width: 285px;
     font-size: 14px;
     font-family: 'Lato', sans-serif;
+}
+.locationEdit{
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    outline: none;
+    border-color: #E5E5E5;
+    height: auto;
+    border-radius: 0px;
+    margin: 0px;
+    width: 269px;
 }
 
 .publiPost{
@@ -398,7 +425,7 @@ button {
 .muroLike p {
     color: #000;
     display: flex;
-    background: #ffffff7a;
+    background: #ffffffb8;
     width: fit-content;
     border-radius: 5px;
     padding: 0px 10px;
@@ -480,6 +507,21 @@ button {
 }
 
 /* editpost*/
+.imagenPostEdit {
+    width: 360px;
+    height: 170px;
+    object-fit: none;
+}
+
+.iconosEdit {
+    display: flex;
+    flex-direction: row;
+    padding: 5px 0px 5px 0px;
+    line-height: 1px;
+    margin-left: 10px;
+    justify-content: flex-start;
+}
+
 .usuarioAndButoon {
     margin-top: 15%;
     display: flex;
@@ -487,6 +529,15 @@ button {
     align-items: center;
     justify-content: space-between;
     padding:10px 20px 10px 20px;
+}
+
+.usuarioAndButtonEdit {
+    margin-top: 0%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px 10px 20px;
 }
 
 .usuario {
@@ -703,6 +754,40 @@ hr {
 .unliked{
     color : #666666;
 }
+
+/* 404 not found */
+.pagenotfound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 120px;
+}
+.tituloNotFound{
+    font-size: 20px;
+    padding: 0px 10px 0px 10px;
+}
+
+.linkReturnMuro {
+    margin-top: 15px;
+    width: 130px;
+    height: 41px;
+    background-color: #CAD95B;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Lato', sans-serif;
+    text-decoration: none;
+    color: #FFF;
+    line-height: 38px;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+.imagenNotFound {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
 /* media query, min-width ancho igual o superior, max-width ancho igual o menor*/
 /* celular */
 /*menor a Galaxy Fold 280px*/
