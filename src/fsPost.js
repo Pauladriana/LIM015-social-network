@@ -89,13 +89,6 @@ export const showFsPost = () => {
           getPost(docId);
         })
 
-      /*btnView.forEach( btn => {
-        btn.addEventListener( 'click', async (e) => {
-          await getPost(docId);
-          console.log('estas viendo el post el post')
-          window.location.hash = 'viewpost';
-        })
-      })*/
       publicaciones.appendChild(elDiv);
     })
   } /*TERMINA setupPost(post)*/

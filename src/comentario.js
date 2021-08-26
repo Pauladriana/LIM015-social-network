@@ -43,6 +43,22 @@ export const showCommentary = () => {
         console.log("Error agregando comentario:", error);
       }); 
     }
+    /*Suma de comentarios*/
+    const commentsCounter = document.querySelector('.contadorCommentary');
+    const totalOfComments = (docs) => {
+      commentsCounter.innerHTML = '';
+      const elDiv = document.createElement('div');
+      const divTemplate = `
+                          <i class="far fa-comment"></i>
+                          <span id="comentsPost">${docs.length}</span>`;
+      elDiv.innerHTML = divTemplate;
+      commentsCounter.appendChild(elDiv);
+    }
+    fs.collection('publicaciones').doc(postId).collection('comentarios').onSnapshot((snapshot)=>{
+      console.log(snapshot.docs);
+      totalOfComments(snapshot.docs)
+    })
+
       /* mostrar comentario */
       fs.collection("publicaciones").doc(postId).collection("comentarios").onSnapshot((querySnapshop) => {
         allComments.innerHTML = "";
