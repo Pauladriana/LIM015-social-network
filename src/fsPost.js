@@ -211,7 +211,7 @@ export const showMyPosts = () => {
                       padding: 0px 40px;
                       display: flex;
                       align-items: center;">
-            <h1 style="font-size: 20px; color: #666666;">Aun no hiciste ninguna publicacion, te me estas quedando hija !!! , hechale ganas wey !!</h1>
+            <h1 style="font-size: 20px; color: #666666;">Aun no hiciste ninguna publicacion, te me estas quedando hija !!! , échale ganas wey !!</h1>
           </div>
       `;
       elDiv.innerHTML = divTemplate;

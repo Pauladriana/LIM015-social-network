@@ -338,6 +338,7 @@ const crearPost = () => {
       const email = JSON.parse(localStorage.getItem('user')).email;
       const username = JSON.parse(localStorage.getItem('user')).displayName;
       const userId = JSON.parse(localStorage.getItem('user')).uid;
+      const photoUser = JSON.parse(localStorage.getItem('user')).photoURL;
       const response = fs.collection('publicaciones').doc().set({
         costoInput,
         diasInput,
@@ -351,7 +352,8 @@ const crearPost = () => {
         username,
         userId,
         likes,
-        fecha
+        fecha,
+        photoUser
       });
       console.log(response);
       console.log(tituloPost, contenidoPost);
@@ -378,15 +380,9 @@ const dataPost = () => {
   let fechaPost = document.querySelector('#fechaPost');
   let likesPost = document.querySelector('#likesPost');
   let comentsPost = document.querySelector('#comentsPost');
+  let pepe = document.querySelector('#pepe');
+  
 
-    /*locacionTravel.innerHTML = localStorage.getItem('locacion');
-    tituloTravel.innerHTML = localStorage.getItem('titulo');
-    costoTravel.innerHTML = localStorage.getItem('costo');
-    diasTravel.innerHTML = localStorage.getItem('dias');
-    nochesTravel.innerHTML = localStorage.getItem('noches');
-    personasTravel.innerHTML = localStorage.getItem('personas');
-    ninosTravel.innerHTML = localStorage.getItem('ninos');
-    contenidoTravel.innerHTML = localStorage.getItem('contenido');*/
     let post = JSON.parse(localStorage.getItem('postSelected'));
     let userLogged = JSON.parse(localStorage.getItem('user'));
 
@@ -404,6 +400,8 @@ const dataPost = () => {
     contenidoTravel.innerHTML = nombre.contenidoPost;
     userEmailPost.innerHTML = nombre.username;
     fechaPost.innerHTML = nombre.fecha;
+    pepe.setAttribute('src',nombre.photoUser);
+    
 
     const postOptions = document.querySelector('#optionPost')
     if(userLogged.uid !== nombre.userId){

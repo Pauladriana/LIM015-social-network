@@ -59,14 +59,12 @@ export const viewPost = `
     <main>
     <section class="usuarioAndButoon">
       <div class="usuarioAndImagen">
-        <img src="./imagen/user.png" alt="" id="pepe">
+        <img class="photoViewPost" src="" alt="" id="pepe">
           <div class="usuario">
             <p id="userEmailPost"></p>
           </div>
       </div>
-      <div class="buttonSeguir">
-        <button class="publiPost" >Ver perfil</button>
-      </div>
+      
     </section>
     
     <div class="contenidoViewPost">
