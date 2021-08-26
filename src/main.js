@@ -1,13 +1,14 @@
 import {createLogin, createSignup, createMuro} from './logingroup.js';
 import {createNewPost, viewPost, editPost} from './postgroup.js';
 import {showAuthUsers} from './authuser.js';
-import {showFsPost} from './fsPost.js';
+import {showFsPost, showMyPosts} from './fsPost.js';
 import {cerrarSesion} from './logout.js';
 import {googleRegister, loginWithEmail} from './login.js';
 import {validarRegistro} from './validaciones.js';
 import {showCommentary} from './comentario.js';
 import {addPost, fsUpdate, deletePost, getPubli} from './post.js';
 import {pageNotFound} from './notfound.js';
+import {pageprofile, setProfileAttributes} from './profile.js';
 
 //RUTA SIN #
 /*const changeRoute = (hash) => {
@@ -76,9 +77,18 @@ const showSeccion = (ruta) => {
       return (
         (secciones.innerHTML = createMuro),
         showFsPost(),
-        showAuthUsers(),
+        // showAuthUsers(),
         cerrarSesion(),
         console.log('hola estoy en muro')
+      );
+    }
+    case '#profile': {
+      return (
+        (secciones.innerHTML = pageprofile),
+        setProfileAttributes(),
+        showMyPosts(),
+        cerrarSesion(),
+        console.log('hola estoy en profile')
       );
     }
     case '': {
