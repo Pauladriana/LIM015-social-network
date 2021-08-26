@@ -215,6 +215,13 @@ button {
     width: 37%;
 }
 
+.logoProfile {
+    position: absolute;
+    top: 22%;
+    width: 37%;
+    border-radius: 100px;
+}
+
 .logo2 {
     top: 22%;
     width: 37%;
@@ -787,6 +794,21 @@ hr {
     position: absolute;
     bottom: 0;
 }
+/*perfil del usuario Profile*/
+.userProfile {
+    display: flex;
+    flex-direction: column;
+    line-height: 3px;
+    align-items: center;
+    padding: 48px 0 0 0;
+}
+
+.userProfile p  {
+    text-align: center;
+    font-size: 20px;
+    line-height: 15px;
+    font-weight: bold;
+}
 
 /* media query, min-width ancho igual o superior, max-width ancho igual o menor*/
 /* celular */
@@ -798,6 +820,9 @@ hr {
     .logo {
         top: 18%;
     }
+    .logoProfile {
+        top: 18%;
+    }
 }
 /*mayor e igual a Galaxy Fold 280px*/
 @media  screen and (min-width: 280px) and (max-width: 359px){
@@ -807,6 +832,9 @@ hr {
     .logo {
         top: 18%;
     }
+    .logoProfile {
+        top: 18%;
+    }
 }
 /*mayor e igual a Moto G4 360px*/
 @media  screen and (min-width: 360px) and (max-width: 374px){
@@ -814,6 +842,9 @@ hr {
         width: 100%;
     }
     .logo {
+        top: 23%;
+    }
+    .logoProfile {
         top: 23%;
     }
 }
@@ -826,6 +857,9 @@ hr {
     .logo {
         top: 19%;
     }
+    .logoProfile {
+        top: 19%;
+    }
 }
 /*mayor e igual a Pixel 2 411px*/
 @media  screen and (min-width: 411px) and (max-width: 539px){
@@ -833,6 +867,10 @@ hr {
         width: 100%;
     }
     .logo {
+        top: 24%;
+        width: 33%;
+    }
+    .logoProfile {
         top: 24%;
         width: 33%;
     }
@@ -849,6 +887,10 @@ hr {
         top: 30%;
         width: 28%;
     }
+    .logoProfile {
+        top: 30%;
+        width: 28%;
+    }
     .formLogin {
         margin-top: 11%;
     }
@@ -859,6 +901,10 @@ hr {
         width: 50%;
     }
     .logo {
+        width: 21%;
+        top: 17%;
+    }
+    .logoProfile {
         width: 21%;
         top: 17%;
     }
@@ -873,6 +919,10 @@ hr {
         width: 35%;
     }
     .logo {
+        width: 13%;
+        top: 19%;
+    }
+    .logoProfile {
         width: 13%;
         top: 19%;
     }
