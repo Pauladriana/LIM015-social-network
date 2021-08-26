@@ -5,6 +5,16 @@ export const crearUsuarioFb = (signupEmail, signupPassword, usernameInput, fulln
   emailUserRegister(signupEmail, signupPassword)
     .then((userCredential) => {
       checkmail();
+      userCredential.user.updateProfile({
+        displayName: fullnameInput,
+        photoURL: './imagen/user.svg'
+      }).then((r) => {
+        console.log(r);
+      })
+      .catch((e)=>{
+        console.log(e);
+      });
+      console.log(displayName);
       // console.log("registrado");
       fs.collection("users").add({
         username: usernameInput,

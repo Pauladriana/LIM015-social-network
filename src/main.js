@@ -97,7 +97,7 @@ const showSeccion = (ruta) => {
         mostrarContraseña(),
         botonLogin(),
         gogleaRegistro(),
-        console.log('hola estoy en muro')
+        console.log('hola estoy en login')
       );
     }
     case '/': {
