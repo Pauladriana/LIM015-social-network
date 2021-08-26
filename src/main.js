@@ -368,28 +368,9 @@ const dataPost = () => {
     personasTravel.innerHTML = localStorage.getItem('personas');
     ninosTravel.innerHTML = localStorage.getItem('ninos');
     contenidoTravel.innerHTML = localStorage.getItem('contenido');*/
-<<<<<<< HEAD
-    locacionTravel.innerHTML = post.locationPost;
-    tituloTravel.innerHTML = post.titlePost;
-    costoTravel.innerHTML = post.costoPost;
-    diasTravel.innerHTML = post.diasPost;
-    nochesTravel.innerHTML = post.nochesPost;
-    personasTravel.innerHTML = post.peoplePost
-    ninosTravel.innerHTML = post.ninosPost;
-    contenidoTravel.innerHTML = post.contentPost;
-=======
     let post = JSON.parse(localStorage.getItem('postSelected'));
-    let arrayComents = [];
-    fs.collection('publicaciones').doc(post.idPost).collection('comentarios').get().then((ele)=>{
-      ele.forEach(doc => {
-        console.log(doc.data());
-        arrayComents.push(doc.data());
+    let userLogged = JSON.parse(localStorage.getItem('user'));
 
-      })
-    });
-    console.log(arrayComents);
-
-  
   fs.collection('publicaciones').doc(post.idPost).get().then((ele)=>{
     console.log(ele.data());
     const nombre = ele.data();
@@ -404,14 +385,54 @@ const dataPost = () => {
     contenidoTravel.innerHTML = nombre.contenidoPost;
     userEmailPost.innerHTML = nombre.username;
     fechaPost.innerHTML = nombre.fecha;
-    likesPost.innerHTML = nombre.likes.length;
-    comentsPost.innerHTML = arrayComents.length;
+
+    const postOptions = document.querySelector('#optionPost')
+    if(userLogged.uid !== nombre.userId){
+      postOptions.style.display = 'none'
+    }
   });
-      
->>>>>>> 7d101afb7190331f84edc5cee1316ff5d232ed3e
+
+
+  //ACTUALIZAR LIKES 
+  const likesCounter = document.querySelector('.contadorLikes');
+  const postTotalLikes = (doc) => {
+    let postId = JSON.parse(localStorage.getItem('postSelected')).idPost;
+    likesCounter.innerHTML = '';
+    const elDiv = document.createElement('div');
+    const divTemplate = `
+                      <i class="fas fa-heart  ${
+                        doc.likes.includes(userLogged.uid) ? 'liked' : 'unliked'
+                      }"></i><span class='totalLikes'>${doc.likes.length}</span>`;
+    elDiv.innerHTML = divTemplate;
+    const likes = elDiv.querySelector('.fa-heart');
+    likes.addEventListener( 'click', () => {
+      const result = doc.likes.indexOf(userLogged.uid);
+      if (result === -1) {
+        let postLikes = doc.likes
+        postLikes.push(userLogged.uid);
+        fs.collection('publicaciones').doc(postId).update({ likes: postLikes });
+      } else {
+        let postLikes = doc.likes
+        postLikes.splice(result, 1);
+        fs.collection('publicaciones').doc(postId).update({ likes: postLikes });
+      }
+    });
+    likesCounter.appendChild(elDiv);
+  };
+  fs.collection('publicaciones').doc(post.idPost).onSnapshot(snapshot => {
+    console.log(snapshot.data());
+    postTotalLikes(snapshot.data())
+  })
+  
+
 }
 
+
+
+
+
 // Modales - editar-eliminar y mensaje de confirmacion
+const funcionModal = () => {
   const showModal = document.querySelector('#optionPost');
   const modalEditRemove = document.querySelector('#modalEditRemove');
   const closeModal = document.querySelector('#closeModalEditRomve'); 
@@ -441,7 +462,7 @@ const dataPost = () => {
     modal.style.display = "none";
   })
   // fin de los modales
-
+}
   // funcion eliminar Post
   const removePost = () => {
     let post = JSON.parse(localStorage.getItem('postSelected'));
