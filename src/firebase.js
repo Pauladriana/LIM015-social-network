@@ -4,6 +4,7 @@ import {emailUserRegister} from './login.js';
 export const crearUsuarioFb = (signupEmail, signupPassword, usernameInput, fullnameInput, passwordInput, emailInput) => {
   emailUserRegister(signupEmail, signupPassword)
     .then((userCredential) => {
+      checkmail();
       // console.log("registrado");
       fs.collection("users").add({
         username: usernameInput,
@@ -25,4 +26,16 @@ export const crearUsuarioFb = (signupEmail, signupPassword, usernameInput, fulln
         wrongSignupEmail.style.color = 'red';
       }
     });
+
+    // verificar el correo electronico
+      const checkmail = () => {
+        const user = firebase.auth().currentUser; 
+        user.sendEmailVerification().then(function() {
+          // email
+          console.log('enviando correo...');
+        }).catch(function(error) {
+          // error
+          console.log(error);
+        });
+      }
 };

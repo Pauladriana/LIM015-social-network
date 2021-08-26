@@ -162,10 +162,18 @@ const botonLogin = () => {
     loginWithEmail(loginEmail, loginPassword)
       .then(() => {
         firebase.auth().onAuthStateChanged((user) => {
-          if (user) {
+          //verifica el correo si es true
+          if (user.emailVerified) {
             console.log('logueo exitoso', user);
             localStorage.setItem('user', JSON.stringify(user.providerData[0]));
             window.location.hash = 'muro';
+            console.log('*****************');
+            console.log(user.emailVerified);
+            console.log('*****************');
+          }else {
+            const errorVerified = document.querySelector('#wrongpassword');
+            errorVerified.innerHTML = 'tu correo no esta verificado';
+            errorVerified.style.color = 'red';
           }
         });
       })
@@ -224,6 +232,7 @@ const validateEmail = (user) => {
       }
     });
 };
+
 
 // Logearse con google
 const gogleaRegistro = () => {

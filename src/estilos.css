@@ -397,14 +397,17 @@ button {
 }
 
 .muroLocation {
+    margin-top: 5px;
     display: flex;
-    background: #ffffff7a;
+    background: #ffffffc4;
     width: fit-content;
     border-radius: 5px;
     padding: 0px 10px;
+    align-items: center;
 }
 .muroLocation p {
-    margin-left: 5px;
+    line-height: 20px;
+    margin: 0px 0px 0px 5px;
 }
 
 .postDiv h5 {
@@ -419,7 +422,9 @@ button {
 .muroLike {
     display: flex;
     justify-content: space-between;
-    align-items:center;
+    align-items: center;
+    align-content: flex-end;
+    margin-bottom: 0px;
 }
 
 .muroLike p {
@@ -429,6 +434,7 @@ button {
     width: fit-content;
     border-radius: 5px;
     padding: 0px 10px;
+    margin-bottom: 0px;
 }
 
 .muroLike i {
@@ -447,14 +453,17 @@ button {
 }
 
 .postDiv {
-    background-image: url("/imagen/machu.png");
+    display: flex;
+    background-image: url(/imagen/machu.png);
     background-repeat: no-repeat;
     width: 130px;
-    height: 180px;
+    height: 170px;
     padding: 5px 10px 5px;
     border-radius: 10px;
     margin: 20px 10px 0px 10px;
     background-repeat: no-repeat;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .mainHeaderMuro {
