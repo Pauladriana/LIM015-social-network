@@ -7,27 +7,26 @@ export const crearUsuarioFb = (signupEmail, signupPassword, usernameInput, fulln
       checkmail();
       userCredential.user.updateProfile({
         displayName: fullnameInput,
-        photoURL: './imagen/user.svg'
-      }).then((r) => {
-        console.log(r);
+        photoURL: './imagen/profileChange.png'
+      }).then(() => {
+        fs.collection("users").add({
+          username: usernameInput,
+          fullname: fullnameInput,
+          password: passwordInput,
+          email: emailInput
+        })
+          .then((docRef) => {
+          // console.log("Este es el nuevo usuario: " + docRef.id);
+          })
+          .catch((error) => {
+            // console.log("Tienes el siguiente error: " + error);
+          });
       })
       .catch((e)=>{
         console.log(e);
       });
       console.log(displayName);
       // console.log("registrado");
-      fs.collection("users").add({
-        username: usernameInput,
-        fullname: fullnameInput,
-        password: passwordInput,
-        email: emailInput
-      })
-        .then((docRef) => {
-        // console.log("Este es el nuevo usuario: " + docRef.id);
-        })
-        .catch((error) => {
-          // console.log("Tienes el siguiente error: " + error);
-        });
     })
     .catch((err) => {
       const wrongSignupEmail = document.querySelector('#wrongSUemail');

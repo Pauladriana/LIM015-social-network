@@ -258,6 +258,7 @@ button {
     left: 0px;
     width: 98vw;
     height: 42px;
+    z-index: 1;
 }
 
 .iconos{
@@ -401,6 +402,8 @@ button {
 .allPost {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 15%;
+    justify-content: center;
 }
 
 .muroLocation {
@@ -574,6 +577,17 @@ button {
 }
 
 /* viewpost */
+.photoViewPost {
+    width: 60px;
+    border-radius: 50%;
+}
+
+.usuarioCommentary {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
 #optionPost {
     margin-left: 86px;
     margin-top: 9px;
@@ -689,6 +703,7 @@ hr {
 
   .usuarioAndCommentaryRespt {
     min-width: 75%;
+    max-width: 50%;
     padding: 5px;
     border: 1px solid #DFDFDF;
     border-radius: 10px;
@@ -698,6 +713,7 @@ hr {
   }
 
   .usuarioAndCommentaryRespt p{
+    text-align: left;
     margin: 0px;
   }
 

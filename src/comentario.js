@@ -4,11 +4,13 @@
 export const showCommentary = () => {
   const publicaciones = document.querySelector('#commentary');
   let userId = JSON.parse(localStorage.getItem('user')).email;
+  let userName = JSON.parse(localStorage.getItem('user')).displayName;
+  let userPhoto = JSON.parse(localStorage.getItem('user')).photoURL;
     const boxCommentary = `
     <div class="imagenAndCommentary">
-      <img src="./imagen/user.svg" alt="" class="usuarioCommentary" id="usuarioCommentary">
+      <img src="${userPhoto}" alt="" class="usuarioCommentary" id="usuarioCommentary">
         <div class="usuarioAndCommentary" >
-        <h2>${userId}</h2>
+        <h2>${userName}</h2>
         <input class="contenidoCommentary" id="contenidoCommentary" placeholder="Comenta..." autofocus></input>
         </div>
     </div>
@@ -22,6 +24,8 @@ export const showCommentary = () => {
     const buttonSendCommentary = document.querySelector('#sendCommentary');
     const allComments = document.querySelector('#allComments');
     let postId = JSON.parse(localStorage.getItem('postSelected')).idPost;
+    const photoUser = JSON.parse(localStorage.getItem('user')).photoURL;
+    const username = JSON.parse(localStorage.getItem('user')).displayName;
     
     // funciones
       /* crear comentario y guardar*/
@@ -33,8 +37,11 @@ export const showCommentary = () => {
     const crearItem = (comentario) => {
       //fs.collection("comentarios").add({
       fs.collection("publicaciones").doc(postId).collection("comentarios").add({
-        usuario: userId,
-        comentario: comentario
+        usuario: username,
+        comentario: comentario,
+        photoUrl: photoUser,
+
+        
       })
       .then(function(docRef) {
         console.log("Se agrego correctamente ID:", docRef.id);
@@ -66,7 +73,7 @@ export const showCommentary = () => {
           console.log(`${doc.id} => ${doc.data().comentario}`);
           allComments.innerHTML += `
             <div class="imagenAndCommentary comentUser">
-              <img src="./imagen/user.svg" alt="" class="usuarioCommentary" id="usuarioCommentary">
+              <img src="${doc.data().photoUrl}" alt="" class="usuarioCommentary" id="usuarioCommentary">
               <div class="usuarioAndCommentaryRespt">
                 <h2>${doc.data().usuario}</h2>
                 <p class="contenidoCommentary">${doc.data().comentario}</p>
