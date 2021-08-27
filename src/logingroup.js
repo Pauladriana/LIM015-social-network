@@ -2,9 +2,10 @@ const secciones = document.querySelector('#secciones');
 
 // creando dinamicamente la vista login (href = muro)
 export const createLogin = `
+<div class="cntLogin">
 <img src="./imagen/banner.png" alt="port" class="borde-baner">
 <div class="cntLogo">
-  <img src="./imagen/logo.svg" alt="logo" class="logo">
+  <img src="./imagen/logoblanco.svg" alt="logo" class="logo">
 </div>
 <form action="" id="login-form" class="formLogin">
   <div class="cntPasswordInput">
@@ -23,13 +24,14 @@ export const createLogin = `
   </div>
   <button type="button" id="login-button" class="submit-button">LOGIN</button>
 </form>
-<p>O</p>
+<p class="oLogin">O</p>
 <button type="button" id="google-login" class="google-login">
   <img src="./imagen/google.png" class="imgGoogle"/>
   Iniciar sesión con google
 </button>
 <p>¿No tienes una cuenta? <a href="#signup" id="signingup">Regístrate</a></p> 
-<a href="#">Olvidé mi contraseña</a>`;
+<a href="#">Olvidé mi contraseña</a>
+</div>`;
 secciones.innerHTML = createLogin;
 
 // creando dinamicamente la vista registro (href = login)
@@ -37,7 +39,7 @@ export const createSignup = `
 <div class="contenedor-registro">
   <h1 class="titulo" >Viaja conmigo</h1>
   <div class="cntLogo">
-  <img src="./imagen/logo.svg" alt="logo" class="logo2">
+  <img src="./imagen/logoblanco.svg"" alt="logo" class="logo">
   </div>
   <form action="" id="signup-form">
     <input type="text" placeholder="Nombre completo" class="login-input" name="fullname" id="fullname" required>

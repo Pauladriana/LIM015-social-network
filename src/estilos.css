@@ -3,6 +3,14 @@
     font-size: 14px;
 }
 
+body {
+    background: url(/imagen/fondoLogin.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 .login{
     display: block;
     
@@ -10,12 +18,11 @@
 
 .titulo {
     font-size: 20px;
-    color: #C4C4C4;
+    color: #fff;
     margin-bottom: 0px;
 }
 
 .contenedor-registro {
-    border: 1px solid #CAD95B;
     border-radius: 30px;
     margin-top: 23px;
 }
@@ -26,7 +33,7 @@
 }
 
 .formLogin {
-    margin-top: 22%;
+    margin-top: 10%;
 }
 
 .signup{
@@ -41,6 +48,10 @@ section{
     flex-direction: column;
     justify-content: center;
     text-align: center;
+}
+
+.oLogin {
+    color: #ffff;
 }
 
 /*FUENTES:
@@ -167,13 +178,13 @@ input::placeholder {
 a {
     text-decoration: none;
     font-size: 12px;
-    color: #0000FF;
+    color: #CAD95B;
 }
 
 p {
     text-align: center;
     font-size: 12px;
-    color: #666666;
+    color: #ffff;
 }
 
 button {
@@ -182,6 +193,7 @@ button {
 }
 
 .terminos{
+    color: #ffff;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -202,6 +214,7 @@ button {
     flex-direction: row;
     justify-content: center;
     padding: 0px 0px 40px 0px;
+    color:#F4F4F4;
 }
 .show-password{
     margin: 0;
@@ -210,7 +223,7 @@ button {
 }
 
 .logo {
-    position: absolute;
+    position: relative;
     top: 22%;
     width: 37%;
 }
@@ -228,6 +241,7 @@ button {
 }
 
 .borde-baner {
+    display: flex;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
 }
@@ -397,7 +411,9 @@ button {
     font-size: 20px;
     margin-left: 17px;
 }
-
+.cntLogin{
+    margin-top: 65px;
+}
 /* muro */
 .allPost {
     display: flex;
@@ -835,44 +851,7 @@ hr {
     font-weight: bold;
 }
 
-/* media query, min-width ancho igual o superior, max-width ancho igual o menor*/
-/* celular */
-/*menor a Galaxy Fold 280px*/
-@media screen and (max-width: 279px) {
-    .borde-baner {
-        width: 100%;
-    }
-    .logo {
-        top: 18%;
-    }
-    .logoProfile {
-        top: 18%;
-    }
-}
-/*mayor e igual a Galaxy Fold 280px*/
-@media  screen and (min-width: 280px) and (max-width: 359px){
-    .borde-baner {
-        width: 100%;
-    }
-    .logo {
-        top: 18%;
-    }
-    .logoProfile {
-        top: 18%;
-    }
-}
-/*mayor e igual a Moto G4 360px*/
-@media  screen and (min-width: 360px) and (max-width: 374px){
-    .borde-baner {
-        width: 100%;
-    }
-    .logo {
-        top: 23%;
-    }
-    .logoProfile {
-        top: 23%;
-    }
-}
+
 /* tablet */ 
 /*mayor e igual a iPhone 375px*/
 @media  screen and (min-width: 375px) and (max-width: 410px){
@@ -921,12 +900,14 @@ hr {
     }
 }
 /*mayor e igual a iPad 768px*/
-@media  screen and (min-width: 768px) and (max-width: 1279px){
+@media  screen and (min-width: 768px){
     .borde-baner {
+        display: none;
         width: 50%;
     }
     .logo {
-        width: 21%;
+        position: relative;
+        width: 10%;
         top: 17%;
     }
     .logoProfile {
@@ -934,25 +915,14 @@ hr {
         top: 17%;
     }
     .formLogin {
-        margin-top: 15%;
+        margin-top: 5%;
+    }
+    .cntLogo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: nowrap;
     }
 }
-/* laptop */
-/*mayor e igual a laptop 1280px*/
-@media  screen and (min-width: 1280px){
-    .borde-baner {
-        width: 35%;
-    }
-    .logo {
-        width: 13%;
-        top: 19%;
-    }
-    .logoProfile {
-        width: 13%;
-        top: 19%;
-    }
-    .formLogin {
-        margin-top: 7%;
-    }
-}
+
 
