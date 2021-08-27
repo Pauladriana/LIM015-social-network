@@ -34,43 +34,43 @@ export const validarRegistro = () => {
       case "fullname":
         if (e.target.value.length == 0) {
           mensajeFullname.innerHTML = "Este campo esta vacio";
-          mensajeFullname.style.color = "red";
+          mensajeFullname.style.color = "#ffccdd";
           campos['fullname'] = false;
         } else if (expresiones.nombre.test(e.target.value)) {
           mensajeFullname.innerHTML = "Es válido";
-          mensajeFullname.style.color = "green";
+          mensajeUsername.style.color = "#c8fdc8";
           campos['fullname'] = true;
         } else {
           mensajeFullname.innerHTML = "Solo debe tener Letras";
-          mensajeFullname.style.color = "red";
+          mensajeFullname.style.color = "#ffccdd";
           campos['fullname'] = false;
         }
         break;
         case "username":
         if (e.target.value.length == 0) {
           mensajeUsername.innerHTML = "Este campo esta vacio";
-          mensajeUsername.style.color = "red";
+          mensajeUsername.style.color = "#ffccdd";
           campos['username'] = false;
         } else if (expresiones.usuario.test(e.target.value)){
           mensajeUsername.innerHTML = "Es válido";
-          mensajeUsername.style.color = "green";
+          mensajeUsername.style.color = "#c8fdc8";
           campos['username'] = true;
         } else {
           mensajeUsername.innerHTML = "Maximo 16 caracteres";
-          mensajeUsername.style.color = "red";
+          mensajeUsername.style.color = "#ffccdd";
           campos['username'] = false;
         }
         break;
         case "signup-password":
         if (e.target.value.length == 0) {
           mensajeContraseña1.innerHTML = "Este campo esta vacio";
-          mensajeContraseña1.style.color = "red";
+          mensajeContraseña1.style.color = "#ffccdd";
         } else if(expresiones.password.test(e.target.value)){
           mensajeContraseña1.innerHTML = "Es válido";
-          mensajeContraseña1.style.color = "green";
+          mensajeContraseña1.style.color = "#c8fdc8";
         } else {
           mensajeContraseña1.innerHTML = "La contraseña tiene que ser de 6 a 12 digitos";
-          mensajeContraseña1.style.color = "red";
+          mensajeContraseña1.style.color = "#ffccdd";
         }
         validarContraseña2();
         break;
@@ -80,15 +80,15 @@ export const validarRegistro = () => {
         case "signup-email":
           if (e.target.value.length == 0) {
             mensajeCorreo.innerHTML = "Este campo esta vacio";
-            mensajeCorreo.style.color = "red";
+            mensajeCorreo.style.color = "#ffccdd";
             //campos['email'] = false;
           } else if(expresiones.correo.test(e.target.value)){
             mensajeCorreo.innerHTML = "Es válido";
-            mensajeCorreo.style.color = "green";
+            mensajeCorreo.style.color = "#c8fdc8";
             campos['email'] = true;
           } else {
             mensajeCorreo.innerHTML = "El correo solo puede contener letras, numeros, puntos y guion bajo";
-            mensajeCorreo.style.color = "red";
+            mensajeCorreo.style.color = "#ffccdd";
             campos['email'] = false;
           }
         break;
@@ -102,11 +102,11 @@ export const validarRegistro = () => {
 
     if (contraseña1.value !== contraseña2.value) {
       mensajeContraseña2.innerHTML = "La contraseña no es la misma";
-      mensajeContraseña2.style.color = "red";
+      mensajeContraseña2.style.color = "#ffccdd";
       campos['password'] = false;
     } else {
       mensajeContraseña2.innerHTML = "Es válido";
-      mensajeContraseña2.style.color = "green";
+      mensajeContraseña2.style.color = "#c8fdc8";
       campos['password'] = true;
     }
   } // ------------ 
@@ -119,7 +119,7 @@ export const validarRegistro = () => {
       mensajeChecket.style.display = "none";
     } else {
       mensajeChecket.style.display = "block";
-      mensajeChecket.style.color = "red";
+      mensajeChecket.style.color = "#ffccdd";
       mensajeChecket.innerHTML = "Acepta los terminos y condiciones";
     }
   } // --------------
@@ -163,7 +163,7 @@ export const validarRegistro = () => {
   const mensajeCamposVacios = () => {
     const mensajeError = document.querySelector('#campoError');
     mensajeError.innerHTML = "Error: Por favor rellena el formulario correctamente";
-    mensajeError.style.color = "red";
+    mensajeError.style.color = "#ffccdd";
     // mensaje de error en 1 segundo desaparece
     /*setTimeout( () => {
         mensajeError.style.display = "none";

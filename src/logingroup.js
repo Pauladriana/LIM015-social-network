@@ -37,7 +37,6 @@ secciones.innerHTML = createLogin;
 // creando dinamicamente la vista registro (href = login)
 export const createSignup = `
 <div class="contenedor-registro">
-  <h1 class="titulo" >Viaja conmigo</h1>
   <div class="cntLogo">
   <img src="./imagen/logoblanco.svg"" alt="logo" class="logo">
   </div>
