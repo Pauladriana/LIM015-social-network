@@ -3,6 +3,18 @@
     font-size: 14px;
 }
 
+body {
+    margin: 0px;
+}
+
+.loginBody {
+    background: url(/imagen/fondoLogin.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 .login{
     display: block;
     
@@ -10,14 +22,18 @@
 
 .titulo {
     font-size: 20px;
-    color: #C4C4C4;
+    color: #fff;
     margin-bottom: 0px;
 }
 
 .contenedor-registro {
-    border: 1px solid #CAD95B;
-    border-radius: 30px;
-    margin-top: 23px;
+    background: url(/imagen/fondoLogin.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 120vh;
+    padding-top: 10%;
 }
 
 .cntLogo {
@@ -26,7 +42,7 @@
 }
 
 .formLogin {
-    margin-top: 22%;
+    margin-top: 10%;
 }
 
 .signup{
@@ -41,6 +57,10 @@ section{
     flex-direction: column;
     justify-content: center;
     text-align: center;
+}
+
+.oLogin {
+    color: #ffff;
 }
 
 /*FUENTES:
@@ -167,13 +187,13 @@ input::placeholder {
 a {
     text-decoration: none;
     font-size: 12px;
-    color: #0000FF;
+    color: #CAD95B;
 }
 
 p {
     text-align: center;
     font-size: 12px;
-    color: #666666;
+    color: #ffff;
 }
 
 button {
@@ -182,6 +202,7 @@ button {
 }
 
 .terminos{
+    color: #ffff;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -202,6 +223,7 @@ button {
     flex-direction: row;
     justify-content: center;
     padding: 0px 0px 40px 0px;
+    color:#F4F4F4;
 }
 .show-password{
     margin: 0;
@@ -210,9 +232,9 @@ button {
 }
 
 .logo {
-    position: absolute;
+    position: relative;
     top: 22%;
-    width: 37%;
+    max-width: 37%;
 }
 
 .logoProfile {
@@ -228,6 +250,7 @@ button {
 }
 
 .borde-baner {
+    display: none;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
 }
@@ -397,7 +420,15 @@ button {
     font-size: 20px;
     margin-left: 17px;
 }
-
+.cntLogin{
+    background: url(/imagen/fondoLogin.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+    padding-top: 65px;
+}
 /* muro */
 .allPost {
     display: flex;
@@ -835,82 +866,881 @@ hr {
     font-weight: bold;
 }
 
-/* media query, min-width ancho igual o superior, max-width ancho igual o menor*/
-/* celular */
-/*menor a Galaxy Fold 280px*/
-@media screen and (max-width: 279px) {
-    .borde-baner {
-        width: 100%;
-    }
-    .logo {
-        top: 18%;
-    }
-    .logoProfile {
-        top: 18%;
-    }
+@media  screen and (max-width: 540px){
+*{
+    font-family: 'Baloo 2', sans-serif;
+    font-size: 14px;
 }
-/*mayor e igual a Galaxy Fold 280px*/
-@media  screen and (min-width: 280px) and (max-width: 359px){
-    .borde-baner {
-        width: 100%;
-    }
-    .logo {
-        top: 18%;
-    }
-    .logoProfile {
-        top: 18%;
-    }
+
+body {
+    margin: 0px;
 }
-/*mayor e igual a Moto G4 360px*/
-@media  screen and (min-width: 360px) and (max-width: 374px){
-    .borde-baner {
-        width: 100%;
-    }
-    .logo {
-        top: 23%;
-    }
-    .logoProfile {
-        top: 23%;
-    }
+
+.loginBody {
+    background: url(/imagen/fondoLogin.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
-/* tablet */ 
-/*mayor e igual a iPhone 375px*/
-@media  screen and (min-width: 375px) and (max-width: 410px){
-    .borde-baner {
-        width: 100%;
-    }
-    .logo {
-        top: 19%;
-    }
-    .logoProfile {
-        top: 19%;
-    }
+
+.login{
+    display: block;
+    
 }
-/*mayor e igual a Pixel 2 411px*/
-@media  screen and (min-width: 411px) and (max-width: 539px){
-    .borde-baner {
-        width: 100%;
-    }
-    .logo {
-        top: 24%;
-        width: 33%;
-    }
-    .logoProfile {
-        top: 24%;
-        width: 33%;
-    }
-    .formLogin {
-        margin-top: 18%;
-    }
+
+.titulo {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 0px;
 }
-/*mayor e igual a Surface 540px*/
-@media  screen and (min-width: 540px) and (max-width: 767px){
+
+.contenedor-registro {
+    background: url(/imagen/fondoLogin.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 120vh;
+    padding-top: 10%;
+}
+
+.cntLogo {
+    display: flex;
+    justify-content: center;
+}
+
+.formLogin {
+    margin-top: 10%;
+}
+
+.signup{
+    display: none;
+}
+.muro{
+    display: none;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.oLogin {
+    color: #ffff;
+}
+
+/*FUENTES:
+font-family: 'Baloo 2', cursive;
+font-family: 'Lato', sans-serif;*/
+
+input{
+    border-radius: 20px;
+    margin: 2%;
+    width: 240px;
+    height: 30px;
+    padding: 5px 10px 5px 10px;
+    color: #666666;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 1px;
+    border-color: #E5E5E5;
+    background-color: white;
+    font-family:'Lato', sans-serif;
+    flex-direction: column;
+    display: flex;
+    outline: none;
+}
+
+input::placeholder {
+    color: #DFDFDF;
+}
+
+.login-input-log{
+    border-radius: 0 !important;
+    margin: 0%;
+    width: 240px;
+    height: 30px;
+    padding: 0px 10px 0px 10px;
+    /* color: #C4C4C4; */
+    margin-left: auto;
+    margin-right: auto;
+    border: 0 !important;
+    border-color: #E5E5E5;
+    background-color: white;
+    font-family: 'Lato', sans-serif;
+    flex-direction: column;
+    display: flex;
+    outline: none;
+
+}
+
+.cntPasswordInput {
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    margin: 2%;
+    width: 240px;
+    height: 30px;
+    padding: 5px 10px 5px 10px;
+    color: #C4C4C4;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 1px;
+    border-color: #E5E5E5;
+    background-color: white;
+    font-family: 'Lato', sans-serif;
+    align-items: center;
+}
+
+.google-login{
+    width: 225px;
+    font-size: 12px;
+    font-family: 'Lato', sans-serif;
+    background-color: white;
+    padding: 5px;
+    border: solid 1px;
+    border-color: #E5E5E5;
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content:space-evenly;
+    
+
+}
+
+
+.submit-button {
+    width: 100px;
+    background-color: #CAD95B;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    border-radius: 20px;
+    border: none;
+    padding: 5px;
+    color: #ffff;
+}
+
+.logout-button{
+    width: 100px;
+    background-color: #CAD95B;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    border-radius: 20px;
+    border: none;
+    padding: 5px;
+    color: #ffff;
+}
+
+.cancel-button {
+    margin-top: 15px;
+    width: 100px;
+    background-color: #C4C4C4;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    border-radius: 20px;
+    border: none;
+    padding: 5px;
+    color: #666666;
+}
+
+.imgGoogle {
+    padding-left: 2px;
+}
+
+a {
+    text-decoration: none;
+    font-size: 12px;
+    color: #CAD95B;
+}
+
+p {
+    text-align: center;
+    font-size: 12px;
+    color: #ffff;
+}
+
+button {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.terminos{
+    color: #ffff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+
+.accept{
+    width: 15px;
+    margin-right: 5px;
+    margin-left: 0;
+}
+
+
+.mostrar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0px 0px 40px 0px;
+    color:#F4F4F4;
+}
+.show-password{
+    margin: 0;
+    width: 30px;
+    height: 16px;
+}
+
+.logo {
+    position: relative;
+    top: 22%;
+    max-width: 37%;
+}
+
+.logoProfile {
+    position: absolute;
+    top: 22%;
+    width: 37%;
+    border-radius: 100px;
+}
+
+.logo2 {
+    top: 22%;
+    width: 37%;
+}
+
+.borde-baner {
+    display: none;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.iconoMenu {
+    font-size: 20px;
+    color: #92603F;
+    font-weight: 100;
+}
+
+/*POST GROUPS*/
+
+#postBody{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+.mainHeader{
+    margin: 0px;
+    background: #CAD95B;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 5px 2px 5px;
+    color: white;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 98vw;
+    height: 42px;
+    z-index: 1;
+}
+
+.iconos{
+    display: flex;
+    flex-direction: row;
+    padding: 5px 0px 5px 0px;
+    line-height: 1px;
+    margin-left: 15px;
+    justify-content: flex-start;
+}
+
+.travelOpt{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+.inputPost{
+    width: 36px;
+    height: 14px;
+    border: 1px solid black;
+    border-radius: 15px;
+    margin: auto;
+    outline: none;
+
+}
+
+.inputPost:hover{
+    border: 1px solid #CAD95B;
+}
+
+.iconPost{
+    width: 25px;
+    margin: 5px;
+    margin-bottom: 5px;
+}
+
+.tituloPost{
+    border: none;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    outline: none;
+
+}
+.tituloPostEdit{
+    margin-top: 20px;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    outline: none;
+    text-align: center;
+    border-color: #E5E5E5;
+    height: auto;
+    border-radius: 0px;
+    width: 268px;
+}
+
+.contenidoPost{
+    width: 323px;
+    height: 155px;
+    border-radius: 5px;
+    border: 1px solid #C4C4C4;
+    text-align: top;
+    margin: auto;
+    padding: 5px;
+    font-family: 'Lato', sans-serif;
+    outline: none;
+    margin-bottom: 15%;
+}
+
+.locacion{
+    display: flex;
+    flex-direction: row;
+    padding-left: 20px;
+    align-items: center;
+    height: 15px;
+}
+
+.locationIcon{
+    width: 15px
+}
+
+.locationInput{
+    margin: 0px;
+    text-align: left;
+    border: none;
+    width: 285px;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+}
+.locationEdit{
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    outline: none;
+    border-color: #E5E5E5;
+    height: auto;
+    border-radius: 0px;
+    margin: 0px;
+    width: 269px;
+}
+
+.publiPost{
+    display: block;
+    margin: auto;
+    width: 89px;
+    height: 28px;
+    background-color: #CAD95B;
+    border: 1px solid #CAD95B;
+    border-radius: 10px;
+    font-size: 12px;
+    font-family: 'Lato', sans-serif;
+
+}
+
+.opcionesFoot{
+    border-top: 1px solid #EBEBEB;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+}
+
+.textTraveler {
+    font-size: 20px;
+    margin-left: 17px;
+}
+.cntLogin{
+    background: url(/imagen/fondoLogin.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+    padding-top: 65px;
+}
+/* muro */
+.allPost {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15%;
+    justify-content: center;
+}
+
+.muroLocation {
+    margin-top: 5px;
+    display: flex;
+    background: #ffffffc4;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 0px 10px;
+    align-items: center;
+}
+.muroLocation p {
+    line-height: 20px;
+    margin: 0px 0px 0px 5px;
+}
+
+.postDiv h5 {
+    color: #fff;
+}
+
+.muroContent {
+    margin-bottom: 15%;
+    margin-top: 15%;
+}
+
+.muroLike {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-end;
+    margin-bottom: 0px;
+}
+
+.muroLike p {
+    color: #000;
+    display: flex;
+    background: #ffffffb8;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 0px 10px;
+    margin-bottom: 0px;
+}
+
+.muroLike i {
+    color: white;
+}
+
+.contadorLikes {
+    background: #ffffff7a;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 0px 10px;
+}
+
+.contadorLikes span {
+    margin: 5px;
+}
+
+.postDiv {
+    display: flex;
+    background-image: url(/imagen/machu.png);
+    background-repeat: no-repeat;
+    width: 130px;
+    height: 170px;
+    padding: 5px 10px 5px;
+    border-radius: 10px;
+    margin: 20px 10px 0px 10px;
+    background-repeat: no-repeat;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mainHeaderMuro {
+    margin: 0px;
+    background: #CAD95B;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 5px 2px 5px;
+    color: white;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 98vw;
+    height: 42px;
+}
+
+.userImg{
+    width: 50px;
+}
+
+.userData{
+   display: flex;
+   flex-direction: row; 
+   justify-content: flex-start;
+}
+
+.userText{
+    padding: 0;
+    margin: 1px;
+}
+
+.userName, .userId, .userFollowers{
+    margin: 2px;
+}
+
+#optPost{
+    width: 5px;
+    margin-left: 115px;
+}
+
+.iconOut {
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+/* newpost */
+.fotografias {
+    margin-top: 12%;
+}
+
+/* editpost*/
+.imagenPostEdit {
+    width: 360px;
+    height: 170px;
+    object-fit: none;
+}
+
+.iconosEdit {
+    display: flex;
+    flex-direction: row;
+    padding: 5px 0px 5px 0px;
+    line-height: 1px;
+    margin-left: 10px;
+    justify-content: flex-start;
+}
+
+.usuarioAndButoon {
+    margin-top: 15%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding:10px 20px 10px 20px;
+}
+
+.usuarioAndButtonEdit {
+    margin-top: 0%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px 10px 20px;
+}
+
+.usuario {
+    line-height: 3px;
+    margin-left: 10px;
+}
+
+.usuario p  {
+    text-align: left;
+    width: 100px;
+    line-height: 15px;
+}
+
+.usuarioAndImagen {
+    display: flex;
+    width:25px;
+    align-items: center;
+}
+
+/* viewpost */
+.photoViewPost {
+    width: 60px;
+    border-radius: 50%;
+}
+
+.usuarioCommentary {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+#optionPost {
+    margin-left: 86px;
+    margin-top: 9px;
+}
+
+.contenidoViewPost {
+    padding-top: 10px;
+    border: 1px solid #DFDFDF;
+    border-radius: 15px;
+    margin-top: 5px;
+}
+
+/* viewPost */
+hr {
+    border-top: 1px solid #F4F4F4;
+  }
+  
+  .textPrimary {
+    color: #CAD95B;
+    cursor: pointer;
+  }
+
+  .textoEditRemove {
+    font-size: 15px;
+  }
+
+  .editar {
+    line-height: 30px;
+  }
+
+  .textSecondary {
+    cursor: pointer;
+    color: #000;
+  }
+
+  .likesDate{
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .contadorCommentary {
+    padding: 0px 10px;
+  }
+
+  .datePost {
+    padding: 0px 10px;
+  }
+
+  .viewContenido {
+    line-height: 18px;
+    text-align: left;
+    padding: 0px 20px 15px 20px;
+    margin-top: 0px;
+  }
+
+  .optionesPost {
+      margin-right: 25px;
+  }
+
+  /* comentarios */
+  .commentary {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 15%;
+  }
+
+  .commentary button {
+    margin-top: 10px;
+    width: 90px;
+    height: 30px;
+    background-color: #CAD95B;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Lato', sans-serif;
+    margin-left: auto;
+    margin-right: inherit;
+  }
+
+  .commentary img {
+    margin-left: 10px;
+    width: 15%;
+  }
+
+  .imagenAndCommentary {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .usuarioAndCommentary {
+    min-width: 75%;
+    padding: 5px;
+    border: 1px solid #DFDFDF;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .usuarioAndCommentary h2 {
+    margin: 0px 0px 0px 5px;
+  }
+
+  .usuarioAndCommentary input {
+    border: none;
+    margin: 0px 0px 0px 5px;
+    padding: 0px;
+  }
+
+  .usuarioAndCommentaryRespt {
+    min-width: 75%;
+    max-width: 50%;
+    padding: 5px;
+    border: 1px solid #DFDFDF;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .usuarioAndCommentaryRespt p{
+    text-align: left;
+    margin: 0px;
+  }
+
+  .usuarioAndCommentaryRespt h2{
+    margin: 0px;
+  }
+
+  /* Modal editar o eliminar*/
+  .modalEditRemove {
+      display: none;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+  }
+  
+  .boxModalEditRemove{
+      padding: 10px;
+      width: 95%;
+      height: 15%;
+      position: absolute;
+      bottom: 0;
+      background: #ffffff;
+      border-radius: 15px 15px 0px 0px;
+      text-align: left;
+      color: #666666;
+  }
+
+  .xCerrar {
+    font-size: 23px;
+    text-align: left;
+  }
+  
+  /*modal eliminar*/
+  .modalRemove {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+  }
+  .boxModal{
+      padding: 15px;
+      width: 65%;
+      height: 28%;
+      margin: auto auto;
+      background: #ffffff;
+      border-radius: 10px;
+      text-align: center;
+      color: #666666;
+  }
+  .boxModal h3 {
+    line-height: 25px;
+  }
+  .boxModal p {
+    line-height: 15px;
+  }
+
+.liked{
+    color: #CAD95B;
+}
+
+.unliked{
+    color : #666666;
+}
+
+/* 404 not found */
+.pagenotfound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 120px;
+}
+.tituloNotFound{
+    font-size: 20px;
+    padding: 0px 10px 0px 10px;
+}
+
+.linkReturnMuro {
+    margin-top: 15px;
+    width: 130px;
+    height: 41px;
+    background-color: #CAD95B;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Lato', sans-serif;
+    text-decoration: none;
+    color: #FFF;
+    line-height: 38px;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+.imagenNotFound {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+/*perfil del usuario Profile*/
+.userProfile {
+    display: flex;
+    flex-direction: column;
+    line-height: 3px;
+    align-items: center;
+    padding: 48px 0 0 0;
+}
+
+.userProfile p  {
+    text-align: center;
+    font-size: 20px;
+    line-height: 15px;
+    font-weight: bold;
+}
+
+}
+
+/*mayor e igual a Surface 541px*/
+@media  screen and (min-width: 541px) and (max-width: 1279px){
     .borde-baner {
         width: 100%;
-    }
-    .logo {
-        top: 30%;
-        width: 28%;
     }
     .logoProfile {
         top: 30%;
@@ -920,39 +1750,6 @@ hr {
         margin-top: 11%;
     }
 }
-/*mayor e igual a iPad 768px*/
-@media  screen and (min-width: 768px) and (max-width: 1279px){
-    .borde-baner {
-        width: 50%;
-    }
-    .logo {
-        width: 21%;
-        top: 17%;
-    }
-    .logoProfile {
-        width: 21%;
-        top: 17%;
-    }
-    .formLogin {
-        margin-top: 15%;
-    }
-}
-/* laptop */
-/*mayor e igual a laptop 1280px*/
-@media  screen and (min-width: 1280px){
-    .borde-baner {
-        width: 35%;
-    }
-    .logo {
-        width: 13%;
-        top: 19%;
-    }
-    .logoProfile {
-        width: 13%;
-        top: 19%;
-    }
-    .formLogin {
-        margin-top: 7%;
-    }
-}
+
+
 
