@@ -73,7 +73,14 @@ export const createMuro = `
     <div class="muroContent">
     <header class="mainHeaderMuro">
     <span class="textTraveler">Traveler.pe</span>
+    <div class="iconosMenuMuro">
+    <div class="menuIconos">
+      <a href="#muro"><img src="./imagen/iconhome.png" alt=""></a>
+      <a href="#newpost"><img src="./imagen/iconsubir.png" alt=""></a>
+      <a href="#profile"><img src="./imagen/iconuser.svg" alt=""></a>
+    </div>
     <i class="fas fa-sign-out-alt iconOut" id="logout-button"></i>
+    </div>
     </header>
     <div id="allPost" class="allPost"></div>
     <div id="userslist" class="userslist"></div>

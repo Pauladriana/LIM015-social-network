@@ -3,6 +3,10 @@
     font-size: 14px;
 }
 
+footer {
+    display: none;
+}
+
 body {
     margin: 0px;
 }
@@ -33,7 +37,7 @@ body {
     -o-background-size: cover;
     background-size: cover;
     height: 120vh;
-    padding-top: 10%;
+    padding-top: 65px;
 }
 
 .cntLogo {
@@ -42,7 +46,7 @@ body {
 }
 
 .formLogin {
-    margin-top: 10%;
+    margin-top: 3%;
 }
 
 .signup{
@@ -234,14 +238,14 @@ button {
 .logo {
     position: relative;
     top: 22%;
-    max-width: 37%;
+    width: 130px;
 }
 
 .logoProfile {
     position: absolute;
-    top: 22%;
-    width: 37%;
-    border-radius: 100px;
+    top: 35%;
+    width: 300px;
+    border-radius: 50%;
 }
 
 .logo2 {
@@ -279,8 +283,8 @@ button {
     position: fixed;
     top: 0px;
     left: 0px;
-    width: 98vw;
-    height: 42px;
+    width: 100vw;
+    height: 70px;
     z-index: 1;
 }
 
@@ -323,7 +327,7 @@ button {
 
 .tituloPost{
     border: none;
-    font-size: 16px;
+    font-size: 18px;
     font-family: 'Lato', sans-serif;
     outline: none;
 
@@ -343,6 +347,7 @@ button {
 }
 
 .contenidoPost{
+    font-size: 18px;
     width: 323px;
     height: 155px;
     border-radius: 5px;
@@ -372,7 +377,7 @@ button {
     text-align: left;
     border: none;
     width: 285px;
-    font-size: 14px;
+    font-size: 18px;
     font-family: 'Lato', sans-serif;
 }
 .locationEdit{
@@ -391,34 +396,20 @@ button {
 .publiPost{
     display: block;
     margin: auto;
-    width: 89px;
-    height: 28px;
+    width: 100px;
+    height: 36px;
     background-color: #CAD95B;
     border: 1px solid #CAD95B;
     border-radius: 10px;
-    font-size: 12px;
+    font-size: 18px;
     font-family: 'Lato', sans-serif;
 
 }
 
-.opcionesFoot{
-    border-top: 1px solid #EBEBEB;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    height: fit-content;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    background-color: white;
-}
-
 .textTraveler {
-    font-size: 20px;
-    margin-left: 17px;
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: 30px;
 }
 .cntLogin{
     background: url(/imagen/fondoLogin.jpg) no-repeat center center fixed;
@@ -430,6 +421,18 @@ button {
     padding-top: 65px;
 }
 /* muro */
+.iconosMenuMuro {
+    display: flex;
+}
+
+.menuIconos {
+    margin-right: 25px;
+}
+
+.menuIconos a{
+    margin: 5px;
+}
+
 .allPost {
     display: flex;
     flex-wrap: wrap;
@@ -438,7 +441,9 @@ button {
 }
 
 .muroLocation {
-    margin-top: 5px;
+    margin-left: 15px;
+    height: 30px;
+    margin-top: 15px;
     display: flex;
     background: #ffffffc4;
     width: fit-content;
@@ -447,11 +452,14 @@ button {
     align-items: center;
 }
 .muroLocation p {
+    font-size: 18px;
+    color: black;
     line-height: 20px;
     margin: 0px 0px 0px 5px;
 }
 
 .postDiv h5 {
+    font-size: 25px;
     color: #fff;
 }
 
@@ -461,14 +469,16 @@ button {
 }
 
 .muroLike {
+    margin-left: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     align-content: flex-end;
-    margin-bottom: 0px;
+    margin-bottom: 15px;
 }
 
 .muroLike p {
+    font-size: 18px;
     color: #000;
     display: flex;
     background: #ffffffb8;
@@ -483,28 +493,36 @@ button {
 }
 
 .contadorLikes {
+    margin-top: 5px;
     background: #ffffff7a;
     width: fit-content;
     border-radius: 5px;
     padding: 0px 10px;
 }
 
+.contadorLikes i{
+    font-size: 21px;
+}
+
 .contadorLikes span {
+    font-size: 18px;
     margin: 5px;
 }
 
 .postDiv {
     display: flex;
-    background-image: url(/imagen/machu.png);
-    background-repeat: no-repeat;
-    width: 130px;
-    height: 170px;
+    justify-content: space-between;
+    background-position: center;
+    background-size: cover;
+    background-image: url(/imagen/fotoPost.jpg);
+    background-repeat: repeat;
+    width: 360px;
+    height: 407px;
     padding: 5px 10px 5px;
     border-radius: 10px;
-    margin: 20px 10px 0px 10px;
+    margin: 20px 30px 0px 10px;
     background-repeat: no-repeat;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 .mainHeaderMuro {
@@ -518,8 +536,8 @@ button {
     position: fixed;
     top: 0px;
     left: 0px;
-    width: 98vw;
-    height: 42px;
+    width: 100vw;
+    height: 70px;
 }
 
 .userImg{
@@ -547,13 +565,32 @@ button {
 }
 
 .iconOut {
-    font-size: 20px;
-    margin-right: 20px;
+    font-size: 45px;
+    margin-right: 30px;
 }
 
 /* newpost */
+.postnew {
+    margin-top: 0%;
+}
+
+.nuevopost {
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+    margin-right: 200px;
+}
+
 .fotografias {
-    margin-top: 12%;
+    margin-right: 5%;
+    width: 500px;
+    background-image: url(./imagen/apurimac3.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 700px;
+    display: flex;
+    border-radius: 30px;
 }
 
 /* editpost*/
@@ -826,8 +863,11 @@ hr {
     margin-top: 120px;
 }
 .tituloNotFound{
-    font-size: 20px;
+    width: 550px;
+    color: #000;
+    font-size: 30px;
     padding: 0px 10px 0px 10px;
+    text-align: center;
 }
 
 .linkReturnMuro {
@@ -846,12 +886,23 @@ hr {
 
 }
 .imagenNotFound {
-    width: 100%;
+    width: 50%;
     position: absolute;
     bottom: 0;
 }
 /*perfil del usuario Profile*/
+.banerPerfil {
+    width: 100%;
+    background-image: url(./imagen/userprofile.gif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    display: flex;
+}
+
 .userProfile {
+    margin-top: 75px;
     display: flex;
     flex-direction: column;
     line-height: 3px;
@@ -860,12 +911,15 @@ hr {
 }
 
 .userProfile p  {
+    color: #000;
     text-align: center;
-    font-size: 20px;
+    font-size: 40px;
     line-height: 15px;
     font-weight: bold;
 }
 
+
+/* ************* pequeño *************** */
 @media  screen and (max-width: 540px){
 *{
     font-family: 'Baloo 2', sans-serif;
@@ -1105,7 +1159,7 @@ button {
     top: 22%;
     max-width: 37%;
 }
-
+ 
 .logoProfile {
     position: absolute;
     top: 22%;
@@ -1192,7 +1246,7 @@ button {
 
 .tituloPost{
     border: none;
-    font-size: 16px;
+    font-size: 14px;
     font-family: 'Lato', sans-serif;
     outline: none;
 
@@ -1286,8 +1340,9 @@ button {
 }
 
 .textTraveler {
-    font-size: 20px;
-    margin-left: 17px;
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: 30px;
 }
 .cntLogin{
     background: url(/imagen/fondoLogin.jpg) no-repeat center center fixed;
@@ -1745,9 +1800,6 @@ hr {
     .logoProfile {
         top: 30%;
         width: 28%;
-    }
-    .formLogin {
-        margin-top: 11%;
     }
 }
 

@@ -3,44 +3,54 @@ export const createNewPost = `
 <body id="postBody">
     <header class="mainHeaderMuro">
     <span class="textTraveler">Traveler.pe</span>
-    <i class="fas fa-sign-out-alt iconOut" id="logout-button" aria-hidden="true"></i>
+    <div class="iconosMenuMuro">
+    <div class="menuIconos">
+      <a href="#muro"><img src="./imagen/iconhome.png" alt=""></a>
+      <a href="#newpost"><img src="./imagen/iconsubir.png" alt=""></a>
+      <a href="#profile"><img src="./imagen/iconuser.svg" alt=""></a>
+    </div>
+    <i class="fas fa-sign-out-alt iconOut" id="logout-button"></i>
+    </div>
     </header>
   <main>
-    <section class="fotografias">
-      <img src="./imagen/apurimac3.svg" alt="">
-    </section>
-    <section class="iconos">
-      <div id="costo" class="travelOpt">
-        <img src="./imagen/cash.svg" alt="" class="iconPost" title = "Monto en soles">
-        <input type="number" class="inputPost" id="costoInput">
-      </div>
-      <div id="dias" class="travelOpt">
-        <img src="./imagen/sun.svg" alt="" class="iconPost" title = "Cuantos Dias">
-        <input type="number" class="inputPost" id="diasInput">
-      </div>
-      <div id="noches" class="travelOpt">
-        <img src="./imagen/moon.svg" alt="" class="iconPost" title = "Cuantas Noches">
-        <input type="number" class="inputPost" id="nochesInput">
-      </div>
-      <div id="personas" class="travelOpt">
-        <img src="./imagen/family.svg" alt="" class="iconPost" title = "Numero de Personas">
-        <input type="number" class="inputPost" id="personasInput">
-      </div>
-      <div id="niños" class="travelOpt">
-        <img src="./imagen/child.svg" alt="" class="iconPost" title = "Numero de niños">
-        <input type="number" class="inputPost" id="ninosInput">
-      </div>
-    </section>
-    <section class="historia">
-      <input type="text" class="tituloPost" id="tituloPost" placeholder="Titula tu experiencia...">
-      <textarea class="contenidoPost" id="contenidoPost" placeholder="Cuentanos sobre tu viaje..."></textarea>
-      <div class="locacion">
-        <img src="./imagen/locacion.svg" alt="" class="locationIcon">
-        <input type="text" class="locationInput" id="locacionInput" placeholder="Ubicacion del viaje">
-      </div>
-    </section>
-    <p id='mensajeValidacion'></p>
-    <button class="publiPost" id="publiPost">Publicar</button>
+    <div class="nuevopost">
+        <section class="fotografias">
+        </section>
+        <div class="postnew">
+        <section class="iconos">
+          <div id="costo" class="travelOpt">
+            <img src="./imagen/cash.svg" alt="" class="iconPost" title = "Monto en soles">
+            <input type="number" class="inputPost" id="costoInput">
+          </div>
+          <div id="dias" class="travelOpt">
+            <img src="./imagen/sun.svg" alt="" class="iconPost" title = "Cuantos Dias">
+            <input type="number" class="inputPost" id="diasInput">
+          </div>
+          <div id="noches" class="travelOpt">
+            <img src="./imagen/moon.svg" alt="" class="iconPost" title = "Cuantas Noches">
+            <input type="number" class="inputPost" id="nochesInput">
+          </div>
+          <div id="personas" class="travelOpt">
+            <img src="./imagen/family.svg" alt="" class="iconPost" title = "Numero de Personas">
+            <input type="number" class="inputPost" id="personasInput">
+          </div>
+          <div id="niños" class="travelOpt">
+            <img src="./imagen/child.svg" alt="" class="iconPost" title = "Numero de niños">
+            <input type="number" class="inputPost" id="ninosInput">
+          </div>
+        </section>
+        <section class="historia">
+          <input type="text" class="tituloPost" id="tituloPost" placeholder="Titula tu experiencia...">
+          <textarea class="contenidoPost" id="contenidoPost" placeholder="Cuentanos sobre tu viaje..."></textarea>
+          <div class="locacion">
+            <img src="./imagen/locacion.svg" alt="" class="locationIcon">
+            <input type="text" class="locationInput" id="locacionInput" placeholder="Ubicacion del viaje">
+          </div>
+        </section>
+        <p id='mensajeValidacion'></p>
+        <button class="publiPost" id="publiPost">Publicar</button>
+        <div>
+    </div>
   </main>
   <footer class="opcionesFoot">
     <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
@@ -54,7 +64,14 @@ export const viewPost = `
 <body id="postBody">
     <header class="mainHeader">
     <span class="textTraveler">Traveler.pe</span>
+    <div class="iconosMenuMuro">
+    <div class="menuIconos">
+      <a href="#muro"><img src="./imagen/iconhome.png" alt=""></a>
+      <a href="#newpost"><img src="./imagen/iconsubir.png" alt=""></a>
+      <a href="#profile"><img src="./imagen/iconuser.svg" alt=""></a>
+    </div>
     <i class="fas fa-sign-out-alt iconOut" id="logout-button"></i>
+    </div>
     </header>
     <main>
     <section class="usuarioAndButoon">
@@ -144,7 +161,14 @@ export const editPost = `
 <body id="postBody">
   <header class="mainHeader">
     <span class="textTraveler">Traveler.pe</span>
-    <i class="fas fa-sign-out-alt iconOut" id="logout-button" aria-hidden="true"></i>
+    <div class="iconosMenuMuro">
+    <div class="menuIconos">
+      <a href="#muro"><img src="./imagen/iconhome.png" alt=""></a>
+      <a href="#newpost"><img src="./imagen/iconsubir.png" alt=""></a>
+      <a href="#profile"><img src="./imagen/iconuser.svg" alt=""></a>
+    </div>
+    <i class="fas fa-sign-out-alt iconOut" id="logout-button"></i>
+    </div>
   </header>
   <main>
     <section class="fotografias">
