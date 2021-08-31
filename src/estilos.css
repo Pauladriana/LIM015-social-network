@@ -502,7 +502,6 @@ button {
     padding: 5px 10px 5px;
     border-radius: 10px;
     margin: 20px 10px 0px 10px;
-    background-repeat: no-repeat;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -1371,7 +1370,6 @@ button {
     padding: 5px 10px 5px;
     border-radius: 10px;
     margin: 20px 10px 0px 10px;
-    background-repeat: no-repeat;
     flex-direction: column;
     justify-content: space-between;
 }

@@ -5,6 +5,7 @@ import {
   getPubli,
   fsUpdate,
   deletePost,
+  getPost
 } from '../src/post.js';
 
 const fixtureData = {
@@ -36,14 +37,20 @@ const fixtureData = {
   },
 };
 
-global.firebase = new MockFirebase(fixtureData);
+global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled: true });
+
 
 describe('Add Post', () => {
-  it('Debería crearse un post ', () => addPost('300', '6', '5', '3', '1', 'Una semana en Cusco', 'Pudimos visitar Machu Picchu', 'Cusco').then(() => {
-    //const newpost = getPubli('post2');
-    //expect(newPost.tituloPost).toBe('Una semana en Cusco');
-    }))
-})
+  it('Debería crearse una publicacion', (done) => addPost('300', '6', '5', '3', '1', 'Una semana en Cusco', 'Pudimos visitar Machu Picchu', 'Cusco', 'ejemplo@gmail.com', 'anonimo', 'an123', '[]', '24/02/21', 'url').then(() => {
+    const callback = (notes) => {
+      const result = notes.find((element) => element.tituloPost === 'Una semana en Cusco');
+      expect(result.tituloPost).toBe('Una semana en Cusco');
+      done();
+    };
+    getPost(callback);
+  }));
+});
+
 
 describe('Delete Post', () => {
   it('Debería eliminar un post con id: post2', () => deletePost('post2').then(() => {
