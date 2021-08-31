@@ -1,13 +1,14 @@
 import {createLogin, createSignup, createMuro} from './logingroup.js';
 import {createNewPost, viewPost, editPost} from './postgroup.js';
 import {showAuthUsers} from './authuser.js';
-import {showFsPost} from './fsPost.js';
+import {showFsPost, showMyPosts} from './fsPost.js';
 import {cerrarSesion} from './logout.js';
 import {googleRegister, loginWithEmail} from './login.js';
 import {validarRegistro} from './validaciones.js';
 import {showCommentary} from './comentario.js';
 import {addPost, fsUpdate, deletePost, getPubli} from './post.js';
 import {pageNotFound} from './notfound.js';
+import {pageprofile, setProfileAttributes} from './profile.js';
 
 //RUTA SIN #
 /*const changeRoute = (hash) => {
@@ -76,9 +77,18 @@ const showSeccion = (ruta) => {
       return (
         (secciones.innerHTML = createMuro),
         showFsPost(),
-        showAuthUsers(),
+        // showAuthUsers(),
         cerrarSesion(),
         console.log('hola estoy en muro')
+      );
+    }
+    case '#profile': {
+      return (
+        (secciones.innerHTML = pageprofile),
+        setProfileAttributes(),
+        showMyPosts(),
+        cerrarSesion(),
+        console.log('hola estoy en profile')
       );
     }
     case '': {
@@ -87,7 +97,7 @@ const showSeccion = (ruta) => {
         mostrarContraseña(),
         botonLogin(),
         gogleaRegistro(),
-        console.log('hola estoy en muro')
+        console.log('hola estoy en login')
       );
     }
     case '/': {
@@ -162,10 +172,18 @@ const botonLogin = () => {
     loginWithEmail(loginEmail, loginPassword)
       .then(() => {
         firebase.auth().onAuthStateChanged((user) => {
-          if (user) {
+          //verifica el correo si es true
+          if (user.emailVerified) {
             console.log('logueo exitoso', user);
             localStorage.setItem('user', JSON.stringify(user.providerData[0]));
             window.location.hash = 'muro';
+            console.log('*****************');
+            console.log(user.emailVerified);
+            console.log('*****************');
+          }else {
+            const errorVerified = document.querySelector('#wrongpassword');
+            errorVerified.innerHTML = 'tu correo no esta verificado';
+            errorVerified.style.color = 'red';
           }
         });
       })
@@ -224,6 +242,7 @@ const validateEmail = (user) => {
       }
     });
 };
+
 
 // Logearse con google
 const gogleaRegistro = () => {
@@ -319,6 +338,7 @@ const crearPost = () => {
       const email = JSON.parse(localStorage.getItem('user')).email;
       const username = JSON.parse(localStorage.getItem('user')).displayName;
       const userId = JSON.parse(localStorage.getItem('user')).uid;
+      const photoUser = JSON.parse(localStorage.getItem('user')).photoURL;
       const response = fs.collection('publicaciones').doc().set({
         costoInput,
         diasInput,
@@ -332,7 +352,8 @@ const crearPost = () => {
         username,
         userId,
         likes,
-        fecha
+        fecha,
+        photoUser
       });
       console.log(response);
       console.log(tituloPost, contenidoPost);
@@ -359,15 +380,9 @@ const dataPost = () => {
   let fechaPost = document.querySelector('#fechaPost');
   let likesPost = document.querySelector('#likesPost');
   let comentsPost = document.querySelector('#comentsPost');
+  let pepe = document.querySelector('#pepe');
+  
 
-    /*locacionTravel.innerHTML = localStorage.getItem('locacion');
-    tituloTravel.innerHTML = localStorage.getItem('titulo');
-    costoTravel.innerHTML = localStorage.getItem('costo');
-    diasTravel.innerHTML = localStorage.getItem('dias');
-    nochesTravel.innerHTML = localStorage.getItem('noches');
-    personasTravel.innerHTML = localStorage.getItem('personas');
-    ninosTravel.innerHTML = localStorage.getItem('ninos');
-    contenidoTravel.innerHTML = localStorage.getItem('contenido');*/
     let post = JSON.parse(localStorage.getItem('postSelected'));
     let userLogged = JSON.parse(localStorage.getItem('user'));
 
@@ -385,6 +400,8 @@ const dataPost = () => {
     contenidoTravel.innerHTML = nombre.contenidoPost;
     userEmailPost.innerHTML = nombre.username;
     fechaPost.innerHTML = nombre.fecha;
+    pepe.setAttribute('src',nombre.photoUser);
+    
 
     const postOptions = document.querySelector('#optionPost')
     if(userLogged.uid !== nombre.userId){

@@ -4,19 +4,29 @@ import {emailUserRegister} from './login.js';
 export const crearUsuarioFb = (signupEmail, signupPassword, usernameInput, fullnameInput, passwordInput, emailInput) => {
   emailUserRegister(signupEmail, signupPassword)
     .then((userCredential) => {
-      // console.log("registrado");
-      fs.collection("users").add({
-        username: usernameInput,
-        fullname: fullnameInput,
-        password: passwordInput,
-        email: emailInput
-      })
-        .then((docRef) => {
-        // console.log("Este es el nuevo usuario: " + docRef.id);
+      checkmail();
+      userCredential.user.updateProfile({
+        displayName: fullnameInput,
+        photoURL: './imagen/profileChange.png'
+      }).then(() => {
+        fs.collection("users").add({
+          username: usernameInput,
+          fullname: fullnameInput,
+          password: passwordInput,
+          email: emailInput
         })
-        .catch((error) => {
-          // console.log("Tienes el siguiente error: " + error);
-        });
+          .then((docRef) => {
+          // console.log("Este es el nuevo usuario: " + docRef.id);
+          })
+          .catch((error) => {
+            // console.log("Tienes el siguiente error: " + error);
+          });
+      })
+      .catch((e)=>{
+        console.log(e);
+      });
+      console.log(displayName);
+      // console.log("registrado");
     })
     .catch((err) => {
       const wrongSignupEmail = document.querySelector('#wrongSUemail');
@@ -25,4 +35,16 @@ export const crearUsuarioFb = (signupEmail, signupPassword, usernameInput, fulln
         wrongSignupEmail.style.color = 'red';
       }
     });
+
+    // verificar el correo electronico
+      const checkmail = () => {
+        const user = firebase.auth().currentUser; 
+        user.sendEmailVerification().then(function() {
+          // email
+          console.log('enviando correo...');
+        }).catch(function(error) {
+          // error
+          console.log(error);
+        });
+      }
 };
