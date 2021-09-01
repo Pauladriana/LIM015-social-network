@@ -247,6 +247,7 @@ const crearPost = () => {
       const mensaje = document.querySelector('#mensajeValidacion');
       mensaje.innerHTML = 'Por favor llena todos los campos';
       mensaje.style.color = 'red';
+      mensaje.style.fontSize = '18px';
     }
   });
 };
