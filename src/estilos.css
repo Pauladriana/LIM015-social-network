@@ -24,6 +24,15 @@ body {
     
 }
 
+
+.textoBlanco {
+    color: #fff;
+}
+
+.textBlack {
+    color: #000;
+}
+
 .titulo {
     font-size: 20px;
     color: #fff;
@@ -297,6 +306,10 @@ button {
     justify-content: flex-start;
 }
 
+.colorBlack {
+    color: #000;
+}
+
 .travelOpt{
     display: flex;
     align-items: center;
@@ -327,7 +340,7 @@ button {
 
 .tituloPost{
     border: none;
-    font-size: 18px;
+    font-size: 20px;
     font-family: 'Lato', sans-serif;
     outline: none;
 
@@ -349,7 +362,7 @@ button {
 .contenidoPost{
     font-size: 18px;
     width: 323px;
-    height: 155px;
+    height: 280px;
     border-radius: 5px;
     border: 1px solid #C4C4C4;
     text-align: top;
@@ -362,10 +375,19 @@ button {
 
 .locacion{
     display: flex;
+    margin: 10px 20px 10px 20px;
     flex-direction: row;
-    padding-left: 20px;
+    padding: 0px;
     align-items: center;
     height: 15px;
+    justify-content: space-between;
+}
+
+.locacionEdit{
+    display: flex;
+    padding: 10px 20px 10px 20px;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .locationIcon{
@@ -594,6 +616,13 @@ button {
 }
 
 /* editpost*/
+.editPost {
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+    margin-right: 200px;
+}
+
 .imagenPostEdit {
     width: 360px;
     height: 170px;
@@ -601,16 +630,15 @@ button {
 }
 
 .iconosEdit {
+    margin: 34px 0px;
     display: flex;
     flex-direction: row;
     padding: 5px 0px 5px 0px;
     line-height: 1px;
-    margin-left: 10px;
     justify-content: flex-start;
 }
 
 .usuarioAndButoon {
-    margin-top: 15%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -633,45 +661,69 @@ button {
 }
 
 .usuario p  {
+    color: #000;
     text-align: left;
     width: 100px;
-    line-height: 15px;
+    line-height: 25px;
+    font-weight: bold;
+    font-size: 25px;
+    margin: 0px;
 }
 
 .usuarioAndImagen {
     display: flex;
-    width:25px;
     align-items: center;
+    padding: 10px 20px 10px 20px;
 }
 
 /* viewpost */
+
+.viewPost {
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+    margin-right: 200px;
+}
+
+.containerPost {
+    width: 500px;
+    margin-right: 5%;
+}
+
 .photoViewPost {
-    width: 60px;
+    width: 80px;
     border-radius: 50%;
 }
 
 .usuarioCommentary {
-    width: 100%;
-    height: 100%;
+    margin: 0px 20px 0px 0px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
 
 #optionPost {
     margin-left: 86px;
     margin-top: 9px;
+    cursor: pointer;
 }
 
 .contenidoViewPost {
     padding-top: 10px;
     border: 1px solid #DFDFDF;
     border-radius: 15px;
-    margin-top: 5px;
+    margin-top: 40px;
 }
 
 /* viewPost */
 hr {
     border-top: 1px solid #F4F4F4;
   }
+
+.dividerModal {
+    margin-top: 20px;
+    border-bottom: 2px solid #F4F4F4;
+}
   
   .textPrimary {
     color: #CAD95B;
@@ -680,9 +732,11 @@ hr {
 
   .textoEditRemove {
     font-size: 15px;
+    line-height: 30px;
   }
 
   .editar {
+    font-size: 20px;
     line-height: 30px;
   }
 
@@ -695,51 +749,61 @@ hr {
     margin-top: 15px;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
   }
 
   .contadorCommentary {
     padding: 0px 10px;
   }
 
+  .contadorCommentary i{
+    font-size: 21px;
+  }
+
+  .contadorCommentary span{
+    font-size: 18px;
+  }
+
   .datePost {
     padding: 0px 10px;
   }
 
+  .datePost span{
+    font-size: 18px;
+  }
+
   .viewContenido {
-    line-height: 18px;
+    color: #000;
+    font-size: 18px;
+    line-height: 25px;
     text-align: left;
     padding: 0px 20px 15px 20px;
     margin-top: 0px;
   }
 
   .optionesPost {
-      margin-right: 25px;
+      margin-right: 0px;
   }
 
   /* comentarios */
   .commentary {
-    margin-top: 2%;
+    margin-top: 120px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 15%;
+    justify-content: flex-start;
   }
 
   .commentary button {
     margin-top: 10px;
-    width: 90px;
-    height: 30px;
+    width: 100px;
+    height: 36px;
     background-color: #CAD95B;
     border: none;
     border-radius: 5px;
     font-family: 'Lato', sans-serif;
     margin-left: auto;
     margin-right: inherit;
-  }
-
-  .commentary img {
-    margin-left: 10px;
-    width: 15%;
+    font-size: 18px;
   }
 
   .imagenAndCommentary {
@@ -750,7 +814,7 @@ hr {
   }
   
   .usuarioAndCommentary {
-    min-width: 75%;
+    width: 350px;
     padding: 5px;
     border: 1px solid #DFDFDF;
     border-radius: 10px;
@@ -760,6 +824,7 @@ hr {
   }
 
   .usuarioAndCommentary h2 {
+    font-size: 18px;
     margin: 0px 0px 0px 5px;
   }
 
@@ -767,11 +832,11 @@ hr {
     border: none;
     margin: 0px 0px 0px 5px;
     padding: 0px;
+    font-size: 18px;
   }
 
   .usuarioAndCommentaryRespt {
-    min-width: 75%;
-    max-width: 50%;
+    width: 350px;
     padding: 5px;
     border: 1px solid #DFDFDF;
     border-radius: 10px;
@@ -781,11 +846,14 @@ hr {
   }
 
   .usuarioAndCommentaryRespt p{
+    font-size: 18px;
     text-align: left;
     margin: 0px;
+    color: #000;
   }
 
   .usuarioAndCommentaryRespt h2{
+    font-size: 18px;
     margin: 0px;
   }
 
@@ -803,15 +871,21 @@ hr {
   }
   
   .boxModalEditRemove{
-      padding: 10px;
-      width: 95%;
-      height: 15%;
-      position: absolute;
-      bottom: 0;
-      background: #ffffff;
-      border-radius: 15px 15px 0px 0px;
-      text-align: left;
-      color: #666666;
+    display: flex;
+    padding: 10px;
+    width: 250px;
+    height: 200px;
+    background: #ffffff;
+    border-radius: 15px;
+    text-align: left;
+    color: #666666;
+    margin: 20%;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .boxModalEditRemove p {
+      font-size: 20px;
   }
 
   .xCerrar {
@@ -832,8 +906,8 @@ hr {
   }
   .boxModal{
       padding: 15px;
-      width: 65%;
-      height: 28%;
+      width: 350px;
+      height: 250px;
       margin: auto auto;
       background: #ffffff;
       border-radius: 10px;
@@ -841,9 +915,11 @@ hr {
       color: #666666;
   }
   .boxModal h3 {
+    font-size: 20px;
     line-height: 25px;
   }
   .boxModal p {
+    font-size: 20px;
     line-height: 15px;
   }
 
@@ -1116,7 +1192,7 @@ a {
 p {
     text-align: center;
     font-size: 12px;
-    color: #ffff;
+    color: #000;
 }
 
 button {
@@ -1163,7 +1239,7 @@ button {
 .logoProfile {
     position: absolute;
     top: 22%;
-    width: 37%;
+    width: 25%;
     border-radius: 100px;
 }
 
@@ -1209,11 +1285,10 @@ button {
 
 .iconos{
     display: flex;
-    flex-direction: row;
     padding: 5px 0px 5px 0px;
     line-height: 1px;
-    margin-left: 15px;
-    justify-content: flex-start;
+    margin-left: 0px;
+    justify-content: center;
 }
 
 .travelOpt{
@@ -1246,7 +1321,7 @@ button {
 
 .tituloPost{
     border: none;
-    font-size: 14px;
+    font-size: 15px;
     font-family: 'Lato', sans-serif;
     outline: none;
 
@@ -1266,6 +1341,7 @@ button {
 }
 
 .contenidoPost{
+    font-size: 15px;
     width: 323px;
     height: 155px;
     border-radius: 5px;
@@ -1275,13 +1351,13 @@ button {
     padding: 5px;
     font-family: 'Lato', sans-serif;
     outline: none;
-    margin-bottom: 15%;
 }
 
 .locacion{
+    margin: 10px 20px 10px 20px;
     display: flex;
     flex-direction: row;
-    padding-left: 20px;
+    padding: 0px;
     align-items: center;
     height: 15px;
 }
@@ -1340,7 +1416,7 @@ button {
 }
 
 .textTraveler {
-    font-size: 40px;
+    font-size: 24px;
     font-weight: bold;
     margin-left: 30px;
 }
@@ -1354,6 +1430,10 @@ button {
     padding-top: 65px;
 }
 /* muro */
+.menuIconos {
+    display: none;
+}
+
 .allPost {
     display: flex;
     flex-wrap: wrap;
@@ -1372,10 +1452,12 @@ button {
 }
 .muroLocation p {
     line-height: 20px;
+    font-size: 15px;
     margin: 0px 0px 0px 5px;
 }
 
 .postDiv h5 {
+    font-size: 15px;
     color: #fff;
 }
 
@@ -1400,6 +1482,7 @@ button {
     border-radius: 5px;
     padding: 0px 10px;
     margin-bottom: 0px;
+    font-size: 15px;
 }
 
 .muroLike i {
@@ -1407,13 +1490,19 @@ button {
 }
 
 .contadorLikes {
+    margin-top: 0px;
     background: #ffffff7a;
     width: fit-content;
     border-radius: 5px;
     padding: 0px 10px;
 }
 
+.contadorLikes i{
+    font-size: 15px;
+}
+
 .contadorLikes span {
+    font-size: 15px;
     margin: 5px;
 }
 
@@ -1476,11 +1565,40 @@ button {
 }
 
 /* newpost */
+.postnew {
+    margin-bottom: 15%;
+}
+
+.nuevopost {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 0px;
+    margin-right: 0px;
+}
+
 .fotografias {
-    margin-top: 12%;
+    margin-right: 5%;
+    background-image: url(./imagen/apurimac3.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    margin-top: 45px;
+    width: 375px;
+    height: 155px;
+    border-radius: 0px;
 }
 
 /* editpost*/
+.editPost {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 0px;
+    margin-right: 0px;
+}
+
 .imagenPostEdit {
     width: 360px;
     height: 170px;
@@ -1488,16 +1606,12 @@ button {
 }
 
 .iconosEdit {
-    display: flex;
-    flex-direction: row;
-    padding: 5px 0px 5px 0px;
-    line-height: 1px;
-    margin-left: 10px;
-    justify-content: flex-start;
+    margin: 10px 0px;
+    justify-content: center;
 }
 
 .usuarioAndButoon {
-    margin-top: 15%;
+    margin-top: 0%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1520,6 +1634,8 @@ button {
 }
 
 .usuario p  {
+    font-size: 17px;
+    color: #000;
     text-align: left;
     width: 100px;
     line-height: 15px;
@@ -1529,9 +1645,26 @@ button {
     display: flex;
     width:25px;
     align-items: center;
+    padding: 0px;
+    margin-bottom: 15px;
+}
+
+.botonGuardar {
+    margin: 20px 0px;
+}
+
+.locacionEdit {
+    margin: 20px 25px 10px 25px;
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+    align-items: center;
+    height: 15px;
+    justify-content: flex-start;
 }
 
 /* viewpost */
+
 .photoViewPost {
     width: 60px;
     border-radius: 50%;
@@ -1549,13 +1682,30 @@ button {
 }
 
 .contenidoViewPost {
+    width: 335px;
+    margin: 0px;
     padding-top: 10px;
     border: 1px solid #DFDFDF;
     border-radius: 15px;
-    margin-top: 5px;
 }
 
 /* viewPost */
+.containerPost {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    margin-right: 0;
+}
+
+.viewPost {
+    display: flex;
+    justify-content: center;
+    margin-top: 15%;
+    flex-direction: column;
+    margin-right: 0px;
+    align-items: center;
+}
+
 hr {
     border-top: 1px solid #F4F4F4;
   }
@@ -1579,33 +1729,48 @@ hr {
   }
 
   .likesDate{
-    margin-top: 15px;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    margin: 15px 0px 0px 0px;
   }
 
   .contadorCommentary {
     padding: 0px 10px;
   }
 
+  .contadorCommentary i {
+    font-size: 15px;
+}
+
+.contadorCommentary span {
+    font-size: 15px;
+}
+
   .datePost {
     padding: 0px 10px;
   }
 
+  .datePost span {
+    font-size: 15px;
+}
+
   .viewContenido {
-    line-height: 18px;
+    color: #000;
+    line-height: 20px;
     text-align: left;
     padding: 0px 20px 15px 20px;
     margin-top: 0px;
+    font-size: 15px;
   }
 
   .optionesPost {
-      margin-right: 25px;
+      margin-right: 0px;
   }
 
   /* comentarios */
   .commentary {
-    margin-top: 2%;
+    margin: 10px 20px 10px 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1621,7 +1786,8 @@ hr {
     border-radius: 5px;
     font-family: 'Lato', sans-serif;
     margin-left: auto;
-    margin-right: inherit;
+    margin-right: initial;
+    font-size: 15px;
   }
 
   .commentary img {
@@ -1637,7 +1803,7 @@ hr {
   }
   
   .usuarioAndCommentary {
-    min-width: 75%;
+    width: auto;
     padding: 5px;
     border: 1px solid #DFDFDF;
     border-radius: 10px;
@@ -1647,6 +1813,7 @@ hr {
   }
 
   .usuarioAndCommentary h2 {
+    font-size: 15px;
     margin: 0px 0px 0px 5px;
   }
 
@@ -1654,11 +1821,11 @@ hr {
     border: none;
     margin: 0px 0px 0px 5px;
     padding: 0px;
+    font-size: 15px;
   }
 
   .usuarioAndCommentaryRespt {
-    min-width: 75%;
-    max-width: 50%;
+    width: auto;
     padding: 5px;
     border: 1px solid #DFDFDF;
     border-radius: 10px;
@@ -1668,11 +1835,14 @@ hr {
   }
 
   .usuarioAndCommentaryRespt p{
+    font-size: 15px;
     text-align: left;
     margin: 0px;
+    width: 240px;
   }
 
   .usuarioAndCommentaryRespt h2{
+      font-size: 15px;
     margin: 0px;
   }
 
@@ -1692,13 +1862,19 @@ hr {
   .boxModalEditRemove{
       padding: 10px;
       width: 95%;
-      height: 15%;
+      height: 150px;
       position: absolute;
       bottom: 0;
       background: #ffffff;
       border-radius: 15px 15px 0px 0px;
       text-align: left;
       color: #666666;
+      margin: 0px;
+  }
+
+  .boxModalEditRemove p {
+      margin: 10px 0px;
+      font-size: 15px;
   }
 
   .xCerrar {
@@ -1728,9 +1904,11 @@ hr {
       color: #666666;
   }
   .boxModal h3 {
-    line-height: 25px;
+    line-height: 20px;
+    font-size: 15px;
   }
   .boxModal p {
+    font-size: 15px;
     line-height: 15px;
   }
 
@@ -1775,7 +1953,12 @@ hr {
     bottom: 0;
 }
 /*perfil del usuario Profile*/
+.banerPerfil {
+    margin-top: 45px;
+    height: 155px;
+}
 .userProfile {
+    margin-top: 0px;
     display: flex;
     flex-direction: column;
     line-height: 3px;

@@ -29,7 +29,7 @@ export const createLogin = `
   <img src="./imagen/google.png" class="imgGoogle"/>
   Iniciar sesión con google
 </button>
-<p>¿No tienes una cuenta? <a href="#signup" id="signingup">Regístrate</a></p> 
+<p class="textoBlanco">¿No tienes una cuenta? <a href="#signup" id="signingup">Regístrate</a></p> 
 <a href="#">Olvidé mi contraseña</a>
 </div>`;
 secciones.innerHTML = createLogin;

@@ -74,48 +74,50 @@ export const viewPost = `
     </div>
     </header>
     <main>
-    <section class="usuarioAndButoon">
+    <div class="viewPost">
+    <div class="containerPost">
       <div class="usuarioAndImagen">
         <img class="photoViewPost" src="" alt="" id="pepe">
           <div class="usuario">
             <p id="userEmailPost"></p>
           </div>
       </div>
-      
-    </section>
-    
     <div class="contenidoViewPost">
       <div class="locacion">
+          <div class="iconLocation">
           <img src="./imagen/locacion.svg" alt="" class="locationIcon">
-          <span type="text" class="locationInput" id="viewLocation">Tarma</span><div class="travelOpt">
-          <img src="./imagen/puntos.svg" alt="" class="optionesPost" id="optionPost">
+          <span type="text" class="locationInput" id="viewLocation"></span>
+          </div>
+          <div class="travelOpt">
+            <img src="./imagen/puntos.svg" alt="" class="optionesPost" id="optionPost">
+          </div>
       </div>
-    </div>
     <h2 class="tituloPost" id="viewTitulo"></h2>
     <section class="iconos">
       <div id="costo" class="travelOpt">
         <img src="./imagen/cash.svg" alt="" class="iconPost">
-        <p id="viewCosto">Costo</p>
+        <p class="colorBlack" id="viewCosto">Costo</p>
       </div>
       <div id="dias" class="travelOpt">
         <img src="./imagen/sun.svg" alt="" class="iconPost">
-        <p id="viewDias">Dias</p>
+        <p class="colorBlack" id="viewDias">Dias</p>
       </div>
       <div id="noches" class="travelOpt">
         <img src="./imagen/moon.svg" alt="" class="iconPost">
-        <P id="viewNoches">Noches</P>
+        <P class="colorBlack" id="viewNoches">Noches</P>
       </div>
       <div id="personas" class="travelOpt">
         <img src="./imagen/family.svg" alt="" class="iconPost">
-        <p id="viewPersonas">personas</p>
+        <p class="colorBlack" id="viewPersonas">personas</p>
       </div>
       <div id="niños" class="travelOpt">
         <img src="./imagen/child.svg" alt="" class="iconPost">
-        <p id="viewNinos">niños</p>
+        <p class="colorBlack" id="viewNinos">niños</p>
       </div>
       <div class="modalEditRemove" id="modalEditRemove">
       <div class="boxModalEditRemove">
-        <a class="textSecondary xCerrar" id="closeModalEditRomve">x</a><hr>
+        <a class="textSecondary xCerrar" id="closeModalEditRomve">x</a>
+        <div class="dividerModal"></div>
         <p><a href="#editpost" class="textSecondary textoEditRemove editar">Editar</a></p>
         <p class="textSecondary textoEditRemove" id="ShowModalConfirmation" >Eliminar</p>        
       </div>
@@ -124,7 +126,7 @@ export const viewPost = `
     <div class="modalRemove" id="modalRemove">
       <div class="boxModal">
         <h3>¿De verdad quieres eliminar esta publicacion?</h3>
-        <p>Luego ya no podra ser recuperada</p><hr>
+        <p class="textBlack" >Luego ya no podra ser recuperada</p><hr>
         <p class="textPrimary" id="textRemovePost">Eliminar</p><hr>
         <p class="textSecondary" id="closeModal">Quiero volver</p>
       </div>
@@ -146,9 +148,12 @@ export const viewPost = `
       <div class="datePost">
         <span id="fechaPost"></span>
       </div>
-    </div><hr>
+    </div>
+    <hr>
+    </div>
     <section class="commentary" id="commentary">
     </section>
+    </div>
     </main>
   <footer class="opcionesFoot">
     <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
@@ -171,22 +176,11 @@ export const editPost = `
     </div>
   </header>
   <main>
+  <div class="editPost">
     <section class="fotografias">
-      <img class="imagenPostEdit" src="./imagen/imagenCuscoEDIT.svg" alt="">
     </section>
-    <section class="usuarioAndButtonEdit">
-    
-    <div class="usuarioAndImagen">
-    <img src="./imagen/user.png" alt="">
-    <div class="usuario">
-    <p id="idUsername"></p>
-    </div>
-    </div>
-    <div class="botonGuardar">
-    <button class="publiPost" id="guardarPost">Guardar</button>
-    </div>
-    </section>
-    <div class="locacion">
+    <div class="containerPostEdit">
+    <div class="locacionEdit">
         <img src="./imagen/locacion.svg" alt="" class="locationIcon">
         <input type="text" class="locationEdit" id="editLocation" placeholder="Locacion">
     </div>
@@ -215,8 +209,12 @@ export const editPost = `
     </section>
     <section class="historia">
       <textarea class="contenidoPost" id="editContenido" placeholder="Cuenta tu historia"></textarea>
-      
     </section>
+    <div class="botonGuardar">
+      <button class="publiPost" id="guardarPost">Guardar</button>
+    </div>
+  </div>
+  </div>
   </main>
   <footer class="opcionesFoot">
     <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
