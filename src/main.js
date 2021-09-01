@@ -6,7 +6,7 @@ import {cerrarSesion} from './logout.js';
 import {googleRegister, loginWithEmail} from './login.js';
 import {validarRegistro} from './validaciones.js';
 import {showCommentary} from './comentario.js';
-import {addPost, fsUpdate, deletePost, getPubli} from './post.js';
+import {addPost, fsUpdate, deletePost} from './post.js';
 import {pageNotFound} from './notfound.js';
 import {pageprofile, setProfileAttributes} from './profile.js';
 
@@ -338,7 +338,7 @@ const crearPost = () => {
       const userId = JSON.parse(localStorage.getItem('user')).uid;
       const photoUser = JSON.parse(localStorage.getItem('user')).photoURL;
 
-      addPost('publicaciones', costoInput, diasInput, nochesInput, personasInput, ninosInput, tituloPost, contenidoPost, locacionInput, email, username, userId, likes, fecha, photoUser)
+      addPost(costoInput, diasInput, nochesInput, personasInput, ninosInput, tituloPost, contenidoPost, locacionInput, email, username, userId, likes, fecha, photoUser)
       .then(() => {window.location.hash = 'muro';})
 
       console.log(tituloPost, contenidoPost);
@@ -427,11 +427,6 @@ const dataPost = () => {
   
 
 }
-
-
-
-
-
 // Modales - editar-eliminar y mensaje de confirmacion
 const funcionModal = () => {
   const showModal = document.querySelector('#optionPost');
@@ -469,7 +464,7 @@ const funcionModal = () => {
     let post = JSON.parse(localStorage.getItem('postSelected'));
     const buttonRemove = document.querySelector('#textRemovePost');
     buttonRemove.addEventListener("click", () => {
-      deletePost('publicaciones', post.idPost).then(() => {
+      deletePost(post.idPost).then(() => {
         console.log('eliminaste el post')
         window.location.hash = 'muro';
       })
@@ -521,7 +516,7 @@ const savePost = () => {
     let contenidoTravel = document.querySelector('#editContenido').value;;
 
     let post = JSON.parse(localStorage.getItem('postSelected'));
-    fsUpdate('publicaciones', post.idPost,locacionTravel, tituloTravel, costoTravel, diasTravel, nochesTravel, ninosTravel, personasTravel, contenidoTravel).then(() => {
+    fsUpdate(post.idPost,locacionTravel, tituloTravel, costoTravel, diasTravel, nochesTravel, ninosTravel, personasTravel, contenidoTravel).then(() => {
       console.log('editaste el post')
       window.location.hash = 'muro';
     });
