@@ -6,7 +6,7 @@ import {cerrarSesion} from './logout.js';
 import {googleRegister, loginWithEmail} from './login.js';
 import {validarRegistro} from './validaciones.js';
 import {showCommentary} from './comentario.js';
-import {addPost, fsUpdate, deletePost, getPubli} from './post.js';
+import {addPost, fsUpdate, deletePost} from './post.js';
 import {pageNotFound} from './notfound.js';
 import {pageprofile, setProfileAttributes} from './profile.js';
 
@@ -327,8 +327,6 @@ const crearPost = () => {
       const locacionInput = document.querySelector('#locacionInput').value;
       const likes = [];
       const sistemaFecha = new Date();
-      const hora = sistemaFecha.getHours();
-      const minutos = sistemaFecha.getMinutes();
       const day = sistemaFecha.getDate();
       const mes = sistemaFecha.getMonth()+1;
       const ano = sistemaFecha.getFullYear();
@@ -339,25 +337,11 @@ const crearPost = () => {
       const username = JSON.parse(localStorage.getItem('user')).displayName;
       const userId = JSON.parse(localStorage.getItem('user')).uid;
       const photoUser = JSON.parse(localStorage.getItem('user')).photoURL;
-      const response = fs.collection('publicaciones').doc().set({
-        costoInput,
-        diasInput,
-        nochesInput,
-        personasInput,
-        ninosInput,
-        tituloPost,
-        contenidoPost,
-        locacionInput,
-        email,
-        username,
-        userId,
-        likes,
-        fecha,
-        photoUser
-      });
-      console.log(response);
+
+      addPost(costoInput, diasInput, nochesInput, personasInput, ninosInput, tituloPost, contenidoPost, locacionInput, email, username, userId, likes, fecha, photoUser)
+      .then(() => {window.location.hash = 'muro';})
+
       console.log(tituloPost, contenidoPost);
-      window.location.hash = 'muro';
     } else {
       const mensaje = document.querySelector('#mensajeValidacion');
       mensaje.innerHTML = 'Por favor llena todos los campos';
@@ -444,11 +428,6 @@ const dataPost = () => {
   
 
 }
-
-
-
-
-
 // Modales - editar-eliminar y mensaje de confirmacion
 const funcionModal = () => {
   const showModal = document.querySelector('#optionPost');
@@ -519,10 +498,8 @@ const funcionModal = () => {
 
       fs.collection('publicaciones').doc(post.idPost).get().then((ele)=>{
         const nombre = ele.data();
-        
         idUsername.innerHTML = nombre.username;
       });  
-    
   }
 
   // funcion guardar editado del post 

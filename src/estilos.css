@@ -536,12 +536,11 @@ button {
     justify-content: space-between;
     background-position: center;
     background-size: cover;
-    background-image: url(/imagen/fotoPost.jpg);
-    background-repeat: repeat;
+    background-image: url(/imagen/fotoPost.jpg)
     width: 360px;
     height: 407px;
     padding: 5px 10px 5px;
-    border-radius: 10px;
+    borde-radius: 10px;
     margin: 20px 30px 0px 10px;
     background-repeat: no-repeat;
     flex-direction: column;
@@ -1515,7 +1514,6 @@ button {
     padding: 5px 10px 5px;
     border-radius: 10px;
     margin: 20px 10px 0px 10px;
-    background-repeat: no-repeat;
     flex-direction: column;
     justify-content: space-between;
 }
