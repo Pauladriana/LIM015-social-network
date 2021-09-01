@@ -1,60 +1,159 @@
-//import {getPubli} from './post.js';
-
+const fs = firebase.firestore();
 export const showFsPost = () => {
-  let userId = JSON.parse(localStorage.getItem('user')).uid;
-  console.log(userId);
+  const userId = JSON.parse(localStorage.getItem('user')).uid;
   const publicaciones = document.querySelector('#allPost');
-  const btnView = document.querySelectorAll('.postDiv');
   const setupPost = (data) => {
     publicaciones.innerHTML = '';
     data.forEach((doc) => {
-      let str = doc.username;
-      let leng = 7;
-      let trimmedString = str.substring(0, leng);
+      const str = doc.username;
+      const leng = 7;
+      const trimmedString = str.substring(0, leng);
       const docId = doc.id;
-      //console.log(docId, doc);
+      // console.log(docId, doc);
       const elDiv = document.createElement('div');
       elDiv.setAttribute('data-id', docId);
       const divTemplate = `
                     <div class='postDiv'>
-                      <div class="muroLocation">
-                      <img src="./imagen/locacion.svg" alt="" class="locationIcon">
+                      <div class='muroLocation'>
+                      <img src='./imagen/locacion.svg' alt='' class='locationIcon'>
                       <p>${doc.locacionInput}</p>
                       </div>
                       <h5>${doc.tituloPost}</h5>
-                      <div class="muroLike">
+                      <div class='muroLike'>
                       <p>${trimmedString}</p>
                       </div>
                     </div>
-                    <div class= "contadorLikes" id="heartPost"><i class="fas fa-heart  ${
-                      doc.likes.includes(userId) ? 'liked' : 'unliked'
-                    }"></i><span class='totalLikes'>${doc.likes.length}</span></div>
-                `;
+                    <div class= 'contadorLikes' id='heartPost'><i class='fas fa-heart  ${doc.likes.includes(userId) ? 'liked' : 'unliked'}'></i><span class='totalLikes'>${doc.likes.length}</span></div>`;
       elDiv.innerHTML = divTemplate;
-      
-    // update likes
+
+      // update likes
       const likes = elDiv.querySelector('.fa-heart');
-        likes.addEventListener( 'click', () => {
+      likes.addEventListener('click', () => {
+        const result = doc.likes.indexOf(userId);
+        if (result === -1) {
+          const postLikes = doc.likes;
+          postLikes.push(userId);
+          fs.collection('publicaciones').doc(docId).update({ likes: postLikes });
+        } else {
+          const postLikes = doc.likes;
+          postLikes.splice(result, 1);
+          fs.collection('publicaciones').doc(docId).update({ likes: postLikes });
+        }
+      });
+
+      const getPost = (id) => {
+        // console.log(id);
+
+        fs.collection('publicaciones').doc(id).get().then((ele) => {
+          // console.log(ele.data());
+          if (ele.data()) {
+            const user = ele.data();
+            // console.log(user);
+            const costoPost = user.costoInput;
+            const diasPost = user.diasInput;
+            const nochesPost = user.nochesInput;
+            const ninosPost = user.ninosInput;
+            const peoplePost = user.personasInput;
+            const titlePost = user.tituloPost;
+            const contentPost = user.contenidoPost;
+            const locationPost = user.locacionInput;
+            const idPost = id;
+
+            const post = {
+              costoPost,
+              diasPost,
+              nochesPost,
+              ninosPost,
+              peoplePost,
+              titlePost,
+              contentPost,
+              locationPost,
+              idPost,
+            };
+
+            localStorage.setItem('postSelected', JSON.stringify(post));
+            window.location.hash = 'viewpost';
+          }
+        })
+          .catch(() => {
+            // console.log(err);
+          });
+      };
+      const post = elDiv.querySelector('.postDiv');
+      post.addEventListener('click', () => {
+        getPost(docId);
+      });
+
+      publicaciones.appendChild(elDiv);
+    });
+  };
+  // TERMINA setupPost(post)
+
+  fs.collection('publicaciones').onSnapshot((snapshot) => {
+    const post = [];
+    snapshot.forEach((doc) => {
+      post.push({
+        id: doc.id,
+        ...doc.data(),
+      });
+    });
+    setupPost(post);
+  });
+};
+
+export const showMyPosts = () => {
+  const userId = JSON.parse(localStorage.getItem('user')).uid;
+  // console.log(userId);
+  const publicaciones = document.querySelector('#allPost');
+  const setupPost = (data) => {
+    publicaciones.innerHTML = '';
+    // console.log(data);
+    if (data.length !== 0) {
+      data.forEach((doc) => {
+        const str = doc.username;
+        const leng = 7;
+        const trimmedString = str.substring(0, leng);
+        const docId = doc.id;
+        // console.log(docId, doc);
+        const elDiv = document.createElement('div');
+        elDiv.setAttribute('data-id', docId);
+        const divTemplate = `
+                      <div class='postDiv'>
+                        <div class='muroLocation'>
+                        <img src='./imagen/locacion.svg' alt='' class='locationIcon'>
+                        <p>${doc.locacionInput}</p>
+                        </div>
+                        <h5>${doc.tituloPost}</h5>
+                        <div class='muroLike'>
+                        <p>${trimmedString}</p>
+                        </div>
+                      </div>
+                      <div class= 'contadorLikes' id='heartPost'><i class='fas fa-heart  ${doc.likes.includes(userId) ? 'liked' : 'unliked'}'></i><span class='totalLikes'>${doc.likes.length}<span></div>`;
+        elDiv.innerHTML = divTemplate;
+
+        // update likes
+        const likes = elDiv.querySelector('.fa-heart');
+        likes.addEventListener('click', () => {
           const result = doc.likes.indexOf(userId);
           if (result === -1) {
-            let postLikes = doc.likes
+            const postLikes = doc.likes;
             postLikes.push(userId);
             fs.collection('publicaciones').doc(docId).update({ likes: postLikes });
           } else {
-            let postLikes = doc.likes
+            const postLikes = doc.likes;
             postLikes.splice(result, 1);
             fs.collection('publicaciones').doc(docId).update({ likes: postLikes });
           }
-        })
+        });
 
         const getPost = (id) => {
-          console.log(id);
+          // console.log(id);
 
-          fs.collection('publicaciones').doc(id).get().then((ele)=>{
-            console.log(ele.data());
+          fs.collection('publicaciones').doc(id).get().then((ele) => {
+            // console.log(ele.data());
             if (ele.data()) {
               const user = ele.data();
-              console.log(user);
+              // console.log(user);
               const costoPost = user.costoInput;
               const diasPost = user.diasInput;
               const nochesPost = user.nochesInput;
@@ -65,161 +164,47 @@ export const showFsPost = () => {
               const locationPost = user.locacionInput;
               const idPost = id;
 
-              let post = {
-                costoPost: costoPost,
-                diasPost: diasPost,
-                nochesPost: nochesPost,
-                ninosPost: ninosPost,
-                peoplePost: peoplePost,
-                titlePost: titlePost,
-                contentPost: contentPost,
-                locationPost: locationPost,
-                idPost: idPost
+              const post = {
+                costoPost,
+                diasPost,
+                nochesPost,
+                ninosPost,
+                peoplePost,
+                titlePost,
+                contentPost,
+                locationPost,
+                idPost,
               };
 
               localStorage.setItem('postSelected', JSON.stringify(post));
               window.location.hash = 'viewpost';
             }
-          }).catch((err) => {
-            console.log(err);
           })
+            .catch(() => {
+            // console.log(err);
+            });
         };
-      const post = elDiv.querySelector('.postDiv');
-        post.addEventListener( 'click', () => {
-          getPost(docId);
-        })
-
-      publicaciones.appendChild(elDiv);
-    })
-  } /*TERMINA setupPost(post)*/
-
-  fs.collection('publicaciones').onSnapshot(snapshot => {
-    const post = [];
-    snapshot.forEach((doc) => {
-      post.push({
-        id: doc.id,
-        ...doc.data(),
-      });
-    })
-    setupPost(post)
-  })
-}
-
-export const showMyPosts = () => {
-  let userId = JSON.parse(localStorage.getItem('user')).uid;
-  console.log(userId);
-  const publicaciones = document.querySelector('#allPost');
-  const setupPost = (data) => {
-    publicaciones.innerHTML = '';
-    console.log(data);
-    if (data.length !== 0) {
-      data.forEach((doc) => {
-        let str = doc.username;
-        let leng = 7;
-        let trimmedString = str.substring(0, leng);
-        const docId = doc.id;
-        //console.log(docId, doc);
-        const elDiv = document.createElement('div');
-        elDiv.setAttribute('data-id', docId);
-        const divTemplate = `
-                      <div class='postDiv'>
-                        <div class="muroLocation">
-                        <img src="./imagen/locacion.svg" alt="" class="locationIcon">
-                        <p>${doc.locacionInput}</p>
-                        </div>
-                        <h5>${doc.tituloPost}</h5>
-                        <div class="muroLike">
-                        <p>${trimmedString}</p>
-                        </div>
-                      </div>
-                      <div class= "contadorLikes" id="heartPost"><i class="fas fa-heart  ${
-                        doc.likes.includes(userId) ? 'liked' : 'unliked'
-                      }"></i><span class='totalLikes'>${doc.likes.length}</span></div>
-                  `;
-        elDiv.innerHTML = divTemplate;
-        
-      // update likes
-        const likes = elDiv.querySelector('.fa-heart');
-          likes.addEventListener( 'click', () => {
-            const result = doc.likes.indexOf(userId);
-            if (result === -1) {
-              let postLikes = doc.likes
-              postLikes.push(userId);
-              fs.collection('publicaciones').doc(docId).update({ likes: postLikes });
-            } else {
-              let postLikes = doc.likes
-              postLikes.splice(result, 1);
-              fs.collection('publicaciones').doc(docId).update({ likes: postLikes });
-            }
-          })
-  
-          const getPost = (id) => {
-            console.log(id);
-  
-            fs.collection('publicaciones').doc(id).get().then((ele)=>{
-              console.log(ele.data());
-              if (ele.data()) {
-                const user = ele.data();
-                console.log(user);
-                const costoPost = user.costoInput;
-                const diasPost = user.diasInput;
-                const nochesPost = user.nochesInput;
-                const ninosPost = user.ninosInput;
-                const peoplePost = user.personasInput;
-                const titlePost = user.tituloPost;
-                const contentPost = user.contenidoPost;
-                const locationPost = user.locacionInput;
-                const idPost = id;
-  
-                let post = {
-                  costoPost: costoPost,
-                  diasPost: diasPost,
-                  nochesPost: nochesPost,
-                  ninosPost: ninosPost,
-                  peoplePost: peoplePost,
-                  titlePost: titlePost,
-                  contentPost: contentPost,
-                  locationPost: locationPost,
-                  idPost: idPost
-                };
-  
-                localStorage.setItem('postSelected', JSON.stringify(post));
-                window.location.hash = 'viewpost';
-              }
-            }).catch((err) => {
-              console.log(err);
-            })
-          };
         const post = elDiv.querySelector('.postDiv');
-          post.addEventListener( 'click', () => {
-            getPost(docId);
-          })
-  
-        /*btnView.forEach( btn => {
-          btn.addEventListener( 'click', async (e) => {
-            await getPost(docId);
-            console.log('estas viendo el post el post')
-            window.location.hash = 'viewpost';
-          })
-        })*/
+        post.addEventListener('click', () => {
+          getPost(docId);
+        });
+
         publicaciones.appendChild(elDiv);
-      })
+      });
     } else {
       const elDiv = document.createElement('div');
       const divTemplate = `
-          <div style="height: 250px;
+          <div style='height: 250px;
                       padding: 0px 40px;
                       display: flex;
-                      align-items: center;">
-            <h1 style="font-size: 20px; color: #666666;">Aun no hiciste ninguna publicacion, te me estas quedando hija !!! , échale ganas wey !!</h1>
-          </div>
-      `;
+                      align-items: center;'>
+            <h1 style='font-size: 20px; color: #666666;'>Aun no hiciste ninguna publicacion, te me estas quedando hija !!! , échale ganas wey !!</h1>
+          </div>`;
       elDiv.innerHTML = divTemplate;
       publicaciones.appendChild(elDiv);
     }
-  } /*TERMINA setupPost(post)*/
-
-  fs.collection('publicaciones').onSnapshot(snapshot => {
+  }; // TERMINA setupPost(post)
+  fs.collection('publicaciones').onSnapshot((snapshot) => {
     const post = [];
     snapshot.forEach((doc) => {
       if (userId === doc.data().userId) {
@@ -228,7 +213,7 @@ export const showMyPosts = () => {
           ...doc.data(),
         });
       }
-    })
-    setupPost(post)
-  })
-}
+    });
+    setupPost(post);
+  });
+};

@@ -4,4 +4,3 @@ export const pageNotFound = `
     <a class="linkReturnMuro" href="#muro">Volver al muro</a>
     <img class="imagenNotFound" src="./imagen/404.png">
 </div>`;
-

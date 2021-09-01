@@ -1,6 +1,4 @@
 const secciones = document.querySelector('#secciones');
-
-// creando dinamicamente la vista login (href = muro)
 export const createLogin = `
 <div class="cntLogin">
 <img src="./imagen/banner.png" alt="port" class="borde-baner">
@@ -34,7 +32,6 @@ export const createLogin = `
 </div>`;
 secciones.innerHTML = createLogin;
 
-// creando dinamicamente la vista registro (href = login)
 export const createSignup = `
 <div class="contenedor-registro">
   <div class="cntLogo">
@@ -68,7 +65,6 @@ export const createSignup = `
   <p id="campoError"></p>
 </div>`;
 
-// creando dinamicamente la vista muro (href = login)
 export const createMuro = `
     <div class="muroContent">
     <header class="mainHeaderMuro">

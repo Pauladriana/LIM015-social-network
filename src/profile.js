@@ -1,3 +1,4 @@
+const secciones = document.querySelector('#secciones');
 export const pageprofile = `
 <body>
     <header class="mainHeader">
@@ -19,15 +20,15 @@ export const pageprofile = `
 secciones.innerHTML = pageprofile;
 
 export const setProfileAttributes = () => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    const cntProfileName = document.getElementById('userProfileName');
-    const cntProfileImage = document.getElementById('cntLogo');
-    const userProfileName = document.createElement('p');
-    userProfileName.innerHTML = user.displayName;
-    const userProfileImage = document.createElement('img');
-    userProfileImage.setAttribute('src', user.photoURL);
-    userProfileImage.setAttribute('alt', 'logo');
-    userProfileImage.setAttribute('class', 'logoProfile');
-    cntProfileImage.appendChild(userProfileImage);
-    cntProfileName.appendChild(userProfileName);
+  const user = JSON.parse(localStorage.getItem('user'));
+  const cntProfileName = document.getElementById('userProfileName');
+  const cntProfileImage = document.getElementById('cntLogo');
+  const userProfileName = document.createElement('p');
+  userProfileName.innerHTML = user.displayName;
+  const userProfileImage = document.createElement('img');
+  userProfileImage.setAttribute('src', user.photoURL);
+  userProfileImage.setAttribute('alt', 'logo');
+  userProfileImage.setAttribute('class', 'logoProfile');
+  cntProfileImage.appendChild(userProfileImage);
+  cntProfileName.appendChild(userProfileName);
 };

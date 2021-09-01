@@ -1,4 +1,3 @@
-
 export const createNewPost = `
 <body id="postBody">
     <header class="mainHeaderMuro">
@@ -48,7 +47,6 @@ export const createNewPost = `
     <a href="#profile"><img src="./imagen/user.svg" alt=""></a>
   </footer>
 </body>`;
-
 
 export const viewPost = `
 <body id="postBody">
@@ -200,4 +198,3 @@ export const editPost = `
     <a href="#profile"><img src="./imagen/user.svg" alt=""></a>
   </footer>
 </body>`;
-
