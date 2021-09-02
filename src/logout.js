@@ -1,4 +1,4 @@
-export const cerrarSesion = () => {
+export const signOff = () => {
   const logout = document.querySelector('#logout-button');
   logout.addEventListener('click', (e) => {
     e.preventDefault();

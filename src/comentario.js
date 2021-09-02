@@ -1,36 +1,35 @@
 export const showCommentary = () => {
   const fs = firebase.firestore();
-  const publicaciones = document.querySelector('#commentary');
+  const posts = document.querySelector('#commentary');
   const userName = JSON.parse(localStorage.getItem('user')).displayName;
   const userPhoto = JSON.parse(localStorage.getItem('user')).photoURL;
   const boxCommentary = `
-    <div class='imagenAndCommentary'>
-      <img src='${userPhoto}' alt='' class='usuarioCommentary' id='usuarioCommentary'>
-        <div class='usuarioAndCommentary' >
+    <div class='imageAndComment'>
+      <img src='${userPhoto}' alt='' class='userComment' id='userComment'>
+        <div class='userAndComment' >
         <h2>${userName}</h2>
-        <input class='contenidoCommentary' id='contenidoCommentary' placeholder='Comenta...' autofocus></input>
+        <input class='commentaryContent' id='commentaryContent' placeholder='Comenta...' autofocus></input>
         </div>
     </div>
     <button id='sendCommentary'>Enviar</button>
     <div class='allComments' id='allComments'>
     </div>`;
-  publicaciones.innerHTML = boxCommentary;
+  posts.innerHTML = boxCommentary;
 
   const buttonSendCommentary = document.querySelector('#sendCommentary');
   const allComments = document.querySelector('#allComments');
   const postId = JSON.parse(localStorage.getItem('postSelected')).idPost;
-  const photoUser = JSON.parse(localStorage.getItem('user')).photoURL;
   const username = JSON.parse(localStorage.getItem('user')).displayName;
 
   // crear comentario y guardar
-  const crearItem = (comentario) => {
+  const crearItem = (comment) => {
     fs.collection('publicaciones')
       .doc(postId)
       .collection('comentarios')
       .add({
         usuario: username,
-        comentario,
-        photoUrl: photoUser,
+        comentario: comment,
+        photoUrl: userPhoto,
       })
       .then(() => {
         // console.log('Se agrego correctamente ID:', docRef.id);
@@ -40,7 +39,7 @@ export const showCommentary = () => {
       });
   };
   // Suma de comentarios
-  const commentsCounter = document.querySelector('.contadorCommentary');
+  const commentsCounter = document.querySelector('.comentaryCounter');
   const totalOfComments = (docs) => {
     commentsCounter.innerHTML = '';
     const elDiv = document.createElement('div');
@@ -66,12 +65,12 @@ export const showCommentary = () => {
       allComments.innerHTML = '';
       querySnapshop.forEach((doc) => {
         allComments.innerHTML += `
-            <div class='imagenAndCommentary comentUser'>
+            <div class='imageAndComment comentUser'>
               <img src='${doc.data().photoUrl
-}' alt='' class='usuarioCommentary' id='usuarioCommentary'>
-              <div class='usuarioAndCommentaryRespt'>
+}' alt='' class='userComment' id='userComment'>
+              <div class='userAndCommentResponse'>
                 <h2>${doc.data().usuario}</h2>
-                <p class='contenidoCommentary'>${doc.data().comentario}</p>
+                <p class='commentaryContent'>${doc.data().comentario}</p>
               </div>
             </div>
           `;
@@ -80,8 +79,8 @@ export const showCommentary = () => {
 
   buttonSendCommentary.addEventListener('click', (e) => {
     e.preventDefault();
-    const commentary = document.querySelector('#contenidoCommentary').value;
+    const commentary = document.querySelector('#commentaryContent').value;
     crearItem(commentary);
-    document.querySelector('#contenidoCommentary').value = '';
+    document.querySelector('#commentaryContent').value = '';
   });
 };

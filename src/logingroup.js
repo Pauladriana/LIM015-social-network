@@ -16,7 +16,7 @@ export const createLogin = `
     <img src="./imagen/icons/ico-candado.svg" alt="port">
   </div>
   <p id="wrongpassword"></p>
-  <div class="mostrar">
+  <div class="show">
       <input type="checkbox" class="show-password" id="show-password">
       <label for="accept" >Mostrar contraseña</label>
   </div>
@@ -27,13 +27,13 @@ export const createLogin = `
   <img src="./imagen/google.png" class="imgGoogle"/>
   Iniciar sesión con google
 </button>
-<p class="textoBlanco">¿No tienes una cuenta? <a href="#signup" id="signingup">Regístrate</a></p> 
+<p class="whiteText">¿No tienes una cuenta? <a href="#signup" id="signingup">Regístrate</a></p> 
 <a href="#">Olvidé mi contraseña</a>
 </div>`;
 secciones.innerHTML = createLogin;
 
 export const createSignup = `
-<div class="contenedor-registro">
+<div class="logContainer">
   <div class="cntLogo">
   <img src="./imagen/logoblanco.svg"" alt="logo" class="logo">
   </div>
@@ -41,36 +41,36 @@ export const createSignup = `
     <input type="text" placeholder="Nombre completo" class="login-input" name="fullname" id="fullname" required>
     <p id="campoFullname"></p>
     <input type="text" placeholder="Nombre de usuario" class="login-input" name="username" id="username" required>
-    <p id="campoUsername"></p>
+    <p id="msmUserNameValidation"></p>
     <input type="password" placeholder="Contraseña" class="login-input" name="signup-password" id="signup-password" required maxlength="15">
-    <p id="campoContraseñaPrimero"></p>
+    <p id="msmFirstPassword"></p>
     <p id="shortPassword"></p>
     <input type="password" placeholder="Confirmar contraseña" class="login-input" name="confirm-password" id="confirm-password" required>
-    <p id="campoContraseñaSegundo"></p>
+    <p id="msmSecondPassword"></p>
     <input type="email" placeholder="Correo" class="login-input" name="signup-email" id="signup-email" required>
-    <p id="campoCorreo"></p>
+    <p id="msmEmailValidation"></p>
     <p id="wrongSUemail"></p>
-    <div class="terminos">
+    <div class="termsAndConditions">
       <input type="checkbox" class="accept" name="accept" id="acceptTo">
-      <label for="accept" id="textoTerminos">He Leido y acepto los terminos y condiciones</label>
+      <label for="accept" id="textTermsAndConditions">He Leido y acepto los terminos y condiciones</label>
     </div>
     <div>
-      <p id="campoChecket"></p>
+      <p id="boxCheck"></p>
     </div>
     <button type="button" id="submit-button" class="submit-button">Regístrate</button>
   </form>
   <button type="button" class="cancel-button" id="cancelButton">Cancelar</button>
-  <p id="campoEnviado"></p>
-  <p id="camposVacios"></p>
-  <p id="campoError"></p>
+  <p id="sentText"></p>
+  <p id="emptyText"></p>
+  <p id="errorText"></p>
 </div>`;
 
 export const createMuro = `
-    <div class="muroContent">
-    <header class="mainHeaderMuro">
+    <div class="postContentWall">
+    <header class="navbar">
     <span class="textTraveler">Traveler.pe</span>
-    <div class="iconosMenuMuro">
-    <div class="menuIconos">
+    <div class="navbarIcons">
+    <div class="menuIcons">
       <a href="#muro"><img src="./imagen/iconhome.png" alt=""></a>
       <a href="#newpost"><img src="./imagen/iconsubir.png" alt=""></a>
       <a href="#profile"><img src="./imagen/iconuser.svg" alt=""></a>
@@ -80,7 +80,7 @@ export const createMuro = `
     </header>
     <div id="allPost" class="allPost"></div>
     <div id="userslist" class="userslist"></div>
-    <footer class="opcionesFoot">
+    <footer class="optionsFoot">
       <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
       <a href="#newpost"><img src="./imagen/subir.svg" alt=""></a>
       <a href="#profile"><img src="./imagen/user.svg" alt=""></a>

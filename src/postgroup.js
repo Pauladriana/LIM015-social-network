@@ -1,9 +1,11 @@
 export const createNewPost = `
 <body id="postBody">
-    <header class="mainHeaderMuro">
+    <header class="
+
+navbar">
     <span class="textTraveler">Traveler.pe</span>
-    <div class="iconosMenuMuro">
-    <div class="menuIconos">
+    <div class="navbarIcons">
+    <div class="menuIcons">
       <a href="#muro"><img src="./imagen/iconhome.png" alt=""></a>
       <a href="#newpost"><img src="./imagen/iconsubir.png" alt=""></a>
       <a href="#profile"><img src="./imagen/iconuser.svg" alt=""></a>
@@ -51,7 +53,7 @@ export const createNewPost = `
         <div>
     </div>
   </main>
-  <footer class="opcionesFoot">
+  <footer class="optionsFoot">
     <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
     <a href="#newpost"><img src="./imagen/subir.svg" alt=""></a>
     <a href="#profile"><img src="./imagen/user.svg" alt=""></a>
@@ -62,8 +64,8 @@ export const viewPost = `
 <body id="postBody">
     <header class="mainHeader">
     <span class="textTraveler">Traveler.pe</span>
-    <div class="iconosMenuMuro">
-    <div class="menuIconos">
+    <div class="navbarIcons">
+    <div class="menuIcons">
       <a href="#muro"><img src="./imagen/iconhome.png" alt=""></a>
       <a href="#newpost"><img src="./imagen/iconsubir.png" alt=""></a>
       <a href="#profile"><img src="./imagen/iconuser.svg" alt=""></a>
@@ -135,11 +137,11 @@ export const viewPost = `
     </section>
     </div>
     <div class="likesDate">
-      <div class="contadorLikes">
+      <div class="likesCounter">
         <i class="fas fa-heart" aria-hidden="true"></i>
         <span id="likesPost"></span>
       </div>
-      <div class="contadorCommentary">
+      <div class="comentaryCounter">
         <i class="far fa-comment"></i>
         <span id="comentsPost"></span>
       </div>
@@ -153,7 +155,7 @@ export const viewPost = `
     </section>
     </div>
     </main>
-  <footer class="opcionesFoot">
+  <footer class="optionsFoot">
     <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
     <a href="#newpost"><img src="./imagen/subir.svg" alt=""></a>
     <a href="#profile"><img src="./imagen/user.svg" alt=""></a>
@@ -164,8 +166,8 @@ export const editPost = `
 <body id="postBody">
   <header class="mainHeader">
     <span class="textTraveler">Traveler.pe</span>
-    <div class="iconosMenuMuro">
-    <div class="menuIconos">
+    <div class="navbarIcons">
+    <div class="menuIcons">
       <a href="#muro"><img src="./imagen/iconhome.png" alt=""></a>
       <a href="#newpost"><img src="./imagen/iconsubir.png" alt=""></a>
       <a href="#profile"><img src="./imagen/iconuser.svg" alt=""></a>
@@ -214,7 +216,7 @@ export const editPost = `
   </div>
   </div>
   </main>
-  <footer class="opcionesFoot">
+  <footer class="optionsFoot">
     <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
     <a href="#newpost"><img src="./imagen/subir.svg" alt=""></a>
     <a href="#profile"><img src="./imagen/user.svg" alt=""></a>

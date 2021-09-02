@@ -1,14 +1,14 @@
-import { crearUsuarioFb } from './firebase.js';
+import { createUserFb } from './firebase.js';
 
 export const validarRegistro = () => {
   /* -----------  validar <formulario  de registro> vacios y condiciones  --------------- */
   const inputsRegistro = document.querySelectorAll('#signup-form input');
   const mensajeFullname = document.querySelector('#campoFullname'); // mensaje fullname <p>
-  const mensajeUsername = document.querySelector('#campoUsername'); // mensaje username <p>
-  const mensajeContraseña1 = document.querySelector('#campoContraseñaPrimero'); // mensaje contraseña 1 <p>
-  const mensajeContraseña2 = document.querySelector('#campoContraseñaSegundo'); // mensaje contraseña 2 <p>
-  const mensajeCorreo = document.querySelector('#campoCorreo'); // mensaje correo <p>
-  const mensajeChecket = document.querySelector('#campoChecket'); // mensaje Checket <p>
+  const mensajeUsername = document.querySelector('#msmUserNameValidation'); // mensaje username <p>
+  const mensajeContraseña1 = document.querySelector('#msmFirstPassword'); // mensaje contraseña 1 <p>
+  const mensajeContraseña2 = document.querySelector('#msmSecondPassword'); // mensaje contraseña 2 <p>
+  const mensajeCorreo = document.querySelector('#msmEmailValidation'); // mensaje correo <p>
+  const mensajeChecket = document.querySelector('#boxCheck'); // mensaje Checket <p>
 
   // expresiones regulares
   const expresiones = {
@@ -127,7 +127,7 @@ export const validarRegistro = () => {
   });
 
   const mensajeCamposVacios = () => {
-    const mensajeError = document.querySelector('#campoError');
+    const mensajeError = document.querySelector('#errorText');
     mensajeError.innerHTML = 'Error: Por favor rellena el formulario correctamente';
     mensajeError.style.color = '#ffccdd';
   };
@@ -143,7 +143,7 @@ export const validarRegistro = () => {
       const fullnameInput = document.querySelector('#fullname').value;
       const passwordInput = document.querySelector('#signup-password').value;
       const emailInput = document.querySelector('#signup-email').value;
-      crearUsuarioFb(signupEmail, signupPassword, usernameInput, fullnameInput,
+      createUserFb(signupEmail, signupPassword, usernameInput, fullnameInput,
         passwordInput, emailInput);
       signupForm.reset();
       window.location.hash = 'login';

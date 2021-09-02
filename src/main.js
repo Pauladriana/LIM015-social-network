@@ -2,7 +2,7 @@ import { createLogin, createSignup, createMuro } from './logingroup.js';
 import { createNewPost, viewPost, editPost } from './postgroup.js';
 // import { showAuthUsers } from './authuser.js';
 import { showFsPost, showMyPosts } from './fsPost.js';
-import { cerrarSesion } from './logout.js';
+import { signOff } from './logout.js';
 import { googleRegister, loginWithEmail } from './login.js';
 import { validarRegistro } from './validaciones.js';
 import { showCommentary } from './comentario.js';
@@ -291,7 +291,7 @@ const dataPost = () => {
   });
 
   // ACTUALIZAR LIKES
-  const likesCounter = document.querySelector('.contadorLikes');
+  const likesCounter = document.querySelector('.likesCounter');
   const postTotalLikes = (doc) => {
     const postId = JSON.parse(localStorage.getItem('postSelected')).idPost;
     likesCounter.innerHTML = '';
@@ -334,11 +334,11 @@ const editadoPost = () => {
 
   locacionTravel.value = post.locationPost;
   tituloTravel.value = post.titlePost;
-  costoTravel.value = post.costoPost;
-  diasTravel.value = post.diasPost;
-  nochesTravel.value = post.nochesPost;
+  costoTravel.value = post.costPost;
+  diasTravel.value = post.daysPost;
+  nochesTravel.value = post.nightPost;
   personasTravel.value = post.peoplePost;
-  ninosTravel.value = post.ninosPost;
+  ninosTravel.value = post.kidsPost;
   contenidoTravel.value = post.contentPost;
 
   fs.collection('publicaciones').doc(post.idPost).get().then((ele) => {
@@ -406,7 +406,7 @@ const showSeccion = (ruta) => {
     case '#newpost': {
       setHash(createNewPost);
       crearPost();
-      cerrarSesion();
+      signOff();
       // console.log('hola estoy en crear post');
       break;
     }
@@ -418,7 +418,7 @@ const showSeccion = (ruta) => {
       dataPost();
       funcionModal();
       removePost();
-      cerrarSesion();
+      signOff();
       // console.log('hola estoy en ver post');
       break;
     }
@@ -427,14 +427,14 @@ const showSeccion = (ruta) => {
       secciones.innerHTML = editPost;
       editadoPost();
       savePost();
-      cerrarSesion();
+      signOff();
       // console.log('hola estoy en crear post');
       break;
     }
     case '#muro': {
       secciones.innerHTML = createMuro;
       showFsPost();
-      cerrarSesion();
+      signOff();
       // console.log('hola estoy en muro');
       break;
     }
@@ -442,7 +442,7 @@ const showSeccion = (ruta) => {
       secciones.innerHTML = pageprofile;
       setProfileAttributes();
       showMyPosts();
-      cerrarSesion();
+      signOff();
       // console.log('hola estoy en profile');
       break;
     }

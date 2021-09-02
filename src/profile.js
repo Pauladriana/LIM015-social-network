@@ -3,8 +3,8 @@ export const pageprofile = `
 <body>
     <header class="mainHeader">
         <span class="textTraveler">Traveler.pe</span>
-        <div class="iconosMenuMuro">
-            <div class="menuIconos">
+        <div class="navbarIcons">
+            <div class="menuIcons">
                 <a href="#muro"><img src="./imagen/iconhome.png" alt=""></a>
                 <a href="#newpost"><img src="./imagen/iconsubir.png" alt=""></a>
                 <a href="#profile"><img src="./imagen/iconuser.svg" alt=""></a>
@@ -18,7 +18,7 @@ export const pageprofile = `
     <div class="userProfile" id="userProfileName">
     </div>
     <div id="allPost" class="allPost"></div>
-    <footer class="opcionesFoot">
+    <footer class="optionsFoot">
         <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
         <a href="#newpost"><img src="./imagen/subir.svg" alt=""></a>
         <a href="#profile"><img src="./imagen/user.svg" alt=""></a>

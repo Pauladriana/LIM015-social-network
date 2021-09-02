@@ -1,7 +1,7 @@
 // funcion de crear usuarios
 import { emailUserRegister } from './login.js';
 
-export const crearUsuarioFb = (signupEmail, signupPassword, usernameInput, fullnameInput,
+export const createUserFb = (signupEmail, signupPassword, usernameInput, fullnameInput,
   passwordInput, emailInput) => {
   const checkmail = () => {
     const user = firebase.auth().currentUser;

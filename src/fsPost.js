@@ -1,9 +1,9 @@
 const fs = firebase.firestore();
 export const showFsPost = () => {
   const userId = JSON.parse(localStorage.getItem('user')).uid;
-  const publicaciones = document.querySelector('#allPost');
+  const posts = document.querySelector('#allPost');
   const setupPost = (data) => {
-    publicaciones.innerHTML = '';
+    posts.innerHTML = '';
     data.forEach((doc) => {
       const str = doc.username;
       const leng = 7;
@@ -14,16 +14,16 @@ export const showFsPost = () => {
       elDiv.setAttribute('data-id', docId);
       const divTemplate = `
                     <div class='postDiv'>
-                      <div class='muroLocation'>
+                      <div class='destinationPost'>
                       <img src='./imagen/locacion.svg' alt='' class='locationIcon'>
                       <p>${doc.locacionInput}</p>
                       </div>
                       <h5>${doc.tituloPost}</h5>
-                      <div class='muroLike'>
+                      <div class='postUserName'>
                       <p>${trimmedString}</p>
                       </div>
                     </div>
-                    <div class= 'contadorLikes' id='heartPost'><i class='fas fa-heart  ${doc.likes.includes(userId) ? 'liked' : 'unliked'}'></i><span class='totalLikes'>${doc.likes.length}</span></div>`;
+                    <div class= 'likesCounter' id='heartPost'><i class='fas fa-heart  ${doc.likes.includes(userId) ? 'liked' : 'unliked'}'></i><span class='totalLikes'>${doc.likes.length}</span></div>`;
       elDiv.innerHTML = divTemplate;
 
       // update likes
@@ -49,10 +49,10 @@ export const showFsPost = () => {
           if (ele.data()) {
             const user = ele.data();
             // console.log(user);
-            const costoPost = user.costoInput;
-            const diasPost = user.diasInput;
-            const nochesPost = user.nochesInput;
-            const ninosPost = user.ninosInput;
+            const costPost = user.costoInput;
+            const daysPost = user.diasInput;
+            const nightPost = user.nochesInput;
+            const kidsPost = user.ninosInput;
             const peoplePost = user.personasInput;
             const titlePost = user.tituloPost;
             const contentPost = user.contenidoPost;
@@ -60,10 +60,10 @@ export const showFsPost = () => {
             const idPost = id;
 
             const post = {
-              costoPost,
-              diasPost,
-              nochesPost,
-              ninosPost,
+              costPost,
+              daysPost,
+              nightPost,
+              kidsPost,
               peoplePost,
               titlePost,
               contentPost,
@@ -84,7 +84,7 @@ export const showFsPost = () => {
         getPost(docId);
       });
 
-      publicaciones.appendChild(elDiv);
+      posts.appendChild(elDiv);
     });
   };
   // TERMINA setupPost(post)
@@ -104,9 +104,9 @@ export const showFsPost = () => {
 export const showMyPosts = () => {
   const userId = JSON.parse(localStorage.getItem('user')).uid;
   // console.log(userId);
-  const publicaciones = document.querySelector('#allPost');
+  const posts = document.querySelector('#allPost');
   const setupPost = (data) => {
-    publicaciones.innerHTML = '';
+    posts.innerHTML = '';
     // console.log(data);
     if (data.length !== 0) {
       data.forEach((doc) => {
@@ -119,16 +119,16 @@ export const showMyPosts = () => {
         elDiv.setAttribute('data-id', docId);
         const divTemplate = `
                       <div class='postDiv'>
-                        <div class='muroLocation'>
+                        <div class='destinationPost'>
                         <img src='./imagen/locacion.svg' alt='' class='locationIcon'>
                         <p>${doc.locacionInput}</p>
                         </div>
                         <h5>${doc.tituloPost}</h5>
-                        <div class='muroLike'>
+                        <div class='postUserName'>
                         <p>${trimmedString}</p>
                         </div>
                       </div>
-                      <div class= 'contadorLikes' id='heartPost'><i class='fas fa-heart  ${doc.likes.includes(userId) ? 'liked' : 'unliked'}'></i><span class='totalLikes'>${doc.likes.length}<span></div>`;
+                      <div class= 'likesCounter' id='heartPost'><i class='fas fa-heart  ${doc.likes.includes(userId) ? 'liked' : 'unliked'}'></i><span class='totalLikes'>${doc.likes.length}<span></div>`;
         elDiv.innerHTML = divTemplate;
 
         // update likes
@@ -154,10 +154,10 @@ export const showMyPosts = () => {
             if (ele.data()) {
               const user = ele.data();
               // console.log(user);
-              const costoPost = user.costoInput;
-              const diasPost = user.diasInput;
-              const nochesPost = user.nochesInput;
-              const ninosPost = user.ninosInput;
+              const costPost = user.costoInput;
+              const daysPost = user.diasInput;
+              const nightPost = user.nochesInput;
+              const kidsPost = user.ninosInput;
               const peoplePost = user.personasInput;
               const titlePost = user.tituloPost;
               const contentPost = user.contenidoPost;
@@ -165,10 +165,10 @@ export const showMyPosts = () => {
               const idPost = id;
 
               const post = {
-                costoPost,
-                diasPost,
-                nochesPost,
-                ninosPost,
+                costPost,
+                daysPost,
+                nightPost,
+                kidsPost,
                 peoplePost,
                 titlePost,
                 contentPost,
@@ -189,7 +189,7 @@ export const showMyPosts = () => {
           getPost(docId);
         });
 
-        publicaciones.appendChild(elDiv);
+        posts.appendChild(elDiv);
       });
     } else {
       const elDiv = document.createElement('div');
@@ -201,7 +201,7 @@ export const showMyPosts = () => {
             <h1 style='font-size: 20px; color: #666666;'>Aun no hiciste ninguna publicacion, te me estas quedando hija !!! , échale ganas wey !!</h1>
           </div>`;
       elDiv.innerHTML = divTemplate;
-      publicaciones.appendChild(elDiv);
+      posts.appendChild(elDiv);
     }
   }; // TERMINA setupPost(post)
   fs.collection('publicaciones').onSnapshot((snapshot) => {

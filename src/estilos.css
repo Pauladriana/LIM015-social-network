@@ -25,7 +25,7 @@ body {
 }
 
 
-.textoBlanco {
+.whiteText {
     color: #fff;
 }
 
@@ -39,7 +39,7 @@ body {
     margin-bottom: 0px;
 }
 
-.contenedor-registro {
+.logContainer {
     background: url(/imagen/fondoLogin.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -214,7 +214,9 @@ button {
     margin-right: auto;
 }
 
-.terminos{
+.termsAndConditions
+
+{
     color: #ffff;
     display: flex;
     flex-direction: row;
@@ -231,7 +233,7 @@ button {
 }
 
 
-.mostrar {
+.show {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -443,15 +445,15 @@ button {
     padding-top: 65px;
 }
 /* muro */
-.iconosMenuMuro {
+.navbarIcons {
     display: flex;
 }
 
-.menuIconos {
+.menuIcons {
     margin-right: 25px;
 }
 
-.menuIconos a{
+.menuIcons a{
     margin: 5px;
 }
 
@@ -462,7 +464,7 @@ button {
     justify-content: center;
 }
 
-.muroLocation {
+.destinationPost {
     margin-left: 15px;
     height: 30px;
     margin-top: 15px;
@@ -473,7 +475,7 @@ button {
     padding: 0px 10px;
     align-items: center;
 }
-.muroLocation p {
+.destinationPost p {
     font-size: 18px;
     color: black;
     line-height: 20px;
@@ -485,12 +487,14 @@ button {
     color: #fff;
 }
 
-.muroContent {
+.postContentWall
+
+ {
     margin-bottom: 15%;
     margin-top: 15%;
 }
 
-.muroLike {
+.postUserName {
     margin-left: 15px;
     display: flex;
     justify-content: space-between;
@@ -499,7 +503,7 @@ button {
     margin-bottom: 15px;
 }
 
-.muroLike p {
+.postUserName p {
     font-size: 18px;
     color: #000;
     display: flex;
@@ -510,11 +514,11 @@ button {
     margin-bottom: 0px;
 }
 
-.muroLike i {
+.postUserName i {
     color: white;
 }
 
-.contadorLikes {
+.likesCounter {
     margin-top: 5px;
     background: #ffffff7a;
     width: fit-content;
@@ -522,11 +526,11 @@ button {
     padding: 0px 10px;
 }
 
-.contadorLikes i{
+.likesCounter i{
     font-size: 21px;
 }
 
-.contadorLikes span {
+.likesCounter span {
     font-size: 18px;
     margin: 5px;
 }
@@ -536,17 +540,17 @@ button {
     justify-content: space-between;
     background-position: center;
     background-size: cover;
-    background-image: url(/imagen/fotoPost.jpg)
+    background-image: url(/imagen/fotoPost.jpg);
     width: 360px;
     height: 407px;
     padding: 5px 10px 5px;
-    borde-radius: 10px;
+    border-radius: 10px;
     margin: 20px 30px 0px 10px;
     background-repeat: no-repeat;
     flex-direction: column;
 }
 
-.mainHeaderMuro {
+.navbar {
     margin: 0px;
     background: #CAD95B;
     display: flex;
@@ -694,7 +698,7 @@ button {
     border-radius: 50%;
 }
 
-.usuarioCommentary {
+.userComment {
     margin: 0px 20px 0px 0px;
     width: 50px;
     height: 50px;
@@ -751,15 +755,15 @@ hr {
     align-items: center;
   }
 
-  .contadorCommentary {
+  .comentaryCounter {
     padding: 0px 10px;
   }
 
-  .contadorCommentary i{
+  .comentaryCounter i{
     font-size: 21px;
   }
 
-  .contadorCommentary span{
+  .comentaryCounter span{
     font-size: 18px;
   }
 
@@ -805,14 +809,14 @@ hr {
     font-size: 18px;
   }
 
-  .imagenAndCommentary {
+  .imageAndComment {
     margin-top: 5%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
   
-  .usuarioAndCommentary {
+  .userAndComment {
     width: 350px;
     padding: 5px;
     border: 1px solid #DFDFDF;
@@ -822,19 +826,19 @@ hr {
     align-items: flex-start;
   }
 
-  .usuarioAndCommentary h2 {
+  .userAndComment h2 {
     font-size: 18px;
     margin: 0px 0px 0px 5px;
   }
 
-  .usuarioAndCommentary input {
+  .userAndComment input {
     border: none;
     margin: 0px 0px 0px 5px;
     padding: 0px;
     font-size: 18px;
   }
 
-  .usuarioAndCommentaryRespt {
+  .userAndCommentResponse {
     width: 350px;
     padding: 5px;
     border: 1px solid #DFDFDF;
@@ -844,14 +848,14 @@ hr {
     align-items: flex-start;
   }
 
-  .usuarioAndCommentaryRespt p{
+  .userAndCommentResponse p{
     font-size: 18px;
     text-align: left;
     margin: 0px;
     color: #000;
   }
 
-  .usuarioAndCommentaryRespt h2{
+  .userAndCommentResponse h2{
     font-size: 18px;
     margin: 0px;
   }
@@ -937,7 +941,7 @@ hr {
     align-items: center;
     margin-top: 120px;
 }
-.tituloNotFound{
+.titleNotFound{
     width: 550px;
     color: #000;
     font-size: 30px;
@@ -945,7 +949,7 @@ hr {
     text-align: center;
 }
 
-.linkReturnMuro {
+.linkReturnWall {
     margin-top: 15px;
     width: 130px;
     height: 41px;
@@ -960,7 +964,7 @@ hr {
     font-weight: bold;
 
 }
-.imagenNotFound {
+.imageNotFound {
     width: 50%;
     position: absolute;
     bottom: 0;
@@ -1024,7 +1028,7 @@ body {
     margin-bottom: 0px;
 }
 
-.contenedor-registro {
+.logContainer {
     background: url(/imagen/fondoLogin.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -1199,7 +1203,9 @@ button {
     margin-right: auto;
 }
 
-.terminos{
+.termsAndConditions
+
+{
     color: #ffff;
     display: flex;
     flex-direction: row;
@@ -1216,7 +1222,7 @@ button {
 }
 
 
-.mostrar {
+.show {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -1399,7 +1405,7 @@ button {
 
 }
 
-.opcionesFoot{
+.optionsFoot{
     border-top: 1px solid #EBEBEB;
     position: fixed;
     bottom: 0;
@@ -1429,7 +1435,7 @@ button {
     padding-top: 65px;
 }
 /* muro */
-.menuIconos {
+.menuIcons {
     display: none;
 }
 
@@ -1440,7 +1446,7 @@ button {
     justify-content: center;
 }
 
-.muroLocation {
+.destinationPost {
     margin-top: 5px;
     display: flex;
     background: #ffffffc4;
@@ -1449,7 +1455,7 @@ button {
     padding: 0px 10px;
     align-items: center;
 }
-.muroLocation p {
+.destinationPost p {
     line-height: 20px;
     font-size: 15px;
     margin: 0px 0px 0px 5px;
@@ -1460,12 +1466,14 @@ button {
     color: #fff;
 }
 
-.muroContent {
+.postContentWall
+
+ {
     margin-bottom: 15%;
     margin-top: 15%;
 }
 
-.muroLike {
+.postUserName {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1473,7 +1481,7 @@ button {
     margin-bottom: 0px;
 }
 
-.muroLike p {
+.postUserName p {
     color: #000;
     display: flex;
     background: #ffffffb8;
@@ -1484,11 +1492,11 @@ button {
     font-size: 15px;
 }
 
-.muroLike i {
+.postUserName i {
     color: white;
 }
 
-.contadorLikes {
+.likesCounter {
     margin-top: 0px;
     background: #ffffff7a;
     width: fit-content;
@@ -1496,11 +1504,11 @@ button {
     padding: 0px 10px;
 }
 
-.contadorLikes i{
+.likesCounter i{
     font-size: 15px;
 }
 
-.contadorLikes span {
+.likesCounter span {
     font-size: 15px;
     margin: 5px;
 }
@@ -1518,7 +1526,7 @@ button {
     justify-content: space-between;
 }
 
-.mainHeaderMuro {
+.navbar {
     margin: 0px;
     background: #CAD95B;
     display: flex;
@@ -1668,7 +1676,7 @@ button {
     border-radius: 50%;
 }
 
-.usuarioCommentary {
+.userComment {
     width: 100%;
     height: 100%;
     border-radius: 50%;
@@ -1733,15 +1741,15 @@ hr {
     margin: 15px 0px 0px 0px;
   }
 
-  .contadorCommentary {
+  .comentaryCounter {
     padding: 0px 10px;
   }
 
-  .contadorCommentary i {
+  .comentaryCounter i {
     font-size: 15px;
 }
 
-.contadorCommentary span {
+.comentaryCounter span {
     font-size: 15px;
 }
 
@@ -1793,14 +1801,14 @@ hr {
     width: 15%;
   }
 
-  .imagenAndCommentary {
+  .imageAndComment {
     margin-top: 5%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
   
-  .usuarioAndCommentary {
+  .userAndComment {
     width: auto;
     padding: 5px;
     border: 1px solid #DFDFDF;
@@ -1810,19 +1818,19 @@ hr {
     align-items: flex-start;
   }
 
-  .usuarioAndCommentary h2 {
+  .userAndComment h2 {
     font-size: 15px;
     margin: 0px 0px 0px 5px;
   }
 
-  .usuarioAndCommentary input {
+  .userAndComment input {
     border: none;
     margin: 0px 0px 0px 5px;
     padding: 0px;
     font-size: 15px;
   }
 
-  .usuarioAndCommentaryRespt {
+  .userAndCommentResponse {
     width: auto;
     padding: 5px;
     border: 1px solid #DFDFDF;
@@ -1832,14 +1840,14 @@ hr {
     align-items: flex-start;
   }
 
-  .usuarioAndCommentaryRespt p{
+  .userAndCommentResponse p{
     font-size: 15px;
     text-align: left;
     margin: 0px;
     width: 240px;
   }
 
-  .usuarioAndCommentaryRespt h2{
+  .userAndCommentResponse h2{
       font-size: 15px;
     margin: 0px;
   }
@@ -1925,12 +1933,12 @@ hr {
     align-items: center;
     margin-top: 120px;
 }
-.tituloNotFound{
+.titleNotFound{
     font-size: 20px;
     padding: 0px 10px 0px 10px;
 }
 
-.linkReturnMuro {
+.linkReturnWall {
     margin-top: 15px;
     width: 130px;
     height: 41px;
@@ -1945,7 +1953,7 @@ hr {
     font-weight: bold;
 
 }
-.imagenNotFound {
+.imageNotFound {
     width: 100%;
     position: absolute;
     bottom: 0;
