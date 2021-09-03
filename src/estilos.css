@@ -33,7 +33,7 @@ body {
     color: #000;
 }
 
-.titulo {
+.title {
     font-size: 20px;
     color: #fff;
     margin-bottom: 0px;
@@ -299,7 +299,7 @@ button {
     z-index: 1;
 }
 
-.iconos{
+.icons{
     display: flex;
     flex-direction: row;
     padding: 5px 0px 5px 0px;
@@ -340,14 +340,14 @@ button {
     margin-bottom: 5px;
 }
 
-.tituloPost{
+.postTitle{
     border: none;
     font-size: 20px;
     font-family: 'Lato', sans-serif;
     outline: none;
 
 }
-.tituloPostEdit{
+.editTitle{
     margin-top: 20px;
     border: none;
     border-bottom: 1px solid black;
@@ -361,7 +361,7 @@ button {
     width: 268px;
 }
 
-.contenidoPost{
+.postContent{
     font-size: 18px;
     width: 323px;
     height: 280px;
@@ -375,7 +375,7 @@ button {
     margin-bottom: 15%;
 }
 
-.locacion{
+.location{
     display: flex;
     margin: 10px 20px 10px 20px;
     flex-direction: row;
@@ -385,7 +385,7 @@ button {
     justify-content: space-between;
 }
 
-.locacionEdit{
+.locationEditCnt{
     display: flex;
     padding: 10px 20px 10px 20px;
     align-items: center;
@@ -417,7 +417,7 @@ button {
     width: 269px;
 }
 
-.publiPost{
+.sharePost{
     display: block;
     margin: auto;
     width: 100px;
@@ -595,18 +595,18 @@ button {
 }
 
 /* newpost */
-.postnew {
+.newPostCnt {
     margin-top: 0%;
 }
 
-.nuevopost {
+.newPost {
     display: flex;
     justify-content: center;
     margin-top: 150px;
     margin-right: 200px;
 }
 
-.fotografias {
+.picturesCnt {
     margin-right: 5%;
     width: 500px;
     background-image: url(./imagen/apurimac3.svg);
@@ -632,7 +632,7 @@ button {
     object-fit: none;
 }
 
-.iconosEdit {
+.iconsEdit {
     margin: 34px 0px;
     display: flex;
     flex-direction: row;
@@ -658,12 +658,12 @@ button {
     padding: 10px 20px 10px 20px;
 }
 
-.usuario {
+.userClass {
     line-height: 3px;
     margin-left: 10px;
 }
 
-.usuario p  {
+.userClass p  {
     color: #000;
     text-align: left;
     width: 100px;
@@ -673,7 +673,7 @@ button {
     margin: 0px;
 }
 
-.usuarioAndImagen {
+.userPicture {
     display: flex;
     align-items: center;
     padding: 10px 20px 10px 20px;
@@ -711,7 +711,7 @@ button {
     cursor: pointer;
 }
 
-.contenidoViewPost {
+.viewPostContent {
     padding-top: 10px;
     border: 1px solid #DFDFDF;
     border-radius: 15px;
@@ -733,12 +733,12 @@ hr {
     cursor: pointer;
   }
 
-  .textoEditRemove {
+  .textEditRemove {
     font-size: 15px;
     line-height: 30px;
   }
 
-  .editar {
+  .editModal {
     font-size: 20px;
     line-height: 30px;
   }
@@ -755,15 +755,15 @@ hr {
     align-items: center;
   }
 
-  .comentaryCounter {
+  .commentaryCounter {
     padding: 0px 10px;
   }
 
-  .comentaryCounter i{
+  .commentaryCounter i{
     font-size: 21px;
   }
 
-  .comentaryCounter span{
+  .commentaryCounter span{
     font-size: 18px;
   }
 
@@ -775,7 +775,7 @@ hr {
     font-size: 18px;
   }
 
-  .viewContenido {
+  .viewContent {
     color: #000;
     font-size: 18px;
     line-height: 25px;
@@ -784,7 +784,7 @@ hr {
     margin-top: 0px;
   }
 
-  .optionesPost {
+  .postSettings {
       margin-right: 0px;
   }
 
@@ -970,7 +970,7 @@ hr {
     bottom: 0;
 }
 /*perfil del usuario Profile*/
-.banerPerfil {
+.profileBanner {
     width: 100%;
     background-image: url(./imagen/userprofile.gif);
     background-size: cover;
@@ -1022,7 +1022,7 @@ body {
     
 }
 
-.titulo {
+.title {
     font-size: 20px;
     color: #fff;
     margin-bottom: 0px;
@@ -1288,7 +1288,7 @@ button {
     z-index: 1;
 }
 
-.iconos{
+.icons{
     display: flex;
     padding: 5px 0px 5px 0px;
     line-height: 1px;
@@ -1324,14 +1324,14 @@ button {
     margin-bottom: 5px;
 }
 
-.tituloPost{
+.postTitle{
     border: none;
     font-size: 15px;
     font-family: 'Lato', sans-serif;
     outline: none;
 
 }
-.tituloPostEdit{
+.editTitle{
     margin-top: 20px;
     border: none;
     border-bottom: 1px solid black;
@@ -1345,7 +1345,7 @@ button {
     width: 268px;
 }
 
-.contenidoPost{
+.postContent{
     font-size: 15px;
     width: 323px;
     height: 155px;
@@ -1358,7 +1358,7 @@ button {
     outline: none;
 }
 
-.locacion{
+.location{
     margin: 10px 20px 10px 20px;
     display: flex;
     flex-direction: row;
@@ -1392,7 +1392,7 @@ button {
     width: 269px;
 }
 
-.publiPost{
+.sharePost{
     display: block;
     margin: auto;
     width: 89px;
@@ -1571,11 +1571,11 @@ button {
 }
 
 /* newpost */
-.postnew {
+.newPostCnt {
     margin-bottom: 15%;
 }
 
-.nuevopost {
+.newPost {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -1583,7 +1583,7 @@ button {
     margin-right: 0px;
 }
 
-.fotografias {
+.picturesCnt {
     margin-right: 5%;
     background-image: url(./imagen/apurimac3.svg);
     background-size: cover;
@@ -1611,7 +1611,7 @@ button {
     object-fit: none;
 }
 
-.iconosEdit {
+.iconsEdit {
     margin: 10px 0px;
     justify-content: center;
 }
@@ -1634,12 +1634,12 @@ button {
     padding: 10px 20px 10px 20px;
 }
 
-.usuario {
+.userClass {
     line-height: 3px;
     margin-left: 10px;
 }
 
-.usuario p  {
+.userClass p  {
     font-size: 17px;
     color: #000;
     text-align: left;
@@ -1647,7 +1647,7 @@ button {
     line-height: 15px;
 }
 
-.usuarioAndImagen {
+.userPicture {
     display: flex;
     width:25px;
     align-items: center;
@@ -1655,11 +1655,11 @@ button {
     margin-bottom: 15px;
 }
 
-.botonGuardar {
+.saveButton {
     margin: 20px 0px;
 }
 
-.locacionEdit {
+.locationEditCnt {
     margin: 20px 25px 10px 25px;
     display: flex;
     flex-direction: row;
@@ -1687,7 +1687,7 @@ button {
     margin-top: 9px;
 }
 
-.contenidoViewPost {
+.viewPostContent {
     width: 335px;
     margin: 0px;
     padding-top: 10px;
@@ -1721,11 +1721,11 @@ hr {
     cursor: pointer;
   }
 
-  .textoEditRemove {
+  .textEditRemove {
     font-size: 15px;
   }
 
-  .editar {
+  .editModal {
     line-height: 30px;
   }
 
@@ -1741,15 +1741,15 @@ hr {
     margin: 15px 0px 0px 0px;
   }
 
-  .comentaryCounter {
+  .commentaryCounter {
     padding: 0px 10px;
   }
 
-  .comentaryCounter i {
+  .commentaryCounter i {
     font-size: 15px;
 }
 
-.comentaryCounter span {
+.commentaryCounter span {
     font-size: 15px;
 }
 
@@ -1761,7 +1761,7 @@ hr {
     font-size: 15px;
 }
 
-  .viewContenido {
+  .viewContent {
     color: #000;
     line-height: 20px;
     text-align: left;
@@ -1770,7 +1770,7 @@ hr {
     font-size: 15px;
   }
 
-  .optionesPost {
+  .postSettings {
       margin-right: 0px;
   }
 
@@ -1959,7 +1959,7 @@ hr {
     bottom: 0;
 }
 /*perfil del usuario Profile*/
-.banerPerfil {
+.profileBanner {
     margin-top: 45px;
     height: 155px;
 }

@@ -10,8 +10,8 @@ export const showFsPost = () => {
       const trimmedString = str.substring(0, leng);
       const docId = doc.id;
       // console.log(docId, doc);
-      const elDiv = document.createElement('div');
-      elDiv.setAttribute('data-id', docId);
+      const theDiv = document.createElement('div');
+      theDiv.setAttribute('data-id', docId);
       const divTemplate = `
                     <div class='postDiv'>
                       <div class='destinationPost'>
@@ -24,10 +24,10 @@ export const showFsPost = () => {
                       </div>
                     </div>
                     <div class= 'likesCounter' id='heartPost'><i class='fas fa-heart  ${doc.likes.includes(userId) ? 'liked' : 'unliked'}'></i><span class='totalLikes'>${doc.likes.length}</span></div>`;
-      elDiv.innerHTML = divTemplate;
+      theDiv.innerHTML = divTemplate;
 
       // update likes
-      const likes = elDiv.querySelector('.fa-heart');
+      const likes = theDiv.querySelector('.fa-heart');
       likes.addEventListener('click', () => {
         const result = doc.likes.indexOf(userId);
         if (result === -1) {
@@ -79,12 +79,12 @@ export const showFsPost = () => {
             // console.log(err);
           });
       };
-      const post = elDiv.querySelector('.postDiv');
+      const post = theDiv.querySelector('.postDiv');
       post.addEventListener('click', () => {
         getPost(docId);
       });
 
-      posts.appendChild(elDiv);
+      posts.appendChild(theDiv);
     });
   };
   // TERMINA setupPost(post)
@@ -115,8 +115,8 @@ export const showMyPosts = () => {
         const trimmedString = str.substring(0, leng);
         const docId = doc.id;
         // console.log(docId, doc);
-        const elDiv = document.createElement('div');
-        elDiv.setAttribute('data-id', docId);
+        const theDiv = document.createElement('div');
+        theDiv.setAttribute('data-id', docId);
         const divTemplate = `
                       <div class='postDiv'>
                         <div class='destinationPost'>
@@ -129,10 +129,10 @@ export const showMyPosts = () => {
                         </div>
                       </div>
                       <div class= 'likesCounter' id='heartPost'><i class='fas fa-heart  ${doc.likes.includes(userId) ? 'liked' : 'unliked'}'></i><span class='totalLikes'>${doc.likes.length}<span></div>`;
-        elDiv.innerHTML = divTemplate;
+        theDiv.innerHTML = divTemplate;
 
         // update likes
-        const likes = elDiv.querySelector('.fa-heart');
+        const likes = theDiv.querySelector('.fa-heart');
         likes.addEventListener('click', () => {
           const result = doc.likes.indexOf(userId);
           if (result === -1) {
@@ -184,15 +184,15 @@ export const showMyPosts = () => {
             // console.log(err);
             });
         };
-        const post = elDiv.querySelector('.postDiv');
+        const post = theDiv.querySelector('.postDiv');
         post.addEventListener('click', () => {
           getPost(docId);
         });
 
-        posts.appendChild(elDiv);
+        posts.appendChild(theDiv);
       });
     } else {
-      const elDiv = document.createElement('div');
+      const theDiv = document.createElement('div');
       const divTemplate = `
           <div style='height: 250px;
                       padding: 0px 40px;
@@ -200,8 +200,8 @@ export const showMyPosts = () => {
                       align-items: center;'>
             <h1 style='font-size: 20px; color: #666666;'>Aun no hiciste ninguna publicacion, te me estas quedando hija !!! , échale ganas wey !!</h1>
           </div>`;
-      elDiv.innerHTML = divTemplate;
-      posts.appendChild(elDiv);
+      theDiv.innerHTML = divTemplate;
+      posts.appendChild(theDiv);
     }
   }; // TERMINA setupPost(post)
   fs.collection('publicaciones').onSnapshot((snapshot) => {

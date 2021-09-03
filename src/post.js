@@ -1,36 +1,37 @@
 // CREAR PUBLICACION
-export const addPost = (costo, dias, noches, personas, ninos, titulo, contenido, locacion, eMail,
-  userName, userUid, likesPost, fechaPost, photoUserPost) => {
+export const addPost = (cost, days, nights, people, children, title, content, location, eMail,
+  userName, userUid, likesPost, date, photoUserPost) => {
   const fs = firebase.firestore();
   return fs.collection('publicaciones').doc().set({
-    costoInput: costo,
-    diasInput: dias,
-    nochesInput: noches,
-    personasInput: personas,
-    ninosInput: ninos,
-    tituloPost: titulo,
-    contenidoPost: contenido,
-    locacionInput: locacion,
+    costoInput: cost,
+    diasInput: days,
+    nochesInput: nights,
+    personasInput: people,
+    ninosInput: children,
+    tituloPost: title,
+    contenidoPost: content,
+    locacionInput: location,
     email: eMail,
     username: userName,
     userId: userUid,
     likes: likesPost,
-    fecha: fechaPost,
+    fecha: date,
     photoUser: photoUserPost,
   });
 };
 // MODIFICAR PUBLICACION
-export const fsUpdate = (id, newLoc, newTit, newCos, newDia, newNoc, newNin, newPer, newCon) => {
+export const fsUpdate = (id, newLoc, newTit, newCos, newDay, newNight,
+  newkids, newPeople, newCont) => {
   const fs = firebase.firestore();
   return fs.collection('publicaciones').doc(id).update({
     locacionInput: newLoc,
     tituloPost: newTit,
     costoInput: newCos,
-    diasInput: newDia,
-    nochesInput: newNoc,
-    ninosInput: newNin,
-    personasInput: newPer,
-    contenidoPost: newCon,
+    diasInput: newDay,
+    nochesInput: newNight,
+    ninosInput: newkids,
+    personasInput: newPeople,
+    contenidoPost: newCont,
   });
 };
 // ELIMINAR PUBLICACION
@@ -50,11 +51,11 @@ export const postLike = (idPost, idUser) => {
   return fs.collection('publicaciones').doc(idPost).update({ likes: [idUser] });
 };
 // AGREGAR UN COMENTARIO
-export const addComment = (postId, username, contenido, photoUser) => {
+export const addComment = (postId, username, content, photoUser) => {
   const fs = firebase.firestore();
   return fs.collection('publicaciones').doc(postId).collection('comentarios').add({
     usuario: username,
-    comentario: contenido,
+    comentario: content,
     photoUrl: photoUser,
   });
 };

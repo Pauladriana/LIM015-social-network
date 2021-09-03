@@ -4,14 +4,14 @@ import { createNewPost, viewPost, editPost } from './postgroup.js';
 import { showFsPost, showMyPosts } from './fsPost.js';
 import { signOff } from './logout.js';
 import { googleRegister, loginWithEmail } from './login.js';
-import { validarRegistro } from './validaciones.js';
-import { showCommentary } from './comentario.js';
+import { registerValidation } from './validations.js';
+import { showCommentary } from './comments.js';
 import { addPost, fsUpdate, deletePost } from './post.js';
 import { pageNotFound } from './notfound.js';
 import { pageprofile, setProfileAttributes } from './profile.js';
 
 const fs = firebase.firestore();
-const secciones = document.querySelector('#secciones');
+const segments = document.querySelector('#segments');
 
 // RUTA SIN #
 /* const changeRoute = (hash) => {
@@ -19,20 +19,20 @@ const secciones = document.querySelector('#secciones');
     window.location.hash = '/login';
   } else if (hash === '#signup'){
     window.location.hash = 'signup';
-  } else if (hash === '#muro'){
+  } else if (hash === '#home'){
     window.location.hash = 'muro';
   }
 }; */
 
 // funcion mostrar contraseña
-const mostrarContraseña = () => {
+const showingPassword = () => {
   const showPassword = document.querySelector('#show-password');
   showPassword.addEventListener('change', () => {
-    const password1 = document.querySelector('#login-password');
-    if (password1.type === 'text') {
-      password1.type = 'password';
+    const passwordFirst = document.querySelector('#login-password');
+    if (passwordFirst.type === 'text') {
+      passwordFirst.type = 'password';
     } else {
-      password1.type = 'text';
+      passwordFirst.type = 'text';
     }
   });
 };
@@ -73,7 +73,7 @@ const validateEmail = (user) => {
 };
 
 // Modales - editar-eliminar y mensaje de confirmacion
-const funcionModal = () => {
+const modalFunction = () => {
   const showModal = document.querySelector('#optionPost');
   const modalEditRemove = document.querySelector('#modalEditRemove');
   const closeModal = document.querySelector('#closeModalEditRomve');
@@ -106,10 +106,10 @@ const funcionModal = () => {
 };
 
 // evento click - logearse con correo y contraseña
-const botonLogin = () => {
-  const loginButon = document.querySelector('#login-button');
+const loginClick = () => {
+  const loginButton = document.querySelector('#login-button');
   // const loginForm = document.querySelector('#login-form');
-  loginButon.addEventListener('click', (e) => {
+  loginButton.addEventListener('click', (e) => {
     e.preventDefault();
     // console.log('logueandote');
     const loginEmail = document.querySelector('#login-email').value;
@@ -156,7 +156,7 @@ const botonLogin = () => {
 };
 
 // Logearse con google
-const gogleaRegistro = () => {
+const googleRegistration = () => {
   const auth = firebase.auth();
   const googleButton = document.querySelector('#google-login');
   googleButton.addEventListener('click', (e) => {
@@ -190,7 +190,7 @@ const gogleaRegistro = () => {
 }; // ----------
 
 // boton 'cancel'
-const botonCancelarRegistro = () => {
+const cancelRegistration = () => {
   const cancelButton = document.querySelector('#cancelButton');
   cancelButton.addEventListener('click', () => {
     window.location.hash = 'login';
@@ -199,93 +199,93 @@ const botonCancelarRegistro = () => {
 }; // ---------------
 
 // NUEVA PUBLICACION
-const crearPost = () => {
-  const publiPost = document.querySelector('#publiPost');
-  publiPost.addEventListener('click', (e) => {
+const addNewPost = () => {
+  const sharePost = document.querySelector('#sharePost');
+  sharePost.addEventListener('click', (e) => {
     e.preventDefault();
 
     // llamar a los inputs
-    const costoInput = document.querySelector('#costoInput');
-    const diasInput = document.querySelector('#diasInput');
-    const nochesInput = document.querySelector('#nochesInput');
-    const personasInput = document.querySelector('#personasInput');
-    const ninosInput = document.querySelector('#ninosInput');
-    const tituloPost = document.querySelector('#tituloPost');
-    const contenidoPost = document.querySelector('#contenidoPost');
-    const locacionInput = document.querySelector('#locacionInput');
+    const inputCost = document.querySelector('#inputCost');
+    const inputDay = document.querySelector('#inputDay');
+    const inputNight = document.querySelector('#inputNight');
+    const inputPeople = document.querySelector('#inputPeople');
+    const inputChild = document.querySelector('#inputChild');
+    const postTitle = document.querySelector('#postTitle');
+    const postContent = document.querySelector('#postContent');
+    const locationInput = document.querySelector('#locationInput');
 
     if (
-      costoInput.value !== ''
-      && diasInput.value !== ''
-      && nochesInput.value !== ''
-      && personasInput.value !== ''
-      && ninosInput.value !== ''
-      && tituloPost.value !== ''
-      && contenidoPost.value !== ''
-      && locacionInput.value !== ''
+      inputCost.value !== ''
+      && inputDay.value !== ''
+      && inputNight.value !== ''
+      && inputPeople.value !== ''
+      && inputChild.value !== ''
+      && postTitle.value !== ''
+      && postContent.value !== ''
+      && locationInput.value !== ''
     ) {
       const likes = [];
-      const sistemaFecha = new Date();
-      const day = sistemaFecha.getDate();
-      const mes = sistemaFecha.getMonth() + 1;
-      const ano = sistemaFecha.getFullYear();
-      const fecha = `${day}/${mes}/${ano}`;
-      // console.log(fecha);
+      const dateSystem = new Date();
+      const day = dateSystem.getDate();
+      const month = dateSystem.getMonth() + 1;
+      const year = dateSystem.getFullYear();
+      const totalDate = `${day}/${month}/${year}`;
+      // console.log(totalDate);
 
       const email = JSON.parse(localStorage.getItem('user')).email;
       const username = JSON.parse(localStorage.getItem('user')).displayName;
       const userId = JSON.parse(localStorage.getItem('user')).uid;
       const photoUser = JSON.parse(localStorage.getItem('user')).photoURL;
 
-      addPost(costoInput.value, diasInput.value, nochesInput.value, personasInput.value,
-        ninosInput.value, tituloPost.value, contenidoPost.value, locacionInput.value,
-        email, username, userId, likes, fecha, photoUser)
+      addPost(inputCost.value, inputDay.value, inputNight.value, inputPeople.value,
+        inputChild.value, postTitle.value, postContent.value, locationInput.value,
+        email, username, userId, likes, totalDate, photoUser)
         .then(() => { window.location.hash = 'muro'; });
 
-      // console.log(tituloPost, contenidoPost);
+      // console.log(postTitle, postContent);
     } else {
-      const mensaje = document.querySelector('#mensajeValidacion');
-      mensaje.innerHTML = 'Por favor llena todos los campos';
-      mensaje.style.color = 'red';
-      mensaje.style.fontSize = '18px';
+      const addPostAlert = document.querySelector('#validationAlert');
+      addPostAlert.innerHTML = 'Por favor llena todos los campos';
+      addPostAlert.style.color = 'red';
+      addPostAlert.style.fontSize = '18px';
     }
   });
 };
 
 const dataPost = () => {
-  const locacionTravel = document.querySelector('#viewLocation');
-  const tituloTravel = document.querySelector('#viewTitulo');
-  const costoTravel = document.querySelector('#viewCosto');
-  const diasTravel = document.querySelector('#viewDias');
-  const nochesTravel = document.querySelector('#viewNoches');
-  const personasTravel = document.querySelector('#viewPersonas');
-  const ninosTravel = document.querySelector('#viewNinos');
-  const contenidoTravel = document.querySelector('#viewContenido');
+  const viewLocation = document.querySelector('#viewLocation');
+  const viewTitle = document.querySelector('#viewTitle');
+  const viewCost = document.querySelector('#viewCost');
+  const viewDays = document.querySelector('#viewDays');
+  const viewNight = document.querySelector('#viewNight');
+  const viewPeople = document.querySelector('#viewPeople');
+  const viewchild = document.querySelector('#viewchild');
+  const viewContent = document.querySelector('#viewContent');
   const userEmailPost = document.querySelector('#userEmailPost');
-  const fechaPost = document.querySelector('#fechaPost');
-  const pepe = document.querySelector('#pepe');
+  const postDate = document.querySelector('#postDate');
+  const veiwPhoto = document.querySelector('#veiwPhoto');
 
   const post = JSON.parse(localStorage.getItem('postSelected'));
   const userLogged = JSON.parse(localStorage.getItem('user'));
 
   fs.collection('publicaciones').doc(post.idPost).get().then((ele) => {
     // console.log(ele.data());
-    const nombre = ele.data();
+    const postObject = ele.data();
 
-    locacionTravel.innerHTML = nombre.locacionInput;
-    tituloTravel.innerHTML = nombre.tituloPost;
-    costoTravel.innerHTML = nombre.costoInput;
-    diasTravel.innerHTML = nombre.diasInput;
-    nochesTravel.innerHTML = nombre.nochesInput;
-    personasTravel.innerHTML = nombre.personasInput;
-    ninosTravel.innerHTML = nombre.ninosInput;
-    contenidoTravel.innerHTML = nombre.contenidoPost;
-    userEmailPost.innerHTML = nombre.username;
-    fechaPost.innerHTML = nombre.fecha;
-    pepe.setAttribute('src', nombre.photoUser);
+    viewLocation.innerHTML = postObject.locacionInput;
+    viewTitle.innerHTML = postObject.tituloPost;
+    viewCost.innerHTML = postObject.costoInput;
+    viewDays.innerHTML = postObject.diasInput;
+    viewNight.innerHTML = postObject.nochesInput;
+    viewPeople.innerHTML = postObject.personasInput;
+    viewchild.innerHTML = postObject.ninosInput;
+    viewContent.innerHTML = postObject.contenidoPost;
+    userEmailPost.innerHTML = postObject.username;
+    postDate.innerHTML = postObject.fecha;
+    veiwPhoto.setAttribute('src', postObject.photoUser);
 
     const postOptions = document.querySelector('#optionPost');
-    if (userLogged.uid !== nombre.userId) {
+    if (userLogged.uid !== postObject.userId) {
       postOptions.style.display = 'none';
     }
   });
@@ -295,11 +295,11 @@ const dataPost = () => {
   const postTotalLikes = (doc) => {
     const postId = JSON.parse(localStorage.getItem('postSelected')).idPost;
     likesCounter.innerHTML = '';
-    const elDiv = document.createElement('div');
+    const theDiv = document.createElement('div');
     const divTemplate = `
                       <i class='fas fa-heart  ${doc.likes.includes(userLogged.uid) ? 'liked' : 'unliked'}'></i><span class='totalLikes'>${doc.likes.length}</span>`;
-    elDiv.innerHTML = divTemplate;
-    const likes = elDiv.querySelector('.fa-heart');
+    theDiv.innerHTML = divTemplate;
+    const likes = theDiv.querySelector('.fa-heart');
     likes.addEventListener('click', () => {
       const result = doc.likes.indexOf(userLogged.uid);
       if (result === -1) {
@@ -312,7 +312,7 @@ const dataPost = () => {
         fs.collection('publicaciones').doc(postId).update({ likes: postLikes });
       }
     });
-    likesCounter.appendChild(elDiv);
+    likesCounter.appendChild(theDiv);
   };
   fs.collection('publicaciones').doc(post.idPost).onSnapshot((snapshot) => {
     // console.log(snapshot.data());
@@ -320,49 +320,49 @@ const dataPost = () => {
   });
 };
 
-const editadoPost = () => {
+const postEditing = () => {
   const post = JSON.parse(localStorage.getItem('postSelected'));
-  const locacionTravel = document.querySelector('#editLocation');
-  const tituloTravel = document.querySelector('#editTitulo');
-  const costoTravel = document.querySelector('#editCosto');
-  const diasTravel = document.querySelector('#editDias');
-  const nochesTravel = document.querySelector('#editNoches');
-  const personasTravel = document.querySelector('#editPersonas');
-  const ninosTravel = document.querySelector('#editNinos');
-  const contenidoTravel = document.querySelector('#editContenido');
+  const editLocation = document.querySelector('#editLocation');
+  const editTitle = document.querySelector('#editTitle');
+  const editCost = document.querySelector('#editCost');
+  const editDays = document.querySelector('#editDays');
+  const editNight = document.querySelector('#editNight');
+  const editPeople = document.querySelector('#editPeople');
+  const editchild = document.querySelector('#editchild');
+  const editContent = document.querySelector('#editContent');
   const idUsername = document.querySelector('#idUsername');
 
-  locacionTravel.value = post.locationPost;
-  tituloTravel.value = post.titlePost;
-  costoTravel.value = post.costPost;
-  diasTravel.value = post.daysPost;
-  nochesTravel.value = post.nightPost;
-  personasTravel.value = post.peoplePost;
-  ninosTravel.value = post.kidsPost;
-  contenidoTravel.value = post.contentPost;
+  editLocation.value = post.locationPost;
+  editTitle.value = post.titlePost;
+  editCost.value = post.costPost;
+  editDays.value = post.daysPost;
+  editNight.value = post.nightPost;
+  editPeople.value = post.peoplePost;
+  editchild.value = post.kidsPost;
+  editContent.value = post.contentPost;
 
   fs.collection('publicaciones').doc(post.idPost).get().then((ele) => {
-    const nombre = ele.data();
-    idUsername.innerHTML = nombre.username;
+    const postObj = ele.data();
+    idUsername.innerHTML = postObj.username;
   });
 };
 
 // funcion guardar editado del post
 const savePost = () => {
-  const buttonGuardar = document.querySelector('#guardarPost');
+  const savePostButton = document.querySelector('#saveThePost');
 
-  buttonGuardar.addEventListener('click', () => {
-    const locacionTravel = document.querySelector('#editLocation').value;
-    const tituloTravel = document.querySelector('#editTitulo').value;
-    const costoTravel = document.querySelector('#editCosto').value;
-    const diasTravel = document.querySelector('#editDias').value;
-    const nochesTravel = document.querySelector('#editNoches').value;
-    const personasTravel = document.querySelector('#editPersonas').value;
-    const ninosTravel = document.querySelector('#editNinos').value;
-    const contenidoTravel = document.querySelector('#editContenido').value;
+  savePostButton.addEventListener('click', () => {
+    const saveLocation = document.querySelector('#editLocation').value;
+    const savetitle = document.querySelector('#editTitle').value;
+    const saveCost = document.querySelector('#editCost').value;
+    const saveDays = document.querySelector('#editDays').value;
+    const saveNight = document.querySelector('#editNight').value;
+    const savePeople = document.querySelector('#editPeople').value;
+    const saveChild = document.querySelector('#editchild').value;
+    const saveContent = document.querySelector('#editContent').value;
     const post = JSON.parse(localStorage.getItem('postSelected'));
-    fsUpdate(post.idPost, locacionTravel, tituloTravel, costoTravel, diasTravel, nochesTravel,
-      ninosTravel, personasTravel, contenidoTravel).then(() => {
+    fsUpdate(post.idPost, saveLocation, savetitle, saveCost, saveDays, saveNight,
+      saveChild, savePeople, saveContent).then(() => {
       // console.log('editaste el post')
       window.location.hash = 'muro';
     });
@@ -382,41 +382,41 @@ const removePost = () => {
 };
 
 // crear la funcion mostrar seccion
-const showSeccion = (ruta) => {
-  secciones.innerHTML = '';
+const showSeccion = (route) => {
+  segments.innerHTML = '';
   function setHash(seccion) {
-    secciones.innerHTML = seccion;
+    segments.innerHTML = seccion;
   }
-  switch (ruta) {
+  switch (route) {
     case '#login': {
       setHash(createLogin);
-      mostrarContraseña();
-      botonLogin();
-      gogleaRegistro();
+      showingPassword();
+      loginClick();
+      googleRegistration();
       // console.log('hola estoy en login');
       break;
     }
     case '#signup': {
       setHash(createSignup);
-      botonCancelarRegistro();
-      validarRegistro();
+      cancelRegistration();
+      registerValidation();
       // console.log('hola estoy en regsitro');
       break;
     }
     case '#newpost': {
       setHash(createNewPost);
-      crearPost();
+      addNewPost();
       signOff();
       // console.log('hola estoy en crear post');
       break;
     }
 
     case '#viewpost': {
-      secciones.innerHTML = viewPost;
+      segments.innerHTML = viewPost;
       window.addEventListener('hashchange', dataPost());
       showCommentary();
       dataPost();
-      funcionModal();
+      modalFunction();
       removePost();
       signOff();
       // console.log('hola estoy en ver post');
@@ -424,22 +424,22 @@ const showSeccion = (ruta) => {
     }
 
     case '#editpost': {
-      secciones.innerHTML = editPost;
-      editadoPost();
+      segments.innerHTML = editPost;
+      postEditing();
       savePost();
       signOff();
       // console.log('hola estoy en crear post');
       break;
     }
-    case '#muro': {
-      secciones.innerHTML = createMuro;
+    case '#home': {
+      segments.innerHTML = createMuro;
       showFsPost();
       signOff();
       // console.log('hola estoy en muro');
       break;
     }
     case '#profile': {
-      secciones.innerHTML = pageprofile;
+      segments.innerHTML = pageprofile;
       setProfileAttributes();
       showMyPosts();
       signOff();
@@ -447,23 +447,23 @@ const showSeccion = (ruta) => {
       break;
     }
     case '': {
-      secciones.innerHTML = createLogin;
-      mostrarContraseña();
-      botonLogin();
-      gogleaRegistro();
+      segments.innerHTML = createLogin;
+      showingPassword();
+      loginClick();
+      googleRegistration();
       // console.log('hola estoy en login');
       break;
     }
     case '/': {
-      secciones.innerHTML = createLogin;
-      mostrarContraseña();
-      botonLogin();
-      gogleaRegistro();
+      segments.innerHTML = createLogin;
+      showingPassword();
+      loginClick();
+      googleRegistration();
       // console.log('hola estoy en login');
       break;
     }
     default: {
-      secciones.innerHTML = pageNotFound;
+      segments.innerHTML = pageNotFound;
       break;
     }
   }
@@ -490,10 +490,10 @@ window.addEventListener('popstate', () => {
   // console.log('location: ' + document.location + ', state: ' + JSON.stringify(event.state);
   // console.log('POPOPOPOPOP');
   if (window.location.pathname === 'login') {
-    secciones.innerHTML = createLogin;
+    segments.innerHTML = createLogin;
     // console.log(' LOGIN');
   } else if (window.location.pathname === 'signup') {
-    secciones.innerHTML = createSignup;
+    segments.innerHTML = createSignup;
     // console.log(' REGISTRO');
   }
 }); // -----------

@@ -39,15 +39,15 @@ export const showCommentary = () => {
       });
   };
   // Suma de comentarios
-  const commentsCounter = document.querySelector('.comentaryCounter');
+  const commentsCounter = document.querySelector('.commentaryCounter');
   const totalOfComments = (docs) => {
     commentsCounter.innerHTML = '';
-    const elDiv = document.createElement('div');
+    const theDiv = document.createElement('div');
     const divTemplate = `
                           <i class='far fa-comment'></i>
                           <span id='comentsPost'>${docs.length}</span>`;
-    elDiv.innerHTML = divTemplate;
-    commentsCounter.appendChild(elDiv);
+    theDiv.innerHTML = divTemplate;
+    commentsCounter.appendChild(theDiv);
   };
   fs.collection('publicaciones')
     .doc(postId)
