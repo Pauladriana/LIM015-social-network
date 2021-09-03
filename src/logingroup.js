@@ -1,4 +1,4 @@
-const secciones = document.querySelector('#secciones');
+const segments = document.querySelector('#segments');
 export const createLogin = `
 <div class="cntLogin">
 <img src="./imagen/banner.png" alt="port" class="borde-baner">
@@ -30,7 +30,7 @@ export const createLogin = `
 <p class="whiteText">¿No tienes una cuenta? <a href="#signup" id="signingup">Regístrate</a></p> 
 <a href="#">Olvidé mi contraseña</a>
 </div>`;
-secciones.innerHTML = createLogin;
+segments.innerHTML = createLogin;
 
 export const createSignup = `
 <div class="logContainer">
@@ -39,7 +39,7 @@ export const createSignup = `
   </div>
   <form action="" id="signup-form">
     <input type="text" placeholder="Nombre completo" class="login-input" name="fullname" id="fullname" required>
-    <p id="campoFullname"></p>
+    <p id="fullnameAlert"></p>
     <input type="text" placeholder="Nombre de usuario" class="login-input" name="username" id="username" required>
     <p id="msmUserNameValidation"></p>
     <input type="password" placeholder="Contraseña" class="login-input" name="signup-password" id="signup-password" required maxlength="15">
@@ -55,7 +55,7 @@ export const createSignup = `
       <label for="accept" id="textTermsAndConditions">He Leido y acepto los terminos y condiciones</label>
     </div>
     <div>
-      <p id="boxCheck"></p>
+      <p id="checkBoxAlert"></p>
     </div>
     <button type="button" id="submit-button" class="submit-button">Regístrate</button>
   </form>
@@ -71,7 +71,7 @@ export const createMuro = `
     <span class="textTraveler">Traveler.pe</span>
     <div class="navbarIcons">
     <div class="menuIcons">
-      <a href="#muro"><img src="./imagen/iconhome.png" alt=""></a>
+      <a href="#home"><img src="./imagen/iconhome.png" alt=""></a>
       <a href="#newpost"><img src="./imagen/iconsubir.png" alt=""></a>
       <a href="#profile"><img src="./imagen/iconuser.svg" alt=""></a>
     </div>
@@ -81,7 +81,7 @@ export const createMuro = `
     <div id="allPost" class="allPost"></div>
     <div id="userslist" class="userslist"></div>
     <footer class="optionsFoot">
-      <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
+      <a href="#home"><img src="./imagen/home.svg" alt=""></a>
       <a href="#newpost"><img src="./imagen/subir.svg" alt=""></a>
       <a href="#profile"><img src="./imagen/user.svg" alt=""></a>
     </div>

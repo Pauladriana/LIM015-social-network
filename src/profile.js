@@ -1,30 +1,30 @@
-const secciones = document.querySelector('#secciones');
+const segments = document.querySelector('#segments');
 export const pageprofile = `
 <body>
     <header class="mainHeader">
         <span class="textTraveler">Traveler.pe</span>
         <div class="navbarIcons">
             <div class="menuIcons">
-                <a href="#muro"><img src="./imagen/iconhome.png" alt=""></a>
+                <a href="#home"><img src="./imagen/iconhome.png" alt=""></a>
                 <a href="#newpost"><img src="./imagen/iconsubir.png" alt=""></a>
                 <a href="#profile"><img src="./imagen/iconuser.svg" alt=""></a>
             </div>
         <i class="fas fa-sign-out-alt iconOut" id="logout-button"></i>
         </div>
     </header>
-    <div class="banerPerfil">
+    <div class="profileBanner">
     </div>
     <div class="cntLogo" id="cntLogo"></div>
     <div class="userProfile" id="userProfileName">
     </div>
     <div id="allPost" class="allPost"></div>
     <footer class="optionsFoot">
-        <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
+        <a href="#home"><img src="./imagen/home.svg" alt=""></a>
         <a href="#newpost"><img src="./imagen/subir.svg" alt=""></a>
         <a href="#profile"><img src="./imagen/user.svg" alt=""></a>
     </footer>
 </body>`;
-secciones.innerHTML = pageprofile;
+segments.innerHTML = pageprofile;
 
 export const setProfileAttributes = () => {
   const user = JSON.parse(localStorage.getItem('user'));

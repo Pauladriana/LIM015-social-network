@@ -7,7 +7,7 @@ import {
   getPost,
   postLike,
   addComment,
-  getComments
+  getComments,
 } from '../src/post.js';
 
 const fixtureData = {
@@ -23,7 +23,7 @@ const fixtureData = {
           nochesInput: '5',
           personasInput: '3',
           tituloPost: 'Una semana en Cusco',
-          likes: []
+          likes: [],
         },
         post2: {
           contenidoPost: 'Comimos muy rico',
@@ -52,7 +52,6 @@ const fixtureData = {
 
 global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled: true });
 
-
 describe('Nueva publicacion', () => {
   it('Debería crearse una publicacion', () => addPost('300', '6', '5', '3', '1', 'Una semana en Cusco', 'Pudimos visitar Machu Picchu', 'Cusco', 'ejemplo@gmail.com', 'anonimo', 'an123', '[]', '24/02/21', 'url')
     .then(() => getPost(
@@ -72,7 +71,6 @@ describe('Delete Post', () => {
       },
     )));
 });
-
 
 describe('Edit Post', () => {
   it('Debería poder editar un post con id: post1', () => fsUpdate('post1', 'Ilo', 'Puerto Bonito', '120', '1', '1', '1', '2', 'Vimos lobos marinos')
@@ -96,10 +94,9 @@ describe('Dar like', () => {
 
 describe('Comentar', () => {
   it('Debería poder comentar un post', () => addComment('post1', 'fulanito', 'Buen viaje', 'photoUser')
-  .then(() => getComments('post1',
-    (comment) => {
-      const result = comment.find((elem) => elem.usuario === 'fulanito');
-      expect(result.usuario).toBe('fulanito');
-    },
-  )));
+    .then(() => getComments('post1',
+      (comment) => {
+        const result = comment.find((elem) => elem.usuario === 'fulanito');
+        expect(result.usuario).toBe('fulanito');
+      })));
 });

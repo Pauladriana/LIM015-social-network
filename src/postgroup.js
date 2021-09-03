@@ -6,7 +6,7 @@ navbar">
     <span class="textTraveler">Traveler.pe</span>
     <div class="navbarIcons">
     <div class="menuIcons">
-      <a href="#muro"><img src="./imagen/iconhome.png" alt=""></a>
+      <a href="#home"><img src="./imagen/iconhome.png" alt=""></a>
       <a href="#newpost"><img src="./imagen/iconsubir.png" alt=""></a>
       <a href="#profile"><img src="./imagen/iconuser.svg" alt=""></a>
     </div>
@@ -14,47 +14,47 @@ navbar">
     </div>
     </header>
   <main>
-    <div class="nuevopost">
-        <section class="fotografias">
+    <div class="newPost">
+        <section class="picturesCnt">
         </section>
-        <div class="postnew">
-        <section class="iconos">
-          <div id="costo" class="travelOpt">
+        <div class="newPostCnt">
+        <section class="icons">
+          <div class="travelOpt">
             <img src="./imagen/cash.svg" alt="" class="iconPost" title = "Monto en soles">
-            <input type="number" class="inputPost" id="costoInput">
+            <input type="number" class="inputPost" id="inputCost">
           </div>
-          <div id="dias" class="travelOpt">
+          <div class="travelOpt">
             <img src="./imagen/sun.svg" alt="" class="iconPost" title = "Cuantos Dias">
-            <input type="number" class="inputPost" id="diasInput">
+            <input type="number" class="inputPost" id="inputDay">
           </div>
-          <div id="noches" class="travelOpt">
+          <div class="travelOpt">
             <img src="./imagen/moon.svg" alt="" class="iconPost" title = "Cuantas Noches">
-            <input type="number" class="inputPost" id="nochesInput">
+            <input type="number" class="inputPost" id="inputNight">
           </div>
-          <div id="personas" class="travelOpt">
+          <div class="travelOpt">
             <img src="./imagen/family.svg" alt="" class="iconPost" title = "Numero de Personas">
-            <input type="number" class="inputPost" id="personasInput">
+            <input type="number" class="inputPost" id="inputPeople">
           </div>
-          <div id="niños" class="travelOpt">
+          <div class="travelOpt">
             <img src="./imagen/child.svg" alt="" class="iconPost" title = "Numero de niños">
-            <input type="number" class="inputPost" id="ninosInput">
+            <input type="number" class="inputPost" id="inputChild">
           </div>
         </section>
-        <section class="historia">
-          <input type="text" class="tituloPost" id="tituloPost" placeholder="Titula tu experiencia...">
-          <textarea class="contenidoPost" id="contenidoPost" placeholder="Cuentanos sobre tu viaje..."></textarea>
-          <div class="locacion">
+        <section class="his>
+          <input type="text" class="postTitle" id="postTitle" placeholder="Titula tu experiencia...">
+          <textarea class="postContent" id="postContent" placeholder="Cuentanos sobre tu viaje..."></textarea>
+          <div class="location">
             <img src="./imagen/locacion.svg" alt="" class="locationIcon">
-            <input type="text" class="locationInput" id="locacionInput" placeholder="Ubicacion del viaje">
+            <input type="text" class="locationInput" id="locationInput" placeholder="Ubicacion del viaje">
           </div>
         </section>
-        <p id='mensajeValidacion'></p>
-        <button class="publiPost" id="publiPost">Publicar</button>
+        <p id='validationAlert'></p>
+        <button class="sharePost" id="publiPost">Publicar</button>
         <div>
     </div>
   </main>
   <footer class="optionsFoot">
-    <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
+    <a href="#home"><img src="./imagen/home.svg" alt=""></a>
     <a href="#newpost"><img src="./imagen/subir.svg" alt=""></a>
     <a href="#profile"><img src="./imagen/user.svg" alt=""></a>
   </footer>
@@ -66,7 +66,7 @@ export const viewPost = `
     <span class="textTraveler">Traveler.pe</span>
     <div class="navbarIcons">
     <div class="menuIcons">
-      <a href="#muro"><img src="./imagen/iconhome.png" alt=""></a>
+      <a href="#home"><img src="./imagen/iconhome.png" alt=""></a>
       <a href="#newpost"><img src="./imagen/iconsubir.png" alt=""></a>
       <a href="#profile"><img src="./imagen/iconuser.svg" alt=""></a>
     </div>
@@ -76,50 +76,50 @@ export const viewPost = `
     <main>
     <div class="viewPost">
     <div class="containerPost">
-      <div class="usuarioAndImagen">
-        <img class="photoViewPost" src="" alt="" id="pepe">
-          <div class="usuario">
+      <div class="userPicture">
+        <img class="photoViewPost" src="" alt="" id="veiwPhoto">
+          <div class="userClass">
             <p id="userEmailPost"></p>
           </div>
       </div>
-    <div class="contenidoViewPost">
-      <div class="locacion">
+    <div class="viewPostContent">
+      <div class="location">
           <div class="iconLocation">
           <img src="./imagen/locacion.svg" alt="" class="locationIcon">
           <span type="text" class="locationInput" id="viewLocation"></span>
           </div>
           <div class="travelOpt">
-            <img src="./imagen/puntos.svg" alt="" class="optionesPost" id="optionPost">
+            <img src="./imagen/puntos.svg" alt="" class="postSettings" id="optionPost">
           </div>
       </div>
-    <h2 class="tituloPost" id="viewTitulo"></h2>
-    <section class="iconos">
-      <div id="costo" class="travelOpt">
+    <h2 class="postTitle" id="viewTitle"></h2>
+    <section class="icons">
+      <div class="travelOpt">
         <img src="./imagen/cash.svg" alt="" class="iconPost">
-        <p class="colorBlack" id="viewCosto">Costo</p>
+        <p class="colorBlack" id="viewCost">Costo</p>
       </div>
-      <div id="dias" class="travelOpt">
+      <div class="travelOpt">
         <img src="./imagen/sun.svg" alt="" class="iconPost">
-        <p class="colorBlack" id="viewDias">Dias</p>
+        <p class="colorBlack" id="viewDays">Dias</p>
       </div>
-      <div id="noches" class="travelOpt">
+      <div class="travelOpt">
         <img src="./imagen/moon.svg" alt="" class="iconPost">
-        <P class="colorBlack" id="viewNoches">Noches</P>
+        <P class="colorBlack" id="viewNight">Noches</P>
       </div>
-      <div id="personas" class="travelOpt">
+      <div class="travelOpt">
         <img src="./imagen/family.svg" alt="" class="iconPost">
-        <p class="colorBlack" id="viewPersonas">personas</p>
+        <p class="colorBlack" id="viewPeople">personas</p>
       </div>
-      <div id="niños" class="travelOpt">
+      <div class="travelOpt">
         <img src="./imagen/child.svg" alt="" class="iconPost">
-        <p class="colorBlack" id="viewNinos">niños</p>
+        <p class="colorBlack" id="viewchild">niños</p>
       </div>
       <div class="modalEditRemove" id="modalEditRemove">
       <div class="boxModalEditRemove">
         <a class="textSecondary xCerrar" id="closeModalEditRomve">x</a>
         <div class="dividerModal"></div>
-        <p><a href="#editpost" class="textSecondary textoEditRemove editar">Editar</a></p>
-        <p class="textSecondary textoEditRemove" id="ShowModalConfirmation" >Eliminar</p>        
+        <p><a href="#editpost" class="textSecondary textEditRemove editModal">Editar</a></p>
+        <p class="textSecondary textEditRemove" id="ShowModalConfirmation" >Eliminar</p>        
       </div>
     </div>
 
@@ -132,8 +132,8 @@ export const viewPost = `
       </div>
     </div>
     </section>
-    <section class="historia">
-      <p id="viewContenido" class="viewContenido"></p>      
+    <section>
+      <p id="viewContent" class="viewContent"></p>      
     </section>
     </div>
     <div class="likesDate">
@@ -141,12 +141,12 @@ export const viewPost = `
         <i class="fas fa-heart" aria-hidden="true"></i>
         <span id="likesPost"></span>
       </div>
-      <div class="comentaryCounter">
+      <div class="commentaryCounter">
         <i class="far fa-comment"></i>
-        <span id="comentsPost"></span>
+        <span id="commentsPost"></span>
       </div>
       <div class="datePost">
-        <span id="fechaPost"></span>
+        <span id="postDate"></span>
       </div>
     </div>
     <hr>
@@ -156,7 +156,7 @@ export const viewPost = `
     </div>
     </main>
   <footer class="optionsFoot">
-    <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
+    <a href="#home"><img src="./imagen/home.svg" alt=""></a>
     <a href="#newpost"><img src="./imagen/subir.svg" alt=""></a>
     <a href="#profile"><img src="./imagen/user.svg" alt=""></a>
   </footer>
@@ -168,7 +168,7 @@ export const editPost = `
     <span class="textTraveler">Traveler.pe</span>
     <div class="navbarIcons">
     <div class="menuIcons">
-      <a href="#muro"><img src="./imagen/iconhome.png" alt=""></a>
+      <a href="#home"><img src="./imagen/iconhome.png" alt=""></a>
       <a href="#newpost"><img src="./imagen/iconsubir.png" alt=""></a>
       <a href="#profile"><img src="./imagen/iconuser.svg" alt=""></a>
     </div>
@@ -177,47 +177,47 @@ export const editPost = `
   </header>
   <main>
   <div class="editPost">
-    <section class="fotografias">
+    <section class="picturesCnt">
     </section>
     <div class="containerPostEdit">
-    <div class="locacionEdit">
+    <div class="locationEditCnt">
         <img src="./imagen/locacion.svg" alt="" class="locationIcon">
         <input type="text" class="locationEdit" id="editLocation" placeholder="Locacion">
     </div>
-    <input type="text" class="tituloPostEdit" placeholder="Titulo" id="editTitulo">
-    <section class="iconosEdit">
-      <div id="costo" class="travelOpt">
+    <input type="text" class="editTitle" placeholder="Titulo" id="editTitle">
+    <section class="iconsEdit">
+      <div class="travelOpt">
         <img src="./imagen/cash.svg" alt="" class="iconPost">
-        <input type="number" class="inputPost" id="editCosto">
+        <input type="number" class="inputPost" id="editCost">
       </div>
-      <div id="dias" class="travelOpt">
+      <div class="travelOpt">
         <img src="./imagen/sun.svg" alt="" class="iconPost">
-        <input type="number" class="inputPost" id="editDias">
+        <input type="number" class="inputPost" id="editDays">
       </div>
-      <div id="noches" class="travelOpt">
+      <div class="travelOpt">
         <img src="./imagen/moon.svg" alt="" class="iconPost">
-        <input type="number" class="inputPost" id="editNoches">
+        <input type="number" class="inputPost" id="editNight">
       </div>
-      <div id="personas" class="travelOpt">
+      <div class="travelOpt">
         <img src="./imagen/family.svg" alt="" class="iconPost">
-        <input type="number" class="inputPost" id="editPersonas">
+        <input type="number" class="inputPost" id="editPeople">
       </div>
-      <div id="niños" class="travelOpt">
+      <div class="travelOpt">
         <img src="./imagen/child.svg" alt="" class="iconPost">
-        <input type="number" class="inputPost" id="editNinos">
+        <input type="number" class="inputPost" id="editchild">
       </div>
     </section>
-    <section class="historia">
-      <textarea class="contenidoPost" id="editContenido" placeholder="Cuenta tu historia"></textarea>
+    <section>
+      <textarea class="postContent" id="editContent" placeholder="Cuenta tu historia"></textarea>
     </section>
-    <div class="botonGuardar">
-      <button class="publiPost" id="guardarPost">Guardar</button>
+    <div class="saveButton">
+      <button class="sharePost" id="saveThePost">Guardar</button>
     </div>
   </div>
   </div>
   </main>
   <footer class="optionsFoot">
-    <a href="#muro"><img src="./imagen/home.svg" alt=""></a>
+    <a href="#home"><img src="./imagen/home.svg" alt=""></a>
     <a href="#newpost"><img src="./imagen/subir.svg" alt=""></a>
     <a href="#profile"><img src="./imagen/user.svg" alt=""></a>
   </footer>
