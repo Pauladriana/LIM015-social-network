@@ -1,4 +1,4 @@
-import { createLogin, createSignup, createMuro } from './logingroup.js';
+import { createLogin, createSignup, createHome } from './logingroup.js';
 import { createNewPost, viewPost, editPost } from './postgroup.js';
 // import { showAuthUsers } from './authuser.js';
 import { showFsPost, showMyPosts } from './fsPost.js';
@@ -50,7 +50,7 @@ const validateEmail = (user) => {
       if (tmp !== undefined) {
         localStorage.setItem('user', JSON.stringify(user));
         // console.log('usuario existente logueado');
-        window.location.hash = 'muro';
+        window.location.hash = 'home';
       } else {
         fs.collection('users')
           .add({
@@ -62,7 +62,7 @@ const validateEmail = (user) => {
           .then(() => {
             localStorage.setItem('user', JSON.stringify(user));
             // console.log('Creado y agregado a database');
-            window.location.hash = 'muro';
+            window.location.hash = 'home';
             // console.log('Este es el nuevo usuario: ' + docRef.id);
           })
           .catch(() => {
@@ -123,7 +123,7 @@ const loginClick = () => {
           if (user.emailVerified) {
             // console.log('logueo exitoso', user);
             localStorage.setItem('user', JSON.stringify(user.providerData[0]));
-            window.location.hash = 'muro';
+            window.location.hash = 'home';
             // console.log('*****************');
             // console.log(user.emailVerified);
             // console.log('*****************');
@@ -240,7 +240,7 @@ const addNewPost = () => {
       addPost(inputCost.value, inputDay.value, inputNight.value, inputPeople.value,
         inputChild.value, postTitle.value, postContent.value, locationInput.value,
         email, username, userId, likes, totalDate, photoUser)
-        .then(() => { window.location.hash = 'muro'; });
+        .then(() => { window.location.hash = 'home'; });
 
       // console.log(postTitle, postContent);
     } else {
@@ -364,7 +364,7 @@ const savePost = () => {
     fsUpdate(post.idPost, saveLocation, savetitle, saveCost, saveDays, saveNight,
       saveChild, savePeople, saveContent).then(() => {
       // console.log('editaste el post')
-      window.location.hash = 'muro';
+      window.location.hash = 'home';
     });
   });
 };
@@ -376,7 +376,7 @@ const removePost = () => {
   buttonRemove.addEventListener('click', () => {
     deletePost(post.idPost).then(() => {
       // console.log('eliminaste el post')
-      window.location.hash = 'muro';
+      window.location.hash = 'home';
     });
   });
 };
@@ -432,7 +432,7 @@ const showSeccion = (route) => {
       break;
     }
     case '#home': {
-      segments.innerHTML = createMuro;
+      segments.innerHTML = createHome;
       showFsPost();
       signOff();
       // console.log('hola estoy en muro');

@@ -65,7 +65,7 @@ export const createSignup = `
   <p id="errorText"></p>
 </div>`;
 
-export const createMuro = `
+export const createHome = `
     <div class="postContentWall">
     <header class="navbar">
     <span class="textTraveler">Traveler.pe</span>

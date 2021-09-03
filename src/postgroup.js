@@ -40,7 +40,7 @@ navbar">
             <input type="number" class="inputPost" id="inputChild">
           </div>
         </section>
-        <section class="his>
+        <section class="story">
           <input type="text" class="postTitle" id="postTitle" placeholder="Titula tu experiencia...">
           <textarea class="postContent" id="postContent" placeholder="Cuentanos sobre tu viaje..."></textarea>
           <div class="location">
@@ -49,7 +49,7 @@ navbar">
           </div>
         </section>
         <p id='validationAlert'></p>
-        <button class="sharePost" id="publiPost">Publicar</button>
+        <button class="sharePost" id="sharePost">Publicar</button>
         <div>
     </div>
   </main>
