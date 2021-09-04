@@ -41,7 +41,11 @@ export const deletePost = (id) => {
 };
 
 // TRAER PUBLICACIONES
-export const getPost = () => {
+export const getPost = (id) => {
+  const fs = firebase.firestore();
+  return fs.collection('publicaciones').doc(id).get();
+};
+export const getPubli = () => {
   const fs = firebase.firestore();
   return fs.collection('publicaciones');
 };

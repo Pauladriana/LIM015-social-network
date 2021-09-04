@@ -4,10 +4,11 @@ import {
   addPost,
   fsUpdate,
   deletePost,
-  getPost,
+  getPubli,
   postLike,
   addComment,
   getComments,
+  getPost,
 } from '../src/post.js';
 
 const fixtureData = {
@@ -54,17 +55,14 @@ global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled
 
 describe('Nueva publicacion', () => {
   it('Debería crearse una publicacion', () => addPost('300', '6', '5', '3', '1', 'Una semana en Cusco', 'Pudimos visitar Machu Picchu', 'Cusco', 'ejemplo@gmail.com', 'anonimo', 'an123', '[]', '24/02/21', 'url')
-    .then(() => getPost(
-      (post) => {
-        const result = post.find((elem) => elem.tituloPost === 'Una semana en Cusco');
-        expect(result.tituloPost).toBe('Una semana en Cusco');
-      },
-    )));
+    .then((post) => {
+      expect(getPost(post.idPost).tituloPost).toBe('Una semana en Cusco');
+    }))
 });
 
 describe('Delete Post', () => {
   it('Debería eliminar un post con id: post2', () => deletePost('post2')
-    .then(() => getPost(
+    .then(() => getPubli(
       (post) => {
         const result = post.find((elem) => elem.id === 'post2');
         expect(result).toBe(undefined);
@@ -74,7 +72,7 @@ describe('Delete Post', () => {
 
 describe('Edit Post', () => {
   it('Debería poder editar un post con id: post1', () => fsUpdate('post1', 'Ilo', 'Puerto Bonito', '120', '1', '1', '1', '2', 'Vimos lobos marinos')
-    .then(() => getPost(
+    .then(() => getPubli(
       (post) => {
         const result = post.find((elem) => elem.locacionInput === 'Ilo');
         expect(result.locacionInput).toBe('Ilo');
@@ -84,7 +82,7 @@ describe('Edit Post', () => {
 
 describe('Dar like', () => {
   it('Debería poder dar like a un post con id de usuario: 003', () => postLike('post1', '003')
-    .then(() => getPost(
+    .then(() => getPubli(
       (post) => {
         const result = post.find((elem) => elem.likes === '003');
         expect(result.likes).toBe('003');

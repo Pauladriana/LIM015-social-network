@@ -153,3 +153,12 @@ export const registerValidation = () => {
     }
   });
 };
+
+
+const cancelRegistration = () => {
+  const cancelButton = document.querySelector('#cancelButton');
+  cancelButton.addEventListener('click', () => {
+    window.location.hash = 'login';
+    // showSeccion();
+  });
+}; // ---------------
