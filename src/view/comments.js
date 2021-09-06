@@ -1,5 +1,6 @@
+import { addComment, getComments } from '../controller/post.js';
+
 export const showCommentary = () => {
-  const fs = firebase.firestore();
   const posts = document.querySelector('#commentary');
   const userName = JSON.parse(localStorage.getItem('user')).displayName;
   const userPhoto = JSON.parse(localStorage.getItem('user')).photoURL;
@@ -21,23 +22,6 @@ export const showCommentary = () => {
   const postId = JSON.parse(localStorage.getItem('postSelected')).idPost;
   const username = JSON.parse(localStorage.getItem('user')).displayName;
 
-  // crear comentario y guardar
-  const crearItem = (comment) => {
-    fs.collection('publicaciones')
-      .doc(postId)
-      .collection('comentarios')
-      .add({
-        usuario: username,
-        comentario: comment,
-        photoUrl: userPhoto,
-      })
-      .then(() => {
-        // console.log('Se agrego correctamente ID:', docRef.id);
-      })
-      .catch(() => {
-        // console.log('Error agregando comentario:', error);
-      });
-  };
   // Suma de comentarios
   const commentsCounter = document.querySelector('.commentaryCounter');
   const totalOfComments = (docs) => {
@@ -49,18 +33,14 @@ export const showCommentary = () => {
     theDiv.innerHTML = divTemplate;
     commentsCounter.appendChild(theDiv);
   };
-  fs.collection('publicaciones')
-    .doc(postId)
-    .collection('comentarios')
+  getComments(postId)
     .onSnapshot((snapshot) => {
       // console.log(snapshot.docs);
       totalOfComments(snapshot.docs);
     });
 
   // mostrar comentario
-  fs.collection('publicaciones')
-    .doc(postId)
-    .collection('comentarios')
+  getComments(postId)
     .onSnapshot((querySnapshop) => {
       allComments.innerHTML = '';
       querySnapshop.forEach((doc) => {
@@ -80,7 +60,7 @@ export const showCommentary = () => {
   buttonSendCommentary.addEventListener('click', (e) => {
     e.preventDefault();
     const commentary = document.querySelector('#commentaryContent').value;
-    crearItem(commentary);
+    addComment(postId, username, commentary, userPhoto);
     document.querySelector('#commentaryContent').value = '';
   });
 };

@@ -41,14 +41,18 @@ export const deletePost = (id) => {
 };
 
 // TRAER PUBLICACIONES
-export const getPost = () => {
+export const getPost = (id) => {
+  const fs = firebase.firestore();
+  return fs.collection('publicaciones').doc(id).get();
+};
+export const getPublications = () => {
   const fs = firebase.firestore();
   return fs.collection('publicaciones');
 };
 // DAR LIKE A UN POST
-export const postLike = (idPost, idUser) => {
+export const postLike = (idPost, array) => {
   const fs = firebase.firestore();
-  return fs.collection('publicaciones').doc(idPost).update({ likes: [idUser] });
+  return fs.collection('publicaciones').doc(idPost).update({ likes: array });
 };
 // AGREGAR UN COMENTARIO
 export const addComment = (postId, username, content, photoUser) => {
@@ -63,7 +67,7 @@ export const addComment = (postId, username, content, photoUser) => {
 export const getComments = (idPost) => {
   const fs = firebase.firestore();
   return fs
-    .collection('post')
+    .collection('publicaciones')
     .doc(idPost)
-    .collection('comments');
+    .collection('comentarios');
 };

@@ -1,5 +1,5 @@
 // funcion de crear usuarios
-import { emailUserRegister } from './login.js';
+import { emailUserRegister } from '../controller/login.js';
 
 export const createUserFb = (signupEmail, signupPassword, usernameInput, fullnameInput,
   passwordInput, emailInput) => {

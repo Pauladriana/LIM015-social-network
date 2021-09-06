@@ -1,3 +1,7 @@
+import {
+  postLike,
+} from '../controller/post.js';
+
 const fs = firebase.firestore();
 export const showFsPost = () => {
   const userId = JSON.parse(localStorage.getItem('user')).uid;
@@ -33,11 +37,11 @@ export const showFsPost = () => {
         if (result === -1) {
           const postLikes = doc.likes;
           postLikes.push(userId);
-          fs.collection('publicaciones').doc(docId).update({ likes: postLikes });
+          postLike(docId, postLikes);
         } else {
           const postLikes = doc.likes;
           postLikes.splice(result, 1);
-          fs.collection('publicaciones').doc(docId).update({ likes: postLikes });
+          postLike(docId, postLikes);
         }
       });
 
@@ -138,11 +142,11 @@ export const showMyPosts = () => {
           if (result === -1) {
             const postLikes = doc.likes;
             postLikes.push(userId);
-            fs.collection('publicaciones').doc(docId).update({ likes: postLikes });
+            postLike(docId, postLikes);
           } else {
             const postLikes = doc.likes;
             postLikes.splice(result, 1);
-            fs.collection('publicaciones').doc(docId).update({ likes: postLikes });
+            postLike(docId, postLikes);
           }
         });
 

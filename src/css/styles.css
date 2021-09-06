@@ -540,7 +540,7 @@ button {
     justify-content: space-between;
     background-position: center;
     background-size: cover;
-    background-image: url(/imagen/fotoPost.jpg);
+    background-image: url('/imagen/fotoPost.jpg');
     width: 360px;
     height: 407px;
     padding: 5px 10px 5px;
@@ -1585,15 +1585,15 @@ button {
 
 .picturesCnt {
     margin-right: 5%;
-    background-image: url(./imagen/apurimac3.svg);
+    background-image: url(/imagen/apurimac3.svg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
     margin-top: 45px;
-    width: 375px;
-    height: 155px;
-    border-radius: 0px;
+    width: 100%;
+    height: 200px;
+    border-radius: 0;
 }
 
 /* editpost*/
@@ -1935,7 +1935,7 @@ hr {
 }
 .titleNotFound{
     font-size: 20px;
-    padding: 0px 10px 0px 10px;
+    width: 300px;
 }
 
 .linkReturnWall {

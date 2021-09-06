@@ -1,19 +1,19 @@
 const segments = document.querySelector('#segments');
 export const createLogin = `
 <div class="cntLogin">
-<img src="./imagen/banner.png" alt="port" class="borde-baner">
+<img src="../imagen/banner.png" alt="port" class="borde-baner">
 <div class="cntLogo">
-  <img src="./imagen/logoblanco.svg" alt="logo" class="logo">
+  <img src="../imagen/logoblanco.svg" alt="logo" class="logo">
 </div>
 <form action="" id="login-form" class="formLogin">
   <div class="cntPasswordInput">
   <input type="email" placeholder="correo" class="login-input-log" id="login-email" required>
-    <img src="./imagen/icons/ico-carta.svg" alt="port">
+    <img src="../imagen/icons/ico-carta.svg" alt="port">
   </div>
   <p id="wrongemail"></p>
   <div class="cntPasswordInput">
     <input type="password" placeholder="contraseña" class="login-input-log" id="login-password" required>
-    <img src="./imagen/icons/ico-candado.svg" alt="port">
+    <img src="../imagen/icons/ico-candado.svg" alt="port">
   </div>
   <p id="wrongpassword"></p>
   <div class="show">
@@ -24,7 +24,7 @@ export const createLogin = `
 </form>
 <p class="oLogin">O</p>
 <button type="button" id="google-login" class="google-login">
-  <img src="./imagen/google.png" class="imgGoogle"/>
+  <img src="../imagen/google.png" class="imgGoogle"/>
   Iniciar sesión con google
 </button>
 <p class="whiteText">¿No tienes una cuenta? <a href="#signup" id="signingup">Regístrate</a></p> 
@@ -35,7 +35,7 @@ segments.innerHTML = createLogin;
 export const createSignup = `
 <div class="logContainer">
   <div class="cntLogo">
-  <img src="./imagen/logoblanco.svg"" alt="logo" class="logo">
+  <img src="../imagen/logoblanco.svg"" alt="logo" class="logo">
   </div>
   <form action="" id="signup-form">
     <input type="text" placeholder="Nombre completo" class="login-input" name="fullname" id="fullname" required>
@@ -65,15 +65,15 @@ export const createSignup = `
   <p id="errorText"></p>
 </div>`;
 
-export const createMuro = `
+export const createHome = `
     <div class="postContentWall">
     <header class="navbar">
     <span class="textTraveler">Traveler.pe</span>
     <div class="navbarIcons">
     <div class="menuIcons">
-      <a href="#home"><img src="./imagen/iconhome.png" alt=""></a>
-      <a href="#newpost"><img src="./imagen/iconsubir.png" alt=""></a>
-      <a href="#profile"><img src="./imagen/iconuser.svg" alt=""></a>
+      <a href="#home"><img src="../imagen/iconhome.png" alt=""></a>
+      <a href="#newpost"><img src="../imagen/iconsubir.png" alt=""></a>
+      <a href="#profile"><img src="../imagen/iconuser.svg" alt=""></a>
     </div>
     <i class="fas fa-sign-out-alt iconOut" id="logout-button"></i>
     </div>
@@ -81,8 +81,8 @@ export const createMuro = `
     <div id="allPost" class="allPost"></div>
     <div id="userslist" class="userslist"></div>
     <footer class="optionsFoot">
-      <a href="#home"><img src="./imagen/home.svg" alt=""></a>
-      <a href="#newpost"><img src="./imagen/subir.svg" alt=""></a>
-      <a href="#profile"><img src="./imagen/user.svg" alt=""></a>
+      <a href="#home"><img src="../imagen/home.svg" alt=""></a>
+      <a href="#newpost"><img src="../imagen/subir.svg" alt=""></a>
+      <a href="#profile"><img src="../imagen/user.svg" alt=""></a>
     </div>
   </footer>`;
