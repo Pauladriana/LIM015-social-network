@@ -1,12 +1,16 @@
-import { createLogin, createSignup, createHome } from './logingroup.js';
-import { createNewPost, viewPost, editPost } from './postgroup.js';
-// import { showAuthUsers } from './authuser.js';
-import { showFsPost, showMyPosts } from './fsPost.js';
-import { signOff } from './logout.js';
-import { registerValidation } from './validations.js';
-import { showCommentary } from './comments.js';
-import { pageNotFound } from './notfound.js';
-import { pageprofile, setProfileAttributes } from './profile.js';
+import { createLogin, createSignup, createHome } from '../view/logingroup.js';
+import { createNewPost, viewPost, editPost } from '../view/postgroup.js';
+import { showFsPost, showMyPosts } from '../components/fsPost.js';
+import { loginClick, googleRegistration } from '../components/loginComponents.js';
+import { showingPassword } from '../components/loginValidations.js';
+import { signOff } from '../components/logout.js';
+import {
+  addNewPost, dataPost, postEditing, savePost, removePost, modalFunction,
+} from '../components/postComponents.js';
+import { registerValidation, cancelRegistration } from '../components/registerValidations.js';
+import { showCommentary } from '../view/comments.js';
+import { pageNotFound } from '../view/notfound.js';
+import { pageprofile, setProfileAttributes } from '../view/profile.js';
 
 const segments = document.querySelector('#segments');
 
@@ -124,4 +128,4 @@ window.addEventListener('popstate', () => {
     segments.innerHTML = createSignup;
     // console.log(' REGISTRO');
   }
-}); // -----------
+});

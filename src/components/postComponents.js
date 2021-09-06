@@ -1,5 +1,17 @@
 // NUEVA PUBLICACION
-const addNewPost = () => {
+import {
+  addPost,
+  deletePost,
+  fsUpdate,
+  getPost,
+  postLike,
+} from '../controller/post.js';
+
+import {
+  fs,
+} from '../controller/firebaseSet.js';
+
+export const addNewPost = () => {
   const sharePost = document.querySelector('#sharePost');
   sharePost.addEventListener('click', (e) => {
     e.preventDefault();
@@ -52,7 +64,7 @@ const addNewPost = () => {
   });
 };
 
-const dataPost = () => {
+export const dataPost = () => {
   const viewLocation = document.querySelector('#viewLocation');
   const viewTitle = document.querySelector('#viewTitle');
   const viewCost = document.querySelector('#viewCost');
@@ -122,7 +134,7 @@ const dataPost = () => {
   });
 };
 
-const postEditing = () => {
+export const postEditing = () => {
   const post = JSON.parse(localStorage.getItem('postSelected'));
   const editLocation = document.querySelector('#editLocation');
   const editTitle = document.querySelector('#editTitle');
@@ -150,7 +162,7 @@ const postEditing = () => {
 };
 
 // funcion guardar editado del post
-const savePost = () => {
+export const savePost = () => {
   const savePostButton = document.querySelector('#saveThePost');
 
   savePostButton.addEventListener('click', () => {
@@ -165,14 +177,14 @@ const savePost = () => {
     const post = JSON.parse(localStorage.getItem('postSelected'));
     fsUpdate(post.idPost, saveLocation, savetitle, saveCost, saveDays, saveNight,
       saveChild, savePeople, saveContent).then(() => {
-        // console.log('editaste el post')
-        window.location.hash = 'home';
-      });
+      // console.log('editaste el post')
+      window.location.hash = 'home';
+    });
   });
 };
 
 // funcion eliminar Post
-const removePost = () => {
+export const removePost = () => {
   const post = JSON.parse(localStorage.getItem('postSelected'));
   const buttonRemove = document.querySelector('#textRemovePost');
   buttonRemove.addEventListener('click', () => {
@@ -183,7 +195,7 @@ const removePost = () => {
   });
 };
 
-const modalFunction = () => {
+export const modalFunction = () => {
   const showModal = document.querySelector('#optionPost');
   const modalEditRemove = document.querySelector('#modalEditRemove');
   const closeModal = document.querySelector('#closeModalEditRomve');

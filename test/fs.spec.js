@@ -9,7 +9,7 @@ import {
   addComment,
   getComments,
   getPost,
-} from '../src/post.js';
+} from '../src/controller/post.js';
 
 const fixtureData = {
   __collection__: {
@@ -57,7 +57,7 @@ describe('Nueva publicacion', () => {
   it('Debería crearse una publicacion', () => addPost('300', '6', '5', '3', '1', 'Una semana en Cusco', 'Pudimos visitar Machu Picchu', 'Cusco', 'ejemplo@gmail.com', 'anonimo', 'an123', '[]', '24/02/21', 'url')
     .then((post) => {
       expect(getPost(post.idPost).tituloPost).toBe('Una semana en Cusco');
-    }))
+    }));
 });
 
 describe('Delete Post', () => {

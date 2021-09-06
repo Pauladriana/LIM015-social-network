@@ -4,7 +4,7 @@ import {
   loginWithEmail,
   googleRegister,
   emailUserRegister,
-} from '../src/login.js';
+} from '../src/controller/login.js';
 
 const firebasemock = require('firebase-mock');
 

@@ -154,8 +154,7 @@ export const registerValidation = () => {
   });
 };
 
-
-const cancelRegistration = () => {
+export const cancelRegistration = () => {
   const cancelButton = document.querySelector('#cancelButton');
   cancelButton.addEventListener('click', () => {
     window.location.hash = 'login';

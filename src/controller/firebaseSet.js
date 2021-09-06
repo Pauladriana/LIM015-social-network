@@ -9,6 +9,6 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-// const auth = firebase.auth();
-// const fs = firebase.firestore();
+export const auth = firebase.auth();
+export const fs = firebase.firestore();
 firebase.analytics();

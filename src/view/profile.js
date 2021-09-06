@@ -5,9 +5,9 @@ export const pageprofile = `
         <span class="textTraveler">Traveler.pe</span>
         <div class="navbarIcons">
             <div class="menuIcons">
-                <a href="#home"><img src="./imagen/iconhome.png" alt=""></a>
-                <a href="#newpost"><img src="./imagen/iconsubir.png" alt=""></a>
-                <a href="#profile"><img src="./imagen/iconuser.svg" alt=""></a>
+                <a href="#home"><img src="../imagen/iconhome.png" alt=""></a>
+                <a href="#newpost"><img src="../imagen/iconsubir.png" alt=""></a>
+                <a href="#profile"><img src="../imagen/iconuser.svg" alt=""></a>
             </div>
         <i class="fas fa-sign-out-alt iconOut" id="logout-button"></i>
         </div>
@@ -19,9 +19,9 @@ export const pageprofile = `
     </div>
     <div id="allPost" class="allPost"></div>
     <footer class="optionsFoot">
-        <a href="#home"><img src="./imagen/home.svg" alt=""></a>
-        <a href="#newpost"><img src="./imagen/subir.svg" alt=""></a>
-        <a href="#profile"><img src="./imagen/user.svg" alt=""></a>
+        <a href="#home"><img src="../imagen/home.svg" alt=""></a>
+        <a href="#newpost"><img src="../imagen/subir.svg" alt=""></a>
+        <a href="#profile"><img src="../imagen/user.svg" alt=""></a>
     </footer>
 </body>`;
 segments.innerHTML = pageprofile;
