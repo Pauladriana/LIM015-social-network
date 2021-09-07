@@ -4,7 +4,7 @@ INDICE
 3. Historias de usuario
 4. Diseño de Interfaz de Usuario
 5. Test de usabilidad
-
+![mockup traveler](https://user-images.githubusercontent.com/85045325/132271603-d2750268-a50c-463a-8ae1-1409c2fd21e1.jpg)
 1. RESUMEN DEL PROYECTO
 El presente proyecto,Traveler.pe , es una Red social destinada a personas que planean viajar  y están en búsqueda de recomendaciones e itinerarios de otras personas así mismo también podrán compartir su experiencias para que otros viajeros puedan seguir sus recomendaciones. Los destinos son en el interior de este hermosos país Perú Esta red social te permitirá crear una cuenta de acceso y logueandose con ella; crear, editar, borrar, comentar y dar "me gusta" publicaciones, todo de forma dinámica.
 
@@ -67,12 +67,12 @@ A continuación presentamos un layout elaborado de la vista mobile y desktop de 
 
 Vista mobile
 
-![mobile]("https://github.com/SoniaSayago/LIM014-social-network/blob/Sonia/src/img/readme/mobile.png">
+![image](https://user-images.githubusercontent.com/85045325/132271814-8697914d-25d5-4798-bb7a-c26bfac1d031.png) 
+![image](https://user-images.githubusercontent.com/85045325/132271964-5fea0b30-379e-40b5-99b5-3063780ccb26.png)
 
-)
 Vista Desktop
-
-desktop
+![image](https://user-images.githubusercontent.com/85045325/132272019-33f9c053-78b7-4b27-a0ed-7e5f8fbdf2f8.png)
+![image](https://user-images.githubusercontent.com/85045325/132272058-62b168b5-0454-4c47-a2c3-4b745c71c576.png)
 
 5. TEST DE USABILIDAD
-Gracias al Feedback recibido por parte de nuestros usuarios, compañeras y coaches, pudimos iterar varias veces antes de llegar a nuestra versión final. Tomándose en cuenta principalmente:
+La red Social fue testeada en cada sprint para obtener feedback e ir mejorando continuamente. 
