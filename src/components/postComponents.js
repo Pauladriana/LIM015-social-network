@@ -144,7 +144,6 @@ export const postEditing = () => {
   const editPeople = document.querySelector('#editPeople');
   const editchild = document.querySelector('#editchild');
   const editContent = document.querySelector('#editContent');
-  const idUsername = document.querySelector('#idUsername');
 
   editLocation.value = post.locationPost;
   editTitle.value = post.titlePost;
@@ -154,11 +153,6 @@ export const postEditing = () => {
   editPeople.value = post.peoplePost;
   editchild.value = post.kidsPost;
   editContent.value = post.contentPost;
-
-  getPost(post.idPost).then((ele) => {
-    const postObj = ele.data();
-    idUsername.innerHTML = postObj.username;
-  });
 };
 
 // funcion guardar editado del post
