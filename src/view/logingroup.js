@@ -1,19 +1,19 @@
 const segments = document.querySelector('#segments');
 export const createLogin = `
 <div class="cntLogin">
-<img src="../imagen/banner.png" alt="port" class="borde-baner">
+<img src="https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/banner.png?alt=media&token=c67e9023-eee2-4d6f-8362-fc9be84bab8e" alt="port" class="borde-baner">
 <div class="cntLogo">
-  <img src="../imagen/logoblanco.svg" alt="logo" class="logo">
+  <img src="https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/logoblanco.svg?alt=media&token=64fe185b-42c6-4532-9176-83c181b1d993" alt="logo" class="logo">
 </div>
 <form action="" id="login-form" class="formLogin">
   <div class="cntPasswordInput">
   <input type="email" placeholder="correo" class="login-input-log" id="login-email" required>
-    <img src="../imagen/icons/ico-carta.svg" alt="port">
+    <img src="https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/icons%2Fico-carta.svg?alt=media&token=fb9a7082-e3ec-4079-87cf-6bf37dbedab7" alt="port">
   </div>
   <p id="wrongemail"></p>
   <div class="cntPasswordInput">
     <input type="password" placeholder="contraseña" class="login-input-log" id="login-password" required>
-    <img src="../imagen/icons/ico-candado.svg" alt="port">
+    <img src="https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/icons%2Fico-candado.svg?alt=media&token=33695f99-d052-44b6-ae30-b5ec0a3742ec" alt="port">
   </div>
   <p id="wrongpassword"></p>
   <div class="show">
@@ -24,7 +24,7 @@ export const createLogin = `
 </form>
 <p class="oLogin">O</p>
 <button type="button" id="google-login" class="google-login">
-  <img src="../imagen/google.png" class="imgGoogle"/>
+  <img src="https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/google.png?alt=media&token=3d2d9cd0-6ba2-42b9-a529-69de4a935fa9" class="imgGoogle"/>
   Iniciar sesión con google
 </button>
 <p class="whiteText">¿No tienes una cuenta? <a href="#signup" id="signingup">Regístrate</a></p> 
@@ -35,7 +35,7 @@ segments.innerHTML = createLogin;
 export const createSignup = `
 <div class="logContainer">
   <div class="cntLogo">
-  <img src="../imagen/logoblanco.svg"" alt="logo" class="logo">
+  <img src="https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/logoblanco.svg?alt=media&token=64fe185b-42c6-4532-9176-83c181b1d993" alt="logo" class="logo">
   </div>
   <form action="" id="signup-form">
     <input type="text" placeholder="Nombre completo" class="login-input" name="fullname" id="fullname" required>
@@ -71,9 +71,9 @@ export const createHome = `
     <span class="textTraveler">Traveler.pe</span>
     <div class="navbarIcons">
     <div class="menuIcons">
-      <a href="#home"><img src="../imagen/iconhome.png" alt=""></a>
-      <a href="#newpost"><img src="../imagen/iconsubir.png" alt=""></a>
-      <a href="#profile"><img src="../imagen/iconuser.svg" alt=""></a>
+      <a href="#home"><img src="https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/iconhome.png?alt=media&token=f5fb9601-f952-4c53-8b69-1757cf167364" alt=""></a>
+      <a href="#newpost"><img src="https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/iconsubir.png?alt=media&token=7ceaf2f9-903d-4c6e-aa5a-0052a2c55a18" alt=""></a>
+      <a href="#profile"><img src="https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/iconuser.svg?alt=media&token=453cc4b7-96c7-41f2-94d0-29dad28b1d8a" alt=""></a>
     </div>
     <i class="fas fa-sign-out-alt iconOut" id="logout-button"></i>
     </div>
@@ -81,8 +81,8 @@ export const createHome = `
     <div id="allPost" class="allPost"></div>
     <div id="userslist" class="userslist"></div>
     <footer class="optionsFoot">
-      <a href="#home"><img src="../imagen/home.svg" alt=""></a>
-      <a href="#newpost"><img src="../imagen/subir.svg" alt=""></a>
-      <a href="#profile"><img src="../imagen/user.svg" alt=""></a>
+      <a href="#home"><img src="https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/home.svg?alt=media&token=4b4eac88-e8d3-4335-8062-68c761f3c773" alt=""></a>
+      <a href="#newpost"><img src="https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/subir.svg?alt=media&token=378ca9fd-b9d6-4193-b0be-a255fab6cca9" alt=""></a>
+      <a href="#profile"><img src="https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/user.svg?alt=media&token=69d2bb66-fd7d-4ae4-9db6-5a5238bbebcb" alt=""></a>
     </div>
   </footer>`;

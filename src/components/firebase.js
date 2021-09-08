@@ -17,7 +17,7 @@ export const createUserFb = (signupEmail, signupPassword, usernameInput, fullnam
       checkmail();
       userCredential.user.updateProfile({
         displayName: fullnameInput,
-        photoURL: './imagen/profileChange.png',
+        photoURL: 'https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/profileChange.png?alt=media&token=5030a206-bbe0-47e7-b793-2d257c0907c7',
       }).then(() => {
         const fs = firebase.firestore();
         fs.collection('users').add({

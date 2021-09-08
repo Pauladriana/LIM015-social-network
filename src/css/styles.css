@@ -12,7 +12,7 @@ body {
 }
 
 .loginBody {
-    background: url(/imagen/fondoLogin.jpg) no-repeat center center fixed;
+    background: url('https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/fondoLogin.jpg?alt=media&token=a1bb992d-e7af-49df-97b8-c2685e914f0a') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -40,7 +40,7 @@ body {
 }
 
 .logContainer {
-    background: url(/imagen/fondoLogin.jpg) no-repeat center center fixed;
+    background: url('https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/fondoLogin.jpg?alt=media&token=a1bb992d-e7af-49df-97b8-c2685e914f0a') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -436,7 +436,7 @@ button {
     margin-left: 30px;
 }
 .cntLogin{
-    background: url(/imagen/fondoLogin.jpg) no-repeat center center fixed;
+    background: url('https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/fondoLogin.jpg?alt=media&token=a1bb992d-e7af-49df-97b8-c2685e914f0a') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -540,7 +540,7 @@ button {
     justify-content: space-between;
     background-position: center;
     background-size: cover;
-    background-image: url('/imagen/fotoPost.jpg');
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/fotoPost.jpg?alt=media&token=dc19d7ae-32bb-454a-9ebf-d30f4e2d5156');
     width: 360px;
     height: 407px;
     padding: 5px 10px 5px;
@@ -609,7 +609,7 @@ button {
 .picturesCnt {
     margin-right: 5%;
     width: 500px;
-    background-image: url(./imagen/apurimac3.svg);
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/apurimac3.svg?alt=media&token=d0acc1a2-8763-4a26-8f3d-5497084791c8');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -972,7 +972,7 @@ hr {
 /*perfil del usuario Profile*/
 .profileBanner {
     width: 100%;
-    background-image: url(./imagen/userprofile.gif);
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/userprofile.gif?alt=media&token=ac39084b-72c8-4d4b-b75f-149775d60ad5');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1010,7 +1010,7 @@ body {
 }
 
 .loginBody {
-    background: url(/imagen/fondoLogin.jpg) no-repeat center center fixed;
+    background: url('https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/fondoLogin.jpg?alt=media&token=a1bb992d-e7af-49df-97b8-c2685e914f0a') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -1029,7 +1029,7 @@ body {
 }
 
 .logContainer {
-    background: url(/imagen/fondoLogin.jpg) no-repeat center center fixed;
+    background: url('https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/fondoLogin.jpg?alt=media&token=a1bb992d-e7af-49df-97b8-c2685e914f0a') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -1426,7 +1426,7 @@ button {
     margin-left: 30px;
 }
 .cntLogin{
-    background: url(/imagen/fondoLogin.jpg) no-repeat center center fixed;
+    background: url('https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/fondoLogin.jpg?alt=media&token=a1bb992d-e7af-49df-97b8-c2685e914f0a') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -1515,7 +1515,7 @@ button {
 
 .postDiv {
     display: flex;
-    background-image: url(/imagen/machu.png);
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/machu.png?alt=media&token=d3962719-0bee-4194-9dc6-0a03a2cb2e6a');
     background-repeat: no-repeat;
     width: 130px;
     height: 170px;
@@ -1585,7 +1585,7 @@ button {
 
 .picturesCnt {
     margin-right: 5%;
-    background-image: url(/imagen/apurimac3.svg);
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/apurimac3.svg?alt=media&token=d0acc1a2-8763-4a26-8f3d-5497084791c8');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

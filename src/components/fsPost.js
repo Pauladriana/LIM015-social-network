@@ -19,7 +19,7 @@ export const showFsPost = () => {
       const divTemplate = `
                     <div class='postDiv'>
                       <div class='destinationPost'>
-                      <img src='./imagen/locacion.svg' alt='' class='locationIcon'>
+                      <img src='https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/locacion.svg?alt=media&token=f46b1d22-43c6-442a-8ff7-6dc1b41bfd7d' alt='' class='locationIcon'>
                       <p>${doc.locacionInput}</p>
                       </div>
                       <h5>${doc.tituloPost}</h5>
@@ -124,7 +124,7 @@ export const showMyPosts = () => {
         const divTemplate = `
                       <div class='postDiv'>
                         <div class='destinationPost'>
-                        <img src='./imagen/locacion.svg' alt='' class='locationIcon'>
+                        <img src='https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/locacion.svg?alt=media&token=f46b1d22-43c6-442a-8ff7-6dc1b41bfd7d' alt='' class='locationIcon'>
                         <p>${doc.locacionInput}</p>
                         </div>
                         <h5>${doc.tituloPost}</h5>
