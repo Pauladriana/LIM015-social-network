@@ -13,11 +13,11 @@ INDICE
 
 ---
 
-##1. RESUMEN DEL PROYECTO
+## 1. RESUMEN DEL PROYECTO
 El presente proyecto,Traveler.pe , es una Red social destinada a personas que planean viajar  y están en búsqueda de recomendaciones e itinerarios de otras personas así mismo también podrán compartir su experiencias para que otros viajeros puedan seguir sus recomendaciones. Los destinos son en el interior de este hermosos país Perú Esta red social te permitirá crear una cuenta de acceso y logueandose con ella; crear, editar, borrar, comentar y dar "me gusta" publicaciones, todo de forma dinámica.
 
 ---
-##2. DEFINICION DEL PRODUCTO
+## 2. DEFINICION DEL PRODUCTO
 Traveler.pe-celular
 
 Traveler.pe nace inspirada en las redes sociales actuales, tales como Instagram, Facebook, Twitter, Linkedin, etc. Estas redes sociales han invadido nuestras vidas, aunque muchos la amamos u odiamos, hay otros que no podemos vivir sin ellas.
@@ -34,7 +34,7 @@ Perfil que es el perfil del usuario y dónde verá sus propias publicaciones, se
 Log out con el que cerrará sesión
 
 ---
-##3. HISTORIAS DE USUARIO
+## 3. HISTORIAS DE USUARIO
 Las siguientes historias de usuario se han han tomado en cuenta para el prototipado y desarrollo de nuestra Red Social.
 
 1- Yo como usuario que le gusta viajar y conocer el Perú, quiero ver el prototipo inicial de una red social, en la que me muestre los viajes de otras personas y poder compartir los míos.
