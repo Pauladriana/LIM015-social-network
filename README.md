@@ -1,3 +1,8 @@
+# Traveler.pe
+---
+**Puedes ver el proyecto desplegado en el siguiente link:** [Traveler.pe](https://pauladriana.github.io/LIM015-social-network/src/)
+
+---
 INDICE
 1. Resumen del proyecto
 2. Definición del producto
@@ -5,10 +10,14 @@ INDICE
 4. Diseño de Interfaz de Usuario
 5. Test de usabilidad
 ![mockup traveler](https://user-images.githubusercontent.com/85045325/132271603-d2750268-a50c-463a-8ae1-1409c2fd21e1.jpg)
-1. RESUMEN DEL PROYECTO
+
+---
+
+##1. RESUMEN DEL PROYECTO
 El presente proyecto,Traveler.pe , es una Red social destinada a personas que planean viajar  y están en búsqueda de recomendaciones e itinerarios de otras personas así mismo también podrán compartir su experiencias para que otros viajeros puedan seguir sus recomendaciones. Los destinos son en el interior de este hermosos país Perú Esta red social te permitirá crear una cuenta de acceso y logueandose con ella; crear, editar, borrar, comentar y dar "me gusta" publicaciones, todo de forma dinámica.
 
-2. DEFINICION DEL PRODUCTO
+---
+##2. DEFINICION DEL PRODUCTO
 Traveler.pe-celular
 
 Traveler.pe nace inspirada en las redes sociales actuales, tales como Instagram, Facebook, Twitter, Linkedin, etc. Estas redes sociales han invadido nuestras vidas, aunque muchos la amamos u odiamos, hay otros que no podemos vivir sin ellas.
@@ -24,7 +33,8 @@ Comunidad dónde el usuario podrá crear, editar, comentar eliminar y reaccionar
 Perfil que es el perfil del usuario y dónde verá sus propias publicaciones, sean públicas o privadas y también editarlas, y
 Log out con el que cerrará sesión
 
-3. HISTORIAS DE USUARIO
+---
+##3. HISTORIAS DE USUARIO
 Las siguientes historias de usuario se han han tomado en cuenta para el prototipado y desarrollo de nuestra Red Social.
 
 1- Yo como usuario que le gusta viajar y conocer el Perú, quiero ver el prototipo inicial de una red social, en la que me muestre los viajes de otras personas y poder compartir los míos.
