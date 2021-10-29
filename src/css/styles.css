@@ -972,7 +972,7 @@ hr {
 /*perfil del usuario Profile*/
 .profileBanner {
     width: 100%;
-    background-image: url('https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/userprofile.gif?alt=media&token=ac39084b-72c8-4d4b-b75f-149775d60ad5');
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/traveler-c61bb.appspot.com/o/fondoLogin.jpg?alt=media&token=a1bb992d-e7af-49df-97b8-c2685e914f0a');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
